@@ -83,6 +83,7 @@ pie showData
 | [**stranger-things-finale-theater-list**](https://github.com/johnzfitch/stranger-things-finale-theater-list) | Complete list of 490 theaters showing Stranger Things 5: The Finale (Dec 31, 2025 & Jan 1, 2026). | Markdown |
 | [**wealth-for-me-not-for-thee**](https://github.com/johnzfitch/wealth-for-me-not-for-thee) | Wealth inequality visualizer game - scroll to comprehend the scale of billionaire wealth vs median income. | JavaScript, CSS |
 | [**NetworkBatcher**](https://github.com/johnzfitch/NetworkBatcher) | Energy-efficient network request batching for iOS 26+ with intelligent coalescing and battery optimization. | Swift |
+| [**Liberty-Links**](https://github.com/johnzfitch/Liberty-Links) | Curated collection of tracker-free, redirect-free links - privacy-respecting alternatives to common services. | Markdown |
 
 ### <img src=".github/assets/icons/lock.png" width="24" height="24"> Security Research
 
