@@ -29,16 +29,16 @@ LLMs echo their training data. That echo is detectable through pattern recogniti
 ## <img src=".github/assets/icons/chart.png" width="24" height="24"> Skills
 
 ```mermaid
-%%{init: {'theme':'base', 'themeVariables': {'pie1': '#e74c3c', 'pie2': '#3498db', 'pie3': '#2ecc71', 'pie4': '#f39c12', 'pie5': '#9b59b6', 'pie6': '#1abc9c', 'pie7': '#e91e63', 'pieSectionTextColor': '#ffffff', 'pieLegendTextColor': '#ffffff'}}}%%
+%%{init: {'theme':'base', 'themeVariables': {'pie1': '#e74c3c', 'pie2': '#3498db', 'pie3': '#2ecc71', 'pie4': '#f39c12', 'pie5': '#9b59b6', 'pie6': '#1abc9c', 'pie7': '#e91e63', 'pieSectionTextColor': '#ffffff', 'pieLegendTextColor': '#ffffff', 'pieTitleTextColor': '#ffffff'}}}%%
 pie showData
     title Technical Focus
-    "Systems (Rust/C)" : 25
-    "Security" : 20
-    "Web (TS/React)" : 15
-    "Linux/DevOps" : 13
-    "NLP/ML" : 12
-    "Math" : 8
-    "Privacy" : 7
+    "Systems (Rust/C)" : 20
+    "Security" : 24
+    "Web (TS/React)" : 12
+    "Linux/DevOps" : 20
+    "AI/ML" : 12
+    "Math" : 4
+    "Privacy" : 8
 ```
 
 ---
