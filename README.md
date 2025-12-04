@@ -28,18 +28,11 @@ LLMs echo their training data. That echo is detectable through pattern recogniti
 
 ## <img src=".github/assets/icons/chart.png" width="24" height="24"> Skills
 
-```mermaid
-%%{init: {'theme':'dark', 'themeVariables': {'pie1': '#e74c3c', 'pie2': '#3498db', 'pie3': '#2ecc71', 'pie4': '#f39c12', 'pie5': '#9b59b6', 'pie6': '#1abc9c', 'pie7': '#e91e63'}}}%%
-pie showData
-    title Technical Focus
-    "Systems (Rust/C)" : 20
-    "Security" : 24
-    "Web (TS/React)" : 12
-    "Linux/DevOps" : 20
-    "AI/ML" : 12
-    "Math" : 4
-    "Privacy" : 8
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/charts/skills-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset=".github/assets/charts/skills-light.svg">
+  <img alt="Technical Focus - Skills breakdown" src=".github/assets/charts/skills-light.svg">
+</picture>
 
 ---
 
