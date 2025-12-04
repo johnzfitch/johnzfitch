@@ -53,6 +53,7 @@ pie showData
 | [**definitelynot.ai**](https://github.com/johnzfitch/definitelynot.ai) | Unicode security sanitizer defending against Trojan Source attacks, homoglyph spoofing, and BiDi exploits via 16-step pipeline. | PHP, JavaScript, ICU |
 | [**marginium**](https://github.com/johnzfitch/marginium) | Multimodal generation framework providing LLMs with visual awareness of their output structure. | Python |
 | [**gemini-cli**](https://github.com/johnzfitch/gemini-cli) | Privacy-enhanced fork of Google's Gemini CLI with telemetry disabled and custom Gogh color schemes. | TypeScript, Node.js |
+| **aegis** *(private)* | Browser MCP server enabling Claude Code to interface with Floorp browser for web automation and research. | TypeScript, Playwright |
 
 ### <img src=".github/assets/icons/ram.png" width="24" height="24"> Systems
 
@@ -61,6 +62,7 @@ pie showData
 | [**search-cache**](https://github.com/johnzfitch/search-cache) | Fast file search tool using HashMap-based indexing with DashMap for concurrency and Rayon for parallel execution. | Rust |
 | [**nautilus-fork**](https://github.com/johnzfitch/nautilus-fork) | GNOME Files v50.alpha fork integrating with search-cache via C wrapper. Includes animated thumbnail infrastructure. | C, GTK4 |
 | [**cod3x**](https://github.com/johnzfitch/cod3x) | Terminal coding agent with 3D ASCII interface at 60fps and SQLite session persistence. | Rust, SQLite |
+| **bitmail** *(private)* | Modern Bitmessage client with Python CLI and Rust TUI for decentralized encrypted messaging. | Python, Rust |
 
 ### <img src=".github/assets/icons/homelab.png" width="24" height="24"> Desktop
 
@@ -79,6 +81,15 @@ pie showData
 | [**qualcomm-x870e-linux-bug-patch**](https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch) | ACPI kernel fix for Qualcomm WCN7850 WiFi 7 on AMD X870E motherboards. | ACPI, Shell |
 | [**arch-dependency-matrices**](https://github.com/johnzfitch/arch-dependency-matrices) | Mathematical analysis of 1,553 Arch Linux packages using graph theory, PageRank, and spectral analysis. | Python, NumPy |
 | [**stranger-things-finale-theater-list**](https://github.com/johnzfitch/stranger-things-finale-theater-list) | Complete list of 490 theaters showing Stranger Things 5: The Finale (Dec 31, 2025 & Jan 1, 2026). | Markdown |
+| [**wealth-for-me-not-for-thee**](https://github.com/johnzfitch/wealth-for-me-not-for-thee) | Wealth inequality visualizer game - scroll to comprehend the scale of billionaire wealth vs median income. | JavaScript, CSS |
+| [**NetworkBatcher**](https://github.com/johnzfitch/NetworkBatcher) | Energy-efficient network request batching for iOS 26+ with intelligent coalescing and battery optimization. | Swift |
+
+### <img src=".github/assets/icons/lock.png" width="24" height="24"> Security Research
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| **eero-reverse-engineering** *(private)* | Mesh WiFi router security analysis including API research, traffic capture tools, and protocol documentation. | Python, Wireshark |
+| **proxyforge** *(private)* | Transparent MITM proxy for API traffic analysis with TLS interception and HAR export. | Python, mitmproxy |
 
 ---
 
@@ -105,6 +116,13 @@ pie showData
 - **FreshRSS** at feed.internetuniverse.org (desktop integration)
 - **Caddy** with automatic HTTPS/HTTP3
 - **cPanel/WHM** for InternetUniverse.org and DefinitelyNot.ai
+
+### <img src=".github/assets/icons/storage.png" width="24" height="24"> Infrastructure as Code
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| **digitaldelusion** *(private)* | NixOS bare-metal server config with post-quantum SSH (ML-KEM), Rosenpass VPN, and battle-hardened nftables. | Nix, agenix |
+| **unbound-config** *(private)* | Recursive DNS resolver configuration with DNSSEC, QNAME minimization, and curated ad/tracker blocklists. | Unbound, Shell |
 
 ---
 
