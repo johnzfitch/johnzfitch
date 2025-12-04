@@ -1,4 +1,4 @@
-Zack Fitch
+# John Zachary Fitch
 
 ![sorceress](.github/assets/icons/sorceress.png) **AI Product Engineer** | ![chart](.github/assets/icons/chart.png) **UC Berkeley Mathematics**
 
