@@ -1,6 +1,6 @@
 # John Zachary Fitch
 
-![sorceress](.github/assets/icons/sorceress.png) **AI Product Engineer** | ![chart](.github/assets/icons/chart.png) **UC Berkeley Mathematics**
+<img src=".github/assets/icons/sorceress.png" width="24" height="24"> **AI Product Engineer** | <img src=".github/assets/icons/chart.png" width="24" height="24"> **UC Berkeley Mathematics**
 
 ---
 
@@ -14,7 +14,7 @@ I run self-hosted infrastructure including a NixOS bare-metal server with post-q
 
 ---
 
-## ![radar](.github/assets/icons/radar.png) The Echo Rule
+## <img src=".github/assets/icons/radar.png" width="24" height="24"> The Echo Rule
 
 LLMs echo their training data. That echo is detectable through pattern recognition:
 
@@ -26,7 +26,7 @@ LLMs echo their training data. That echo is detectable through pattern recogniti
 
 ---
 
-## ![chart](.github/assets/icons/chart.png) Skills
+## <img src=".github/assets/icons/chart.png" width="24" height="24"> Skills
 
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': {'pie1': '#e74c3c', 'pie2': '#3498db', 'pie3': '#2ecc71', 'pie4': '#f39c12', 'pie5': '#9b59b6', 'pie6': '#1abc9c', 'pie7': '#e91e63'}}}%%
@@ -43,9 +43,9 @@ pie showData
 
 ---
 
-## ![science](.github/assets/icons/science.png) Projects
+## <img src=".github/assets/icons/science.png" width="24" height="24"> Projects
 
-### ![security](.github/assets/icons/security.png) AI/ML
+### <img src=".github/assets/icons/security.png" width="24" height="24"> AI/ML
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -54,7 +54,7 @@ pie showData
 | [**marginium**](https://github.com/johnzfitch/marginium) | Multimodal generation framework providing LLMs with visual awareness of their output structure. | Python |
 | [**gemini-cli**](https://github.com/johnzfitch/gemini-cli) | Privacy-enhanced fork of Google's Gemini CLI with telemetry disabled and custom Gogh color schemes. | TypeScript, Node.js |
 
-### ![ram](.github/assets/icons/ram.png) Systems
+### <img src=".github/assets/icons/ram.png" width="24" height="24"> Systems
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -62,7 +62,7 @@ pie showData
 | [**nautilus-fork**](https://github.com/johnzfitch/nautilus-fork) | GNOME Files v50.alpha fork integrating with search-cache via C wrapper. Includes animated thumbnail infrastructure. | C, GTK4 |
 | [**cod3x**](https://github.com/johnzfitch/cod3x) | Terminal coding agent with 3D ASCII interface at 60fps and SQLite session persistence. | Rust, SQLite |
 
-### ![homelab](.github/assets/icons/homelab.png) Desktop
+### <img src=".github/assets/icons/homelab.png" width="24" height="24"> Desktop
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -72,7 +72,7 @@ pie showData
 | [**claude-desktop-arch**](https://github.com/johnzfitch/claude-desktop-arch) | Enable Claude Code preview in Claude Desktop on Arch Linux via 3-line platform detection patch. | JavaScript, Shell |
 | [**gemini-sharp**](https://github.com/johnzfitch/gemini-sharp) | Single-file standalone Gemini CLI binaries with privacy enhancements and 15+ Gogh color themes. | C#, .NET |
 
-### ![automation](.github/assets/icons/automation.png) Other
+### <img src=".github/assets/icons/automation.png" width="24" height="24"> Other
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -82,7 +82,7 @@ pie showData
 
 ---
 
-## ![server](.github/assets/icons/server.png) Infrastructure
+## <img src=".github/assets/icons/server.png" width="24" height="24"> Infrastructure
 
 ### Primary Server (Tier.net - Dallas, TX)
 
@@ -94,13 +94,13 @@ pie showData
 | OS | NixOS 24.05 |
 | Security | Post-quantum SSH (sntrup761x25519), nftables |
 
-### ![wireless](.github/assets/icons/wireless.png) DNS
+### <img src=".github/assets/icons/wireless.png" width="24" height="24"> DNS
 
 - **Unbound** recursive resolver - no third-party DNS
 - DNSSEC validation, QNAME minimization
 - Ad/tracker blocking (Steven Black, OISD, Hagezi Pro)
 
-### ![rss](.github/assets/icons/rss.png) Self-Hosted
+### <img src=".github/assets/icons/rss.png" width="24" height="24"> Self-Hosted
 
 - **FreshRSS** at feed.internetuniverse.org (desktop integration)
 - **Caddy** with automatic HTTPS/HTTP3
@@ -108,7 +108,7 @@ pie showData
 
 ---
 
-## ![djinni](.github/assets/icons/djinni.png) Philosophy
+## <img src=".github/assets/icons/djinni.png" width="24" height="24"> Philosophy
 
 AI should expand human capability, not replace workers. I call it **additive innovation**: build tools that make people better at their jobs, not tools that eliminate their jobs.
 
@@ -116,7 +116,7 @@ The best way to predict AI's impact is to build the tools that shape it.
 
 ---
 
-## ![mail](.github/assets/icons/mail.png) Contact
+## <img src=".github/assets/icons/mail.png" width="24" height="24"> Contact
 
 **Location:** SF Bay Area or remote
 
