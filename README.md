@@ -1,6 +1,5 @@
 # John Zachary Fitch
-
-<img src=".github/assets/icons/sorceress.png" width="24" height="24"> **AI Product Engineer** | <img src=".github/assets/icons/chart.png" width="24" height="24"> **UC Berkeley Mathematics**
+**AI Product Engineer** | **UC Berkeley Mathematics**
 
 ---
 
