@@ -1,4 +1,4 @@
-# ![phoenix](.github/assets/icons/phoenix.png) Zack Fitch
+Zack Fitch
 
 ![sorceress](.github/assets/icons/sorceress.png) **AI Product Engineer** | ![chart](.github/assets/icons/chart.png) **UC Berkeley Mathematics**
 
