@@ -1,0 +1,3 @@
+AI Product Engineer. UC Berkeley Mathematics.
+
+I build tools that make AI transparent and accountable. My thesis: we can detect LLM-generated text through pattern recognition, and we should.
