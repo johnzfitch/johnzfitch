@@ -121,7 +121,7 @@ pie showData
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| **digitaldelusion** *(private)* | NixOS bare-metal server config with post-quantum SSH (ML-KEM), Rosenpass VPN, and battle-hardened nftables. | Nix, agenix |
+| *(redacted)* | NixOS bare-metal server config with post-quantum SSH (ML-KEM), Rosenpass VPN, and battle-hardened nftables. | Nix, agenix |
 | **unbound-config** *(private)* | Recursive DNS resolver configuration with DNSSEC, QNAME minimization, and curated ad/tracker blocklists. | Unbound, Shell |
 
 ---
