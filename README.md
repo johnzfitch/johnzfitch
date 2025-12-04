@@ -3,11 +3,11 @@
 
 ---
 
-I'm a software engineer with a background in mathematics from UC Berkeley, focused on AI product engineering and privacy-first infrastructure. My work centers on building tools that expand human capability rather than replace it—what I call **additive innovation**.
+I'm a software engineer with a background in mathematics from UC Berkeley. I'm focused on AI product engineering and maintaining a privacy-first infrastructure. I love working on enhancing existing projects and pushing the boundaries on what models can do locally. My work is typically centered around building tools that might expand human capability rather than those that could replace it. 
 
-I maintain a [custom fork of omarchy](https://github.com/johnzfitch/omarchy) with 2,600+ lines of modifications tailored to my workflow. My [nautilus-fork](https://github.com/johnzfitch/nautilus-fork) integrates with [search-cache](https://github.com/johnzfitch/search-cache), a Rust-based file search tool, to enhance GTK4 file management. I'm developing **The Echo Rule**—a methodology for detecting LLM-generated text through phonetic, structural, and semantic pattern recognition, implemented in [specHO](https://github.com/johnzfitch/specHO) and [definitelynot.ai](https://definitelynot.ai).
+I maintain a [custom fork of omarchy](https://github.com/johnzfitch/omarchy) with 2,600+ lines of modifications adapted to my workflow. My [nautilus-fork](https://github.com/johnzfitch/nautilus-fork) integrates with [search-cache](https://github.com/johnzfitch/search-cache), a blazingly-fast Rust-based file search tool, vastly improving local GTK4 file management. I'm continually developing **The Echo Rule**, which is my methodology for detecting LLM-generated text through phonetic, structural, and semantic pattern recognition between sentence clauses, implemented in [specHO](https://github.com/johnzfitch/specHO) and [definitelynot.ai](https://definitelynot.ai).
 
-I run self-hosted infrastructure including a NixOS bare-metal server with post-quantum SSH, plus cPanel/WHM hosting. My setup includes Unbound recursive DNS with DNSSEC and ad-blocking, and self-hosted FreshRSS powering a custom waybar ticker.
+Maintain NixOS bare-metal infrastructure with post-quantum cryptography (ML-KEM SSH key exchange, WireGuard/Rosenpass hybrid VPN with Classic McEliece + Kyber-512), self-hosted authoritative DNS (BIND9 with RFC2136 ACME), containerized services via Podman, and declarative secrets management (agenix). Local 10Gbps network runs Unbound recursive DNS with DNSSEC validation.
 
 **Philosophy:** Local-first computing. Privacy by default. AI as augmentation, not replacement.
 
