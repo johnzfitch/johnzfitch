@@ -5,7 +5,7 @@
 
 I'm a software engineer with a background in mathematics from UC Berkeley. I'm focused on AI product engineering and maintaining a privacy-first infrastructure. I love working on enhancing existing projects and pushing the boundaries on what models can do locally. My work is typically centered around building tools that might expand human capability rather than those that could replace it. 
 
-I maintain a [custom fork of omarchy](https://github.com/johnzfitch/omarchy) with 2,600+ lines of modifications adapted to my workflow. My [nautilus-fork](https://github.com/johnzfitch/nautilus-fork) integrates with [search-cache](https://github.com/johnzfitch/search-cache), a blazingly-fast Rust-based file search tool, vastly improving local GTK4 file management. I'm continually developing **The Echo Rule**, which is my methodology for detecting LLM-generated text through phonetic, structural, and semantic pattern recognition between sentence clauses, implemented in [specHO](https://github.com/johnzfitch/specHO) and [definitelynot.ai](https://definitelynot.ai).
+I maintain a [custom fork of omarchy](https://github.com/johnzfitch/omarchy) with 2,600+ lines of modifications tailored to my workflow. My [nautilus-plus](https://github.com/johnzfitch/nautilus-plus) (AUR: `nautilus-plus`) integrates with [search-cache](https://github.com/johnzfitch/search-cache), a Rust-based file search tool, delivering sub-millisecond search and user-configurable performance optimizations for GTK4 file management. I'm developing **The Echo Rule**—a methodology for detecting LLM-generated text through phonetic, structural, and semantic pattern recognition, implemented in [specHO](https://github.com/johnzfitch/specHO) and [definitelynot.ai](https://definitelynot.ai).
 
 Maintain NixOS bare-metal infrastructure with post-quantum cryptography (ML-KEM SSH key exchange, WireGuard/Rosenpass hybrid VPN with Classic McEliece + Kyber-512), self-hosted authoritative DNS (BIND9 with RFC2136 ACME), containerized services via Podman, and declarative secrets management (agenix). Local 10Gbps network runs Unbound recursive DNS with DNSSEC validation.
 
@@ -51,8 +51,8 @@ LLMs echo their training data. That echo is detectable through pattern recogniti
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [**search-cache**](https://github.com/johnzfitch/search-cache) | Fast file search tool using HashMap-based indexing with DashMap for concurrency and Rayon for parallel execution. | Rust |
-| [**nautilus-fork**](https://github.com/johnzfitch/nautilus-fork) | GNOME Files v50.alpha fork integrating with search-cache via C wrapper. Includes animated thumbnail infrastructure. | C, GTK4 |
+| [**search-cache**](https://github.com/johnzfitch/search-cache) | Fast file search tool using HashMap-based indexing with DashMap for concurrency and Rayon for parallel execution. Sub-millisecond search for 2.15M+ files. Available on AUR. | Rust |
+| [**nautilus-plus**](https://github.com/johnzfitch/nautilus-plus) | Enhanced GNOME Files with user-configurable search blacklist, depth-limited search, and 512px thumbnails. Integrates with search-cache. Available on AUR as `nautilus-plus`. | C, GTK4 |
 | [**cod3x**](https://github.com/johnzfitch/cod3x) | Terminal coding agent with 3D ASCII interface at 60fps and SQLite session persistence. | Rust, SQLite |
 | **bitmail** *(private)* | Modern Bitmessage client with Python CLI and Rust TUI for decentralized encrypted messaging. | Python, Rust |
 
