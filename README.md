@@ -173,7 +173,7 @@ The best way to predict AI's impact is to build the tools that shape it.
 
 ---
 
-## <img src=".github/assets/icons/mail.png" width="24" height="24"> Connect
+## <img src=".github/assets/icons/heart.png" width="24" height="24"> Connect
 
 **Location:** SF Bay Area (open to remote)
 
