@@ -87,7 +87,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 ## <img src=".github/assets/icons/folder.png" width="24" height="24"> Projects
 
-### <img src=".github/assets/icons/magic-wand.png" width="24" height="24"> AI/ML
+### <img src=".github/assets/icons/ai-brain.png" width="24" height="24"> AI/ML
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -108,7 +108,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 | **alienware-monitor** *(private)* | Dell monitor firmware reverse engineering with GSFW decoder/encoder and BMP extraction. | Python, Ghidra |
 | **proxyforge** *(private)* | Transparent MITM proxy for API traffic analysis with TLS interception and HAR export. | Python, mitmproxy |
 
-### <img src=".github/assets/icons/ram.png" width="24" height="24"> Systems Programming
+### <img src=".github/assets/icons/script.png" width="24" height="24"> Systems Programming
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -165,7 +165,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 ---
 
-## <img src=".github/assets/icons/djinni.png" width="24" height="24"> Philosophy
+## <img src=".github/assets/icons/compass.png" width="24" height="24"> Philosophy
 
 AI should expand human capability, not replace workers. I call it **additive innovation**: build tools that make people better at their jobs, not tools that eliminate their jobs.
 
