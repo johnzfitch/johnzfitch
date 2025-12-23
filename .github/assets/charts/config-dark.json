@@ -1,0 +1,19 @@
+{
+  "theme": "dark",
+  "themeVariables": {
+    "darkMode": true,
+    "background": "transparent",
+    "primaryColor": "#1f2937",
+    "primaryTextColor": "#f3f4f6",
+    "primaryBorderColor": "#374151",
+    "lineColor": "#6b7280",
+    "secondaryColor": "#374151",
+    "tertiaryColor": "#4b5563",
+    "pie1": "#e74c3c",
+    "pie2": "#3498db",
+    "pie3": "#2ecc71",
+    "pie4": "#f39c12",
+    "pie5": "#9b59b6",
+    "pie6": "#1abc9c"
+  }
+}
