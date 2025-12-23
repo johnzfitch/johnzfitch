@@ -125,7 +125,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 | [**iconics**](https://github.com/johnzfitch/iconics) | Semantic icon library with 3,372 PNGs, CLI tool for discovery/export, and project-aware suggestions. | Python |
 | [**gemini-sharp**](https://github.com/johnzfitch/gemini-sharp) | Single-file standalone Gemini CLI binaries with privacy enhancements and 15+ Gogh color themes. | C#, .NET |
 
-### <img src=".github/assets/icons/homelab.png" width="24" height="24"> Desktop/Linux
+### <img src=".github/assets/icons/cinema-display.png" width="24" height="24"> Desktop/Linux
 
 | Project | Description | Stack |
 |---------|-------------|-------|
@@ -135,20 +135,13 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 | [**qualcomm-x870e-linux-bug-patch**](https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch) | WiFi 7 firmware fix for Qualcomm WCN7850 on Gigabyte X870E motherboards with pacman hook. | Python, ACPI |
 | [**arch-dependency-matrices**](https://github.com/johnzfitch/arch-dependency-matrices) | Mathematical analysis of 1,553 Arch packages using graph theory, PageRank, and spectral analysis. | Python, NumPy |
 
-### <img src=".github/assets/icons/globe.png" width="24" height="24"> Web/Mobile
+### <img src=".github/assets/icons/smartphone.png" width="24" height="24"> Web/Mobile
 
 | Project | Description | Stack |
 |---------|-------------|-------|
 | [**NetworkBatcher**](https://github.com/johnzfitch/NetworkBatcher) | Energy-efficient network request batching for iOS 26+ with intelligent coalescing. | Swift |
 | [**stranger-things-finale-theater-list**](https://github.com/johnzfitch/stranger-things-finale-theater-list) | Complete list of 490 theaters showing Stranger Things 5: The Finale (Dec 31, 2025 & Jan 1, 2026). | Markdown |
 | [**Liberty-Links**](https://github.com/johnzfitch/Liberty-Links) | Tracker-free, redirect-free links - privacy-respecting alternatives to common services. | Markdown |
-
-### <img src=".github/assets/icons/server.png" width="24" height="24"> Infrastructure
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| **NixOS Server** *(private)* | Bare-metal config with post-quantum SSH (ML-KEM), Rosenpass VPN, authoritative DNS (BIND9), and containerized services. | Nix, agenix |
-| **unbound-config** *(private)* | Recursive DNS with DNSSEC, QNAME minimization, and ad/tracker blocking (Steven Black, OISD, Hagezi Pro). | Unbound, Shell |
 
 ---
 
@@ -162,6 +155,13 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 | **DNS** | Unbound recursive resolver with DNSSEC, ad/tracker blocking, no third-party DNS |
 | **Services** | FreshRSS, Caddy (HTTPS/HTTP3), cPanel/WHM, Podman containers |
 | **Network** | Local 10Gbps, authoritative BIND9 with RFC2136 ACME |
+
+**Infrastructure as Code:**
+
+| Project | Description | Stack |
+|---------|-------------|-------|
+| **NixOS Server** *(private)* | Bare-metal config with post-quantum SSH (ML-KEM), Rosenpass VPN, authoritative DNS (BIND9), and containerized services. | Nix, agenix |
+| **unbound-config** *(private)* | Recursive DNS with DNSSEC, QNAME minimization, and ad/tracker blocking (Steven Black, OISD, Hagezi Pro). | Unbound, Shell |
 
 ---
 
