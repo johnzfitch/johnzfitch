@@ -21,7 +21,7 @@ Self-hosting 32GB bare-metal infrastructure (NixOS) with post-quantum cryptograp
 
 ## <img src=".github/assets/icons/star.png" width="24" height="24"> Featured
 
-### <img src=".github/assets/icons/eye.png" width="20" height="20"> Observatory - WebGPU Deepfake Detection
+### <img src=".github/assets/icons/observatory-eye.png" width="20" height="20"> Observatory - WebGPU Deepfake Detection
 **Live Demo:** [look.definitelynot.ai](https://look.definitelynot.ai)
 
 Browser-based AI image detection running 4 specialized ML models (ViT, Swin Transformer) through WebGPU. Zero server-side processing—all inference happens client-side with 672MB of ONNX models.
