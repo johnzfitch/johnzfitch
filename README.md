@@ -112,6 +112,9 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 | Project | Description | Stack |
 |---------|-------------|-------|
+| [**filearchy**](https://github.com/johnzfitch/filearchy) | COSMIC Files fork with embedded trigram search engine. Sub-10ms searches, relevance ranking, smart segmentation. | Rust, libcosmic |
+| [**triglyph**](https://github.com/johnzfitch/triglyph) | Zero-RSS trigram index library for code search. Memory-mapped indexes, streaming builds, ~50 bytes/file overhead. | Rust, memmap2 |
+| [**triglyphd**](https://github.com/johnzfitch/triglyphd) | D-Bus daemon for system-wide trigram search. Background indexing, IPC queries, integrates with file managers. | Rust, zbus, D-Bus |
 | [**search-cache**](https://github.com/johnzfitch/search-cache) | HashMap-based file indexing with DashMap/Rayon. Sub-millisecond search for 2.15M+ files. AUR available. | Rust |
 | [**nautilus-plus**](https://github.com/johnzfitch/nautilus-plus) | Enhanced GNOME Files with 512px thumbnails, depth-limited search, search-cache integration. AUR: `nautilus-plus`. | C, GTK4 |
 | [**cod3x**](https://github.com/johnzfitch/cod3x) | Terminal coding agent with 3D ASCII interface at 60fps and SQLite session persistence. | Rust, SQLite |
