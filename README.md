@@ -8,10 +8,11 @@
 Software engineer with UC Berkeley mathematics background specializing in systems programming, security research, and AI/ML applications. I build production tools across the full stack—from WebGPU-accelerated browser applications to Rust CLI tools to bare-metal NixOS infrastructure.
 
 **What I ship:**
-- **[Observatory](https://look.definitelynot.ai)** - WebGPU deepfake detection running 4 ML models in-browser (live demo)
-- **[specHO](https://github.com/johnzfitch/specHO)** - LLM watermark detection through phonetic/semantic analysis (The Echo Rule)
-- **[nautilus-plus](https://github.com/johnzfitch/nautilus-plus)** - Enhanced GNOME Files with sub-millisecond search (AUR: `nautilus-plus`)
-- **[indepacer](https://github.com/johnzfitch/indepacer)** - PACER CLI for federal court research with MFA support
+- **[Observatory](https://look.definitelynot.ai)** - WebGPU deepfake detection running 4 ML models in-browser *(live demo)*
+- **[specHO](https://github.com/johnzfitch/specHO)** - LLM watermark detection via phonetic/semantic analysis *(The Echo Rule)*
+- **[filearchy](https://github.com/johnzfitch/filearchy)** - COSMIC Files fork with sub-10ms trigram search *(Rust)*
+- **[nautilus-plus](https://github.com/johnzfitch/nautilus-plus)** - Enhanced GNOME Files with sub-millisecond search *(AUR)*
+- **[indepacer](https://github.com/johnzfitch/indepacer)** - PACER CLI for federal court research *(PyPI: pacersdk)*
 
 Self-hosting 32GB bare-metal infrastructure (NixOS) with post-quantum cryptography (ML-KEM, Rosenpass VPN), authoritative DNS, and containerized services.
 
@@ -112,13 +113,13 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [**filearchy**](https://github.com/johnzfitch/filearchy) | COSMIC Files fork with embedded trigram search engine. Sub-10ms searches, relevance ranking, smart segmentation. | Rust, libcosmic |
-| [**triglyph**](https://github.com/johnzfitch/triglyph) | Zero-RSS trigram index library for code search. Memory-mapped indexes, streaming builds, ~50 bytes/file overhead. | Rust, memmap2 |
-| [**triglyphd**](https://github.com/johnzfitch/triglyphd) | D-Bus daemon for system-wide trigram search. Background indexing, IPC queries, integrates with file managers. | Rust, zbus, D-Bus |
-| [**search-cache**](https://github.com/johnzfitch/search-cache) | HashMap-based file indexing with DashMap/Rayon. Sub-millisecond search for 2.15M+ files. AUR available. | Rust |
-| [**nautilus-plus**](https://github.com/johnzfitch/nautilus-plus) | Enhanced GNOME Files with 512px thumbnails, depth-limited search, search-cache integration. AUR: `nautilus-plus`. | C, GTK4 |
-| [**cod3x**](https://github.com/johnzfitch/cod3x) | Terminal coding agent with 3D ASCII interface at 60fps and SQLite session persistence. | Rust, SQLite |
-| **bitmail** *(private)* | Modern Bitmessage client with Python CLI and Rust TUI for decentralized encrypted messaging. | Python, Rust |
+| [**filearchy**](https://github.com/johnzfitch/filearchy) | COSMIC Files fork with embedded trigram search engine | Rust, libcosmic |
+| ↳ [triglyph](https://github.com/johnzfitch/triglyph) | Zero-RSS trigram index library (mmap, ~0 bytes resident) | Rust, memmap2 |
+| ↳ [triglyphd](https://github.com/johnzfitch/triglyphd) | D-Bus daemon for system-wide search | Rust, zbus |
+| [**nautilus-plus**](https://github.com/johnzfitch/nautilus-plus) | Enhanced GNOME Files with 512px thumbnails, search-cache | C, GTK4 |
+| ↳ [search-cache](https://github.com/johnzfitch/search-cache) | HashMap-based file indexing, sub-ms search for 2.15M+ files | Rust, DashMap |
+| [**cod3x**](https://github.com/johnzfitch/cod3x) | Terminal coding agent with 3D ASCII interface at 60fps | Rust, SQLite |
+| **bitmail** *(private)* | Modern Bitmessage client with Python CLI and Rust TUI | Python, Rust |
 
 ### <img src=".github/assets/icons/console.png" width="24" height="24"> CLI Tools
 
@@ -176,12 +177,6 @@ The best way to predict AI's impact is to build the tools that shape it.
 
 ---
 
-## <img src=".github/assets/icons/heart.png" width="24" height="24"> Connect
-
-**Location:** SF Bay Area (open to remote)
-
-<img src=".github/assets/icons/linkedin.png" width="20" height="20"> [LinkedIn](https://www.linkedin.com/in/john-fitch-600726193/) | <img src=".github/assets/icons/globe.png" width="20" height="20"> [look.definitelynot.ai](https://look.definitelynot.ai) | <img src=".github/assets/icons/mail.png" width="20" height="20"> webmaster@internetuniverse.org
-
----
-
-<sub>Icons from [iconics](https://github.com/johnzfitch/iconics) (3,372+ semantic icons)</sub>
+<p align="center">
+<sub>SF Bay Area · Open to remote · Icons from <a href="https://github.com/johnzfitch/iconics">iconics</a></sub>
+</p>
