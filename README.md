@@ -84,6 +84,8 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <img alt="Technical Focus - Skills breakdown" src=".github/assets/charts/skills-light.svg">
 </picture>
 
+**Core:** Rust · Python · TypeScript · C · Nix · Shell
+
 ---
 
 ## <img src=".github/assets/icons/folder.png" width="24" height="24"> Projects
@@ -92,22 +94,22 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [**observatory**](https://github.com/johnzfitch/observatory) | WebGPU-accelerated deepfake detection with 4 ML models running client-side. Live at [look.definitelynot.ai](https://look.definitelynot.ai). | JavaScript, Transformers.js, ONNX |
-| [**specHO**](https://github.com/johnzfitch/specHO) | LLM watermark detection implementing the Echo Rule through phonetic, structural, and semantic analysis. | Python, spaCy, Gensim |
-| [**definitelynot.ai**](https://github.com/johnzfitch/definitelynot.ai) | Unicode security sanitizer defending against Trojan Source attacks, homoglyph spoofing, and BiDi exploits. | PHP, JavaScript, ICU |
-| [**marginium**](https://github.com/johnzfitch/marginium) | Multimodal generation framework providing LLMs with visual awareness of their output structure. | Python |
-| [**gemini-cli**](https://github.com/johnzfitch/gemini-cli) | Privacy-enhanced fork of Google's Gemini CLI with telemetry disabled and custom Gogh color schemes. | TypeScript, Node.js |
+| [**observatory**](https://github.com/johnzfitch/observatory) | WebGPU deepfake detection, 4 ML models client-side · [live](https://look.definitelynot.ai) | JS, Transformers.js, ONNX |
+| [**specHO**](https://github.com/johnzfitch/specHO) | LLM watermark detection via Echo Rule (phonetic/semantic) | Python, spaCy, Gensim |
+| [**definitelynot.ai**](https://github.com/johnzfitch/definitelynot.ai) | Unicode security: Trojan Source, homoglyph, BiDi defense | PHP, JavaScript, ICU |
+| [**marginium**](https://github.com/johnzfitch/marginium) | Multimodal generation with LLM visual output awareness | Python |
+| [**gemini-cli**](https://github.com/johnzfitch/gemini-cli) | Privacy-enhanced Gemini CLI fork, telemetry disabled | TypeScript, Node.js |
 
 ### <img src=".github/assets/icons/lock.png" width="24" height="24"> Security Research
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| **aegis** *(private)* | Browser security with AI automation, anti-bot detection (Bezier curves, Fitts's Law), and container isolation. | TypeScript, Playwright |
-| **eero** *(private)* | Mesh WiFi router security analysis with API enumeration, traffic capture, and HackerOne disclosure prep. | Python, Wireshark |
-| **blizzarchy** *(private)* | Battle.net launcher OAuth analysis and telemetry investigation with binary reverse engineering. | Rust, Python, Ghidra |
-| [**featherarchy**](https://github.com/johnzfitch/featherarchy) | Security-hardened Monero wallet fork with memory leak fixes and input validation improvements. | C++, Qt6 |
-| **alienware-monitor** *(private)* | Dell monitor firmware reverse engineering with GSFW decoder/encoder and BMP extraction. | Python, Ghidra |
-| **proxyforge** *(private)* | Transparent MITM proxy for API traffic analysis with TLS interception and HAR export. | Python, mitmproxy |
+| **aegis** *(private)* | Browser automation, anti-bot detection (Bezier/Fitts's Law) | TypeScript, Playwright |
+| **eero** *(private)* | Mesh WiFi router security analysis, HackerOne prep | Python, Wireshark |
+| **blizzarchy** *(private)* | Battle.net OAuth analysis, telemetry RE | Rust, Python, Ghidra |
+| [**featherarchy**](https://github.com/johnzfitch/featherarchy) | Security-hardened Monero wallet fork | C++, Qt6 |
+| **alienware-monitor** *(private)* | Dell monitor firmware RE, GSFW decoder | Python, Ghidra |
+| **proxyforge** *(private)* | Transparent MITM proxy, TLS interception | Python, mitmproxy |
 
 ### <img src=".github/assets/icons/script.png" width="24" height="24"> Systems Programming
 
@@ -125,27 +127,26 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [**indepacer**](https://github.com/johnzfitch/indepacer) | PACER CLI for federal court research with nationwide search, MFA support, and cost protection. | Python, Click, Rich |
-| [**iconics**](https://github.com/johnzfitch/iconics) | Semantic icon library with 3,372 PNGs, CLI tool for discovery/export, and project-aware suggestions. | Python |
-| [**gemini-sharp**](https://github.com/johnzfitch/gemini-sharp) | Single-file standalone Gemini CLI binaries with privacy enhancements and 15+ Gogh color themes. | C#, .NET |
+| [**indepacer**](https://github.com/johnzfitch/indepacer) | PACER CLI for federal court research, MFA, cost protection | Python, Click, Rich |
+| [**iconics**](https://github.com/johnzfitch/iconics) | Semantic icon library (3,372 PNGs), CLI discovery/export | Python |
+| [**gemini-sharp**](https://github.com/johnzfitch/gemini-sharp) | Single-file Gemini CLI binaries, 15+ color themes | C#, .NET |
 
 ### <img src=".github/assets/icons/cinema-display.png" width="24" height="24"> Desktop/Linux
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [**omarchy**](https://github.com/johnzfitch/omarchy) | Custom fork of DHH's omarchy with 2,628+ lines: waybar RSS ticker, NVIDIA config, ultra-compact UI. | Hyprland, Shell |
-| [**waybar-config**](https://github.com/johnzfitch/waybar-config) | RSS feed ticker connecting to self-hosted FreshRSS with hover-pause and smart click routing. | JSON, CSS, Shell |
-| [**claude-desktop-arch**](https://github.com/johnzfitch/claude-desktop-arch) | Enable Claude Code preview in Claude Desktop on Arch Linux via 3-line platform detection patch. | JavaScript, Shell |
-| [**qualcomm-x870e-linux-bug-patch**](https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch) | WiFi 7 firmware fix for Qualcomm WCN7850 on Gigabyte X870E motherboards with pacman hook. | Python, ACPI |
-| [**arch-dependency-matrices**](https://github.com/johnzfitch/arch-dependency-matrices) | Mathematical analysis of 1,553 Arch packages using graph theory, PageRank, and spectral analysis. | Python, NumPy |
+| [**omarchy**](https://github.com/johnzfitch/omarchy) | DHH's omarchy fork: waybar RSS, NVIDIA config, compact UI | Hyprland, Shell |
+| [**waybar-config**](https://github.com/johnzfitch/waybar-config) | RSS ticker for self-hosted FreshRSS, hover-pause | JSON, CSS, Shell |
+| [**claude-desktop-arch**](https://github.com/johnzfitch/claude-desktop-arch) | Claude Code preview patch for Arch Linux | JavaScript, Shell |
+| [**qualcomm-x870e-linux-bug-patch**](https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch) | WiFi 7 firmware fix for WCN7850 on X870E | Python, ACPI |
+| [**arch-dependency-matrices**](https://github.com/johnzfitch/arch-dependency-matrices) | Graph theory analysis of 1,553 Arch packages | Python, NumPy |
 
 ### <img src=".github/assets/icons/smartphone.png" width="24" height="24"> Web/Mobile
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| [**NetworkBatcher**](https://github.com/johnzfitch/NetworkBatcher) | Energy-efficient network request batching for iOS 26+ with intelligent coalescing. | Swift |
-| [**stranger-things-finale-theater-list**](https://github.com/johnzfitch/stranger-things-finale-theater-list) | Complete list of 490 theaters showing Stranger Things 5: The Finale (Dec 31, 2025 & Jan 1, 2026). | Markdown |
-| [**Liberty-Links**](https://github.com/johnzfitch/Liberty-Links) | Tracker-free, redirect-free links - privacy-respecting alternatives to common services. | Markdown |
+| [**NetworkBatcher**](https://github.com/johnzfitch/NetworkBatcher) | Energy-efficient network batching for iOS 26+ | Swift |
+| [**Liberty-Links**](https://github.com/johnzfitch/Liberty-Links) | Tracker-free, privacy-respecting link alternatives | Markdown |
 
 ---
 
@@ -164,8 +165,8 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| **NixOS Server** *(private)* | Bare-metal config with post-quantum SSH (ML-KEM), Rosenpass VPN, authoritative DNS (BIND9), and containerized services. | Nix, agenix |
-| **unbound-config** *(private)* | Recursive DNS with DNSSEC, QNAME minimization, and ad/tracker blocking (Steven Black, OISD, Hagezi Pro). | Unbound, Shell |
+| **NixOS Server** *(private)* | Bare-metal config: post-quantum SSH, Rosenpass VPN, BIND9 | Nix, agenix |
+| **unbound-config** *(private)* | Recursive DNS with DNSSEC, ad/tracker blocking | Unbound, Shell |
 
 ---
 
