@@ -1,4 +1,4 @@
-![Header](https://capsule-render.vercel.app/api?type=waving&color=0:1a3c34,50:2d5a4e,100:3d7a6a&height=280&section=header&text=John%20Zachary%20Fitch&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=24&descAlignY=62)
+![Header](https://capsule-render.vercel.app/api?type=waving&color=0:134e4a,50:0d9488,100:2dd4bf&height=280&section=header&text=John%20Zachary%20Fitch&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=24&descAlignY=62)
 
 <p align="center">
   <strong>Full-Stack Engineer</strong> · <strong>Security Researcher</strong> · <strong>UC Berkeley Mathematics</strong>
