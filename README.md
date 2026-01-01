@@ -1,7 +1,20 @@
-# John Zachary Fitch
-**Full-Stack Engineer** | **Security Researcher** | **UC Berkeley Mathematics**
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header/name-dark.svg">
+    <source media="(prefers-color-scheme: light)" srcset=".github/assets/header/name-light.svg">
+    <img alt="ZACK FITCH - AI Transparency • Security Research • Systems" src=".github/assets/header/name-dark.svg" width="700">
+  </picture>
+</p>
 
-<img src=".github/assets/icons/linkedin.png" width="20" height="20"> [LinkedIn](https://www.linkedin.com/in/john-fitch-600726193/) | <img src=".github/assets/icons/globe.png" width="20" height="20"> [DefinitelyNot.ai](https://definitelynot.ai) | <img src=".github/assets/icons/mail.png" width="20" height="20"> webmaster@internetuniverse.org
+<p align="center">
+  <strong>Full-Stack Engineer</strong> · <strong>Security Researcher</strong> · <strong>UC Berkeley Mathematics</strong>
+</p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src=".github/assets/icons/linkedin.png" width="20" height="20"></a>&nbsp;&nbsp;
+  <a href="https://definitelynot.ai"><img src=".github/assets/icons/globe.png" width="20" height="20"></a>&nbsp;&nbsp;
+  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/icons/mail.png" width="20" height="20"></a>
+</p>
 
 ---
 
@@ -180,4 +193,8 @@ The best way to predict AI's impact is to build the tools that shape it.
 
 <p align="center">
 <sub>SF Bay Area · Open to remote · Icons from <a href="https://github.com/johnzfitch/iconics">iconics</a></sub>
+</p>
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=johnzfitch&style=flat-square&color=2c5282" alt="Profile Views">
 </p>
