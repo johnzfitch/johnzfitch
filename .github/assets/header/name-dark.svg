@@ -10,5 +10,5 @@
     </filter>
   </defs>
   <text x="400" y="65" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="54" font-weight="700" fill="url(#nameGrad)" text-anchor="middle" filter="url(#shadow)">ZACK FITCH</text>
-  <text x="400" y="100" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#6b8299" text-anchor="middle" letter-spacing="3">MATHEMATICS, UC BERKELEY • AI TRANSPARENCY • SECURITY RESEARCH</text>
+  <text x="400" y="100" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="14" fill="#6b8299" text-anchor="middle" letter-spacing="4">BERKELEY MATH • AI SAFETY • SYSTEMS SECURITY</text>
 </svg>
