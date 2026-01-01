@@ -4,7 +4,8 @@
   <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;
   <a href="https://definitelynot.ai"><img src="https://img.shields.io/badge/definitelynot.ai-1a1a2e?style=flat-square&logo=firefox&logoColor=white" alt="Website"></a>&nbsp;
   <a href="https://internetuniverse.org"><img src="https://img.shields.io/badge/internetuniverse.org-134e4a?style=flat-square&logo=globe&logoColor=white" alt="Internet Universe"></a>&nbsp;
-  <a href="mailto:webmaster@internetuniverse.org"><img src="https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>
+  <a href="mailto:webmaster@internetuniverse.org"><img src="https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>&nbsp;
+  <a href="https://math.berkeley.edu"><img src=".github/assets/buttons/berkeley-math.gif" alt="UC Berkeley Mathematics"></a>
 </p>
 
 ---
