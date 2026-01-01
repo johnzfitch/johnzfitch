@@ -1,4 +1,4 @@
-![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=200&section=header&text=Zack%20Fitch&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=16&descAlignY=55)
+![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=280&section=header&text=Zack%20Fitch&fontSize=80&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=24&descAlignY=62)
 
 <p align="center">
   <strong>Full-Stack Engineer</strong> · <strong>Security Researcher</strong> · <strong>UC Berkeley Mathematics</strong>
