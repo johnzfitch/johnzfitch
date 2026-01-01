@@ -1,19 +1,13 @@
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header/name-dark.svg">
-    <source media="(prefers-color-scheme: light)" srcset=".github/assets/header/name-light.svg">
-    <img alt="ZACK FITCH - AI Transparency • Security Research • Systems" src=".github/assets/header/name-dark.svg" width="700">
-  </picture>
-</p>
+![Header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,14,16,18,20&height=200&section=header&text=Zack%20Fitch&fontSize=50&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=16&descAlignY=55)
 
 <p align="center">
   <strong>Full-Stack Engineer</strong> · <strong>Security Researcher</strong> · <strong>UC Berkeley Mathematics</strong>
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src=".github/assets/icons/linkedin.png" width="20" height="20"></a>&nbsp;&nbsp;
-  <a href="https://definitelynot.ai"><img src=".github/assets/icons/globe.png" width="20" height="20"></a>&nbsp;&nbsp;
-  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/icons/mail.png" width="20" height="20"></a>
+  <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;
+  <a href="https://definitelynot.ai"><img src="https://img.shields.io/badge/definitelynot.ai-1a1a2e?style=flat-square&logo=firefox&logoColor=white" alt="Website"></a>&nbsp;
+  <a href="mailto:webmaster@internetuniverse.org"><img src="https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>
 </p>
 
 ---
@@ -33,7 +27,7 @@ Self-hosting 32GB bare-metal infrastructure (NixOS) with post-quantum cryptograp
 
 ---
 
-## <img src=".github/assets/icons/star.png" width="24" height="24"> Featured
+## Featured
 
 ### <img src=".github/assets/icons/observatory-eye.png" width="20" height="20"> Observatory - WebGPU Deepfake Detection
 **Live Demo:** [look.definitelynot.ai](https://look.definitelynot.ai)
@@ -52,27 +46,31 @@ Browser-based AI image detection running 4 specialized ML models (ViT, Swin Tran
 
 ---
 
-### <img src=".github/assets/icons/console.png" width="20" height="20"> indepacer - Federal Court Records CLI
-PACER automation for legal research with MFA support, local caching, and intelligent document linking.
+### <img src=".github/assets/icons/folder.png" width="20" height="20"> iconics - Semantic Icon Library
+3,372+ PNG icons with semantic CLI discovery. Find the right icon by meaning, not filename.
 
 ```bash
-pacer pcl cases -t "Apple v. Samsung"         # Search cases nationwide
-pacer download docket 1:18-cv-08434 nysd      # Download full docket
-pacer grep "motion to dismiss"                # Search local archive
+icon suggest security       # → lock, shield, key, firewall...
+icon suggest data           # → chart, database, folder...
+icon use lock shield        # Export to ./icons/
 ```
 
-Features context system for workflow efficiency, cost confirmation prompts (PACER charges per page), and batch operations. Separate `pacersdk` SDK published to PyPI.
-
-**Stack:** Python, Click, Rich terminal UI, TOTP authentication
+**Features:** Fuzzy search, theme variants, batch export, markdown integration
+**Stack:** Python, FuzzyWuzzy, PIL
 
 ---
 
-### <img src=".github/assets/icons/shield.png" width="20" height="20"> aegis - Intelligent Browser Security
-Browser automation with risk-based safety controls, human behavior simulation for anti-bot detection, and container isolation for privacy.
+### <img src=".github/assets/icons/script.png" width="20" height="20"> filearchy + triglyph - Sub-10ms File Search
+COSMIC Files fork with embedded trigram search engine. Memory-mapped indices achieve sub-millisecond searches across 2.15M+ files with ~0 bytes resident memory.
 
-**Danger Slider:** 5-level control from PARANOID (approve every action) to AUTOPILOT (time-limited auto-approve). Cursor movements use Bezier curves and Fitts's Law for realistic timing.
+```
+filearchy/
+├── triglyph/      # Zero-RSS trigram library (mmap, ~0 bytes resident)
+└── triglyphd/     # D-Bus daemon for system-wide search
+```
 
-**Stack:** TypeScript, Playwright, Firefox/Floorp integration, WebSocket MCP
+**Performance:** 2.15M files indexed, sub-10ms query time, 156MB index on disk
+**Stack:** Rust, libcosmic, memmap2, zbus
 
 ---
 
@@ -117,7 +115,6 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 | Project | Description | Stack |
 |---------|-------------|-------|
-| **aegis** *(private)* | Browser automation, anti-bot detection (Bezier/Fitts's Law) | TypeScript, Playwright |
 | **eero** *(private)* | Mesh WiFi router security analysis, HackerOne prep | Python, Wireshark |
 | **blizzarchy** *(private)* | Battle.net OAuth analysis, telemetry RE | Rust, Python, Ghidra |
 | [**featherarchy**](https://github.com/johnzfitch/featherarchy) | Security-hardened Monero wallet fork | C++, Qt6 |
