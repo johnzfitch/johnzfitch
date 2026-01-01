@@ -1,12 +1,13 @@
 ![Header](https://capsule-render.vercel.app/api?type=waving&color=0:134e4a,50:0d9488,100:2dd4bf&height=280&section=header&text=John%20Zachary%20Fitch&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=24&descAlignY=62)
 
 <p align="center">
-  <strong>Full-Stack Engineer</strong> · <strong>Security Researcher</strong> · <strong>UC Berkeley Mathematics</strong>
+  <strong>Full-Stack Engineer</strong> · <strong>Security Researcher</strong> · <strong>AI Researcher</strong> · <strong>UC Berkeley Mathematics</strong>
 </p>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"></a>&nbsp;
   <a href="https://definitelynot.ai"><img src="https://img.shields.io/badge/definitelynot.ai-1a1a2e?style=flat-square&logo=firefox&logoColor=white" alt="Website"></a>&nbsp;
+  <a href="https://internetuniverse.org"><img src="https://img.shields.io/badge/internetuniverse.org-134e4a?style=flat-square&logo=globe&logoColor=white" alt="Internet Universe"></a>&nbsp;
   <a href="mailto:webmaster@internetuniverse.org"><img src="https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white" alt="Email"></a>
 </p>
 
