@@ -1,11 +1,11 @@
 ![Header](https://capsule-render.vercel.app/api?type=waving&color=0:134e4a,50:0d9488,100:2dd4bf&height=280&section=header&text=John%20Zachary%20Fitch&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=24&descAlignY=62)
 
 <p align="center">
-  <!-- <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src=".github/assets/buttons/linkedin.png" alt="LinkedIn" width="88" height="31" srcset=".github/assets/buttons/linkedin@2x.png 2x"></a>&nbsp; -->
-  <a href="https://definitelynot.ai"><img src=".github/assets/buttons/definitelynot.png" alt="definitelynot.ai" width="88" height="31" srcset=".github/assets/buttons/definitelynot@2x.png 2x"></a>&nbsp;
-  <a href="https://internetuniverse.org"><img src=".github/assets/buttons/internetuniverse.png" alt="Internet Universe" width="88" height="31" srcset=".github/assets/buttons/internetuniverse@2x.png 2x"></a>&nbsp;
-  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email.png" alt="Email" width="88" height="31" srcset=".github/assets/buttons/email@2x.png 2x"></a>&nbsp;
-  <a href="https://math.berkeley.edu"><img src=".github/assets/buttons/berkeley-math.png" alt="UC Berkeley Mathematics" width="88" height="31" srcset=".github/assets/buttons/berkeley-math@2x.png 2x"></a>
+  <!-- <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src=".github/assets/buttons/linkedin@2x.png" alt="LinkedIn" width="176" height="62"></a>&nbsp; -->
+  <a href="https://definitelynot.ai"><img src=".github/assets/buttons/definitelynot@2x.png" alt="definitelynot.ai" width="176" height="62"></a>&nbsp;
+  <a href="https://internetuniverse.org"><img src=".github/assets/buttons/internetuniverse@2x.png" alt="Internet Universe" width="176" height="62"></a>&nbsp;
+  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>&nbsp;
+  <a href="https://math.berkeley.edu"><img src=".github/assets/buttons/berkeley-math@2x.png" alt="UC Berkeley Mathematics" width="176" height="62"></a>
 </p>
 
 ---

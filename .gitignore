@@ -1,0 +1,4 @@
+# Ignore large/generated assets and derivatives.
+# Note: files already tracked by git under these paths will remain tracked until explicitly untracked.
+.github/assets/
+icons/enhanced/
