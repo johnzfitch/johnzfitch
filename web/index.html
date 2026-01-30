@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Zachary Fitch - Agent Tooling, Systems Performance, Privacy-First Infrastructure</title>
+  <meta name="description" content="I build production-grade tools for AI agents and the systems they depend on: deterministic retrieval, safe patching, and self-hosted NixOS infrastructure. Recent: fixed a subtle pre-main regression in OpenAI Codex that caused CUDA/MKL fallbacks and major slowdowns for some users.">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="site-title">John Zachary Fitch</a>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="ghost.html">Case Study</a>
+        <a href="projects.html">Projects</a>
+        <a href="agent-tooling.html">Agent Tooling</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>John Zachary Fitch</h1>
+        <p class="tagline">Agent tooling - systems performance - privacy-first infrastructure</p>
+        <p class="intro">I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.</p>
+        <p class="intro">Recent highlight: I traced and fixed an invisible pre-main regression in OpenAI's Codex CLI that silently broke CUDA/MKL environments for some users (10x-300x slowdowns depending on the fallback path).</p>
+
+        <div class="cta-group">
+          <a href="ghost.html" class="cta cta-primary">
+            <img src="assets/icons/search.png" class="icon" width="16" height="16" alt="">
+            Read the case study
+          </a>
+          <a href="projects.html" class="cta cta-secondary">
+            <img src="assets/icons/folder.png" class="icon" width="16" height="16" alt="">
+            View selected projects
+          </a>
+          <a href="resume.pdf" class="cta cta-secondary">
+            <img src="assets/icons/document.png" class="icon" width="16" height="16" alt="">
+            Download resume
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Featured Impact (Jan 2026)</h2>
+
+        <div class="panel">
+          <div class="panel-header">Case Study</div>
+          <h3>Ghost in the Codex Machine - OpenAI Codex</h3>
+          <p>A security-hardening routine ran before <code>main()</code> in release builds and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and shipped the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and everything built on top of it, and it removed a hard-to-diagnose failure mode that was burning engineering time.</p>
+
+          <div class="proof-links">
+            <h4>Proof</h4>
+            <ul>
+              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a></li>
+              <li><img src="assets/icons/code.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
+              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Release notes (rust-v0.80.0)</a></li>
+              <li><img src="assets/icons/globe.png" class="icon" width="16" height="16" alt=""> <a href="https://developers.openai.com/codex/changelog">OpenAI Codex changelog</a></li>
+            </ul>
+          </div>
+
+          <h4>Impact (representative; varies by environment)</h4>
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Workload</th>
+                  <th>Before</th>
+                  <th>After</th>
+                  <th style="text-align: left;">Why this happens</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>MKL/BLAS (10x 2000x2000 matmul)</td>
+                  <td>16.3s</td>
+                  <td>0.306s</td>
+                  <td style="text-align: left;">Losing <code>LD_LIBRARY_PATH</code> forces a slow BLAS fallback</td>
+                </tr>
+                <tr>
+                  <td>CUDA workflows</td>
+                  <td>11x-300x slower</td>
+                  <td>restored</td>
+                  <td style="text-align: left;">Missing CUDA libs can trigger CPU fallback in downstream tooling</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>What this demonstrates</h4>
+          <ul>
+            <li>Systems debugging under real-world constraints (pre-main execution, release-only behavior, silent failures)</li>
+            <li>Performance engineering with reproducible measurement</li>
+            <li>Security tradeoff reasoning that preserves developer usability</li>
+            <li>Upstream collaboration: issue -> fix -> verification -> shipped release notes</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>What I Build</h2>
+        <ul>
+          <li><strong>Agent tooling:</strong> local-first retrieval, MCP tool surfaces, and patch application that stays deterministic and debuggable.</li>
+          <li><strong>Systems performance:</strong> mmap indices, custom binary formats, and fast search over large file trees.</li>
+          <li><strong>ML in the product surface:</strong> WebGPU client-side inference and evaluation-aware UX.</li>
+          <li><strong>Privacy-first infrastructure:</strong> declarative NixOS deployments with post-quantum security and DNS/cert automation.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Selected Work</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
+            <div class="stack">Rust / WASM</div>
+            <p>Local-first codebase indexing + semantic chunk exports for agents.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></h3>
+            <div class="stack">Rust</div>
+            <p>Interactive wizard for optimized, patched Codex builds (powered by <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>).</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
+            <div class="stack">Claude Code Plugin</div>
+            <p>Claude Code plugin + skills for the Burn deep learning framework.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
+            <div class="stack">Python / MCP</div>
+            <p>Token-efficient MCP server for tool-driven program analysis.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
+            <div class="stack">Linux</div>
+            <p>Run the official Claude Desktop app on Linux with bubblewrap sandboxing.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/chart.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/specho-v2">SpecHO v2</a></h3>
+            <div class="stack">Python</div>
+            <p>161D linguistic fingerprinting for AI text detection (algorithm-first + tiered runtime).</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></h3>
+            <div class="stack">PHP / JS</div>
+            <p>Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense).</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Infrastructure Snapshot</h2>
+        <div class="panel">
+          <div class="panel-header">Self-Hosted</div>
+          <h3>NixOS + Post-Quantum Security</h3>
+          <p>I run production infrastructure on dedicated bare metal (Intel Xeon E3-1270v5, 32GB RAM, ~3.6TB SSD) with declarative NixOS configuration, authoritative DNS, automated wildcard certs via DNS-01 (RFC2136), and a post-quantum VPN layer (WireGuard + Rosenpass). I optimize for data sovereignty, reliability, and a small, auditable surface area.</p>
+
+          <h4>Highlights</h4>
+          <ul>
+            <li>Multi-IP, multi-subnet DNS redundancy and DDoS resilience</li>
+            <li>Caddy with HTTP/3, rootless containers (Podman), and reproducible deployments</li>
+            <li>Post-quantum SSH key exchange + post-quantum VPN key exchange overlay</li>
+            <li>Encrypted secrets and automated backups</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Now</h2>
+        <ul>
+          <li><strong>Looking for:</strong> roles building agent runtimes, developer tools, retrieval systems, and privacy/security foundations.</li>
+          <li><strong>Operating style:</strong> evidence-first, performance-aware, pragmatic about tradeoffs.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:webmaster@internetuniverse.org">
+          <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
+          webmaster@internetuniverse.org
+        </a>
+        <a href="https://github.com/johnzfitch">
+          <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">
+          GitHub
+        </a>
+      </div>
+      <div class="footer-copy">John Zachary Fitch</div>
+    </div>
+  </footer>
+</body>
+</html>

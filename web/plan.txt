@@ -1,0 +1,107 @@
+CONSOLIDATED PLAN: GitHub README + Resume Website
+
+Goal
+Land interviews for roles in agent tooling / developer productivity / systems performance / security & privacy foundations (OpenAI/Anthropic-style roles).
+
+Core positioning (keep consistent everywhere)
+1. Agent tooling that is deterministic, debuggable, and privacy-first.
+2. Systems performance work with real measurements (not micro-optimizations for their own sake).
+3. Infrastructure and security that is practical and production-aware (NixOS, DNS, TLS automation, PQ layers).
+
+Anchor proof (lead with this)
+Ghost in the Codex Machine (OpenAI Codex)
+- Issue: https://github.com/openai/codex/issues/8945
+- Fix PR: https://github.com/openai/codex/pull/8951
+- Release notes call-out + attribution: https://github.com/openai/codex/releases/tag/rust-v0.80.0
+
+The narrative is simple and recruiter-friendly:
+- Symptom: a subset of developers saw extreme slowness / timeouts / broken ML toolchains.
+- Root cause: pre-main env stripping removed LD_* / DYLD_* in release builds.
+- Impact: silent fallbacks (BLAS, CUDA) cause large slowdowns.
+- Fix: upstream merged; shipped; credited.
+
+Part 1: GitHub README refresh (/home/zack/dev/johnzfitch/README.md)
+
+1) Restructure for a 15-second scan
+- First screen: name + 1-line positioning + "Open to roles" + 3 proof links.
+- Immediately below: the Ghost bug story in 6-10 lines with a small table of representative speedups.
+
+2) Curate projects to a tight set (6-9)
+Recommended set (public repos, high signal):
+- llmx (retrieval): https://github.com/johnzfitch/llmx
+- codex toolchain (pin codex-xtreme; link codex-patcher inside): https://github.com/johnzfitch/codex-xtreme
+- burn-plugin (Claude Code plugin + skills): https://github.com/johnzfitch/burn-plugin
+- pyghidra-lite (MCP server): https://github.com/johnzfitch/pyghidra-lite
+- claude-cowork-linux (Claude Desktop on Linux): https://github.com/johnzfitch/claude-cowork-linux
+- SpecHO v2 (NLP detection): https://github.com/johnzfitch/specho-v2
+- definitelynot.ai (Unicode security): https://github.com/johnzfitch/definitelynot.ai
+- Iconics (docs UX + consistency): https://github.com/johnzfitch/iconics
+- Triglyph (+ triglyphd) (systems performance foundation): https://github.com/johnzfitch/triglyph
+
+Optional (only if you want more non-LLM breadth on the profile page):
+- Observatory (WebGPU ML): https://github.com/johnzfitch/observatory and live demo https://look.definitelynot.ai
+- filearchy (applied perf in a product surface): https://github.com/johnzfitch/filearchy
+
+3) Remove or sanitize sections that don't help your target roles
+- Remove the "reverse engineering" category as a section.
+- If you keep private work names, list names only under a single "Selected Private Work (names only)" block.
+
+4) Update specHO -> SpecHO v2
+- SpecHO v2 is the replacement. Use the v2.1 numbers already documented (161D, tiered pipeline, top discriminators).
+
+5) Standardize icons (Iconics-only, 16x16)
+- Convert all inline icons to 16x16 and use a consistent folder (e.g., /home/zack/dev/johnzfitch/.github/assets/icons/).
+- Avoid mixed sizes (20/24) and avoid emojis entirely.
+
+6) GitHub profile "beef-up" tactics that actually help
+- Pin the 6 repos above (don't pin long-tail experiments).
+- Add social preview images to the pinned repos (GitHub settings -> "Social preview").
+- Add "Topics" on each repo (rust, wasm, webgpu, retrieval, agent-tooling, nixos, security).
+- Ensure each pinned repo README has:
+  - a 1-sentence "why"
+  - 1 screenshot or diagram
+  - a short "How to run" section
+  - a "Design decisions" section (brief, opinionated)
+
+Part 2: Resume site (/home/zack/dev/johnzfitch/web)
+
+Site concept (what makes it stand out)
+"Evidence-first engineering": every major claim has a proof link, reproduction note, or measured result.
+
+Pages (copy already drafted as .txt)
+- Home: /home/zack/dev/johnzfitch/web/copy-index.txt
+- Ghost case study: /home/zack/dev/johnzfitch/web/copy-ghost-bug.txt
+- Projects: /home/zack/dev/johnzfitch/web/copy-projects.txt
+- Agent tooling: /home/zack/dev/johnzfitch/web/copy-agent-tooling.txt
+- Infrastructure: /home/zack/dev/johnzfitch/web/copy-infrastructure.txt
+- Resume: /home/zack/dev/johnzfitch/web/copy-resume.txt
+- Contact: /home/zack/dev/johnzfitch/web/copy-contact.txt
+
+Design requirements
+- Static site, minimal JS, fast load.
+- TUI-inspired "evidence panels" for the case study and project pages.
+- Dark/light mode via CSS media query.
+- Iconics PNG icons only, standardized at 16x16.
+
+Implementation steps
+1. Turn each copy file into an HTML page with a shared header/footer.
+2. Create a projects.json (optional) and generate project cards from data to keep content consistent.
+3. Add a PDF build step:
+   - Render /resume to PDF via Playwright or Puppeteer.
+   - Store as /home/zack/dev/johnzfitch/web/resume.pdf.
+4. Deploy on your NixOS server behind Caddy:
+   - Enable HTTP/3.
+   - Aggressive caching for static assets.
+   - Strict security headers (CSP tuned for a static site).
+
+Sanitization rules (do not violate)
+- No raw IP addresses, tokens, or internal logs in public pages.
+- Avoid reverse engineering details; names only if included at all.
+- Do not claim ownership of third-party MCP servers (explicitly excluded: winboat-mcp, porkbun-mcp).
+
+Verification checklist
+- All links work and point to public proof (issue/PR/release notes).
+- No placeholders like "(link)".
+- Icons render at 16x16 and are visually consistent.
+- The Ghost case study reads well to a non-domain expert in under 2 minutes.
+- Home page gives a clear reason to contact you within 15 seconds.

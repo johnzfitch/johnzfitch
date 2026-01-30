@@ -1,0 +1,38 @@
+STYLE GUIDE (Resume Site)
+
+Voice
+- Evidence-first, calm confidence. No hype, no dunking on other teams.
+- Prefer concrete nouns and measured claims over adjectives.
+- Write for scanning: short paragraphs, clear headings, and "Proof" links.
+
+Claim hygiene
+- If a claim is important, attach a link (issue/PR/release notes) or label it as "private / available on request."
+- Benchmarks: always label as "representative" and state that results vary by environment.
+
+Privacy and sanitization
+- Do not publish raw IPs, secret paths, tokens, or internal logs.
+- Avoid detailed reverse engineering write-ups. Names are OK; details are "available on request."
+
+Icons (Iconics-only, consistent size)
+- No emojis. Use PNG icons from iconics exclusively.
+- Standardize on 16x16 for inline icons.
+
+HTML snippet (recommended)
+<img src="assets/icons/lock.png" width="16" height="16" alt="">
+
+Markdown snippet (if needed)
+![lock](assets/icons/lock.png)
+
+Typography
+- Use a readable sans for body and a monospace accent for "terminal boxes."
+- Prefer sentence case for headings.
+
+Structure patterns
+- Each page should have:
+  - 1-sentence summary
+  - A "Proof" block with 2-5 links
+  - A "What this demonstrates" block (recruiter-oriented)
+
+Red flags to avoid
+- "Telemetry disabling" or "phone-home" language on public pages (can be misread).
+- Security research framed offensively; keep it defensive and product-safety oriented.

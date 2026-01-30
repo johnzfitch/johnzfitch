@@ -1,0 +1,76 @@
+PAGE: Home (/)
+
+META
+Title: John Zachary Fitch - Agent Tooling, Systems Performance, Privacy-First Infrastructure
+Description: I build production-grade tools for AI agents and the systems they depend on: deterministic retrieval, safe patching, and self-hosted NixOS infrastructure. Recent: fixed a subtle pre-main regression in OpenAI Codex that caused CUDA/MKL fallbacks and major slowdowns for some users.
+
+HERO
+John Zachary Fitch
+Agent tooling - systems performance - privacy-first infrastructure
+
+I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.
+Recent highlight: I traced and fixed an invisible pre-main regression in OpenAI's Codex CLI that silently broke CUDA/MKL environments for some users (10x-300x slowdowns depending on the fallback path).
+
+PRIMARY CTAs
+- Read the case study: Ghost in the Codex Machine
+- View selected projects
+- Download resume
+
+SECTION: Featured Impact (Jan 2026)
+Heading: Ghost in the Codex Machine - OpenAI Codex
+
+Copy
+A security-hardening routine ran before `main()` in release builds and stripped `LD_*` / `DYLD_*` environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and shipped the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and everything built on top of it, and it removed a hard-to-diagnose failure mode that was burning engineering time.
+
+Proof links
+- Issue: https://github.com/openai/codex/issues/8945
+- Fix PR: https://github.com/openai/codex/pull/8951
+- Release notes (rust-v0.80.0): https://github.com/openai/codex/releases/tag/rust-v0.80.0
+- OpenAI Codex changelog: https://developers.openai.com/codex/changelog
+
+Impact (representative; varies by environment)
+| Workload | Before | After | Why this happens |
+|---|---:|---:|---|
+| MKL/BLAS (10x 2000x2000 matmul) | 16.3s | 0.306s | Losing `LD_LIBRARY_PATH` forces a slow BLAS fallback |
+| CUDA workflows | 11x-300x slower | restored | Missing CUDA libs can trigger CPU fallback in downstream tooling |
+
+What this demonstrates
+- Systems debugging under real-world constraints (pre-main execution, release-only behavior, silent failures)
+- Performance engineering with reproducible measurement
+- Security tradeoff reasoning that preserves developer usability
+- Upstream collaboration: issue -> fix -> verification -> shipped release notes
+
+SECTION: What I Build
+- Agent tooling: local-first retrieval, MCP tool surfaces, and patch application that stays deterministic and debuggable.
+- Systems performance: mmap indices, custom binary formats, and fast search over large file trees.
+- ML in the product surface: WebGPU client-side inference and evaluation-aware UX.
+- Privacy-first infrastructure: declarative NixOS deployments with post-quantum security and DNS/cert automation.
+
+SECTION: Selected Work
+- llmx - local-first codebase indexing + semantic chunk exports for agents (Rust/WASM). https://github.com/johnzfitch/llmx
+- codex-xtreme - interactive wizard for optimized, patched Codex builds (powered by codex-patcher). https://github.com/johnzfitch/codex-xtreme
+- burn-plugin - Claude Code plugin + skills for the Burn deep learning framework. https://github.com/johnzfitch/burn-plugin
+- pyghidra-lite - token-efficient MCP server for tool-driven program analysis. https://github.com/johnzfitch/pyghidra-lite
+- claude-cowork-linux - run the official Claude Desktop app on Linux with bubblewrap sandboxing. https://github.com/johnzfitch/claude-cowork-linux
+- SpecHO v2 - 161D linguistic fingerprinting for AI text detection (algorithm-first + tiered runtime). https://github.com/johnzfitch/specho-v2
+- definitelynot.ai - Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense). https://github.com/johnzfitch/definitelynot.ai
+
+SECTION: Infrastructure Snapshot
+Heading: Self-Hosted NixOS + Post-Quantum Security
+
+Copy
+I run production infrastructure on dedicated bare metal (Intel Xeon E3-1270v5, 32GB RAM, ~3.6TB SSD) with declarative NixOS configuration, authoritative DNS, automated wildcard certs via DNS-01 (RFC2136), and a post-quantum VPN layer (WireGuard + Rosenpass). I optimize for data sovereignty, reliability, and a small, auditable surface area.
+
+Highlights
+- Multi-IP, multi-subnet DNS redundancy and DDoS resilience
+- Caddy with HTTP/3, rootless containers (Podman), and reproducible deployments
+- Post-quantum SSH key exchange + post-quantum VPN key exchange overlay
+- Encrypted secrets and automated backups
+
+SECTION: Now
+- Looking for: roles building agent runtimes, developer tools, retrieval systems, and privacy/security foundations.
+- Operating style: evidence-first, performance-aware, pragmatic about tradeoffs.
+
+FOOTER
+Email: webmaster@internetuniverse.org
+GitHub: https://github.com/johnzfitch

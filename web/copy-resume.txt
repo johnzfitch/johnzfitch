@@ -1,0 +1,46 @@
+PAGE: Resume (/resume)
+
+TITLE
+Resume
+
+SUBTITLE
+Agent tooling - systems performance - privacy-first infrastructure
+
+SUMMARY (2-3 sentences)
+Software engineer with a UC Berkeley mathematics background focused on building production-grade tooling for AI agents and the systems they depend on. I work across Rust, Python, and web platforms, with an evidence-first style: measure, reproduce, fix, and ship.
+
+RECENT HIGHLIGHT (Jan 2026)
+OpenAI Codex - Ghost in the Codex Machine
+- Found and fixed a pre-main regression that stripped `LD_*` / `DYLD_*` env vars, breaking CUDA/MKL discovery and causing large slowdowns for affected users.
+- Proof: https://github.com/openai/codex/issues/8945 - https://github.com/openai/codex/pull/8951
+- Shipped + credited: https://github.com/openai/codex/releases/tag/rust-v0.80.0
+
+CORE SKILLS
+- Rust: performance-critical systems, CLI tools, data structures, correctness-oriented engineering
+- Python: tooling, analysis pipelines, automation, reproducible experiments
+- Web: WebGPU/WASM applications, client-side ML inference, offline-first UX
+- Systems: Linux, NixOS, DNS, TLS automation, containerized services, security hardening
+- Agent integration: MCP servers, skill/plugin packaging, tool-driven workflows
+
+SELECTED PROJECTS (Public)
+- llmx (Rust/WASM) - local-first codebase indexing + semantic chunk exports for agents: https://github.com/johnzfitch/llmx
+- codex-xtreme (Rust) - optimized, patched Codex builds (powered by codex-patcher): https://github.com/johnzfitch/codex-xtreme
+- burn-plugin - Claude Code plugin + skills for the Burn deep learning framework: https://github.com/johnzfitch/burn-plugin
+- pyghidra-lite - token-efficient MCP server for tool-driven program analysis: https://github.com/johnzfitch/pyghidra-lite
+- claude-cowork-linux - run the official Claude Desktop app on Linux with sandboxing: https://github.com/johnzfitch/claude-cowork-linux
+- Observatory (WebGPU) - client-side AI image detection (live): https://look.definitelynot.ai
+- SpecHO v2 (Python) - 161D linguistic fingerprinting for AI text detection: https://github.com/johnzfitch/specho-v2
+- definitelynot.ai (PHP/JS) - Unicode-security-aware sanitizer + API: https://github.com/johnzfitch/definitelynot.ai
+- Iconics (Python) - semantic icon library for professional docs (8k+ icons): https://github.com/johnzfitch/iconics
+
+INFRASTRUCTURE (Self-Hosted)
+I operate production infrastructure on bare metal with:
+- Declarative NixOS configuration (reproducible, atomic upgrades, rollbacks)
+- Authoritative DNS and automated wildcard certificates (DNS-01 / RFC2136)
+- Post-quantum security layers (hybrid SSH KEX, WireGuard + Rosenpass)
+
+EDUCATION
+UC Berkeley - Mathematics
+
+WHAT I'M LOOKING FOR
+Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.

@@ -1,0 +1,92 @@
+PAGE: Case Study (/ghost)
+
+TITLE
+Ghost in the Codex Machine
+
+SUBTITLE
+Fixing an "invisible" pre-main regression in OpenAI Codex that silently broke CUDA/MKL environments.
+
+EXECUTIVE SUMMARY
+This was a performance regression that didn't look like a performance regression.
+
+In release builds, a pre-main hardening routine executed before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For a subset of users (CUDA, Conda/MKL, HPC, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex subprocesses. The downstream effect was dramatic: slow fallback BLAS, CPU fallback for GPU workflows, timeouts, and "Codex feels slow" reports that were difficult to attribute to a single root cause.
+
+I traced the behavior back to the introducing change, wrote a reproduction + benchmark-backed issue, and shipped the upstream fix. The fix is called out in the rust-v0.80.0 release notes with attribution.
+
+PRIMARY LINKS (Proof)
+- Issue: https://github.com/openai/codex/issues/8945
+- Fix PR: https://github.com/openai/codex/pull/8951
+- Release notes (rust-v0.80.0): https://github.com/openai/codex/releases/tag/rust-v0.80.0
+- Changelog entry: https://developers.openai.com/codex/changelog
+
+RELATED CONTEXT
+- PR that introduced always-on pre-main hardening: https://github.com/openai/codex/pull/4521
+
+SECTION: Timeline (Key Dates)
+- 2025-09-30: PR #4521 merges (process hardening executes pre-main in CLI release builds)
+- 2025-10-31: "Ghosts in the Codex Machine" investigation published (concludes there is no single conclusive large issue)
+- 2026-01-08: I open issue #8945 with root cause + reproduction + benchmarks
+- 2026-01-09: Fix merged in PR #8951
+- 2026-01-09+: Fix shipped in rust-v0.80.0 (release notes call-out)
+
+SECTION: The Problem (What Users Experienced)
+When Codex runs tools (Python, Node, build systems, CLIs), it does so by spawning subprocesses. For dev workflows, the correct baseline is simple: subprocesses should inherit the developer's environment unless a specific policy says otherwise.
+
+When `LD_LIBRARY_PATH` / `DYLD_LIBRARY_PATH` disappears, the failure mode is often not a clean error. Instead, the dynamic linker "finds something else," and performance collapses:
+- BLAS libraries fall back to unaccelerated implementations.
+- CUDA tooling may fall back to CPU execution.
+- Some enterprise/custom libraries fail to load entirely.
+
+SECTION: Root Cause (Why This Was a "Ghost")
+The stripping happened before `main()` and before most instrumentation/logging was initialized:
+- It was implemented as a pre-main constructor in release builds (`#[ctor::ctor]`-style behavior).
+- It was silent by default (no warning when variables were removed).
+- It only reproduced on specific environment layouts (non-RPATH installs, legacy Conda, HPC module stacks, custom vendor libraries).
+- Users could see `LD_LIBRARY_PATH` set correctly in their shell, but inside `codex exec` it was empty.
+
+SECTION: Evidence and Reproduction (How I Proved It)
+I approached this like a systems regression:
+- Correlated the introducing change with a cluster of "environment disappeared" reports.
+- Wrote a minimal reproduction that directly inspects env vars inside Codex tool calls.
+- Used benchmarks that isolate library fallback behavior (e.g., matrix multiplication and CUDA library loading).
+- Documented results in a way upstream could validate quickly.
+
+SECTION: Fix (What Shipped Upstream)
+Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.
+
+My proposed posture was "opt-in maximum hardening." Upstream merged a pragmatic equivalent:
+- Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).
+- Keep pre-main hardening in the responses API proxy where it is more appropriate.
+
+SECTION: Measured Impact (Representative)
+Performance varies by workload and environment. The key point is the failure mode: stripping env vars can force slow, silent fallbacks.
+
+Representative measurements from my verification:
+| Workload | Before | After | Speedup |
+|---|---:|---:|---:|
+| MKL/BLAS (10x 2000x2000 matmul) | 16.3s | 0.306s | 53x |
+| CUDA workflows (library discovery / fallback) | 11x-300x slower | restored | varies |
+
+SECTION: Why This Matters (Beyond One Bug)
+This is the kind of engineering failure that only shows up in real-world environments:
+- Subprocess correctness is a product feature: tools must behave the same "inside Codex" as they do in the user's terminal.
+- Security controls must be explicit, not surprising.
+- Performance regressions can hide inside "correct" behavior when the system silently falls back.
+ - When the substrate is wrong, everything built on top of it pays the tax (tooling, orchestration, higher-level features).
+
+SECTION: What This Demonstrates (Recruiter-Relevant)
+- Deep systems debugging (pre-main execution, env inheritance, dynamic linking)
+- Performance engineering with hard evidence
+- Security tradeoff reasoning grounded in practical threat models
+- High-quality upstream collaboration (clear issue, reproducible repro, verified fix, shipped release)
+
+SECTION: Why This Helped Shipping Velocity
+Substrate bugs are expensive because they distort everything built on top:
+- Tool calls become slower or flakier for affected environments.
+- Performance investigations get noisy (it looks like "model slowness" or "network issues").
+- Higher-level features that rely on predictable tool execution (orchestration, planning, collaboration) become harder to validate.
+
+SECTION: What I Would Add Next (Engineering Hygiene)
+- Integration tests asserting env var inheritance for subprocess execution
+- A documented "secure mode" switch with explicit tradeoffs
+- A debug command to dump the effective execution environment (for users and support)

@@ -1,0 +1,95 @@
+PAGE: Projects (/projects)
+
+TITLE
+Selected Work
+
+SUBTITLE
+Recruiter-relevant projects across agent tooling, systems performance, ML/detection, and privacy-first infrastructure. I keep this list intentionally curated.
+
+SECTION: Recent Upstream Impact
+OpenAI Codex - "Ghost in the Codex Machine" Fix
+- What: Root-caused and fixed a pre-main environment regression that stripped `LD_*` / `DYLD_*` env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.
+- Proof: https://github.com/openai/codex/issues/8945 - https://github.com/openai/codex/pull/8951
+- Shipped: rust-v0.80.0 release notes call out the fix with attribution: https://github.com/openai/codex/releases/tag/rust-v0.80.0
+
+SECTION: Agent Tooling (LLM-Centric)
+llmx (Rust/WASM)
+- What: Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).
+- Why it matters: Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).
+- Repo: https://github.com/johnzfitch/llmx
+
+codex-xtreme (Rust, powered by codex-patcher)
+- What: An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
+- Why it matters: Codifies the "agent edit loop" into explicit, debuggable steps.
+- Primary repo (pin this on GitHub): https://github.com/johnzfitch/codex-xtreme
+- Patch engine (linked inside): https://github.com/johnzfitch/codex-patcher
+
+burn-plugin
+- What: Claude Code plugin for the Burn deep learning framework (skills + workflows + evidence-driven references).
+- Why it matters: Demonstrates how to package domain expertise into an agent workflow that can be reused.
+- Repo: https://github.com/johnzfitch/burn-plugin
+
+cwork (private, available on request)
+- What: A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.
+- Why it matters: Skill systems and context management are where multi-repo agent workflows succeed or fail.
+
+claude-cowork-linux
+- What: Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.
+- Why it matters: Practical agent workflow enablement (Linux-first, security-aware).
+- Note: Unofficial community project; no proprietary Claude code is committed.
+- Repo: https://github.com/johnzfitch/claude-cowork-linux
+
+Iconics
+- What: Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons.
+- Why it matters: Professional documentation UX at scale (and it's agent-friendly: meaning-based search, deterministic exports).
+- Repo: https://github.com/johnzfitch/iconics
+
+SECTION: MCP Servers (Tool Surfaces for Agents)
+pyghidra-lite
+- What: Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).
+- Why it matters: In practice, reliable agents are tool-driven. MCP servers are how you turn a complex system into a safe, inspectable interface.
+- Repo: https://github.com/johnzfitch/pyghidra-lite
+
+SECTION: Systems Performance (Real Data Structures, Real Constraints)
+Triglyph / Triglyphd (Rust)
+- What: Zero-RSS trigram index with custom binary formats + a D-Bus daemon for system-wide search.
+- Why it matters: Low-level performance engineering (mmap, layout, predictable latency).
+- Repo: https://github.com/johnzfitch/triglyph
+
+filearchy (Rust, fork)
+- What: COSMIC Files fork with io_uring backend and trigram search integration.
+- Why it matters: Applies systems work in a real product surface (UX + async I/O + search).
+- Repo: https://github.com/johnzfitch/filearchy
+
+SECTION: ML / Detection (Algorithm-First, Production-Aware)
+Observatory (WebGPU)
+- What: AI image detection suite running 4 models entirely client-side (WebGPU/WASM).
+- Why it matters: Real product constraints: model size, caching, orchestration, UX, and "no server required."
+- Live: https://look.definitelynot.ai
+- Repo: https://github.com/johnzfitch/observatory
+
+SpecHO v2
+- What: 161-dimensional linguistic fingerprinting system for AI text detection and model identification (tiered feature pipeline).
+- Why it matters: Algorithm-first features, measured discriminators, and clear engineering of runtime tiers.
+- Repo: https://github.com/johnzfitch/specho-v2
+
+SECTION: Security and Privacy (Defensive)
+definitelynot.ai
+- What: Unicode-security-aware text sanitizer with Trojan Source defense, homoglyph mitigation, and BiDi neutralization.
+- Why it matters: Practical security tooling with a clear UX and an API for integration.
+- Repo: https://github.com/johnzfitch/definitelynot.ai
+
+SECTION: Infrastructure (Self-Hosted)
+digitaldelusion (private)
+- What: Bare-metal NixOS infrastructure with authoritative DNS, automated wildcard certs (DNS-01 / RFC2136), and post-quantum VPN (WireGuard + Rosenpass).
+- Why it matters: Demonstrates production ops maturity, reproducibility, and security-first design.
+
+SECTION: Writing / Research (Available on Request)
+AURORA Protocol (draft spec + thesis-style artifacts)
+- What: Design work on robust agent communication in hostile networks (message framing, discovery, encryption-by-default, federation).
+- Why it matters: Systems thinking across protocols, security, and agent interoperability.
+
+SECTION: Selected Private Work (Names Only)
+- eero (private)
+- alienware-monitor (private)
+- proxyforge (private)
