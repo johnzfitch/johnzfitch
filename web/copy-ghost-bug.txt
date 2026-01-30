@@ -24,6 +24,7 @@ RELATED CONTEXT
 
 SECTION: Timeline (Key Dates)
 - 2025-09-30: PR #4521 merges (process hardening executes pre-main in CLI release builds)
+- 2025-10-01: first affected release ships (rust-v0.43.0)
 - 2025-10-31: "Ghosts in the Codex Machine" investigation published (concludes there is no single conclusive large issue)
 - 2026-01-08: I open issue #8945 with root cause + reproduction + benchmarks
 - 2026-01-09: Fix merged in PR #8951
@@ -54,9 +55,12 @@ I approached this like a systems regression:
 SECTION: Fix (What Shipped Upstream)
 Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.
 
-My proposed posture was "opt-in maximum hardening." Upstream merged a pragmatic equivalent:
-- Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).
-- Keep pre-main hardening in the responses API proxy where it is more appropriate.
+My proposed posture was "opt-in maximum hardening." Upstream shipped a pragmatic equivalent:
+- Remove pre-main hardening from the Codex CLI to restore environment inheritance for subprocesses.
+- Keep pre-main hardening in the responses API proxy (where it is more appropriate).
+
+Release notes excerpt:
+> "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
 
 SECTION: Measured Impact (Representative)
 Performance varies by workload and environment. The key point is the failure mode: stripping env vars can force slow, silent fallbacks.
@@ -72,7 +76,7 @@ This is the kind of engineering failure that only shows up in real-world environ
 - Subprocess correctness is a product feature: tools must behave the same "inside Codex" as they do in the user's terminal.
 - Security controls must be explicit, not surprising.
 - Performance regressions can hide inside "correct" behavior when the system silently falls back.
- - When the substrate is wrong, everything built on top of it pays the tax (tooling, orchestration, higher-level features).
+- When the substrate is wrong, everything built on top of it pays the tax (tooling, orchestration, higher-level features).
 
 SECTION: What This Demonstrates (Recruiter-Relevant)
 - Deep systems debugging (pre-main execution, env inheritance, dynamic linking)

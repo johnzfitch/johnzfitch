@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Resume - John Zachary Fitch</title>
-  <meta name="description" content="Software engineer with a UC Berkeley mathematics background focused on building production-grade tooling for AI agents and the systems they depend on.">
-  <link rel="stylesheet" href="assets/css/site.css">
-</head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Resume - John Zachary Fitch</title>
+	  <meta name="description" content="I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about.">
+	  <link rel="stylesheet" href="assets/css/site.css">
+	</head>
 <body class="resume-page">
   <header>
     <div class="container">
@@ -25,27 +25,36 @@
 
   <main>
     <div class="container">
-      <section class="hero">
-        <h1>John Zachary Fitch</h1>
-        <p class="tagline">Agent tooling - systems performance - privacy-first infrastructure</p>
-        <p>Software engineer with a UC Berkeley mathematics background focused on building production-grade tooling for AI agents and the systems they depend on. I work across Rust, Python, and web platforms, with an evidence-first style: measure, reproduce, fix, and ship.</p>
-      </section>
+	      <section class="hero">
+	        <h1>John Zachary Fitch</h1>
+	        <p class="tagline">Agent tooling - systems performance - privacy-first infrastructure</p>
+	        <p>I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.</p>
+	      </section>
 
-      <section>
-        <h2>Recent Highlight (Jan 2026)</h2>
-        <div class="panel">
-          <div class="panel-header">OpenAI Codex</div>
-          <h3>Ghost in the Codex Machine</h3>
-          <p>Found and fixed a pre-main regression that stripped <code>LD_*</code> / <code>DYLD_*</code> env vars, breaking CUDA/MKL discovery and causing large slowdowns for affected users.</p>
-          <div class="proof-links">
-            <h4>Proof</h4>
-            <ul>
-              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a> - <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
-              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Shipped + credited in rust-v0.80.0</a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
+	      <section>
+	        <h2>Recent Highlight (Jan 2026)</h2>
+	        <div class="panel">
+	          <div class="panel-header">OpenAI Codex</div>
+	          <h3>Ghost in the Codex Machine</h3>
+	          <p>Root-caused and fixed an "invisible" release-only regression where a pre-main constructor stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables, breaking CUDA/MKL library discovery inside tool subprocesses.</p>
+	          <div class="proof-links">
+	            <h4>Proof</h4>
+	            <ul>
+	              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a> - <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
+	              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Shipped + credited in rust-v0.80.0</a></li>
+	            </ul>
+	          </div>
+	          <h4>Representative impact</h4>
+	          <ul>
+	            <li>MKL/BLAS (10x 2000x2000 matmul): 16.3s -&gt; 0.306s (53x)</li>
+	            <li>CUDA workflows: avoided 100x-300x CPU fallback for affected setups</li>
+	          </ul>
+	          <p><strong>Release notes excerpt:</strong></p>
+	          <blockquote>
+	            <p>"Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."</p>
+	          </blockquote>
+	        </div>
+	      </section>
 
       <section>
         <h2>Core Skills</h2>
@@ -77,7 +86,7 @@
         <h2>Selected Projects (Public)</h2>
         <ul>
           <li><strong><a href="https://github.com/johnzfitch/llmx">llmx</a></strong> (Rust/WASM) - local-first codebase indexing + semantic chunk exports for agents</li>
-          <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust) - optimized, patched Codex builds (powered by <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</li>
+	          <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust) - optimized, patched Codex builds (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</li>
           <li><strong><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></strong> - Claude Code plugin + skills for the Burn deep learning framework</li>
           <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> - token-efficient MCP server for tool-driven program analysis</li>
           <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> - run the official Claude Desktop app on Linux with sandboxing</li>

@@ -7,13 +7,14 @@ SUBTITLE
 Agent tooling - systems performance - privacy-first infrastructure
 
 SUMMARY (2-3 sentences)
-Software engineer with a UC Berkeley mathematics background focused on building production-grade tooling for AI agents and the systems they depend on. I work across Rust, Python, and web platforms, with an evidence-first style: measure, reproduce, fix, and ship.
+I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.
 
 RECENT HIGHLIGHT (Jan 2026)
 OpenAI Codex - Ghost in the Codex Machine
-- Found and fixed a pre-main regression that stripped `LD_*` / `DYLD_*` env vars, breaking CUDA/MKL discovery and causing large slowdowns for affected users.
-- Proof: https://github.com/openai/codex/issues/8945 - https://github.com/openai/codex/pull/8951
-- Shipped + credited: https://github.com/openai/codex/releases/tag/rust-v0.80.0
+- Root-caused and fixed an "invisible" release-only regression where a pre-main constructor stripped `LD_*` / `DYLD_*` environment variables, breaking CUDA/MKL library discovery inside tool subprocesses.
+- Proof: https://github.com/openai/codex/issues/8945 and https://github.com/openai/codex/pull/8951
+- Shipped + credited in release notes: https://github.com/openai/codex/releases/tag/rust-v0.80.0
+- Representative measurement: 53x speedup on MKL/BLAS (10x 2000x2000 matmul) after fix; CUDA workflows avoided 100x-300x CPU fallback for affected setups.
 
 CORE SKILLS
 - Rust: performance-critical systems, CLI tools, data structures, correctness-oriented engineering
@@ -24,7 +25,7 @@ CORE SKILLS
 
 SELECTED PROJECTS (Public)
 - llmx (Rust/WASM) - local-first codebase indexing + semantic chunk exports for agents: https://github.com/johnzfitch/llmx
-- codex-xtreme (Rust) - optimized, patched Codex builds (powered by codex-patcher): https://github.com/johnzfitch/codex-xtreme
+- codex-xtreme (Rust) - optimized, patched Codex builds (includes codex-patcher): https://github.com/johnzfitch/codex-xtreme
 - burn-plugin - Claude Code plugin + skills for the Burn deep learning framework: https://github.com/johnzfitch/burn-plugin
 - pyghidra-lite - token-efficient MCP server for tool-driven program analysis: https://github.com/johnzfitch/pyghidra-lite
 - claude-cowork-linux - run the official Claude Desktop app on Linux with sandboxing: https://github.com/johnzfitch/claude-cowork-linux

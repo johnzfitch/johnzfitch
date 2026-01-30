@@ -22,7 +22,7 @@ llmx
 - Repo: https://github.com/johnzfitch/llmx
 
 SECTION: Verifiable Editing and Reproducible Builds (Codex Toolchain)
-codex-xtreme (powered by codex-patcher)
+codex-xtreme (includes codex-patcher)
 - What: An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
 - Why it matters: This is the "edit loop" for agents made explicit: apply changes reliably, then build/run in a reproducible way.
 - Primary repo (pin this on GitHub): https://github.com/johnzfitch/codex-xtreme

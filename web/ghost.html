@@ -56,15 +56,19 @@
 
       <section>
         <h2>Timeline</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-date">2025-09-30</div>
-            <p>PR #4521 merges (process hardening executes pre-main in CLI release builds)</p>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-date">2025-10-31</div>
-            <p>"Ghosts in the Codex Machine" investigation published (concludes there is no single conclusive large issue)</p>
-          </div>
+	        <div class="timeline">
+	          <div class="timeline-item">
+	            <div class="timeline-date">2025-09-30</div>
+	            <p>PR #4521 merges (process hardening executes pre-main in CLI release builds)</p>
+	          </div>
+	          <div class="timeline-item">
+	            <div class="timeline-date">2025-10-01</div>
+	            <p>First affected release ships (rust-v0.43.0)</p>
+	          </div>
+	          <div class="timeline-item">
+	            <div class="timeline-date">2025-10-31</div>
+	            <p>"Ghosts in the Codex Machine" investigation published (concludes there is no single conclusive large issue)</p>
+	          </div>
           <div class="timeline-item">
             <div class="timeline-date">2026-01-08</div>
             <p>I open issue #8945 with root cause + reproduction + benchmarks</p>
@@ -116,16 +120,23 @@
         </ul>
       </section>
 
-      <section>
-        <h2>The Fix</h2>
-        <h3>What Shipped Upstream</h3>
-        <p>Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.</p>
-        <p>My proposed posture was "opt-in maximum hardening." Upstream merged a pragmatic equivalent:</p>
-        <ul>
-          <li>Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).</li>
-          <li>Keep pre-main hardening in the responses API proxy where it is more appropriate.</li>
-        </ul>
-      </section>
+	      <section>
+	        <h2>The Fix</h2>
+	        <h3>What Shipped Upstream</h3>
+	        <p>Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.</p>
+	        <p>My proposed posture was "opt-in maximum hardening." Upstream shipped a pragmatic equivalent:</p>
+	        <ul>
+	          <li>Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).</li>
+	          <li>Keep pre-main hardening in the responses API proxy where it is more appropriate.</li>
+	        </ul>
+	        <div class="panel" style="margin-top: 1rem;">
+	          <div class="panel-header">Release Notes</div>
+	          <p><strong>Release notes excerpt:</strong></p>
+	          <blockquote>
+	            <p>"Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."</p>
+	          </blockquote>
+	        </div>
+	      </section>
 
       <section>
         <h2>Measured Impact</h2>

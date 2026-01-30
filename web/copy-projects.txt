@@ -18,7 +18,7 @@ llmx (Rust/WASM)
 - Why it matters: Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).
 - Repo: https://github.com/johnzfitch/llmx
 
-codex-xtreme (Rust, powered by codex-patcher)
+codex-xtreme (Rust, includes codex-patcher)
 - What: An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
 - Why it matters: Codifies the "agent edit loop" into explicit, debuggable steps.
 - Primary repo (pin this on GitHub): https://github.com/johnzfitch/codex-xtreme

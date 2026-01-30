@@ -48,7 +48,7 @@ SECTION: What I Build
 
 SECTION: Selected Work
 - llmx - local-first codebase indexing + semantic chunk exports for agents (Rust/WASM). https://github.com/johnzfitch/llmx
-- codex-xtreme - interactive wizard for optimized, patched Codex builds (powered by codex-patcher). https://github.com/johnzfitch/codex-xtreme
+- codex-xtreme - interactive wizard for optimized, patched Codex builds (includes codex-patcher). https://github.com/johnzfitch/codex-xtreme
 - burn-plugin - Claude Code plugin + skills for the Burn deep learning framework. https://github.com/johnzfitch/burn-plugin
 - pyghidra-lite - token-efficient MCP server for tool-driven program analysis. https://github.com/johnzfitch/pyghidra-lite
 - claude-cowork-linux - run the official Claude Desktop app on Linux with bubblewrap sandboxing. https://github.com/johnzfitch/claude-cowork-linux
