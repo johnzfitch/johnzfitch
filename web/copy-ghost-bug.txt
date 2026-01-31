@@ -68,8 +68,8 @@ Performance varies by workload and environment. The key point is the failure mod
 Representative measurements from my verification:
 | Workload | Before | After | Speedup |
 |---|---:|---:|---:|
-| MKL/BLAS (10x 2000x2000 matmul) | 16.3s | 0.306s | 53x |
-| CUDA workflows (library discovery / fallback) | 11x-300x slower | restored | varies |
+| MKL/BLAS (repro harness) | ~2.71s | ~0.239s | 11.3x |
+| CUDA workflows (library discovery / GPU fallback) | 100x-300x slower | restored | varies |
 
 SECTION: Why This Matters (Beyond One Bug)
 This is the kind of engineering failure that only shows up in real-world environments:

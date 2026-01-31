@@ -10,15 +10,20 @@ Open to roles building agent runtimes, developer tools, retrieval systems, and s
 - Website: https://definitelynot.ai
 - Live demo: https://look.definitelynot.ai
 
-Proof (recent upstream impact):
-- OpenAI Codex issue: https://github.com/openai/codex/issues/8945
-- Fix PR: https://github.com/openai/codex/pull/8951
-- Release notes call-out: https://github.com/openai/codex/releases/tag/rust-v0.80.0
-- Changelog context: https://developers.openai.com/codex/changelog
-
 ---
 
-## Ghost in the Codex Machine (Jan 2026)
+## Featured Impact (Jan 2026): OpenAI Codex - "Ghost in the Codex Machine"
+
+Fixed an always-on pre-main hardening regression in Codex CLI release builds that stripped `LD_*` / `DYLD_*`. In affected CUDA/Conda/MKL/HPC-style environments, tool subprocesses silently lost dynamic library search paths and fell back to dramatically slower execution.
+
+After OpenAI's Oct 31, 2025 "Ghosts in the Codex Machine" investigation, I mapped the scope across macOS, Windows, and Linux and reduced it to a minimal repro + benchmarks. Upstream merged the fix the next day and credited it in the rust-v0.80.0 release notes.
+
+- Proof: Issue #8945 (https://github.com/openai/codex/issues/8945) | PR #8951 (https://github.com/openai/codex/pull/8951) | rust-v0.80.0 release notes (https://github.com/openai/codex/releases/tag/rust-v0.80.0) | Changelog (https://developers.openai.com/codex/changelog)
+- Impact: MKL repro harness ~2.71s -> ~0.239s (**11.3x**); CUDA can fall back to CPU (**100x-300x** slower, workload-dependent)
+- Timeline: regression introduced 2025-09-30; issue opened 2026-01-08; fix merged 2026-01-09
+
+<details>
+<summary><strong>Deep Dive: Ghost in the Codex Machine (Jan 2026)</strong></summary>
 
 A pre-main hardening routine ran before `main()` in OpenAI Codex release builds and stripped `LD_*` / `DYLD_*` environment variables. For CUDA, Conda/MKL, and HPC-style environments, this made critical libraries "disappear" inside tool subprocesses and forced slow fallback paths (up to 11x-300x depending on workload).
 
@@ -29,14 +34,16 @@ Timeline:
 
 | Workload | Before | After | Speedup |
 |----------|-------:|------:|--------:|
-| MKL/BLAS (10x 2000x2000 matmul) | 16.3s | 0.306s | 53x |
-| CUDA workflows | 11x-300x slower | restored | varies |
+| MKL/BLAS (repro harness) | ~2.71s | ~0.239s | 11.3x |
+| CUDA workflows (GPU fallback) | 100x-300x slower | restored | varies |
 
 What this demonstrates:
 - Deep systems debugging (pre-main execution, release-only behavior, silent failures)
 - Performance engineering with reproducible measurement
 - Security tradeoff reasoning grounded in practical threat models
 - High-quality upstream collaboration: clear issue, fast repro, shipped release notes
+
+</details>
 
 ---
 

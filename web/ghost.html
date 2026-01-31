@@ -154,14 +154,14 @@
             </thead>
             <tbody>
               <tr>
-                <td>MKL/BLAS (10x 2000x2000 matmul)</td>
-                <td>16.3s</td>
-                <td>0.306s</td>
-                <td>53x</td>
+                <td>MKL/BLAS (repro harness)</td>
+                <td>~2.71s</td>
+                <td>~0.239s</td>
+                <td>11.3x</td>
               </tr>
               <tr>
-                <td>CUDA workflows (library discovery / fallback)</td>
-                <td>11x-300x slower</td>
+                <td>CUDA workflows (library discovery / GPU fallback)</td>
+                <td>100x-300x slower</td>
                 <td>restored</td>
                 <td>varies</td>
               </tr>

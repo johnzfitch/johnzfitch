@@ -23,6 +23,8 @@ I build production-grade tooling for agents and the substrate they depend on: de
 
 I root-caused and fixed an "invisible" release-only regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For CUDA, Conda/MKL, and HPC-style setups, this made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback paths.
 
+To map the true scope, I validated behavior across macOS, Windows, and Linux and reduced it to a minimal reproduction + benchmark-backed report.
+
 Proof:
 - Issue: https://github.com/openai/codex/issues/8945
 - Fix PR: https://github.com/openai/codex/pull/8951
@@ -37,8 +39,8 @@ Timeline:
 Representative measurements (vary by environment):
 | Workload | Before | After | Speedup |
 |---|---:|---:|---:|
-| MKL/BLAS (10x 2000x2000 matmul) | 16.3s | 0.306s | 53x |
-| CUDA workflows (library discovery / fallback) | 11x-300x slower | restored | varies |
+| MKL/BLAS (repro harness) | ~2.71s | ~0.239s | 11.3x |
+| CUDA workflows (library discovery / GPU fallback) | 100x-300x slower | restored | varies |
 
 Release notes excerpt:
 > "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."

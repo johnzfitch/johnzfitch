@@ -4,7 +4,7 @@ TITLE
 Resume
 
 SUBTITLE
-Agent tooling - systems performance - privacy-first infrastructure
+Agent tooling | systems performance | privacy-first infrastructure
 
 SUMMARY (2-3 sentences)
 I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.
@@ -14,7 +14,7 @@ OpenAI Codex - Ghost in the Codex Machine
 - Root-caused and fixed an "invisible" release-only regression where a pre-main constructor stripped `LD_*` / `DYLD_*` environment variables, breaking CUDA/MKL library discovery inside tool subprocesses.
 - Proof: https://github.com/openai/codex/issues/8945 and https://github.com/openai/codex/pull/8951
 - Shipped + credited in release notes: https://github.com/openai/codex/releases/tag/rust-v0.80.0
-- Representative measurement: 53x speedup on MKL/BLAS (10x 2000x2000 matmul) after fix; CUDA workflows avoided 100x-300x CPU fallback for affected setups.
+- Representative measurement: ~11.3x speedup on MKL/BLAS in my repro harness after fix; CUDA workflows avoided 100x-300x CPU fallback for affected setups.
 
 CORE SKILLS
 - Rust: performance-critical systems, CLI tools, data structures, correctness-oriented engineering
