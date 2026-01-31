@@ -1,0 +1,44 @@
+Create a dark, minimal GitHub README highlight card with a strict teal palette (#134e4a/#0d9488/#2dd4bf) on near-black.
+
+Hard constraints:
+- No logos.
+- No emojis.
+- No photos.
+- No watermarks.
+- No brand UI. Keep the design abstract and original.
+
+Output:
+- PNG, 2x retina.
+- Dimensions: 1280x640.
+
+Layout:
+- Clean split design.
+- Left 60%: text.
+- Right 40%: a minimalist bar comparison.
+
+Right-side bar comparison:
+- One tall muted-teal bar labeled: "~2.71s"
+- One much shorter bright-accent bar labeled: "~0.239s"
+- A small "11.3x" marker between them.
+- No extra annotations.
+
+Under the subheadline, add three pill "proof chips" in a row:
+- "Issue #8945"
+- "PR #8951"
+- "rust-v0.80.0"
+
+Text content (exact; use these strings):
+Title: "Performance, Proven"
+Subheadline: "From issue → PR → release, with measurable impact."
+Impact line: "MKL ~2.71s→~0.239s 11.3x; CUDA 100x–300x fallback"
+
+Typography:
+- Bold geometric sans for the title.
+- Lighter sans for the subheadline.
+- Monospaced font for chips and labels.
+
+Composition:
+- Strong hierarchy with generous padding.
+- High contrast off-white text.
+- Crisp edges and clean alignment.
+

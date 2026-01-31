@@ -1,0 +1,44 @@
+Design a dark-theme GitHub README highlight card.
+
+Hard constraints:
+- No logos.
+- No emojis.
+- No photos.
+- No watermarks.
+- No brand UI. Keep the design abstract and original.
+
+Palette:
+- Only: #134e4a, #0d9488, #2dd4bf, plus neutral off-white for text.
+
+Output:
+- PNG, 2x retina.
+- Dimensions: 1200x600. (Optional alternate: 1600x900 for extra text legibility.)
+
+Background:
+- Subtle terminal-like panel with rounded corners.
+- Faint scanline texture.
+- No real product screenshots.
+
+Composition:
+- Top-left title.
+- Subheadline below the title.
+- Three teal-outlined proof chips (pills) above the terminal block:
+  - "Issue #8945"
+  - "PR #8951"
+  - "rust-v0.80.0"
+- A "terminal output" block below, using monospaced type.
+
+Text content (exact; use these strings):
+Title: "Benchmarks That Ship"
+Subheadline: "Readable proof, reproducible results."
+Impact line (single terminal line, highlighted): "$ MKL ~2.71s→~0.239s 11.3x; CUDA 100x–300x fallback"
+
+Typography:
+- Clean sans for title/subheadline.
+- Monospace for chips and terminal output.
+
+Composition:
+- Crisp alignment.
+- Strong hierarchy.
+- No extra text.
+
