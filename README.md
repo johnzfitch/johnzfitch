@@ -10,7 +10,7 @@
 
 ---
 
-## Featured Impact (Jan 2026): OpenAI Codex - "Ghost in the Codex Machine"
+## OpenAI Codex: Ghost in the Codex Machine
 
 Fixed an always-on pre-main hardening regression in Codex CLI release builds that stripped `LD_*` / `DYLD_*`. In affected CUDA/Conda/MKL/HPC-style environments, tool subprocesses silently lost dynamic library search paths and fell back to dramatically slower execution.
 
