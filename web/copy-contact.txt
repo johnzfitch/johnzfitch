@@ -1,0 +1,23 @@
+PAGE: Contact (/contact)
+
+TITLE
+Contact
+
+PRIMARY
+Email: webmaster@internetuniverse.org
+GitHub: https://github.com/johnzfitch
+
+OPTIONAL
+Website: https://definitelynot.ai
+
+OPENING
+If you're hiring for agent tooling, systems performance, or privacy/security foundations, I'd love to talk.
+
+GOOD CONVERSATIONS
+- Debugging and performance regressions in real developer environments
+- Agent tooling: retrieval, patching, deterministic workflows, and guardrails
+- WebGPU/WASM product work for client-side ML
+- Infrastructure: NixOS, DNS, TLS automation, and operational reliability
+
+RESPONSE TIME
+I typically respond within 1-2 days.

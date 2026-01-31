@@ -10,6 +10,17 @@
 
 ---
 
+## OpenAI Codex: Ghost Regression
+
+Fixed an always-on pre-main hardening regression in Codex CLI release builds that stripped `LD_*` / `DYLD_*`. In affected CUDA/Conda/MKL/HPC-style environments, tool subprocesses silently lost dynamic library search paths and fell back to dramatically slower execution.
+
+- Proof: Issue #8945 (https://github.com/openai/codex/issues/8945) | PR #8951 (https://github.com/openai/codex/pull/8951)
+- Shipped + credited: rust-v0.80.0 release notes (https://github.com/openai/codex/releases/tag/rust-v0.80.0)
+- Representative impact: MKL repro harness ~2.71s -> ~0.239s (11.3x); CUDA can fall back to CPU (100x-300x slower, workload-dependent)
+
+---
+
+
 Software engineer with mathematics background specializing in systems programming, security research, and AI/ML applications. I build production tools across the full stack—from WebGPU-accelerated browser application to Rust CLI tools to bare-metal NixOS infrastructure.
 
 **What I ship:**
