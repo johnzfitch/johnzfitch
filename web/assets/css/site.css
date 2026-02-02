@@ -435,6 +435,29 @@ dd {
   display: inline-block;
 }
 
+/* Screenshots / proof images */
+.screenshot-figure {
+  margin: 1rem 0;
+  border: 1px solid var(--border-panel);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-panel);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.screenshot-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.screenshot-caption {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+}
+
 /* Timeline */
 .timeline {
   border-left: 2px solid var(--border-color);
