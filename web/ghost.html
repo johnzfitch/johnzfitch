@@ -30,15 +30,34 @@
         <p class="tagline">How a release-only pre-main change made CUDA/MKL tool calls quietly fall back to slow paths.</p>
       </section>
 
-      <section>
-        <h2>Executive Summary</h2>
-        <p>The symptom wasn't a crash. It was worse: "Codex feels slow" in certain real developer environments.</p>
-        <p>In release builds, a pre-main hardening routine executed before <code>main()</code> and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. For a subset of users (CUDA, Conda/MKL, HPC module stacks, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex tool subprocesses. The downstream effect was dramatic but quiet: BLAS fell back to slow implementations; GPU workflows fell back to CPU; and engineers lost time chasing the wrong layer because nothing obviously "failed."</p>
-        <p>I was able to trace the behavior back to the introducing change, reduce it to a minimal reproduction + representative measurements, and open an upstream issue that maintainers could validate quickly. The fix shipped and is called out in the rust-v0.80.0 release notes with attribution.</p>
+	      <section>
+	        <h2>Executive Summary</h2>
+	        <p>The symptom wasn't a crash. It was worse: "Codex feels slow" in certain real developer environments.</p>
+	        <p>In release builds, a pre-main hardening routine executed before <code>main()</code> and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. For a subset of users (CUDA, Conda/MKL, HPC module stacks, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex tool subprocesses. The downstream effect was dramatic but quiet: BLAS fell back to slow implementations; GPU workflows fell back to CPU; and engineers lost time chasing the wrong layer because nothing obviously "failed."</p>
+	        <p>I was able to trace the behavior back to the introducing change, reduce it to a minimal reproduction + representative measurements, and open an upstream issue that maintainers could validate quickly. The fix shipped and is called out in the rust-v0.80.0 release notes with attribution.</p>
+	
+	        <div class="panel">
+	          <div class="panel-header">If You Were Debugging This</div>
+	          <ul>
+	            <li>"It works in my terminal, but it's slow inside tool calls."</li>
+	            <li>No obvious error messages; the system just quietly falls back.</li>
+	            <li>Only reproduces in release builds and only for certain environment layouts.</li>
+	            <li>The smoking gun: environment variables differ inside subprocesses vs the user's shell.</li>
+	          </ul>
+	        </div>
+	
+	        <div class="panel">
+	          <div class="panel-header">Why Agent Builders Care</div>
+	          <ul>
+	            <li><strong>Tool correctness:</strong> Agents rely on subprocesses behaving like the user's environment.</li>
+	            <li><strong>Evaluation stability:</strong> Silent fallbacks create noisy perf profiles and flaky "it feels slow" reports.</li>
+	            <li><strong>Trust:</strong> If the substrate silently rewrites execution, higher-level behavior becomes harder to explain and debug.</li>
+	          </ul>
+	        </div>
 
-        <div class="proof-links">
-          <h4>Proof</h4>
-          <ul>
+	        <div class="proof-links">
+	          <h4>Proof</h4>
+	          <ul>
             <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a></li>
             <li><img src="assets/icons/code.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
             <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Release notes (rust-v0.80.0)</a></li>
@@ -108,37 +127,56 @@
         </ul>
       </section>
 
-      <section>
-        <h2>Evidence and Reproduction</h2>
-        <h3>How I Proved It</h3>
-        <p>I approached this like a systems regression:</p>
-        <ul>
-          <li>Correlated the introducing change with a cluster of "environment disappeared" reports.</li>
-          <li>Wrote a minimal reproduction that directly inspects env vars inside Codex tool calls.</li>
-          <li>Used benchmarks that isolate library fallback behavior (e.g., matrix multiplication and CUDA library loading).</li>
-          <li>Documented results in a way upstream could validate quickly.</li>
-        </ul>
-      </section>
-
 	      <section>
-	        <h2>The Fix</h2>
-	        <h3>What Shipped Upstream</h3>
-	        <p>Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.</p>
-	        <p>I suggested an "opt-in maximum hardening" posture. Upstream shipped a pragmatic equivalent:</p>
+	        <h2>Evidence and Reproduction</h2>
+	        <h3>How I Proved It</h3>
+	        <p>I approached this like a systems regression: reduce the behavior to a small, testable claim and then measure the consequences.</p>
+	
+	        <div class="panel">
+	          <div class="panel-header">Minimal Repro (Conceptual)</div>
+	          <p>The core claim to test is simple: tool subprocesses should inherit the user's environment unless explicitly documented otherwise.</p>
+	          <pre><code># Outside the agent/tool runner (baseline)
+python -c "import os; print('LD_LIBRARY_PATH=', os.environ.get('LD_LIBRARY_PATH') or ''); print('DYLD_LIBRARY_PATH=', os.environ.get('DYLD_LIBRARY_PATH') or '')"
+
+# Inside the tool runner (should match baseline)
+codex exec -- python -c "import os; print('LD_LIBRARY_PATH=', os.environ.get('LD_LIBRARY_PATH') or ''); print('DYLD_LIBRARY_PATH=', os.environ.get('DYLD_LIBRARY_PATH') or '')"</code></pre>
+	          <p>If the inside value is empty (or different), downstream tooling can silently pick different dynamic libraries and fall back to slower paths.</p>
+	        </div>
+
 	        <ul>
-	          <li>Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).</li>
-	          <li>Keep pre-main hardening in the responses API proxy where it is more appropriate.</li>
+	          <li>Correlated the introducing change with reports consistent with "environment disappeared" behavior.</li>
+	          <li>Validated env var inheritance behavior directly inside subprocess tool calls.</li>
+	          <li>Used a small BLAS/CUDA-sensitive workload to quantify the performance impact of a library discovery fallback.</li>
+	          <li>Documented a minimal reproduction + representative measurements so maintainers could validate quickly.</li>
 	        </ul>
-	        <div class="panel" style="margin-top: 1rem;">
-	          <div class="panel-header">Release Notes</div>
-	          <p><strong>Release notes excerpt:</strong></p>
-	          <blockquote>
+	      </section>
+
+		      <section>
+		        <h2>The Fix</h2>
+		        <h3>What Shipped Upstream</h3>
+		        <p>Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.</p>
+		        <p>Stripping <code>LD_*</code> variables can reduce certain injection risks, but doing so by default in a dev-facing tool runner breaks correctness for legitimate workflows. I suggested the posture "opt-in maximum hardening." Upstream shipped a pragmatic equivalent:</p>
+		        <ul>
+		          <li>Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).</li>
+		          <li>Keep pre-main hardening in the responses API proxy where it is more appropriate.</li>
+		        </ul>
+		        <div class="panel" style="margin-top: 1rem;">
+		          <div class="panel-header">Collaboration</div>
+		          <ul>
+		            <li><strong>My contribution:</strong> isolate the root cause, produce a minimal repro, attach representative measurements, and write an issue maintainers could validate quickly.</li>
+		            <li><strong>Upstream outcome:</strong> fix merged and shipped; behavior called out in release notes.</li>
+		          </ul>
+		        </div>
+		        <div class="panel" style="margin-top: 1rem;">
+		          <div class="panel-header">Release Notes</div>
+		          <p><strong>Release notes excerpt:</strong></p>
+		          <blockquote>
 	            <p>"Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."</p>
 	          </blockquote>
-	          <figure class="screenshot-figure">
-	            <img src="assets/images/codex-release-notes-credit.png" class="screenshot-img" width="880" height="160" alt="Release notes screenshot mentioning LD_LIBRARY_PATH/DYLD_LIBRARY_PATH inheritance and crediting @johnzfitch.">
-	            <figcaption class="screenshot-caption">Release notes screenshot (credit + technical summary).</figcaption>
-	          </figure>
+		          <figure class="screenshot-figure">
+		            <img src="assets/images/codex-release-notes-credit.png" class="screenshot-img" width="706" height="120" loading="lazy" alt="Release notes screenshot mentioning LD_LIBRARY_PATH/DYLD_LIBRARY_PATH inheritance and crediting @johnzfitch.">
+		            <figcaption class="screenshot-caption">Release notes screenshot (credit + technical summary).</figcaption>
+		          </figure>
 	        </div>
 	      </section>
 
