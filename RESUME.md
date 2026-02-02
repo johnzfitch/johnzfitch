@@ -62,7 +62,7 @@ Local-first retrieval:
 - llmx: codebase indexing with deterministic chunking + BM25 search + exports for agent context. https://github.com/johnzfitch/llmx
 
 Tool surfaces (MCP):
-- pyghidra-lite: token-efficient MCP server for tool-driven program analysis (compact by default, opt-in verbosity). https://github.com/johnzfitch/pyghidra-lite
+- pyghidra-lite: token-efficient MCP server for tool-driven program analysis (compact by default, opt-in verbosity). Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active, published 2026-01-29). Repo: https://github.com/johnzfitch/pyghidra-lite
 
 Agent skills and plugins (Anthropic ecosystem):
 - burn-plugin: Claude Code plugin + reusable skills for the Burn deep learning framework (evidence-backed workflows). https://github.com/johnzfitch/burn-plugin
