@@ -55,19 +55,29 @@
           <h3>Ghost in the Codex Machine - OpenAI Codex</h3>
           <p>A security-hardening routine ran before <code>main()</code> in release builds and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. In certain CUDA/Conda/MKL environments, that made critical dynamic libraries effectively "disappear" inside tool subprocesses, quietly pushing workflows onto slow fallback paths. I reproduced the issue with a minimal harness, attached representative measurements, and worked with the Codex maintainers to ship the upstream fix (credited in release notes). Because this lives in the CLI substrate, it improves the baseline for every tool call and removes a hard-to-diagnose failure mode.</p>
 
-          <div class="proof-links">
-            <h4>Proof</h4>
-            <ul>
-              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a></li>
-              <li><img src="assets/icons/code.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
-              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Release notes (rust-v0.80.0)</a></li>
-              <li><img src="assets/icons/globe.png" class="icon" width="16" height="16" alt=""> <a href="https://developers.openai.com/codex/changelog">OpenAI Codex changelog</a></li>
-            </ul>
-          </div>
+	          <div class="proof-links">
+	            <h4>Proof</h4>
+	            <ul>
+	              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a></li>
+	              <li><img src="assets/icons/code.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
+	              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Release notes (rust-v0.80.0)</a></li>
+	              <li><img src="assets/icons/globe.png" class="icon" width="16" height="16" alt=""> <a href="https://developers.openai.com/codex/changelog">OpenAI Codex changelog</a></li>
+	            </ul>
+	          </div>
 
-          <h4>Impact (representative; varies by environment)</h4>
-          <div class="table-wrapper">
-            <table>
+	          <figure class="screenshot-figure">
+	            <img src="assets/images/codex-release-notes-credit.png" class="screenshot-img" width="706" height="120" loading="lazy" alt="Release notes excerpt mentioning LD_LIBRARY_PATH/DYLD_LIBRARY_PATH inheritance and crediting @johnzfitch.">
+	            <figcaption class="screenshot-caption">Release notes excerpt (credit + technical summary).</figcaption>
+	          </figure>
+
+	          <figure class="screenshot-figure">
+	            <img src="assets/images/codex-release-notes-bug-fixes.png" class="screenshot-img" width="1294" height="196" loading="lazy" alt="Release notes 'Bug Fixes' section mentioning LD_LIBRARY_PATH/DYLD_LIBRARY_PATH inheritance and crediting @johnzfitch.">
+	            <figcaption class="screenshot-caption">Release notes (full 'Bug Fixes' context).</figcaption>
+	          </figure>
+	
+	          <h4>Impact (representative; varies by environment)</h4>
+	          <div class="table-wrapper">
+	            <table>
               <thead>
                 <tr>
                   <th>Workload</th>
