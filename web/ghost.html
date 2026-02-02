@@ -27,14 +27,14 @@
     <div class="container">
       <section class="hero">
         <h1>Ghost in the Codex Machine</h1>
-        <p class="tagline">Fixing an "invisible" pre-main regression in OpenAI Codex that silently broke CUDA/MKL environments.</p>
+        <p class="tagline">How a release-only pre-main change made CUDA/MKL tool calls quietly fall back to slow paths.</p>
       </section>
 
       <section>
         <h2>Executive Summary</h2>
-        <p>This was a performance regression that didn't look like a performance regression.</p>
-        <p>In release builds, a pre-main hardening routine executed before <code>main()</code> and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. For a subset of users (CUDA, Conda/MKL, HPC, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex subprocesses. The downstream effect was dramatic: slow fallback BLAS, CPU fallback for GPU workflows, timeouts, and "Codex feels slow" reports that were difficult to attribute to a single root cause.</p>
-        <p>I traced the behavior back to the introducing change, wrote a reproduction + benchmark-backed issue, and shipped the upstream fix. The fix is called out in the rust-v0.80.0 release notes with attribution.</p>
+        <p>The symptom wasn't a crash. It was worse: "Codex feels slow" in certain real developer environments.</p>
+        <p>In release builds, a pre-main hardening routine executed before <code>main()</code> and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. For a subset of users (CUDA, Conda/MKL, HPC module stacks, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex tool subprocesses. The downstream effect was dramatic but quiet: BLAS fell back to slow implementations; GPU workflows fell back to CPU; and engineers lost time chasing the wrong layer because nothing obviously "failed."</p>
+        <p>I was able to trace the behavior back to the introducing change, reduce it to a minimal reproduction + representative measurements, and open an upstream issue that maintainers could validate quickly. The fix shipped and is called out in the rust-v0.80.0 release notes with attribution.</p>
 
         <div class="proof-links">
           <h4>Proof</h4>
@@ -65,10 +65,10 @@
 	            <div class="timeline-date">2025-10-01</div>
 	            <p>First affected release ships (rust-v0.43.0)</p>
 	          </div>
-	          <div class="timeline-item">
-	            <div class="timeline-date">2025-10-31</div>
-	            <p>"Ghosts in the Codex Machine" investigation published (concludes there is no single conclusive large issue)</p>
-	          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025-10-31</div>
+            <p>Earlier "Ghosts in the Codex Machine" investigation published (useful context; this regression still remained)</p>
+          </div>
           <div class="timeline-item">
             <div class="timeline-date">2026-01-08</div>
             <p>I open issue #8945 with root cause + reproduction + benchmarks</p>
@@ -124,7 +124,7 @@
 	        <h2>The Fix</h2>
 	        <h3>What Shipped Upstream</h3>
 	        <p>Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.</p>
-	        <p>My proposed posture was "opt-in maximum hardening." Upstream shipped a pragmatic equivalent:</p>
+	        <p>I suggested an "opt-in maximum hardening" posture. Upstream shipped a pragmatic equivalent:</p>
 	        <ul>
 	          <li>Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).</li>
 	          <li>Keep pre-main hardening in the responses API proxy where it is more appropriate.</li>

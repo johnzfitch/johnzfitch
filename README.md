@@ -12,7 +12,7 @@
 
 ## OpenAI Codex: Ghost Regression
 
-Fixed an always-on pre-main hardening regression in Codex CLI release builds that stripped `LD_*` / `DYLD_*`. In affected CUDA/Conda/MKL/HPC-style environments, tool subprocesses silently lost dynamic library search paths and fell back to dramatically slower execution.
+Investigated and helped fix a Codex CLI release-build regression where a pre-main hardening routine stripped `LD_*` / `DYLD_*` environment variables. In CUDA/Conda/MKL/HPC-style environments, Codex tool subprocesses could silently lose dynamic library search paths and fall back to dramatically slower execution (often without an obvious error).
 
 - Proof: Issue #8945 (https://github.com/openai/codex/issues/8945) | PR #8951 (https://github.com/openai/codex/pull/8951)
 - Shipped + credited: rust-v0.80.0 release notes (https://github.com/openai/codex/releases/tag/rust-v0.80.0)
@@ -30,7 +30,7 @@ Software engineer with mathematics background specializing in systems programmin
 - **[nautilus-plus](https://github.com/johnzfitch/nautilus-plus)** - Enhanced GNOME Files with sub-millisecond search *(AUR)*
 - **[indepacer](https://github.com/johnzfitch/indepacer)** - PACER CLI for federal court research *(PyPI: pacersdk)*
 
-Self-hosting 32GB bare-metal infrastructure (NixOS) with post-quantum cryptography (ML-KEM, Rosenpass VPN), authoritative DNS, and containerized services.
+Self-hosting bare-metal infrastructure (NixOS) with post-quantum cryptography (ML-KEM, Rosenpass VPN), authoritative DNS, and containerized services.
 
 **Philosophy:** AI as augmentation, not replacement. Privacy by default. Ship tools that make people better at their jobs.
 
@@ -171,7 +171,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 ## <img src=".github/assets/icons/server.png" width="24" height="24"> Infrastructure
 
-**Primary Server:** Intel Xeon E3-1270v5 | 32GB RAM | 3.6TB SSD (btrfs) | NixOS 24.05
+**Primary Server:** Dedicated bare-metal NixOS host (details available on request)
 
 | Service | Technology |
 |---------|------------|

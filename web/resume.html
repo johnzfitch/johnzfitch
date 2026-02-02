@@ -36,7 +36,7 @@
 	        <div class="panel">
 	          <div class="panel-header">OpenAI Codex</div>
 	          <h3>Ghost in the Codex Machine</h3>
-	          <p>Root-caused and fixed an "invisible" release-only regression where a pre-main constructor stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables, breaking CUDA/MKL library discovery inside tool subprocesses.</p>
+	          <p>Investigated and helped fix an "invisible" release-only regression where a pre-main constructor stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables, breaking CUDA/MKL library discovery inside tool subprocesses. Shipped upstream with release-notes credit.</p>
 	          <div class="proof-links">
 	            <h4>Proof</h4>
 	            <ul>
@@ -45,10 +45,10 @@
 	            </ul>
 	          </div>
 		          <h4>Representative impact</h4>
-		          <ul>
-		            <li>MKL/BLAS (repro harness): ~2.71s -&gt; ~0.239s (11.3x)</li>
-		            <li>CUDA workflows: avoided 100x-300x CPU fallback for affected setups</li>
-		          </ul>
+	          <ul>
+	            <li>MKL/BLAS (repro harness): ~2.71s -&gt; ~0.239s (11.3x)</li>
+	            <li>CUDA workflows: restored expected library discovery to avoid CPU fallback in affected setups</li>
+	          </ul>
 	          <p><strong>Release notes excerpt:</strong></p>
 	          <blockquote>
 	            <p>"Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."</p>

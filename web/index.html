@@ -29,7 +29,7 @@
         <h1>John Zachary Fitch</h1>
         <p class="tagline">Agent tooling - systems performance - privacy-first infrastructure</p>
         <p class="intro">I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.</p>
-        <p class="intro">Recent highlight: I traced and fixed an invisible pre-main regression in OpenAI's Codex CLI that silently broke CUDA/MKL environments for some users (10x-300x slowdowns depending on the fallback path).</p>
+        <p class="intro">Recent highlight: I investigated and helped fix a subtle Codex CLI release-build regression where a pre-main hardening step stripped <code>LD_*</code> / <code>DYLD_*</code> for tool subprocesses. In CUDA/Conda/MKL/HPC-style setups, this could silently force slow fallback paths (often 10x+, sometimes 100x+ when GPU workflows fell back to CPU).</p>
 
         <div class="cta-group">
           <a href="ghost.html" class="cta cta-primary">
@@ -53,7 +53,7 @@
         <div class="panel">
           <div class="panel-header">Case Study</div>
           <h3>Ghost in the Codex Machine - OpenAI Codex</h3>
-          <p>A security-hardening routine ran before <code>main()</code> in release builds and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and shipped the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and everything built on top of it, and it removed a hard-to-diagnose failure mode that was burning engineering time.</p>
+          <p>A security-hardening routine ran before <code>main()</code> in release builds and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. In certain CUDA/Conda/MKL environments, that made critical dynamic libraries effectively "disappear" inside tool subprocesses, quietly pushing workflows onto slow fallback paths. I reproduced the issue with a minimal harness, attached representative measurements, and worked with the Codex maintainers to ship the upstream fix (credited in release notes). Because this lives in the CLI substrate, it improves the baseline for every tool call and removes a hard-to-diagnose failure mode.</p>
 
           <div class="proof-links">
             <h4>Proof</h4>
@@ -78,9 +78,9 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>MKL/BLAS (10x 2000x2000 matmul)</td>
-                  <td>16.3s</td>
-                  <td>0.306s</td>
+                  <td>MKL/BLAS (repro harness)</td>
+                  <td>~2.71s</td>
+                  <td>~0.239s</td>
                   <td style="text-align: left;">Losing <code>LD_LIBRARY_PATH</code> forces a slow BLAS fallback</td>
                 </tr>
                 <tr>
@@ -165,7 +165,7 @@
         <div class="panel">
           <div class="panel-header">Self-Hosted</div>
           <h3>NixOS + Post-Quantum Security</h3>
-          <p>I run production infrastructure on dedicated bare metal (Intel Xeon E3-1270v5, 32GB RAM, ~3.6TB SSD) with declarative NixOS configuration, authoritative DNS, automated wildcard certs via DNS-01 (RFC2136), and a post-quantum VPN layer (WireGuard + Rosenpass). I optimize for data sovereignty, reliability, and a small, auditable surface area.</p>
+          <p>I run production infrastructure on dedicated bare metal with declarative NixOS configuration, authoritative DNS, automated wildcard certs via DNS-01 (RFC2136), and a post-quantum VPN layer (WireGuard + Rosenpass). I optimize for data sovereignty, reliability, and a small, auditable surface area.</p>
 
           <h4>Highlights</h4>
           <ul>

@@ -12,9 +12,9 @@ I run my own production infrastructure because I care about three things: data s
 Everything is declarative. Everything is reproducible. If something breaks, rollback is a boot-menu option, not a weekend.
 
 SECTION: What I Run (High-Level)
-- Hardware: Intel Xeon E3-1270v5, 32GB RAM, ~3.6TB SSD (btrfs).
+- Hardware: Dedicated bare-metal host (details available on request).
 - Dedicated bare-metal host (NixOS) with reproducible configuration (flakes).
-- Multi-IP, multi-subnet design for redundancy and failure isolation (6 public IPv4 addresses across two separate /24s).
+- Multi-IP, multi-subnet design for redundancy and failure isolation.
 - Authoritative DNS (BIND9) with recursion disabled, rate limiting, and tightly-scoped zone transfer policies.
 - Automated wildcard TLS via DNS-01 using RFC2136 dynamic updates (TSIG-authenticated) so cert renewals are hands-off.
 - Reverse proxy and HTTPS termination via Caddy, including HTTP/3.

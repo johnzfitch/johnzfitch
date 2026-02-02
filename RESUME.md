@@ -21,7 +21,7 @@ I build production-grade tooling for agents and the substrate they depend on: de
 
 ### OpenAI Codex: "Ghost in the Codex Machine" (Issue #8945, PR #8951)
 
-I root-caused and fixed an "invisible" release-only regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For CUDA, Conda/MKL, and HPC-style setups, this made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback paths.
+I investigated and helped fix an "invisible" release-only regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For CUDA, Conda/MKL, and HPC-style setups, this made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback paths. The fix shipped upstream with maintainers and is credited in release notes.
 
 To map the true scope, I validated behavior across macOS, Windows, and Linux and reduced it to a minimal reproduction + benchmark-backed report.
 
@@ -97,8 +97,8 @@ Domains:
 ## Infrastructure (Self-Hosted, Sanitized)
 
 I operate production infrastructure on bare metal with a reliability-first and security-first posture:
-- Hardware: Intel Xeon E3-1270v5, 32GB RAM, 2x 1.8TB SSD (btrfs), 10GbE
-- Network design: 6 public IPv4 addresses across two separate /24 subnets for redundancy
+- Hardware: dedicated bare-metal host (details available on request)
+- Network design: multi-IP, multi-subnet redundancy for failure isolation (details available on request)
 - DNS: authoritative BIND9 (recursion disabled), rate limiting, constrained zone transfers
 - TLS: automated wildcard certificates via DNS-01 using RFC2136 dynamic updates (TSIG)
 - Post-quantum layers: hybrid SSH key exchange + WireGuard VPN with Rosenpass PQ key exchange overlay

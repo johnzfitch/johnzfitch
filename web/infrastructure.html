@@ -38,9 +38,9 @@
       <section>
         <h2>What I Run (High-Level)</h2>
         <ul>
-          <li><strong>Hardware:</strong> Intel Xeon E3-1270v5, 32GB RAM, ~3.6TB SSD (btrfs).</li>
-          <li>Dedicated bare-metal host (NixOS) with reproducible configuration (flakes).</li>
-          <li>Multi-IP, multi-subnet design for redundancy and failure isolation (6 public IPv4 addresses across two separate /24s).</li>
+          <li><strong>Hardware:</strong> Dedicated bare-metal host (details available on request).</li>
+          <li>Dedicated NixOS host with reproducible configuration (flakes), atomic upgrades, and rollbacks.</li>
+          <li>Multi-IP, multi-subnet design for redundancy and failure isolation.</li>
           <li>Authoritative DNS (BIND9) with recursion disabled, rate limiting, and tightly-scoped zone transfer policies.</li>
           <li>Automated wildcard TLS via DNS-01 using RFC2136 dynamic updates (TSIG-authenticated) so cert renewals are hands-off.</li>
           <li>Reverse proxy and HTTPS termination via Caddy, including HTTP/3.</li>

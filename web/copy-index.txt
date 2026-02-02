@@ -59,7 +59,7 @@ SECTION: Infrastructure Snapshot
 Heading: Self-Hosted NixOS + Post-Quantum Security
 
 Copy
-I run production infrastructure on dedicated bare metal (Intel Xeon E3-1270v5, 32GB RAM, ~3.6TB SSD) with declarative NixOS configuration, authoritative DNS, automated wildcard certs via DNS-01 (RFC2136), and a post-quantum VPN layer (WireGuard + Rosenpass). I optimize for data sovereignty, reliability, and a small, auditable surface area.
+I run production infrastructure on dedicated bare metal with declarative NixOS configuration, authoritative DNS, automated wildcard certs via DNS-01 (RFC2136), and a post-quantum VPN layer (WireGuard + Rosenpass). I optimize for data sovereignty, reliability, and a small, auditable surface area.
 
 Highlights
 - Multi-IP, multi-subnet DNS redundancy and DDoS resilience

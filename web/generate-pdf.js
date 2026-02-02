@@ -3,35 +3,54 @@
 
 const puppeteer = require('puppeteer');
 const path = require('path');
+const { pathToFileURL } = require('url');
 
 async function generatePDF() {
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+  const noSandbox =
+    process.env.PUPPETEER_NO_SANDBOX === '1' ||
+    process.env.PUPPETEER_NO_SANDBOX === 'true' ||
+    process.env.CI === 'true';
 
-  const page = await browser.newPage();
+  const launchOptions = {
+    headless: true
+  };
 
-  // Load the resume.html file
-  const resumePath = path.join(__dirname, 'resume.html');
-  await page.goto(`file://${resumePath}`, {
-    waitUntil: 'networkidle0'
-  });
+  if (noSandbox) {
+    launchOptions.args = ['--no-sandbox', '--disable-setuid-sandbox'];
+  }
 
-  // Generate PDF with print-optimized settings
-  await page.pdf({
-    path: path.join(__dirname, 'resume.pdf'),
-    format: 'Letter',
-    printBackground: true,
-    margin: {
-      top: '0.5in',
-      right: '0.5in',
-      bottom: '0.5in',
-      left: '0.5in'
+  let browser;
+  let page;
+  try {
+    browser = await puppeteer.launch(launchOptions);
+    page = await browser.newPage();
+
+    // Load the resume.html file
+    const resumePath = path.join(__dirname, 'resume.html');
+    const resumeUrl = pathToFileURL(resumePath).toString();
+    await page.goto(resumeUrl, { waitUntil: 'networkidle0' });
+
+    // Generate PDF with print-optimized settings
+    await page.pdf({
+      path: path.join(__dirname, 'resume.pdf'),
+      format: 'Letter',
+      printBackground: true,
+      margin: {
+        top: '0.5in',
+        right: '0.5in',
+        bottom: '0.5in',
+        left: '0.5in'
+      }
+    });
+  } finally {
+    if (page) {
+      await page.close().catch(() => undefined);
     }
-  });
+    if (browser) {
+      await browser.close().catch(() => undefined);
+    }
+  }
 
-  await browser.close();
   console.log('Generated resume.pdf');
 }
 
