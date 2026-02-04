@@ -88,8 +88,7 @@ Standard debugging tools can't see pre-main execution. Profilers start at `main(
 - Enterprise database driver support
 
 ---
-When everyone else has stopped looking because all of their tools are blind, I reason that the system must be lying. This is the class of problem I specialize in.**
-
+**When the tools are blind, the system lies, and everyone else has stopped looking for it. This is class of problem I specialize in.**
 </details>
 
 ---
