@@ -17,22 +17,28 @@ I build production-grade tooling for agents and the substrate they depend on: de
 
 ---
 
-## Signature Open Source Impact (Jan 2026)
+## Highlights (Jan 2026)
 
-### OpenAI Codex: "Ghost in the Codex Machine" (Issue #8945, PR #8951)
+### OpenAI Codex: Revealing the "Ghost in the Codex Machine" (Issue [#8945](https://github.com/openai/codex/issues/8945), PR [#8951](https://github.com/openai/codex/pull/8951))
 
-I investigated and helped fix an "invisible" release-only regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For CUDA, Conda/MKL, and HPC-style setups, this made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback paths. The fix shipped upstream with maintainers and is credited in release notes.
+I investigated and helped fix an "invisible" regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For GPU workloads such as CUDA, Conda/MKL, HPC-style setups, this was a hard regression that made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback, infinite hangs, or silent failure. Every child process, including subagents, inherited this stripped environment. Those children (Python/Conda/NumPy/PyTorch, often glibc-linked) can genuinely depend on LD_LIBRARY_PATH for CUDA/MKL/non-RPATH setups. 
+
+The fix shipped upstream with the help of maintainers and was given a special credit within 0.80 release notes.
+
+Release notes excerpt:
+> "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
 
 To map the true scope, I validated behavior across macOS, Windows, and Linux and reduced it to a minimal reproduction + benchmark-backed report.
 
 Proof:
 - Issue: https://github.com/openai/codex/issues/8945
 - Fix PR: https://github.com/openai/codex/pull/8951
-- Release notes call-out: https://github.com/openai/codex/releases/tag/rust-v0.80.0
-- Changelog context: https://developers.openai.com/codex/changelog
+- Release notes: https://github.com/openai/codex/releases/tag/rust-v0.80.0
+- Changelog: [https://developers.openai.com/codex/changelog](https://developers.openai.com/codex/changelog#github-release-275597320)
 
 Timeline:
 - 2025-09-30: regression introduced (PR #4521)
+- 2025-10-31: OpenAI concludes [internal investigation](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit?usp=sharing)
 - 2026-01-08: I opened issue #8945 with root cause + reproduction + benchmarks
 - 2026-01-09: fix merged (PR #8951) and shipped in the rust-v0.80.0 release series
 
@@ -41,15 +47,6 @@ Representative measurements (vary by environment):
 |---|---:|---:|---:|
 | MKL/BLAS (repro harness) | ~2.71s | ~0.239s | 11.3x |
 | CUDA workflows (library discovery / GPU fallback) | 100x-300x slower | restored | varies |
-
-Release notes excerpt:
-> "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
-
-What this demonstrates:
-- Deep systems debugging (pre-main execution, release-only behavior, silent failures)
-- Performance engineering with reproducible measurement
-- Security tradeoff reasoning grounded in practical threat models
-- Upstream collaboration: clear issue, fast repro, verified fix, shipped release
 
 ---
 
@@ -108,7 +105,7 @@ I operate production infrastructure on bare metal with a reliability-first and s
 
 ## Education
 
-UC Berkeley - Mathematics
+UC Berkeley - Mathematics 
 
 ---
 
