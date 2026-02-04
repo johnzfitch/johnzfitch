@@ -1,4 +1,4 @@
-![Header](https://capsule-render.vercel.app/api?type=waving&color=0:134e4a,50:0d9488,100:2dd4bf&height=280&section=header&text=John%20Zachary%20Fitch&fontSize=70&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=AI%20Transparency%20%7C%20Security%20Research%20%7C%20Systems%20Engineering&descSize=24&descAlignY=62)
+![Header](.github/assets/header.svg)
 
 <p align="center">
   <!-- <a href="https://www.linkedin.com/in/john-fitch-600726193/"><img src=".github/assets/buttons/linkedin@2x.png" alt="LinkedIn" width="176" height="62"></a>&nbsp; -->
@@ -10,6 +10,17 @@
 
 ---
 
+## OpenAI Codex: Ghost Regression
+
+Investigated and helped fix a Codex CLI release-build regression where a pre-main hardening routine stripped `LD_*` / `DYLD_*` environment variables. In CUDA/Conda/MKL/HPC-style environments, Codex tool subprocesses could silently lose dynamic library search paths and fall back to dramatically slower execution (often without an obvious error).
+
+- Proof: Issue #8945 (https://github.com/openai/codex/issues/8945) | PR #8951 (https://github.com/openai/codex/pull/8951)
+- Shipped + credited: rust-v0.80.0 release notes (https://github.com/openai/codex/releases/tag/rust-v0.80.0)
+- Representative impact: MKL repro harness ~2.71s -> ~0.239s (11.3x); CUDA can fall back to CPU (100x-300x slower, workload-dependent)
+
+---
+
+
 Software engineer with mathematics background specializing in systems programming, security research, and AI/ML applications. I build production tools across the full stack—from WebGPU-accelerated browser application to Rust CLI tools to bare-metal NixOS infrastructure.
 
 **What I ship:**
@@ -19,7 +30,7 @@ Software engineer with mathematics background specializing in systems programmin
 - **[nautilus-plus](https://github.com/johnzfitch/nautilus-plus)** - Enhanced GNOME Files with sub-millisecond search *(AUR)*
 - **[indepacer](https://github.com/johnzfitch/indepacer)** - PACER CLI for federal court research *(PyPI: pacersdk)*
 
-Self-hosting 32GB bare-metal infrastructure (NixOS) with post-quantum cryptography (ML-KEM, Rosenpass VPN), authoritative DNS, and containerized services.
+Self-hosting bare-metal infrastructure (NixOS) with post-quantum cryptography (ML-KEM, Rosenpass VPN), authoritative DNS, and containerized services.
 
 **Philosophy:** AI as augmentation, not replacement. Privacy by default. Ship tools that make people better at their jobs.
 
@@ -160,7 +171,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 ## <img src=".github/assets/icons/server.png" width="24" height="24"> Infrastructure
 
-**Primary Server:** Intel Xeon E3-1270v5 | 32GB RAM | 3.6TB SSD (btrfs) | NixOS 24.05
+**Primary Server:** Dedicated bare-metal NixOS host (details available on request)
 
 | Service | Technology |
 |---------|------------|
