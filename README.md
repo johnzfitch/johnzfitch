@@ -86,16 +86,11 @@ Standard debugging tools can't see pre-main execution. Profilers start at `main(
 - MKL/NumPy performance for scientific computing users
 - Conda environment compatibility
 - Enterprise database driver support
-
+</details>
 ---
 **When the tools are blind, the system lies, and everyone else has stopped looking for it. This is class of problem I specialize in.**
-</details>
-
 ---
-
-
 Software engineer with mathematics background specializing in systems programming, security research, and AI/ML applications. I build production tools across the full stack—from WebGPU-accelerated browser application to Rust CLI tools to bare-metal NixOS infrastructure.
-  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>
   
 **More Projects:**
 - **[Observatory](https://look.definitelynot.ai)** - WebGPU deepfake detection running 4 ML models in-browser *(live demo)*
