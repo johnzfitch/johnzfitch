@@ -1,0 +1,62 @@
+PAGE: Agent Tooling (/agent-tooling)
+
+TITLE
+Agent Tooling
+
+SUBTITLE
+Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.
+
+OPENING
+My bias is pragmatic: agents should do real work without surprising the user.
+
+That means:
+- Determinism over magic (same inputs produce the same outputs).
+- Auditability over vibes (you can inspect what changed and why).
+- Privacy-first defaults (local processing whenever possible).
+
+SECTION: Retrieval That Scales (Without Embeddings as a Requirement)
+llmx
+- What: Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).
+- Why it matters: Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.
+- Stack: Rust + WASM, deterministic chunking, inverted index + BM25-style ranking
+- Repo: https://github.com/johnzfitch/llmx
+
+SECTION: Verifiable Editing and Reproducible Builds (Codex Toolchain)
+codex-xtreme (includes codex-patcher)
+- What: An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
+- Why it matters: This is the "edit loop" for agents made explicit: apply changes reliably, then build/run in a reproducible way.
+- Primary repo (pin this on GitHub): https://github.com/johnzfitch/codex-xtreme
+- Patch engine (linked inside): https://github.com/johnzfitch/codex-patcher
+
+SECTION: Packaging Domain Expertise for Agents
+burn-plugin
+- What: Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.
+- Why it matters: "Agent tooling" isn't just code. Packaging knowledge so it is verifiable and reusable is what makes tools scale across teams.
+- Repo: https://github.com/johnzfitch/burn-plugin
+
+SECTION: Skill Systems (Available on Request)
+cwork (private)
+- What: A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.
+- Why it matters: Skill systems are what turn ad-hoc prompting into repeatable workflows (especially across many repos).
+
+SECTION: MCP Servers (Structured Tool APIs)
+pyghidra-lite
+- What: Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
+- Why it matters: Good agents use tools. MCP servers let you build high-signal, low-context interfaces that scale beyond ad-hoc prompts.
+- Repo: https://github.com/johnzfitch/pyghidra-lite
+
+SECTION: LLM Desktop Workflow (Anthropic Ecosystem)
+claude-cowork-linux
+- What: Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.
+- Why it matters: Makes Claude a first-class Linux tool without sacrificing isolation.
+- Note: Unofficial community project; no proprietary Claude code is committed.
+- Repo: https://github.com/johnzfitch/claude-cowork-linux
+
+SECTION: Professional UX (No Emojis)
+Iconics
+- What: Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.
+- Why it matters: Documentation is a product surface. Consistent visuals improve scannability and trust, especially in technical docs.
+- Repo: https://github.com/johnzfitch/iconics
+
+CLOSING
+My working model: start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.

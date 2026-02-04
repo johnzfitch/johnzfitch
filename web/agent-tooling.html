@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Tooling - John Zachary Fitch</title>
+  <meta name="description" content="Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="site-title">John Zachary Fitch</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="ghost.html">Case Study</a>
+        <a href="projects.html">Projects</a>
+        <a href="agent-tooling.html" class="active">Agent Tooling</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>Agent Tooling</h1>
+        <p class="tagline">Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.</p>
+      </section>
+
+      <section>
+        <p>My bias is pragmatic: agents should do real work without surprising the user.</p>
+        <p>That means:</p>
+        <ul>
+          <li><strong>Determinism over magic</strong> (same inputs produce the same outputs).</li>
+          <li><strong>Auditability over vibes</strong> (you can inspect what changed and why).</li>
+          <li><strong>Privacy-first defaults</strong> (local processing whenever possible).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Retrieval That Scales (Without Embeddings as a Requirement)</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
+          <div class="stack">Rust + WASM, deterministic chunking, inverted index + BM25-style ranking</div>
+          <p><strong>What:</strong> Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).</p>
+          <p><strong>Why it matters:</strong> Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Verifiable Editing and Reproducible Builds (Codex Toolchain)</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a> <span class="muted">(includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</span></h3>
+          <div class="stack">Rust</div>
+          <p><strong>What:</strong> An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.</p>
+          <p><strong>Why it matters:</strong> This is the "edit loop" for agents made explicit: apply changes reliably, then build/run in a reproducible way.</p>
+          <p><strong>Primary repo (pin this on GitHub):</strong> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></p>
+          <p><strong>Patch engine (linked inside):</strong> <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Packaging Domain Expertise for Agents</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
+          <div class="stack">Claude Code Plugin</div>
+          <p><strong>What:</strong> Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.</p>
+          <p><strong>Why it matters:</strong> "Agent tooling" isn't just code. Packaging knowledge so it is verifiable and reusable is what makes tools scale across teams.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Skill Systems (Available on Request)</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> cwork</h3>
+          <div class="stack">Private</div>
+          <p><strong>What:</strong> A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.</p>
+          <p><strong>Why it matters:</strong> Skill systems are what turn ad-hoc prompting into repeatable workflows (especially across many repos).</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>MCP Servers (Structured Tool APIs)</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
+          <div class="stack">Python / MCP</div>
+          <p><strong>What:</strong> Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).</p>
+          <p><strong>Registry:</strong> Official MCP registry listing: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
+          <p><strong>Why it matters:</strong> Good agents use tools. MCP servers let you build high-signal, low-context interfaces that scale beyond ad-hoc prompts.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>LLM Desktop Workflow (Anthropic Ecosystem)</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
+          <div class="stack">Linux</div>
+          <p><strong>What:</strong> Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.</p>
+          <p><strong>Why it matters:</strong> Makes Claude a first-class Linux tool without sacrificing isolation.</p>
+          <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Professional UX (No Emojis)</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/image.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/iconics">Iconics</a></h3>
+          <div class="stack">Python</div>
+          <p><strong>What:</strong> Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.</p>
+          <p><strong>Why it matters:</strong> Documentation is a product surface. Consistent visuals improve scannability and trust, especially in technical docs.</p>
+        </div>
+      </section>
+
+      <section>
+        <p><strong>Closing thought:</strong> My working model: start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:webmaster@internetuniverse.org">
+          <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
+          webmaster@internetuniverse.org
+        </a>
+        <a href="https://github.com/johnzfitch">
+          <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">
+          GitHub
+        </a>
+      </div>
+      <div class="footer-copy">John Zachary Fitch</div>
+    </div>
+  </footer>
+</body>
+</html>

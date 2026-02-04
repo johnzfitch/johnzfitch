@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghost in the Codex Machine - John Zachary Fitch</title>
+  <meta name="description" content="Case study: Fixing an invisible pre-main regression in OpenAI Codex that silently broke CUDA/MKL environments.">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="site-title">John Zachary Fitch</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="ghost.html" class="active">Case Study</a>
+        <a href="projects.html">Projects</a>
+        <a href="agent-tooling.html">Agent Tooling</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>Ghost in the Codex Machine</h1>
+        <p class="tagline">How a release-only pre-main change made CUDA/MKL tool calls quietly fall back to slow paths.</p>
+      </section>
+
+	      <section>
+	        <h2>Executive Summary</h2>
+	        <p>The symptom wasn't a crash. It was worse: "Codex feels slow" in certain real developer environments.</p>
+	        <p>In release builds, a pre-main hardening routine executed before <code>main()</code> and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. For a subset of users (CUDA, Conda/MKL, HPC module stacks, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex tool subprocesses. The downstream effect was dramatic but quiet: BLAS fell back to slow implementations; GPU workflows fell back to CPU; and engineers lost time chasing the wrong layer because nothing obviously "failed."</p>
+	        <p>I was able to trace the behavior back to the introducing change, reduce it to a minimal reproduction + representative measurements, and open an upstream issue that maintainers could validate quickly. The fix shipped and is called out in the rust-v0.80.0 release notes with attribution.</p>
+	
+	        <div class="panel">
+	          <div class="panel-header">If You Were Debugging This</div>
+	          <ul>
+	            <li>"It works in my terminal, but it's slow inside tool calls."</li>
+	            <li>No obvious error messages; the system just quietly falls back.</li>
+	            <li>Only reproduces in release builds and only for certain environment layouts.</li>
+	            <li>The smoking gun: environment variables differ inside subprocesses vs the user's shell.</li>
+	          </ul>
+	        </div>
+	
+	        <div class="panel">
+	          <div class="panel-header">Why Agent Builders Care</div>
+	          <ul>
+	            <li><strong>Tool correctness:</strong> Agents rely on subprocesses behaving like the user's environment.</li>
+	            <li><strong>Evaluation stability:</strong> Silent fallbacks create noisy perf profiles and flaky "it feels slow" reports.</li>
+	            <li><strong>Trust:</strong> If the substrate silently rewrites execution, higher-level behavior becomes harder to explain and debug.</li>
+	          </ul>
+	        </div>
+
+	        <div class="proof-links">
+	          <h4>Proof</h4>
+	          <ul>
+            <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a></li>
+            <li><img src="assets/icons/code.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
+            <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Release notes (rust-v0.80.0)</a></li>
+            <li><img src="assets/icons/globe.png" class="icon" width="16" height="16" alt=""> <a href="https://developers.openai.com/codex/changelog">Changelog entry</a></li>
+          </ul>
+        </div>
+
+        <div class="proof-links">
+          <h4>Related Context</h4>
+          <ul>
+            <li><img src="assets/icons/history.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/pull/4521">PR #4521 that introduced always-on pre-main hardening</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Timeline</h2>
+	        <div class="timeline">
+	          <div class="timeline-item">
+	            <div class="timeline-date">2025-09-30</div>
+	            <p>PR #4521 merges (process hardening executes pre-main in CLI release builds)</p>
+	          </div>
+	          <div class="timeline-item">
+	            <div class="timeline-date">2025-10-01</div>
+	            <p>First affected release ships (rust-v0.43.0)</p>
+	          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2025-10-31</div>
+            <p>Earlier "Ghosts in the Codex Machine" investigation published (useful context; this regression still remained)</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026-01-08</div>
+            <p>I open issue #8945 with root cause + reproduction + benchmarks</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026-01-09</div>
+            <p>Fix merged in PR #8951</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">2026-01-09+</div>
+            <p>Fix shipped in rust-v0.80.0 (release notes call-out)</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>The Problem</h2>
+        <h3>What Users Experienced</h3>
+        <p>When Codex runs tools (Python, Node, build systems, CLIs), it does so by spawning subprocesses. For dev workflows, the correct baseline is simple: subprocesses should inherit the developer's environment unless a specific policy says otherwise.</p>
+        <p>When <code>LD_LIBRARY_PATH</code> / <code>DYLD_LIBRARY_PATH</code> disappears, the failure mode is often not a clean error. Instead, the dynamic linker "finds something else," and performance collapses:</p>
+        <ul>
+          <li>BLAS libraries fall back to unaccelerated implementations.</li>
+          <li>CUDA tooling may fall back to CPU execution.</li>
+          <li>Some enterprise/custom libraries fail to load entirely.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Root Cause</h2>
+        <h3>Why This Was a "Ghost"</h3>
+        <p>The stripping happened before <code>main()</code> and before most instrumentation/logging was initialized:</p>
+        <ul>
+          <li>It was implemented as a pre-main constructor in release builds (<code>#[ctor::ctor]</code>-style behavior).</li>
+          <li>It was silent by default (no warning when variables were removed).</li>
+          <li>It only reproduced on specific environment layouts (non-RPATH installs, legacy Conda, HPC module stacks, custom vendor libraries).</li>
+          <li>Users could see <code>LD_LIBRARY_PATH</code> set correctly in their shell, but inside <code>codex exec</code> it was empty.</li>
+        </ul>
+      </section>
+
+	      <section>
+	        <h2>Evidence and Reproduction</h2>
+	        <h3>How I Proved It</h3>
+	        <p>I approached this like a systems regression: reduce the behavior to a small, testable claim and then measure the consequences.</p>
+	
+	        <div class="panel">
+	          <div class="panel-header">Minimal Repro (Conceptual)</div>
+	          <p>The core claim to test is simple: tool subprocesses should inherit the user's environment unless explicitly documented otherwise.</p>
+	          <pre><code># Outside the agent/tool runner (baseline)
+python -c "import os; print('LD_LIBRARY_PATH=', os.environ.get('LD_LIBRARY_PATH') or ''); print('DYLD_LIBRARY_PATH=', os.environ.get('DYLD_LIBRARY_PATH') or '')"
+
+# Inside the tool runner (should match baseline)
+codex exec -- python -c "import os; print('LD_LIBRARY_PATH=', os.environ.get('LD_LIBRARY_PATH') or ''); print('DYLD_LIBRARY_PATH=', os.environ.get('DYLD_LIBRARY_PATH') or '')"</code></pre>
+	          <p>If the inside value is empty (or different), downstream tooling can silently pick different dynamic libraries and fall back to slower paths.</p>
+	        </div>
+
+	        <ul>
+	          <li>Correlated the introducing change with reports consistent with "environment disappeared" behavior.</li>
+	          <li>Validated env var inheritance behavior directly inside subprocess tool calls.</li>
+	          <li>Used a small BLAS/CUDA-sensitive workload to quantify the performance impact of a library discovery fallback.</li>
+	          <li>Documented a minimal reproduction + representative measurements so maintainers could validate quickly.</li>
+	        </ul>
+	      </section>
+
+		      <section>
+		        <h2>The Fix</h2>
+		        <h3>What Shipped Upstream</h3>
+		        <p>Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.</p>
+		        <p>Stripping <code>LD_*</code> variables can reduce certain injection risks, but doing so by default in a dev-facing tool runner breaks correctness for legitimate workflows. I suggested the posture "opt-in maximum hardening." Upstream shipped a pragmatic equivalent:</p>
+		        <ul>
+		          <li>Remove pre-main hardening from the Codex CLI (restoring environment inheritance for subprocesses).</li>
+		          <li>Keep pre-main hardening in the responses API proxy where it is more appropriate.</li>
+		        </ul>
+		        <div class="panel" style="margin-top: 1rem;">
+		          <div class="panel-header">Collaboration</div>
+		          <ul>
+		            <li><strong>My contribution:</strong> isolate the root cause, produce a minimal repro, attach representative measurements, and write an issue maintainers could validate quickly.</li>
+		            <li><strong>Upstream outcome:</strong> fix merged and shipped; behavior called out in release notes.</li>
+		          </ul>
+		        </div>
+		        <div class="panel" style="margin-top: 1rem;">
+		          <div class="panel-header">Release Notes</div>
+		          <p><strong>Release notes excerpt:</strong></p>
+		          <blockquote>
+	            <p>"Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."</p>
+	          </blockquote>
+		          <figure class="screenshot-figure">
+		            <img src="assets/images/codex-release-notes-credit.png" class="screenshot-img" width="706" height="120" loading="lazy" alt="Release notes screenshot mentioning LD_LIBRARY_PATH/DYLD_LIBRARY_PATH inheritance and crediting @johnzfitch.">
+		            <figcaption class="screenshot-caption">Release notes screenshot (credit + technical summary).</figcaption>
+		          </figure>
+	        </div>
+	      </section>
+
+      <section>
+        <h2>Measured Impact</h2>
+        <p>Performance varies by workload and environment. The key point is the failure mode: stripping env vars can force slow, silent fallbacks.</p>
+        <p>Representative measurements from my verification:</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Workload</th>
+                <th>Before</th>
+                <th>After</th>
+                <th>Speedup</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>MKL/BLAS (repro harness)</td>
+                <td>~2.71s</td>
+                <td>~0.239s</td>
+                <td>11.3x</td>
+              </tr>
+              <tr>
+                <td>CUDA workflows (library discovery / GPU fallback)</td>
+                <td>100x-300x slower</td>
+                <td>restored</td>
+                <td>varies</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Why This Matters</h2>
+        <h3>Beyond One Bug</h3>
+        <p>This is the kind of engineering failure that only shows up in real-world environments:</p>
+        <ul>
+          <li><strong>Subprocess correctness is a product feature:</strong> tools must behave the same "inside Codex" as they do in the user's terminal.</li>
+          <li><strong>Security controls must be explicit, not surprising.</strong></li>
+          <li><strong>Performance regressions can hide inside "correct" behavior</strong> when the system silently falls back.</li>
+          <li><strong>When the substrate is wrong, everything built on top of it pays the tax</strong> (tooling, orchestration, higher-level features).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What This Demonstrates</h2>
+        <h3>Recruiter-Relevant</h3>
+        <ul>
+          <li>Deep systems debugging (pre-main execution, env inheritance, dynamic linking)</li>
+          <li>Performance engineering with hard evidence</li>
+          <li>Security tradeoff reasoning grounded in practical threat models</li>
+          <li>High-quality upstream collaboration (clear issue, reproducible repro, verified fix, shipped release)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Why This Helped Shipping Velocity</h2>
+        <p>Substrate bugs are expensive because they distort everything built on top:</p>
+        <ul>
+          <li>Tool calls become slower or flakier for affected environments.</li>
+          <li>Performance investigations get noisy (it looks like "model slowness" or "network issues").</li>
+          <li>Higher-level features that rely on predictable tool execution (orchestration, planning, collaboration) become harder to validate.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What I Would Add Next</h2>
+        <h3>Engineering Hygiene</h3>
+        <ul>
+          <li>Integration tests asserting env var inheritance for subprocess execution</li>
+          <li>A documented "secure mode" switch with explicit tradeoffs</li>
+          <li>A debug command to dump the effective execution environment (for users and support)</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:webmaster@internetuniverse.org">
+          <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
+          webmaster@internetuniverse.org
+        </a>
+        <a href="https://github.com/johnzfitch">
+          <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">
+          GitHub
+        </a>
+      </div>
+      <div class="footer-copy">John Zachary Fitch</div>
+    </div>
+  </footer>
+</body>
+</html>

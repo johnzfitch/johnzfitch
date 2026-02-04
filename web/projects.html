@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selected Work - John Zachary Fitch</title>
+  <meta name="description" content="Recruiter-relevant projects across agent tooling, systems performance, ML/detection, and privacy-first infrastructure.">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="site-title">John Zachary Fitch</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="ghost.html">Case Study</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="agent-tooling.html">Agent Tooling</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>Selected Work</h1>
+        <p class="tagline">Recruiter-relevant projects across agent tooling, systems performance, ML/detection, and privacy-first infrastructure. I keep this list intentionally curated.</p>
+      </section>
+
+      <section>
+        <h2>Recent Upstream Impact</h2>
+        <div class="panel">
+          <div class="panel-header">OpenAI Codex</div>
+          <h3>"Ghost in the Codex Machine" Fix</h3>
+          <p>Root-caused and fixed a pre-main environment regression that stripped <code>LD_*</code> / <code>DYLD_*</code> env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.</p>
+          <div class="proof-links">
+            <h4>Proof</h4>
+            <ul>
+              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a></li>
+              <li><img src="assets/icons/code.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
+              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Shipped: rust-v0.80.0 release notes (with attribution)</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Agent Tooling (LLM-Centric)</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
+            <div class="stack">Rust / WASM</div>
+            <p><strong>What:</strong> Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).</p>
+            <p><strong>Why it matters:</strong> Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a> <span class="muted">(includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</span></h3>
+            <div class="stack">Rust</div>
+            <p><strong>What:</strong> An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.</p>
+            <p><strong>Why it matters:</strong> Codifies the "agent edit loop" into explicit, debuggable steps.</p>
+            <p><strong>Primary repo (pin this on GitHub):</strong> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></p>
+            <p><strong>Patch engine (linked inside):</strong> <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
+            <div class="stack">Claude Code Plugin</div>
+            <p><strong>What:</strong> Claude Code plugin for the Burn deep learning framework (skills + workflows + evidence-driven references).</p>
+            <p><strong>Why it matters:</strong> Demonstrates how to package domain expertise into an agent workflow that can be reused.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> cwork</h3>
+            <div class="stack">Private (available on request)</div>
+            <p><strong>What:</strong> A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.</p>
+            <p><strong>Why it matters:</strong> Skill systems and context management are where multi-repo agent workflows succeed or fail.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
+            <div class="stack">Linux</div>
+            <p><strong>What:</strong> Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.</p>
+            <p><strong>Why it matters:</strong> Practical agent workflow enablement (Linux-first, security-aware).</p>
+            <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/image.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/iconics">Iconics</a></h3>
+            <div class="stack">Python</div>
+            <p><strong>What:</strong> Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons.</p>
+            <p><strong>Why it matters:</strong> Professional documentation UX at scale (and it's agent-friendly: meaning-based search, deterministic exports).</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>MCP Servers (Tool Surfaces for Agents)</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
+            <div class="stack">Python / MCP</div>
+            <p><strong>What:</strong> Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).</p>
+            <p><strong>Registry:</strong> Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
+            <p><strong>Why it matters:</strong> In practice, reliable agents are tool-driven. MCP servers are how you turn a complex system into a safe, inspectable interface.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Systems Performance (Real Data Structures, Real Constraints)</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/lightning.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/triglyph">Triglyph / Triglyphd</a></h3>
+            <div class="stack">Rust</div>
+            <p><strong>What:</strong> Zero-RSS trigram index with custom binary formats + a D-Bus daemon for system-wide search.</p>
+            <p><strong>Why it matters:</strong> Low-level performance engineering (mmap, layout, predictable latency).</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/folder.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/filearchy">filearchy</a></h3>
+            <div class="stack">Rust (fork)</div>
+            <p><strong>What:</strong> COSMIC Files fork with io_uring backend and trigram search integration.</p>
+            <p><strong>Why it matters:</strong> Applies systems work in a real product surface (UX + async I/O + search).</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>ML / Detection (Algorithm-First, Production-Aware)</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/eye.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/observatory">Observatory</a></h3>
+            <div class="stack">WebGPU</div>
+            <p><strong>What:</strong> AI image detection suite running 4 models entirely client-side (WebGPU/WASM).</p>
+            <p><strong>Why it matters:</strong> Real product constraints: model size, caching, orchestration, UX, and "no server required."</p>
+            <p><strong>Live:</strong> <a href="https://look.definitelynot.ai">look.definitelynot.ai</a></p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/chart.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/specho-v2">SpecHO v2</a></h3>
+            <div class="stack">Python</div>
+            <p><strong>What:</strong> 161-dimensional linguistic fingerprinting system for AI text detection and model identification (tiered feature pipeline).</p>
+            <p><strong>Why it matters:</strong> Algorithm-first features, measured discriminators, and clear engineering of runtime tiers.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Security and Privacy (Defensive)</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></h3>
+            <div class="stack">PHP / JS</div>
+            <p><strong>What:</strong> Unicode-security-aware text sanitizer with Trojan Source defense, homoglyph mitigation, and BiDi neutralization.</p>
+            <p><strong>Why it matters:</strong> Practical security tooling with a clear UX and an API for integration.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Infrastructure (Self-Hosted)</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/server.png" class="icon" width="16" height="16" alt=""> digitaldelusion</h3>
+            <div class="stack">Private</div>
+            <p><strong>What:</strong> Bare-metal NixOS infrastructure with authoritative DNS, automated wildcard certs (DNS-01 / RFC2136), and post-quantum VPN (WireGuard + Rosenpass).</p>
+            <p><strong>Why it matters:</strong> Demonstrates production ops maturity, reproducibility, and security-first design.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Writing / Research (Available on Request)</h2>
+        <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/document.png" class="icon" width="16" height="16" alt=""> AURORA Protocol</h3>
+            <div class="stack">Draft spec + thesis-style artifacts</div>
+            <p><strong>What:</strong> Design work on robust agent communication in hostile networks (message framing, discovery, encryption-by-default, federation).</p>
+            <p><strong>Why it matters:</strong> Systems thinking across protocols, security, and agent interoperability.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Selected Private Work (Names Only)</h2>
+        <ul>
+          <li>eero (private)</li>
+          <li>alienware-monitor (private)</li>
+          <li>proxyforge (private)</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:webmaster@internetuniverse.org">
+          <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
+          webmaster@internetuniverse.org
+        </a>
+        <a href="https://github.com/johnzfitch">
+          <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">
+          GitHub
+        </a>
+      </div>
+      <div class="footer-copy">John Zachary Fitch</div>
+    </div>
+  </footer>
+</body>
+</html>

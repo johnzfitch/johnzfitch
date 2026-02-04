@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infrastructure - John Zachary Fitch</title>
+  <meta name="description" content="Bare-metal NixOS, authoritative DNS, and post-quantum-ready security - built and operated end-to-end.">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="site-title">John Zachary Fitch</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="ghost.html">Case Study</a>
+        <a href="projects.html">Projects</a>
+        <a href="agent-tooling.html">Agent Tooling</a>
+        <a href="infrastructure.html" class="active">Infrastructure</a>
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="hero">
+        <h1>Infrastructure</h1>
+        <p class="tagline">Bare-metal NixOS, authoritative DNS, and post-quantum-ready security - built and operated end-to-end.</p>
+      </section>
+
+      <section>
+        <p>I run my own production infrastructure because I care about three things: data sovereignty, reliability, and systems that behave predictably under failure.</p>
+        <p>Everything is declarative. Everything is reproducible. If something breaks, rollback is a boot-menu option, not a weekend.</p>
+      </section>
+
+      <section>
+        <h2>What I Run (High-Level)</h2>
+        <ul>
+          <li><strong>Hardware:</strong> Dedicated bare-metal host (details available on request).</li>
+          <li>Dedicated NixOS host with reproducible configuration (flakes), atomic upgrades, and rollbacks.</li>
+          <li>Multi-IP, multi-subnet design for redundancy and failure isolation.</li>
+          <li>Authoritative DNS (BIND9) with recursion disabled, rate limiting, and tightly-scoped zone transfer policies.</li>
+          <li>Automated wildcard TLS via DNS-01 using RFC2136 dynamic updates (TSIG-authenticated) so cert renewals are hands-off.</li>
+          <li>Reverse proxy and HTTPS termination via Caddy, including HTTP/3.</li>
+          <li>Rootless containers (Podman) managed declaratively through NixOS/systemd.</li>
+          <li>Encrypted secrets (agenix) and automated backups with retention policies.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Post-Quantum Security (Pragmatic, Layered)</h2>
+        <p>Post-quantum is a moving target, so the design is defense-in-depth:</p>
+        <ul>
+          <li><strong>Post-quantum/hybrid SSH key exchange</strong> (OpenSSH <code>sntrup761x25519-sha512@openssh.com</code>).</li>
+          <li><strong>WireGuard VPN with a Rosenpass post-quantum key exchange overlay</strong> (PSK rotation on the order of minutes), designed to mitigate "store now, decrypt later."</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>DNS Redundancy (Why It's Not Just "I Run BIND")</h2>
+        <p>The design goal is resilience when the most common failure modes happen:</p>
+        <ul>
+          <li>One IP is unreachable.</li>
+          <li>One subnet is degraded.</li>
+          <li>A full data center or provider has issues.</li>
+        </ul>
+
+        <div class="panel">
+          <div class="panel-header">Redundancy Model (Simplified)</div>
+          <ul>
+            <li><strong>Layer 1:</strong> Self-hosted authoritative DNS (multi-IP, multi-subnet)</li>
+            <li><strong>Layer 2:</strong> Secondary authoritative DNS provider (geographic diversity)</li>
+            <li><strong>Layer 3:</strong> Client resolver failover across all NS records</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Services (Public Examples)</h2>
+        <ul>
+          <li><a href="https://definitelynot.ai">definitelynot.ai</a> - Unicode-security tooling and demos</li>
+          <li><a href="https://look.definitelynot.ai">look.definitelynot.ai</a> - WebGPU ML demo ("Observatory")</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Why This Matters (Recruiter-Relevant)</h2>
+        <ul>
+          <li><strong>Production operations:</strong> monitoring, backups, rollback, incident-friendly design.</li>
+          <li><strong>Security posture:</strong> explicit threat modeling and layered controls, not checkbox security.</li>
+          <li><strong>Systems thinking:</strong> DNS, TLS automation, firewalling, and deployment all treated as one system.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:webmaster@internetuniverse.org">
+          <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
+          webmaster@internetuniverse.org
+        </a>
+        <a href="https://github.com/johnzfitch">
+          <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">
+          GitHub
+        </a>
+      </div>
+      <div class="footer-copy">John Zachary Fitch</div>
+    </div>
+  </footer>
+</body>
+</html>

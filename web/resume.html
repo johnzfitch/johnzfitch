@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Resume - John Zachary Fitch</title>
+	  <meta name="description" content="I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about.">
+	  <link rel="stylesheet" href="assets/css/site.css">
+	</head>
+<body class="resume-page">
+  <header>
+    <div class="container">
+      <a href="index.html" class="site-title">John Zachary Fitch</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="ghost.html">Case Study</a>
+        <a href="projects.html">Projects</a>
+        <a href="agent-tooling.html">Agent Tooling</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="resume.html" class="active">Resume</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+		      <section class="hero">
+		        <h1>John Zachary Fitch</h1>
+		        <p class="tagline">Agent tooling | systems performance | privacy-first infrastructure</p>
+		        <p>I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.</p>
+		      </section>
+
+	      <section>
+	        <h2>Recent Highlight (Jan 2026)</h2>
+	        <div class="panel">
+	          <div class="panel-header">OpenAI Codex</div>
+	          <h3>Ghost in the Codex Machine</h3>
+	          <p>Investigated and helped fix an "invisible" release-only regression where a pre-main constructor stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables, breaking CUDA/MKL library discovery inside tool subprocesses. Shipped upstream with release-notes credit.</p>
+	          <div class="proof-links">
+	            <h4>Proof</h4>
+	            <ul>
+	              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a> - <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
+	              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Shipped + credited in rust-v0.80.0</a></li>
+	            </ul>
+	          </div>
+		          <h4>Representative impact</h4>
+	          <ul>
+	            <li>MKL/BLAS (repro harness): ~2.71s -&gt; ~0.239s (11.3x)</li>
+	            <li>CUDA workflows: restored expected library discovery to avoid CPU fallback in affected setups</li>
+	          </ul>
+	          <p><strong>Release notes excerpt:</strong></p>
+	          <blockquote>
+	            <p>"Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."</p>
+	          </blockquote>
+	        </div>
+	      </section>
+
+      <section>
+        <h2>Core Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h4><img src="assets/icons/rust.png" class="icon" width="16" height="16" alt=""> Rust</h4>
+            <p>Performance-critical systems, CLI tools, data structures, correctness-oriented engineering</p>
+          </div>
+          <div class="skill-category">
+            <h4><img src="assets/icons/python.png" class="icon" width="16" height="16" alt=""> Python</h4>
+            <p>Tooling, analysis pipelines, automation, reproducible experiments</p>
+          </div>
+          <div class="skill-category">
+            <h4><img src="assets/icons/globe.png" class="icon" width="16" height="16" alt=""> Web</h4>
+            <p>WebGPU/WASM applications, client-side ML inference, offline-first UX</p>
+          </div>
+          <div class="skill-category">
+            <h4><img src="assets/icons/server.png" class="icon" width="16" height="16" alt=""> Systems</h4>
+            <p>Linux, NixOS, DNS, TLS automation, containerized services, security hardening</p>
+          </div>
+          <div class="skill-category">
+            <h4><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> Agent Integration</h4>
+            <p>MCP servers, skill/plugin packaging, tool-driven workflows</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Selected Projects (Public)</h2>
+        <ul>
+          <li><strong><a href="https://github.com/johnzfitch/llmx">llmx</a></strong> (Rust/WASM) - local-first codebase indexing + semantic chunk exports for agents</li>
+	          <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust) - optimized, patched Codex builds (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</li>
+          <li><strong><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></strong> - Claude Code plugin + skills for the Burn deep learning framework</li>
+          <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> - token-efficient MCP server for tool-driven program analysis (official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code>, v0.1.1)</li>
+          <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> - run the official Claude Desktop app on Linux with sandboxing</li>
+          <li><strong><a href="https://look.definitelynot.ai">Observatory</a></strong> (WebGPU) - client-side AI image detection (live)</li>
+          <li><strong><a href="https://github.com/johnzfitch/specho-v2">SpecHO v2</a></strong> (Python) - 161D linguistic fingerprinting for AI text detection</li>
+          <li><strong><a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></strong> (PHP/JS) - Unicode-security-aware sanitizer + API</li>
+          <li><strong><a href="https://github.com/johnzfitch/iconics">Iconics</a></strong> (Python) - semantic icon library for professional docs (8k+ icons)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Infrastructure (Self-Hosted)</h2>
+        <p>I operate production infrastructure on bare metal with:</p>
+        <ul>
+          <li>Declarative NixOS configuration (reproducible, atomic upgrades, rollbacks)</li>
+          <li>Authoritative DNS and automated wildcard certificates (DNS-01 / RFC2136)</li>
+          <li>Post-quantum security layers (hybrid SSH KEX, WireGuard + Rosenpass)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Education</h2>
+        <p><strong>UC Berkeley</strong> - Mathematics</p>
+      </section>
+
+      <section>
+        <h2>What I'm Looking For</h2>
+        <p>Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.</p>
+      </section>
+
+      <div class="cta-group" style="margin-top: 2rem;">
+        <a href="resume.pdf" class="cta cta-primary">
+          <img src="assets/icons/document.png" class="icon" width="16" height="16" alt="">
+          Download PDF
+        </a>
+        <a href="contact.html" class="cta cta-secondary">
+          <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
+          Contact
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="mailto:webmaster@internetuniverse.org">
+          <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
+          webmaster@internetuniverse.org
+        </a>
+        <a href="https://github.com/johnzfitch">
+          <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">
+          GitHub
+        </a>
+      </div>
+      <div class="footer-copy">John Zachary Fitch</div>
+    </div>
+  </footer>
+</body>
+</html>

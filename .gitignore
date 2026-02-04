@@ -2,3 +2,7 @@
 # Note: files already tracked by git under these paths will remain tracked until explicitly untracked.
 .github/assets/
 icons/enhanced/
+
+# Node (resume site tooling)
+node_modules/
+npm-debug.log

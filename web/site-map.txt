@@ -1,0 +1,14 @@
+SITE MAP (Proposed)
+
+Navigation order (top nav)
+1. Home (index.html)
+2. Case Study (ghost.html) - "Ghost in the Codex Machine"
+3. Projects (projects.html)
+4. Agent Tooling (agent-tooling.html)
+5. Infrastructure (infrastructure.html)
+6. Resume (resume.html)
+7. Contact (contact.html)
+
+Optional (only if you want more depth later)
+- Writing (writing.html): protocol notes, technical essays (AURORA, etc.)
+- Talks (talks.html): if you add recordings or slide decks
