@@ -71,6 +71,12 @@ The bug was designed to be invisible:
 - **Wrong search space** — Team was debugging post-main application code
 
 Standard debugging tools can't see pre-main execution. Profilers start at `main()`. Log hooks aren't initialized yet. The code executes, modifies the environment, and vanishes.
+    johnzfitch
+
+/
+in
+main
+
 
 ---
 
@@ -90,6 +96,7 @@ Standard debugging tools can't see pre-main execution. Profilers start at `main(
 When the tools are blind, the system lies, and everyone else has stopped looking for it. This is class of problem I specialize in.
 </details>
 ---
+
 Software engineer with mathematics background specializing in systems programming, security research, and AI/ML applications. I build production tools across the full stack—from WebGPU-accelerated browser application to Rust CLI tools to bare-metal NixOS infrastructure.
   
 **More Projects:**
@@ -100,8 +107,6 @@ Software engineer with mathematics background specializing in systems programmin
 - **[indepacer](https://github.com/johnzfitch/indepacer)** - PACER CLI for federal court research *(PyPI: pacersdk)*
 
 Self-hosting bare-metal infrastructure (NixOS) with post-quantum cryptography (ML-KEM, Rosenpass VPN), authoritative DNS, and containerized services.
-
-**Philosophy:** AI as augmentation, not replacement. Privacy by default. Ship tools that make people better at their jobs.
 
 ---
 
