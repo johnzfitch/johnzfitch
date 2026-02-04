@@ -10,20 +10,95 @@
 
 ---
 
-## OpenAI Codex: Ghost Regression
+### OpenAI Codex: Finding the Ghost in the Machine
 
-Investigated and helped fix a Codex CLI release-build regression where a pre-main hardening routine stripped `LD_*` / `DYLD_*` environment variables. In CUDA/Conda/MKL/HPC-style environments, Codex tool subprocesses could silently lose dynamic library search paths and fall back to dramatically slower execution (often without an obvious error).
+**TL;DR**: Solved a pre-`main()` environment stripping bug causing 11-300x GPU slowdowns that eluded OpenAI's debugging team for months.<sup>[[Issue #8945](https://github.com/openai/codex/issues/8945)] [[PR #8951](https://github.com/openai/codex/pull/8951)]</sup>
 
-- Proof: Issue #8945 (https://github.com/openai/codex/issues/8945) | PR #8951 (https://github.com/openai/codex/pull/8951)
-- Shipped + credited: rust-v0.80.0 release notes (https://github.com/openai/codex/releases/tag/rust-v0.80.0)
-- Representative impact: MKL repro harness ~2.71s -> ~0.239s (11.3x); CUDA can fall back to CPU (100x-300x slower, workload-dependent)
+<details>
+<summary><b>Full Investigation Details</b></summary>
+
+<br>
+
+## The Ghost
+
+In October 2025, OpenAI assembled a specialized debugging team to investigate mysterious slowdowns affecting **Codex**—their own coding tool they use to write OpenAI's code. After a week of intensive investigation: **nothing**.
+
+The bug was literally a ghost—`pre_main_hardening()` executed before `main()`, stripped critical environment variables (`LD_LIBRARY_PATH`, `DYLD_LIBRARY_PATH`), and disappeared without a trace. Standard profilers saw nothing. Users saw variables in their shell, but inside `codex exec` they vanished.
+
+---
+
+## The Hunt
+
+Within **3 days** of their announcement, I identified the problematic commit<sup>[PR #4521](https://github.com/openai/codex/pull/4521)</sup> and contacted [@tibo-openai](https://twitter.com/tibo_openai).
+
+But identification isn't proof. I spent **2 months** building an undeniable case:
+
+### Timeline
+- **Sept 30, 2025** — PR #4521 merges, enabling `pre_main_hardening()` in release builds
+- **Oct 1, 2025** — `rust-v0.43.0` ships (first affected release)
+- **Oct 6, 2025** — First "painfully slow" regression reports
+- **Oct 1-29, 2025** — Spike in env/PATH inheritance issues across platforms
+- **Oct 29, 2025** — Emergency PATH fix lands (didn't catch root cause)
+- **Late Oct 2025** — OpenAI's specialized team investigates, declares there is no root cause, identifies issue as user behavior change. 
+- **Jan 9, 2026** — My fix merged, credited in release notes
+
+### Evidence Collected
+
+| Platform | Issues | Failure Mode |
+|----------|--------|--------------|
+| **macOS** | #6012, #5679, #5339, #6243, #6218 | `DYLD_*` stripping breaking dynamic linking |
+| **Linux/WSL2** | #4843, #3891, #6200, #5837, #6263 | `LD_LIBRARY_PATH` stripping → silent CUDA/MKL degradation |
+
+**Compiled evidence packages:**
+- Platform-specific failure modes and reproduction steps
+- Quantifiable performance regressions (11-300x) with benchmarks
+- Pattern analysis across 15+ scattered user reports over 3 months
+- Process environment inheritance trace through fork/exec boundaries
+
+> 📄 [Comprehensive Technical Analysis](https://github.com/user-attachments/files/24510983/GITHUB_ISSUE_DETAILED.md)  
+> 📄 [Investigation Methodology](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit)
+
+---
+
+## Why Conventional Debugging Failed
+
+The bug was designed to be invisible:
+
+- **Pre-main execution** — Used `#[ctor::ctor]` to run before `main()`, before any logging/instrumentation
+- **Silent stripping** — No warnings, no errors, just missing environment variables
+- **Distributed symptoms** — Appeared as unrelated issues across different platforms/configs
+- **User attribution** — Everyone assumed *they* misconfigured something (shell looked fine!)
+- **Wrong search space** — Team was debugging post-main application code
+
+Standard debugging tools can't see pre-main execution. Profilers start at `main()`. Log hooks aren't initialized yet. The code executes, modifies the environment, and vanishes.
+
+---
+
+## The Impact
+
+**OpenAI confirmed and merged the fix within 24 hours**, explicitly crediting the investigation in v0.80.0 release notes on github and the webpage<sup>[[rust-v0.80.0](https://github.com/openai/codex/releases/tag/rust-v0.80.0)]</sup>:
+
+> *"Codex CLI subprocesses again inherit env vars like LD_LIBRARY_PATH/DYLD_LIBRARY_PATH to avoid runtime issues. As explained in #8945, failure to pass along these environment variables to subprocesses that expect them (notably GPU-related ones), was causing 10x+ performance regressions! Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."*
+
+**Restored:**
+- GPU acceleration for their own internal ML/AI development teams
+- CUDA/PyTorch functionality for ML researchers globally
+- MKL/NumPy performance for scientific computing users
+- Conda environment compatibility
+- Enterprise database driver support
+
+---
+When everyone else has stopped looking because all of their tools are blind, I reason that the system must be lying. This is the class of problem I specialize in.**
+
+</details>
 
 ---
 
 
 Software engineer with mathematics background specializing in systems programming, security research, and AI/ML applications. I build production tools across the full stack—from WebGPU-accelerated browser application to Rust CLI tools to bare-metal NixOS infrastructure.
-
-**What I ship:**
+  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>
+  
+**More Projects:**
 - **[Observatory](https://look.definitelynot.ai)** - WebGPU deepfake detection running 4 ML models in-browser *(live demo)*
 - **[specHO](https://github.com/johnzfitch/specHO)** - LLM watermark detection via phonetic/semantic analysis *(The Echo Rule)*
 - **[filearchy](https://github.com/johnzfitch/filearchy)** - COSMIC Files fork with sub-10ms trigram search *(Rust)*
@@ -191,9 +266,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 ## <img src=".github/assets/icons/compass.png" width="24" height="24"> Philosophy
 
-AI should expand human capability, not replace workers. I call it **additive innovation**: build tools that make people better at their jobs, not tools that eliminate their jobs.
-
-The best way to predict AI's impact is to build the tools that shape it.
+The best way to predict AI's impact is to build tools that shape it.
 
 ---
 
