@@ -1,0 +1,243 @@
+[config]
+github_owner = "johnzfitch"
+
+[[categories]]
+id = "ai_ml"
+title = "AI / ML"
+icon = "ai-brain.png"
+
+  [[categories.projects]]
+  id = "observatory"
+  title = "observatory"
+  repo = "johnzfitch/observatory"
+  demo = "https://look.definitelynot.ai"
+  desc = "WebGPU deepfake detection; 4 ML models client-side."
+  tags = ["JS", "WebGPU", "ONNX"]
+
+  [[categories.projects]]
+  id = "specho"
+  title = "specHO"
+  repo = "johnzfitch/specHO"
+  demo = "https://definitelynot.ai"
+  desc = "LLM detection via phonetic/semantic analysis (Echo Rule)."
+  tags = ["Python", "NLP"]
+
+  [[categories.projects]]
+  id = "definitelynot"
+  title = "definitelynot.ai"
+  repo = "johnzfitch/definitelynot.ai"
+  demo = "https://definitelynot.ai"
+  desc = "Unicode security (Trojan Source, homoglyph, BiDi defense)."
+  tags = ["PHP", "JS", "ICU"]
+
+  [[categories.projects]]
+  id = "marginium"
+  title = "marginium"
+  repo = "johnzfitch/marginium"
+  desc = "Multimodal generation with visual-output awareness."
+  tags = ["Python"]
+
+  [[categories.projects]]
+  id = "gemini_cli"
+  title = "gemini-cli"
+  repo = "johnzfitch/gemini-cli"
+  desc = "Privacy-enhanced Gemini CLI fork; telemetry disabled."
+  tags = ["TS", "Node"]
+
+[[categories]]
+id = "security"
+title = "Security Research"
+icon = "lock.png"
+
+  [[categories.projects]]
+  id = "eero"
+  title = "eero"
+  private = true
+  desc = "Mesh WiFi router security analysis; HackerOne prep."
+  tags = ["Python", "Wireshark"]
+
+  [[categories.projects]]
+  id = "blizzarchy"
+  title = "blizzarchy"
+  private = true
+  desc = "Battle.net OAuth analysis and telemetry RE."
+  tags = ["Rust", "Python", "Ghidra"]
+
+  [[categories.projects]]
+  id = "featherarchy"
+  title = "featherarchy"
+  repo = "johnzfitch/featherarchy"
+  desc = "Security-hardened Monero wallet fork."
+  tags = ["C++", "Qt6"]
+
+  [[categories.projects]]
+  id = "alienware_monitor"
+  title = "alienware-monitor"
+  private = true
+  desc = "Dell monitor firmware RE; GSFW decoder."
+  tags = ["Python", "Ghidra"]
+
+  [[categories.projects]]
+  id = "proxyforge"
+  title = "proxyforge"
+  private = true
+  desc = "Transparent MITM proxy; TLS interception."
+  tags = ["Python", "mitmproxy"]
+
+[[categories]]
+id = "systems"
+title = "Systems Programming"
+icon = "script.png"
+
+  [[categories.projects]]
+  id = "filearchy"
+  title = "filearchy"
+  repo = "johnzfitch/filearchy"
+  desc = "COSMIC Files fork with embedded trigram search."
+  tags = ["Rust", "libcosmic"]
+
+  [[categories.projects]]
+  id = "triglyph"
+  title = "triglyph"
+  repo = "johnzfitch/triglyph"
+  desc = "Zero-RSS trigram index library (mmap, near-zero resident memory)."
+  tags = ["Rust", "memmap2"]
+
+  [[categories.projects]]
+  id = "triglyphd"
+  title = "triglyphd"
+  repo = "johnzfitch/triglyphd"
+  desc = "D-Bus daemon for system-wide search."
+  tags = ["Rust", "zbus"]
+
+  [[categories.projects]]
+  id = "nautilus_plus"
+  title = "nautilus-plus"
+  repo = "johnzfitch/nautilus-plus"
+  desc = "Enhanced GNOME Files with thumbnails and search caching."
+  tags = ["C", "GTK4"]
+
+  [[categories.projects]]
+  id = "search_cache"
+  title = "search-cache"
+  repo = "johnzfitch/search-cache"
+  desc = "HashMap-based file indexing; sub-ms search for large trees."
+  tags = ["Rust", "DashMap"]
+
+  [[categories.projects]]
+  id = "cod3x"
+  title = "cod3x"
+  repo = "johnzfitch/cod3x"
+  desc = "Terminal coding agent with 3D ASCII UI."
+  tags = ["Rust", "SQLite"]
+
+  [[categories.projects]]
+  id = "bitmail"
+  title = "bitmail"
+  private = true
+  desc = "Modern Bitmessage client with Python CLI and Rust TUI."
+  tags = ["Python", "Rust"]
+
+[[categories]]
+id = "cli"
+title = "CLI Tools"
+icon = "console.png"
+
+  [[categories.projects]]
+  id = "indepacer"
+  title = "indepacer"
+  repo = "johnzfitch/indepacer"
+  desc = "PACER CLI for federal court research; MFA and cost protection."
+  tags = ["Python", "Click", "Rich"]
+
+  [[categories.projects]]
+  id = "iconics"
+  title = "iconics"
+  repo = "johnzfitch/iconics"
+  desc = "Semantic PNG icon library with CLI discovery and export."
+  tags = ["Python"]
+
+  [[categories.projects]]
+  id = "gemini_sharp"
+  title = "gemini-sharp"
+  repo = "johnzfitch/gemini-sharp"
+  desc = "Single-file Gemini CLI binaries; multiple themes."
+  tags = ["C#", ".NET"]
+
+[[categories]]
+id = "desktop"
+title = "Desktop / Linux"
+icon = "cinema-display.png"
+
+  [[categories.projects]]
+  id = "omarchy"
+  title = "omarchy"
+  repo = "johnzfitch/omarchy"
+  desc = "Omarchy fork: Waybar RSS, NVIDIA config, compact UI."
+  tags = ["Hyprland", "Shell"]
+
+  [[categories.projects]]
+  id = "waybar_config"
+  title = "waybar-config"
+  repo = "johnzfitch/waybar-config"
+  desc = "Waybar RSS ticker for FreshRSS with hover-pause."
+  tags = ["JSON", "CSS", "Shell"]
+
+  [[categories.projects]]
+  id = "claude_desktop_arch"
+  title = "claude-desktop-arch"
+  repo = "johnzfitch/claude-desktop-arch"
+  desc = "Claude Code preview patch for Arch Linux."
+  tags = ["JS", "Shell"]
+
+  [[categories.projects]]
+  id = "qualcomm_x870e_bug_patch"
+  title = "qualcomm-x870e-linux-bug-patch"
+  repo = "johnzfitch/qualcomm-x870e-linux-bug-patch"
+  desc = "WiFi 7 firmware fix for WCN7850 on X870E."
+  tags = ["Python", "ACPI"]
+
+  [[categories.projects]]
+  id = "arch_dependency_matrices"
+  title = "arch-dependency-matrices"
+  repo = "johnzfitch/arch-dependency-matrices"
+  desc = "Graph theory analysis of 1,553 Arch packages."
+  tags = ["Python", "NumPy"]
+
+[[categories]]
+id = "web_mobile"
+title = "Web / Mobile"
+icon = "smartphone.png"
+
+  [[categories.projects]]
+  id = "network_batcher"
+  title = "NetworkBatcher"
+  repo = "johnzfitch/NetworkBatcher"
+  desc = "Energy-efficient network batching for iOS 26+."
+  tags = ["Swift"]
+
+  [[categories.projects]]
+  id = "liberty_links"
+  title = "Liberty-Links"
+  repo = "johnzfitch/Liberty-Links"
+  desc = "Tracker-free, privacy-respecting link alternatives."
+  tags = ["Markdown"]
+
+[[categories]]
+id = "infra"
+title = "Infrastructure"
+icon = "server.png"
+
+  [[categories.projects]]
+  id = "nixos_server"
+  title = "NixOS Server"
+  private = true
+  desc = "Bare-metal: post-quantum SSH, Rosenpass VPN, authoritative DNS."
+  tags = ["Nix", "agenix"]
+
+  [[categories.projects]]
+  id = "unbound_config"
+  title = "unbound-config"
+  private = true
+  desc = "Recursive DNS with DNSSEC and ad/tracker blocking."
+  tags = ["Unbound", "Shell"]
