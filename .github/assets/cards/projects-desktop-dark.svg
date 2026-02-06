@@ -35,7 +35,7 @@
   </g>
 
   <text x="28" y="62" class="title">PROJECT DASHBOARD</text>
-  <text x="28" y="84" class="meta">Signal: 8 stars | Last push: 2026-02-04 | Layout: desktop</text>
+  <text x="28" y="84" class="meta">Signal: 7 stars | Last push: 2026-02-04 | Layout: desktop</text>
 
 <rect x="28" y="108" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
 <image x="38" y="113" width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAACYktHRAD/h4/MvwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+kMFwMpDLoXD1QAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjUtMTItMjNUMDM6NDE6MTIrMDA6MDAS1u11AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDI1LTEyLTIzVDAzOjQxOjEyKzAwOjAwY4tVyQAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyNS0xMi0yM1QwMzo0MToxMiswMDowMDSedBYAAAHNSURBVDjLlZK/ixNBFMc/M7O7iTFmSbi7xOMqWxsF0UPExlYU/wDRxkpRrER7QdDO2uL+Br3aiJVcpSAHdir+2DMRcpdk7zaz8yySM7vZBPRNM/t4n33v+74D/xlqet3AERAQUCUoFCb0MVyeAi9QuLJ/KThV9isYJPsvBPtx+MrGMd40+ZRHN8MnpVCosFToEA+ixx+eNUd6mrpTr1yvhiVK7DIkxeaOfzS43zivsh3UEb/lA+CICItyl+XKg7deNqWVARQeEbYAOJIz1+oZQETZMRDQZTdf7OxvSXqS+jlAp+PPkLO43O57g09337WPSfArC6DxUAhqxgcF0tq58GMbyAEGf4G7BtGr3JsFtPIWAmpiZK5Cic75mxvqELg9SX2jniqrUcic8qm/XoKpDWopHbe2fNLM7zAGJh1W2b9x+mE5BWdkySwc6a+GKjI83mxoYYTPIg2ZkXocvP/ZkRWwNDEsCJF0rE3H7G3vvPlOxJAGeu6BuDv4MgTABJwbRV/dulk5QavwqC2WAzp7n59vbIbu9cR1lHfr4trVck1pKUjQogb9rfbLdne8bwVNIk1AlcpcCUJCn7hs9w+ByRp0ZhWziMPN8fPf4g/wjabyUaxVxAAAAABJRU5ErkJggg==" />
@@ -61,7 +61,7 @@
 <text x="40" y="372" class="desc">HashMap-based file indexing; sub-ms search for large trees. (Rust, DashMap)</text>
 <line x1="38" y1="382" x2="576.0" y2="382" stroke="#26324a" stroke-width="1" opacity="0.35" />
 <text x="40" y="399" class="name">cod3x</text>
-<text x="574.0" y="399" class="stats" text-anchor="end">1* 2026-01-06</text>
+<text x="574.0" y="399" class="stats" text-anchor="end">--* ----</text>
 <text x="40" y="418" class="desc">Terminal coding agent with 3D ASCII UI. (Rust, SQLite)</text>
 <line x1="38" y1="428" x2="576.0" y2="428" stroke="#26324a" stroke-width="1" opacity="0.35" />
 <text x="40" y="445" class="name">bitmail [private]</text>
