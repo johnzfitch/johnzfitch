@@ -1,0 +1,16 @@
+# John Zachary Fitch
+
+> Profile README + static portfolio site + SVG dashboard assets.
+
+## Docs
+- `README.md`: profile overview and proof links
+- `AGENTS.md`: commands and repo boundaries for coding agents
+
+## Data
+- `data/projects.toml`: canonical project list used by the dashboard
+
+## Scripts
+- `scripts/gen_readme_assets.py`: generates `.github/assets/cards/*.svg`
+
+## Web
+- `web/`: static site content (GitHub Pages deploy)

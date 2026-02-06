@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1038" viewBox="0 0 1200 1038" role="img" aria-labelledby="title desc">
+  <title id="title">Project dashboard</title>
+  <desc id="desc">Projects grouped by category with live repo stats.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc" />
+      <stop offset="1" stop-color="#ffffff" />
+    </linearGradient>
+    <linearGradient id="hdr" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0ea5e9" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#14b8a6" stop-opacity="0.95" />
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 L 0 0 0 24" fill="none" stroke="#cbd5e1" stroke-width="1" opacity="0.22" />
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.22" />
+    </filter>
+    <style><![CDATA[
+      .title { font: 800 28px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #0f172a; }
+      .meta { font: 600 13px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #64748b; }
+      .cat { font: 800 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #001018; letter-spacing: 0.10em; }
+      .name { font: 800 15px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; fill: #0f172a; }
+      .desc { font: 600 12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; fill: #334155; }
+      .stats { font: 800 12px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; fill: #64748b; }
+    ]]></style>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="1038" rx="18" fill="url(#bg)" />
+  <rect x="0" y="0" width="1200" height="1038" rx="18" fill="url(#grid)" />
+  <rect x="28" y="28" width="1144" height="982" rx="16" fill="none" stroke="#cbd5e1" stroke-width="2" />
+
+  <g filter="url(#soft)">
+    <rect x="28" y="28" width="1144" height="70" rx="14" fill="none" />
+  </g>
+
+  <text x="28" y="62" class="title">PROJECT DASHBOARD</text>
+  <text x="28" y="84" class="meta">Signal: 8 stars | Last push: 2026-02-04 | Layout: desktop</text>
+
+<rect x="28" y="108" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
+<image x="38" y="113" width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAACYktHRAD/h4/MvwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+kMFwMpDLoXD1QAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjUtMTItMjNUMDM6NDE6MTIrMDA6MDAS1u11AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDI1LTEyLTIzVDAzOjQxOjEyKzAwOjAwY4tVyQAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyNS0xMi0yM1QwMzo0MToxMiswMDowMDSedBYAAAHNSURBVDjLlZK/ixNBFMc/M7O7iTFmSbi7xOMqWxsF0UPExlYU/wDRxkpRrER7QdDO2uL+Br3aiJVcpSAHdir+2DMRcpdk7zaz8yySM7vZBPRNM/t4n33v+74D/xlqet3AERAQUCUoFCb0MVyeAi9QuLJ/KThV9isYJPsvBPtx+MrGMd40+ZRHN8MnpVCosFToEA+ixx+eNUd6mrpTr1yvhiVK7DIkxeaOfzS43zivsh3UEb/lA+CICItyl+XKg7deNqWVARQeEbYAOJIz1+oZQETZMRDQZTdf7OxvSXqS+jlAp+PPkLO43O57g09337WPSfArC6DxUAhqxgcF0tq58GMbyAEGf4G7BtGr3JsFtPIWAmpiZK5Cic75mxvqELg9SX2jniqrUcic8qm/XoKpDWopHbe2fNLM7zAGJh1W2b9x+mE5BWdkySwc6a+GKjI83mxoYYTPIg2ZkXocvP/ZkRWwNDEsCJF0rE3H7G3vvPlOxJAGeu6BuDv4MgTABJwbRV/dulk5QavwqC2WAzp7n59vbIbu9cR1lHfr4trVck1pKUjQogb9rfbLdne8bwVNIk1AlcpcCUJCn7hs9w+ByRp0ZhWziMPN8fPf4g/wjabyUaxVxAAAAABJRU5ErkJggg==" />
+<text x="72" y="130" class="cat">SYSTEMS PROGRAMMING</text>
+<text x="40" y="169" class="name">filearchy</text>
+<text x="574.0" y="169" class="stats" text-anchor="end">0* 2026-01-27</text>
+<text x="40" y="188" class="desc">COSMIC Files fork with embedded trigram search. (Rust, libcosmic)</text>
+<line x1="38" y1="198" x2="576.0" y2="198" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="215" class="name">triglyph</text>
+<text x="574.0" y="215" class="stats" text-anchor="end">0* 2025-12-29</text>
+<text x="40" y="234" class="desc">Zero-RSS trigram index library (mmap, near-zero resident memory). (Rust, memmap2)</text>
+<line x1="38" y1="244" x2="576.0" y2="244" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="261" class="name">triglyphd</text>
+<text x="574.0" y="261" class="stats" text-anchor="end">0* 2025-12-29</text>
+<text x="40" y="280" class="desc">D-Bus daemon for system-wide search. (Rust, zbus)</text>
+<line x1="38" y1="290" x2="576.0" y2="290" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="307" class="name">nautilus-plus</text>
+<text x="574.0" y="307" class="stats" text-anchor="end">1* 2026-01-01</text>
+<text x="40" y="326" class="desc">Enhanced GNOME Files with thumbnails and search caching. (C, GTK4)</text>
+<line x1="38" y1="336" x2="576.0" y2="336" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="353" class="name">search-cache</text>
+<text x="574.0" y="353" class="stats" text-anchor="end">0* 2026-01-27</text>
+<text x="40" y="372" class="desc">HashMap-based file indexing; sub-ms search for large trees. (Rust, DashMap)</text>
+<line x1="38" y1="382" x2="576.0" y2="382" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="399" class="name">cod3x</text>
+<text x="574.0" y="399" class="stats" text-anchor="end">1* 2026-01-06</text>
+<text x="40" y="418" class="desc">Terminal coding agent with 3D ASCII UI. (Rust, SQLite)</text>
+<line x1="38" y1="428" x2="576.0" y2="428" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="445" class="name">bitmail [private]</text>
+<text x="574.0" y="445" class="stats" text-anchor="end">private</text>
+<text x="40" y="464" class="desc">Modern Bitmessage client with Python CLI and Rust TUI. (Python, Rust)</text>
+<line x1="38" y1="474" x2="576.0" y2="474" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<rect x="28" y="484" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
+<image x="38" y="489" width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRAD/AP8A/6C9p5MAAAAHdElNRQfpDBcCBgSnEtU8AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDI1LTEyLTIzVDAyOjA2OjA0KzAwOjAwMj9prwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyNS0xMi0yM1QwMjowNjowNCswMDowMENi0RMAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjUtMTItMjNUMDI6MDY6MDQrMDA6MDAUd/DMAAAD/klEQVRIx8WVPWsmVRTHf+ecOzPPk7BGEjXJrq/YKBjYQsHeTgULG8FGsbbze1gIgiCiH8BCWLDS3k/gWggua0CzuptsTGbmvh2LmSd5VtFOvPAfztw57+d/78B/vOStt95ma+thQgi0bUvbtnRdN6OlbTvaNmAhYKqAUGsl50zKiThG4hgZ48gwjIzjSEqRlDInJyeE09PT54HHQggeQkPbTmialq5raZqGEKYAqoIAtTqlFFLOpJhIKRFjJMaROL/nnOX09I+j8OSTT3+ws7PzZtM0tVt0LLoFy+WC5WLJYrmgWyzo2pamCagZglBrIaVMjJFhHBj6gb4f6PueYRgYx5EYk979/bcvg4puquiWqmKqmCmmhppiZhOCESygIUx9rUJ1x4phFma9yVZ1BUFUN8PaPHztKYDP8rzt3Dm6Q86F3d1HkXmGF1o+QdbmCxBWEU0VFRVV9YssTDEVTFXc8e+//4GmaWRv71G/qFgF1dluquDShyhhVdrcDl+1JazaYwGz4E0IXL9+AI6HEADBrPzNzszcdGWvUwVmhqnJmtLa3pRACMb+3i4g5JJx95WerOlfzKOU2e5iMLbWmqlMzNRNDRWh1IJnn1lUUVHMVCadS4JcJGwmqkpQmxgSzAhhHeFCFpmoWUsGmcZoFiYdm/QszK0NRs6XXQimiprMtFSZ+qmXtDPFvUotdeaUC+AqFTVFg05tCupmhppNVc3VhAe4CM6D7+BOjNGHcVwxz8FZLBZ0Xbei8OzGJ4O1Fbw67o57pVafUWc4ORf6fmQYetQMgFoKOAQLeK14dapP8AvbSvVKqLVSyoRaqtRafaVQaoWU6Ptehn7wk9P7gMhDV644CG3XUkullCK1FJ/k2UeZfMwBMiUrORTPOZNzmZAyGefs7NzPz3vu3v2dWqurTExaLDtAKKX4ZJMv5VKopRJiTBpjxB0REVQEEZ2unFpxrxwfH3N+du6mE9eP7x2TYpSNzSWmKuMYGWOcb9R1JA2/Hv3y7TgOZ03T1OlfsEBVCMFomxY1XaZUXi25bF3eNi5jHE9STl+r6nkcI/3QM4wD4zAyjpGUkp6c3PtOAAP0H35I9d133nv2qaee+UZFH3+QXPXnW7d+euWzzz/98d/s9YUXDsqHH36cgATkNRR3L9vbOzt7+3sb+1f32b+6N2Of3b29je2d7UfcvQDlL7bpk4+/SAcHB0Vmci+AJdAAYc5IAX39tTfefO755943s8bnUwZIKSXdvHnzoxs3vvoSqGvIc7I9MKwCNGvObd5TQK5de+JK17Ub7g8eIBGVcRzPDw9vn84n7K9BIpDD/DHO+Nt66cWXj648tInI5Rldyaf3zzg8vM3/uv4Eo3JQWl0TuokAAAAASUVORK5CYII=" />
+<text x="72" y="506" class="cat">DESKTOP / LINUX</text>
+<text x="40" y="545" class="name">omarchy</text>
+<text x="574.0" y="545" class="stats" text-anchor="end">0* 2026-02-04</text>
+<text x="40" y="564" class="desc">Omarchy fork: Waybar RSS, NVIDIA config, compact UI. (Hyprland, Shell)</text>
+<line x1="38" y1="574" x2="576.0" y2="574" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="591" class="name">waybar-config</text>
+<text x="574.0" y="591" class="stats" text-anchor="end">0* 2025-12-01</text>
+<text x="40" y="610" class="desc">Waybar RSS ticker for FreshRSS with hover-pause. (JSON, CSS, Shell)</text>
+<line x1="38" y1="620" x2="576.0" y2="620" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="637" class="name">claude-desktop-arch</text>
+<text x="574.0" y="637" class="stats" text-anchor="end">0* 2025-12-24</text>
+<text x="40" y="656" class="desc">Claude Code preview patch for Arch Linux. (JS, Shell)</text>
+<line x1="38" y1="666" x2="576.0" y2="666" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="683" class="name">qualcomm-x870e-linux-bug-patch</text>
+<text x="574.0" y="683" class="stats" text-anchor="end">0* 2025-11-22</text>
+<text x="40" y="702" class="desc">WiFi 7 firmware fix for WCN7850 on X870E. (Python, ACPI)</text>
+<line x1="38" y1="712" x2="576.0" y2="712" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="729" class="name">arch-dependency-matrices</text>
+<text x="574.0" y="729" class="stats" text-anchor="end">0* 2025-12-10</text>
+<text x="40" y="748" class="desc">Graph theory analysis of 1,553 Arch packages. (Python, NumPy)</text>
+<line x1="38" y1="758" x2="576.0" y2="758" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<rect x="28" y="768" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
+<image x="38" y="773" width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAKCUExURQAAAIqKiqGhoaSkpKOjo6CgoJ6enpycnJqampmZmZaWlpSUlJKSkpCQkI2NjYiIiIWFhYODg66uroWFhZSUlJmZmZqampubm5GRkc3NzZOTk5GRkZCQkI6Ojo2NjYuLi4mJiYiIiIWFhYODg4KCgoCAgH19fXt7e3l5eXd3d3R0dHFxcQAAAGtrawAAAAAAAGRkZAAAAFRUVJOTk1RUVCEhIVJSUlxcXFxcXFtbW11dXeDg4N/f39nZ2dPT09TU1N7e3tfX1+bm5ubl5ebm5djY18rKycvKys7NzePi4tbW1sXR1KzDyK/Eyq7EyrHHzLPJzrPIzq/FytXV1KnAxqLDy63L063L0tPT0qe+xKDDy6zL06vL0tLR0aO7wZq/x6XHztDPz5+4vpK5wp7Cyp3Byp3CypG4wZ+3vpu0uoqzvZa8xZW7xJS7xJK5w4WvupqzuszLy5ewt4KtuI22v421v4u0voiyvIaxvHyptZawtsrJyJKss3qns4WwuoSvuoGuuH6st36rtnSkr5GrssrJycfGxo2nr3GgrHyptHuptHqos3emsnWlsXalsWydqoynrsXExIijqmeZpXKhrXGgrXCfrG2eqmOWo4ejqsHAwIKepV2PnWaXpGSWo2OVomOUolmNm4Kdpb69vHyZoFOGlVuNm1qMmlGFlHyYoLq5uXeTm0h9jFGEkra1tXGOlkB2hUl8i7OysmyKkjlvf0F1hUF1hLCvr2eFjjJpeTpvf62sq2uGjixhcDJldDJlc6iop6msrZ6lp5yjpZadn52kpqampqKiopKSkqKhobGxsLKxsZiYmF9eXrGxsaWlpaenp6Ojo5ycnIyMjKCgoP///8uS1a0AAAA7dFJOUwAAAAAAAAAAAAAAAAAAAAAAAAAPaI+Pj130gICAgICAgICAgICAgICAf4CBAYYCCo8Nd/h4Loiqq6ursCh23QAAAAFiS0dE1X68OxMAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfpDBcCBgSnEtU8AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDI1LTEyLTIzVDAyOjA2OjA0KzAwOjAwMj9prwAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyNS0xMi0yM1QwMjowNjowNCswMDowMENi0RMAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjUtMTItMjNUMDI6MDY6MDQrMDA6MDAUd/DMAAABxElEQVQoz2NgYGBgFBYRBQIxcSAAMUSEGRnAgElC0trGxtrWzs7O3gHIkJRggkgwSzk6OTu7uLq5u3t4Ojs7OUoxQyRYpL28fXz9/AMCAgKDfH28vaRZoEbJBIeEhoVDQFhoSLAM1ChW2YjIqOgYCIiOioyQZYVIsMnFxsUnwEB8XKwcG0SCXT4xKTklFQLS0jMS5dkhEhwKHplZ2TlgkJuXX+ChwAGR4FQsLCouKQWBsvKKyqpCRU6IBJdSdU1tXT0QNDQ2NTa3tCpxQSS4ldvaOzq7urp7ent7+/ontClzQyR4VCZOmjxl6rTp/UAwfcbMiSo8EAle1Vmz58ydN38BCMxfuGiWKi9Egk9t8ZKly5ZDwYqVi9X4IBKM6qtWr1kLA2tWr1KHBju/xrr1GzbCwIb16zT4IRICmps2b9m6DQK2btm8SVMAIiGotX3Hzl0wsHPHdi1BiISQ9u49e/ft379vH4jYu2e3thBYXEdH98DBQ0Bw+MhREHXwgK6ODkhCT9/g2PETJ0+dPnP22LlTJ08cP2agrweWMDQyPn/h/MWLly5fuXgRyDI2MQRL6OibmplbWFhaWliBCAtzM1N9HQYAHrvAbCcG+XsAAAAASUVORK5CYII=" />
+<text x="72" y="790" class="cat">WEB / MOBILE</text>
+<text x="40" y="829" class="name">NetworkBatcher</text>
+<text x="574.0" y="829" class="stats" text-anchor="end">0* 2025-11-21</text>
+<text x="40" y="848" class="desc">Energy-efficient network batching for iOS 26+. (Swift)</text>
+<line x1="38" y1="858" x2="576.0" y2="858" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="40" y="875" class="name">Liberty-Links</text>
+<text x="574.0" y="875" class="stats" text-anchor="end">0* 2025-11-22</text>
+<text x="40" y="894" class="desc">Tracker-free, privacy-respecting link alternatives. (Markdown)</text>
+<line x1="38" y1="904" x2="576.0" y2="904" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<rect x="614.0" y="108" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
+<image x="624.0" y="113" width="24" height="24" href="data:image/png;base64,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" />
+<text x="658.0" y="130" class="cat">AI / ML</text>
+<text x="626.0" y="169" class="name">observatory</text>
+<text x="1160.0" y="169" class="stats" text-anchor="end">0* 2026-01-02</text>
+<text x="626.0" y="188" class="desc">WebGPU deepfake detection; 4 ML models client-side. (JS, WebGPU, ONNX)</text>
+<line x1="624.0" y1="198" x2="1162.0" y2="198" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="215" class="name">specHO</text>
+<text x="1160.0" y="215" class="stats" text-anchor="end">1* 2026-01-15</text>
+<text x="626.0" y="234" class="desc">LLM detection via phonetic/semantic analysis (Echo Rule). (Python, NLP)</text>
+<line x1="624.0" y1="244" x2="1162.0" y2="244" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="261" class="name">definitelynot.ai</text>
+<text x="1160.0" y="261" class="stats" text-anchor="end">2* 2026-01-31</text>
+<text x="626.0" y="280" class="desc">Unicode security (Trojan Source, homoglyph, BiDi defense). (PHP, JS, ICU)</text>
+<line x1="624.0" y1="290" x2="1162.0" y2="290" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="307" class="name">marginium</text>
+<text x="1160.0" y="307" class="stats" text-anchor="end">0* 2025-11-22</text>
+<text x="626.0" y="326" class="desc">Multimodal generation with visual-output awareness. (Python)</text>
+<line x1="624.0" y1="336" x2="1162.0" y2="336" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="353" class="name">gemini-cli</text>
+<text x="1160.0" y="353" class="stats" text-anchor="end">--* ----</text>
+<text x="626.0" y="372" class="desc">Privacy-enhanced Gemini CLI fork; telemetry disabled. (TS, Node)</text>
+<line x1="624.0" y1="382" x2="1162.0" y2="382" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<rect x="614.0" y="392" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
+<image x="624.0" y="397" width="24" height="24" href="data:image/png;base64,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" />
+<text x="658.0" y="414" class="cat">SECURITY RESEARCH</text>
+<text x="626.0" y="453" class="name">eero [private]</text>
+<text x="1160.0" y="453" class="stats" text-anchor="end">private</text>
+<text x="626.0" y="472" class="desc">Mesh WiFi router security analysis; HackerOne prep. (Python, Wireshark)</text>
+<line x1="624.0" y1="482" x2="1162.0" y2="482" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="499" class="name">blizzarchy [private]</text>
+<text x="1160.0" y="499" class="stats" text-anchor="end">private</text>
+<text x="626.0" y="518" class="desc">Battle.net OAuth analysis and telemetry RE. (Rust, Python, Ghidra)</text>
+<line x1="624.0" y1="528" x2="1162.0" y2="528" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="545" class="name">featherarchy</text>
+<text x="1160.0" y="545" class="stats" text-anchor="end">0* 2025-12-04</text>
+<text x="626.0" y="564" class="desc">Security-hardened Monero wallet fork. (C++, Qt6)</text>
+<line x1="624.0" y1="574" x2="1162.0" y2="574" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="591" class="name">alienware-monitor [private]</text>
+<text x="1160.0" y="591" class="stats" text-anchor="end">private</text>
+<text x="626.0" y="610" class="desc">Dell monitor firmware RE; GSFW decoder. (Python, Ghidra)</text>
+<line x1="624.0" y1="620" x2="1162.0" y2="620" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="637" class="name">proxyforge [private]</text>
+<text x="1160.0" y="637" class="stats" text-anchor="end">private</text>
+<text x="626.0" y="656" class="desc">Transparent MITM proxy; TLS interception. (Python, mitmproxy)</text>
+<line x1="624.0" y1="666" x2="1162.0" y2="666" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<rect x="614.0" y="676" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
+<image x="624.0" y="681" width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAACYktHRAD/h4/MvwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+kMFwEkFvFfXA0AAAAldEVYdGRhdGU6Y3JlYXRlADIwMjUtMTItMjNUMDE6MzU6NTgrMDA6MDByYLxzAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDI1LTEyLTIzVDAxOjM1OjU4KzAwOjAwAz0EzwAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyNS0xMi0yM1QwMTozNjoyMiswMDowMBGqyEQAAAFoSURBVDjLldNBbhMxFIfx3yRGkJaCUFqxaIUQEgiBxA16C9hzFI7AQWjFOWDHlk0XVF20QFGUTsYej1lMUkCEJDxv/X/fp/ds/rOqN7YNN7ycTYV07+pVta9s0rycpndh7+XB21ujzQiz+ovgydPR7oZKF6PTx6EL2dREs9rGjpuyHELWuXS85nr0zKEsC1k28819RTH4l71zXR9otbKJgT1jnxXVksCVsVar7QnZpVr0wCOfdH9Fioko/06IZibGnqs1KtU8VBRZMhXlntBqJUl2YN+xzo5K7YeCTlEUzVxoHmgl2Zn3ai88xImzP5afJGkRiKIoS4rKRx+4VlpUnJ9WSKJGkpdO5xchajTSgpB0KxfXSqLUK/V+3VpC6pXaKuKurysDwZ2eUIU0bG15La55Tbc1sjQM9ey7jBtWV602Uc/CydFUtdsNVhpBGXTl4vyoMrJta6NvnV2ZVgbWd7+mrJz+8voJUVjBmolEd0AAAAAASUVORK5CYII=" />
+<text x="658.0" y="698" class="cat">CLI TOOLS</text>
+<text x="626.0" y="737" class="name">indepacer</text>
+<text x="1160.0" y="737" class="stats" text-anchor="end">1* 2025-12-23</text>
+<text x="626.0" y="756" class="desc">PACER CLI for federal court research; MFA and cost protection. (Python, Click, Rich)</text>
+<line x1="624.0" y1="766" x2="1162.0" y2="766" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="783" class="name">iconics</text>
+<text x="1160.0" y="783" class="stats" text-anchor="end">2* 2026-01-21</text>
+<text x="626.0" y="802" class="desc">Semantic PNG icon library with CLI discovery and export. (Python)</text>
+<line x1="624.0" y1="812" x2="1162.0" y2="812" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="829" class="name">gemini-sharp</text>
+<text x="1160.0" y="829" class="stats" text-anchor="end">0* 2026-02-01</text>
+<text x="626.0" y="848" class="desc">Single-file Gemini CLI binaries; multiple themes. (C#, .NET)</text>
+<line x1="624.0" y1="858" x2="1162.0" y2="858" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<rect x="614.0" y="868" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
+<image x="624.0" y="873" width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAI3UExURQAAAEpKWU5OVz4+YUVFXEdHQr+/20hIXAkJDTQ0UD09T09PY05OY0lJUzw8PCYmJru7u6qqqp2dnYuLi3x8fEpKSj8/P2ZmZnd3d4SEhJeXlwAAAAAAAAAAAAAAAAAAAFJSUG1tbQAAAEBAUXNzkXR0kT4+ThYWG1paXysrP0JCT39/eTc3Qk1NWVlZV25uii0tOgMDBCwsPz09aQMDAFRUiyMjLAAAAB8fNFRUqFFRkGpqyC0tODg4X1FRlywsOC0tVUpKjwAAAB0dNCwsOEFBQB8fJyUlKUBAP0NDQzs7Ojo6ODo6OTo6ODk5ODg4ODk5OTc3Njg4Nzo6Ojo6OgAAAAAAAB4eHg0NDQAAACEhITExMQAAACEhITU1NbS0tJ+fn4+Pj3l5eWZmZjs7O1NTU1lZWWJiYjg4OEBAQFBQUGVlZXV1dYuLi6Ojo15eXjg4OFVVVZCQltHR/9DQ/3h4l2pqtmtrxTk5XKGhn5KSobm56c7O/7e36IqKsmxsxmFhxCsrSrW1tO3t7Zqaq7a25bOz4WVlx2hoz2xs02dnzmBgwrS0sv///6urr5CQt8zM/7Ky32VlyGdnzWZmzGFhwiwsS7u7v4yMrsXF+c3N/7Gx32dnv1tbuWxsanFxisnJ/8/P/7S04jY2WTAwTjAwTx8fLDk5OFBQXXh4knZ2kHd3kWpqgWpqam5ubr6+vq6urqKiopGRkYKCgmJiYlpaWmFhYW1tbX19fYmJiZqamq2trf///80SIRUAAABydFJOUwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEIGRwYWJ0uyeXk21U/g3Aae+nD8etJgOlO6YEJjfzp/H+683+68wSKfH7AwX/o5uPj5vzx4uPj5hwaP+6aG3PYFn7kgICAgIB+wPjvjoCAgICAgPdtuHvgrlEAAAABYktHRLxK0uLvAAAAB3RJTUUH6QwEAzIAWDtwlAAAAP5JREFUGNNjYMAOpGWkZeXk5EFMRiZmFlY2BUUlZRVVNXV2BgYmDU0tbR3dIj394pJSA0MOBk6jMmMT0/KKyqrqmto6My4Gc4t6Syvrhsam5pbWmjYbbgZbu/aOzq7uxp7evv4JE+15GBwcJ02eMnnqtJ7pM2bOmg0UcHKe0909dW7jvPkLFi5c5MLL4Oq2eMnSpUuWLV+xctXqNe4eDJ5e3j4+Pr5+/gGBgYFBwZ4MIXJAEBoWHhEJYsiFMPCBnMsftTY6BuwHPgYBQSFhEdHYdXHyYuISklKCDPEJiUnJKalp6RmZWdk5uXkM6zds3LR5S35B4dZt23fs3LUbAIVkToaqp6rWAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDI1LTEyLTA0VDAzOjQ3OjIxKzAwOjAwiWro/gAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyNS0xMi0wNFQwMzo0NzoxNCswMDowMCSAeAYAAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjUtMTItMDRUMDM6NTA6MDArMDA6MDBoIrntAAAAAElFTkSuQmCC" />
+<text x="658.0" y="890" class="cat">INFRASTRUCTURE</text>
+<text x="626.0" y="929" class="name">NixOS Server [private]</text>
+<text x="1160.0" y="929" class="stats" text-anchor="end">private</text>
+<text x="626.0" y="948" class="desc">Bare-metal: post-quantum SSH, Rosenpass VPN, authoritative DNS. (Nix, agenix)</text>
+<line x1="624.0" y1="958" x2="1162.0" y2="958" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+<text x="626.0" y="975" class="name">unbound-config [private]</text>
+<text x="1160.0" y="975" class="stats" text-anchor="end">private</text>
+<text x="626.0" y="994" class="desc">Recursive DNS with DNSSEC and ad/tracker blocking. (Unbound, Shell)</text>
+<line x1="624.0" y1="1004" x2="1162.0" y2="1004" stroke="#cbd5e1" stroke-width="1" opacity="0.35" />
+</svg>

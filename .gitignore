@@ -1,8 +1,26 @@
 # Ignore large/generated assets and derivatives.
 # Note: files already tracked by git under these paths will remain tracked until explicitly untracked.
-.github/assets/
+.github/assets/*
+!.github/assets/cards/
+!.github/assets/cards/*.svg
 icons/enhanced/
 
 # Node (resume site tooling)
 node_modules/
 npm-debug.log
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Local artifacts (do not commit)
+server.log
+server.pid
+firebase-debug.log
+diff_*.patch
+*_backup_untracked_*.tar.gz
+*.local-*
+nanobanana-output/
+
+# WIP mini-games (keep local until ready)
+web/game/curveball/
