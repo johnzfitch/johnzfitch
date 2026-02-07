@@ -4,59 +4,55 @@ TITLE
 Agent Tooling
 
 SUBTITLE
-Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.
+I keep building agent tools because the ones that exist keep disappointing me.
 
 OPENING
-My bias is pragmatic: agents should do real work without surprising the user.
+I don't have a philosophy of agent tooling. I have a list of things that annoyed me enough to build something better.
 
-That means:
-- Determinism over magic (same inputs produce the same outputs).
-- Auditability over vibes (you can inspect what changed and why).
-- Privacy-first defaults (local processing whenever possible).
+Most of these started the same way: I tried to use an existing tool, it did something I didn't expect, I couldn't figure out why, and I decided I'd rather build my own than keep fighting someone else's assumptions. That's the whole origin story.
 
-SECTION: Retrieval That Scales (Without Embeddings as a Requirement)
+SECTION: llmx - Because Retrieval Shouldn't Require a PhD in Embeddings
 llmx
-- What: Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).
-- Why it matters: Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.
-- Stack: Rust + WASM, deterministic chunking, inverted index + BM25-style ranking
+- Agents in large codebases fail at retrieval more than anything else. Not because the model is bad, but because the retrieval is bad. I wanted something that just indexes code, chunks it deterministically, and lets me search with BM25 without spinning up a vector database or calling an API.
+- So I built it. Rust + WASM, local-first, no embedding service required.
 - Repo: https://github.com/johnzfitch/llmx
 
-SECTION: Verifiable Editing and Reproducible Builds (Codex Toolchain)
+SECTION: codex-xtreme - Because I Wanted a Better Codex Than Codex Ships
 codex-xtreme (includes codex-patcher)
-- What: An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
-- Why it matters: This is the "edit loop" for agents made explicit: apply changes reliably, then build/run in a reproducible way.
-- Primary repo (pin this on GitHub): https://github.com/johnzfitch/codex-xtreme
-- Patch engine (linked inside): https://github.com/johnzfitch/codex-patcher
+- After finding the Ghost bug, I had strong opinions about how Codex should be built. So I made a build system that produces optimized, patched binaries with a verified patch engine underneath.
+- This is what happens when you disagree with how someone ships their tool and decide to just... fix it yourself.
+- Primary repo: https://github.com/johnzfitch/codex-xtreme
+- Patch engine: https://github.com/johnzfitch/codex-patcher
 
-SECTION: Packaging Domain Expertise for Agents
+SECTION: burn-plugin - Because Agents Need Domain Knowledge, Not Just Code
 burn-plugin
-- What: Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.
-- Why it matters: "Agent tooling" isn't just code. Packaging knowledge so it is verifiable and reusable is what makes tools scale across teams.
+- Claude Code plugin for the Burn deep learning framework. Skills, workflows, and evidence-backed references packaged so the agent actually knows what it's doing instead of guessing.
+- I built this because I was tired of watching agents hallucinate Burn APIs. The fix wasn't a better prompt. It was giving the agent real documentation to work from.
 - Repo: https://github.com/johnzfitch/burn-plugin
 
-SECTION: Skill Systems (Available on Request)
-cwork (private)
-- What: A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.
-- Why it matters: Skill systems are what turn ad-hoc prompting into repeatable workflows (especially across many repos).
+SECTION: cwork - Because Prompting Shouldn't Be Improvisation
+cwork (private, available on request)
+- A context compiler. It takes base capabilities, a domain primer, and project-specific context, and assembles a minimal prompt package for a specific task.
+- I built it because I kept writing the same context setup across different repos and it was driving me crazy. Now it's a system instead of a ritual.
 
-SECTION: MCP Servers (Structured Tool APIs)
+SECTION: pyghidra-lite - Because RE Tools Should Talk to Agents
 pyghidra-lite
-- What: Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
-- Why it matters: Good agents use tools. MCP servers let you build high-signal, low-context interfaces that scale beyond ad-hoc prompts.
+- MCP server for program analysis. Compact output by default, verbose when you ask. Listed on the official MCP registry.
+- I wanted to point Claude at a binary and have a conversation about it. Nothing did that well, so I built the interface myself.
+- Registry: io.github.johnzfitch/pyghidra-lite (v0.1.1, active, published 2026-01-29)
 - Repo: https://github.com/johnzfitch/pyghidra-lite
 
-SECTION: LLM Desktop Workflow (Anthropic Ecosystem)
+SECTION: claude-cowork-linux - Because Linux Shouldn't Be a Second-Class Citizen
 claude-cowork-linux
-- What: Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.
-- Why it matters: Makes Claude a first-class Linux tool without sacrificing isolation.
-- Note: Unofficial community project; no proprietary Claude code is committed.
+- Runs the official Claude Desktop app on Linux with bubblewrap sandboxing.
+- This exists because Anthropic didn't ship a Linux version and I wasn't going to wait. Unofficial community project, no proprietary code committed.
 - Repo: https://github.com/johnzfitch/claude-cowork-linux
 
-SECTION: Professional UX (No Emojis)
+SECTION: Iconics - Because Emojis in Technical Docs Make Me Uncomfortable
 Iconics
-- What: Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.
-- Why it matters: Documentation is a product surface. Consistent visuals improve scannability and trust, especially in technical docs.
+- 8k+ PNG icons with semantic search. Find icons by meaning, not by scrolling through a grid.
+- Every icon in my README, my docs, my sites comes from this library. I built it because I wanted professional visuals without the emoji circus.
 - Repo: https://github.com/johnzfitch/iconics
 
 CLOSING
-My working model: start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.
+Every tool on this page exists because I disagreed with how something worked and couldn't stop myself from building the alternative.

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agent Tooling - John Zachary Fitch</title>
-  <meta name="description" content="Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.">
+  <meta name="description" content="Agent tools I built because the existing ones kept disappointing me. Local-first retrieval, MCP servers, patching engines, and skill systems.">
   <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
@@ -27,95 +27,86 @@
     <div class="container">
       <section class="hero">
         <h1>Agent Tooling</h1>
-        <p class="tagline">Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.</p>
+        <p class="tagline">I keep building agent tools because the ones that exist keep disappointing me.</p>
       </section>
 
       <section>
-        <p>My bias is pragmatic: agents should do real work without surprising the user.</p>
-        <p>That means:</p>
-        <ul>
-          <li><strong>Determinism over magic</strong> (same inputs produce the same outputs).</li>
-          <li><strong>Auditability over vibes</strong> (you can inspect what changed and why).</li>
-          <li><strong>Privacy-first defaults</strong> (local processing whenever possible).</li>
-        </ul>
+        <p>I don't have a philosophy of agent tooling. I have a list of things that annoyed me enough to build something better.</p>
+        <p>Most of these started the same way: I tried to use an existing tool, it did something I didn't expect, I couldn't figure out why, and I decided I'd rather build my own than keep fighting someone else's assumptions. That's the whole origin story.</p>
       </section>
 
       <section>
-        <h2>Retrieval That Scales (Without Embeddings as a Requirement)</h2>
+        <h2>llmx</h2>
         <div class="project-card">
           <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
-          <div class="stack">Rust + WASM, deterministic chunking, inverted index + BM25-style ranking</div>
-          <p><strong>What:</strong> Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).</p>
-          <p><strong>Why it matters:</strong> Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.</p>
+          <div class="stack">Rust + WASM, BM25, deterministic chunking</div>
+          <p>Agents in large codebases fail at retrieval more than anything else. Not because the model is bad, but because the retrieval is bad. I wanted something that just indexes code, chunks it deterministically, and lets me search with BM25 without spinning up a vector database or calling an API.</p>
+          <p>So I built it. Local-first, no embedding service required.</p>
         </div>
       </section>
 
       <section>
-        <h2>Verifiable Editing and Reproducible Builds (Codex Toolchain)</h2>
+        <h2>codex-xtreme</h2>
         <div class="project-card">
           <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a> <span class="muted">(includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</span></h3>
           <div class="stack">Rust</div>
-          <p><strong>What:</strong> An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.</p>
-          <p><strong>Why it matters:</strong> This is the "edit loop" for agents made explicit: apply changes reliably, then build/run in a reproducible way.</p>
-          <p><strong>Primary repo (pin this on GitHub):</strong> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></p>
-          <p><strong>Patch engine (linked inside):</strong> <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></p>
+          <p>After finding the Ghost bug, I had strong opinions about how Codex should be built. So I made a build system that produces optimized, patched binaries with a verified patch engine underneath.</p>
+          <p>This is what happens when you disagree with how someone ships their tool and decide to just... fix it yourself.</p>
         </div>
       </section>
 
       <section>
-        <h2>Packaging Domain Expertise for Agents</h2>
+        <h2>burn-plugin</h2>
         <div class="project-card">
           <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
           <div class="stack">Claude Code Plugin</div>
-          <p><strong>What:</strong> Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.</p>
-          <p><strong>Why it matters:</strong> "Agent tooling" isn't just code. Packaging knowledge so it is verifiable and reusable is what makes tools scale across teams.</p>
+          <p>Claude Code plugin for the Burn deep learning framework. Skills, workflows, and evidence-backed references packaged so the agent actually knows what it's doing instead of guessing.</p>
+          <p>I built this because I was tired of watching agents hallucinate Burn APIs. The fix wasn't a better prompt. It was giving the agent real documentation to work from.</p>
         </div>
       </section>
 
       <section>
-        <h2>Skill Systems (Available on Request)</h2>
+        <h2>cwork</h2>
         <div class="project-card">
-          <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> cwork</h3>
-          <div class="stack">Private</div>
-          <p><strong>What:</strong> A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.</p>
-          <p><strong>Why it matters:</strong> Skill systems are what turn ad-hoc prompting into repeatable workflows (especially across many repos).</p>
+          <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> cwork <span class="muted">(private, available on request)</span></h3>
+          <p>A context compiler. It takes base capabilities, a domain primer, and project-specific context, and assembles a minimal prompt package for a specific task.</p>
+          <p>I built it because I kept writing the same context setup across different repos and it was driving me crazy. Now it's a system instead of a ritual.</p>
         </div>
       </section>
 
       <section>
-        <h2>MCP Servers (Structured Tool APIs)</h2>
+        <h2>pyghidra-lite</h2>
         <div class="project-card">
           <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
           <div class="stack">Python / MCP</div>
-          <p><strong>What:</strong> Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).</p>
-          <p><strong>Registry:</strong> Official MCP registry listing: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
-          <p><strong>Why it matters:</strong> Good agents use tools. MCP servers let you build high-signal, low-context interfaces that scale beyond ad-hoc prompts.</p>
+          <p>MCP server for program analysis. Compact output by default, verbose when you ask. Listed on the official MCP registry.</p>
+          <p>I wanted to point Claude at a binary and have a conversation about it. Nothing did that well, so I built the interface myself.</p>
+          <p class="muted">Registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, active, published 2026-01-29)</p>
         </div>
       </section>
 
       <section>
-        <h2>LLM Desktop Workflow (Anthropic Ecosystem)</h2>
+        <h2>claude-cowork-linux</h2>
         <div class="project-card">
           <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
           <div class="stack">Linux</div>
-          <p><strong>What:</strong> Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.</p>
-          <p><strong>Why it matters:</strong> Makes Claude a first-class Linux tool without sacrificing isolation.</p>
-          <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
+          <p>Runs the official Claude Desktop app on Linux with bubblewrap sandboxing.</p>
+          <p>This exists because Anthropic didn't ship a Linux version and I wasn't going to wait. Unofficial community project, no proprietary code committed.</p>
         </div>
       </section>
 
       <section>
-        <h2>Professional UX (No Emojis)</h2>
+        <h2>Iconics</h2>
         <div class="project-card">
           <h3><img src="assets/icons/image.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/iconics">Iconics</a></h3>
           <div class="stack">Python</div>
-          <p><strong>What:</strong> Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.</p>
-          <p><strong>Why it matters:</strong> Documentation is a product surface. Consistent visuals improve scannability and trust, especially in technical docs.</p>
+          <p>8k+ PNG icons with semantic search. Find icons by meaning, not by scrolling through a grid.</p>
+          <p>Every icon in my README, my docs, my sites comes from this library. I built it because I wanted professional visuals without the emoji circus.</p>
         </div>
       </section>
 
       <section>
-        <p><strong>Closing thought:</strong> My working model: start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.</p>
+        <p>Every tool on this page exists because I disagreed with how something worked and couldn't stop myself from building the alternative.</p>
       </section>
     </div>
   </main>
