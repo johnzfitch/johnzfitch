@@ -1,42 +1,24 @@
 ![Header](.github/assets/header.svg)
-
 <p align="center">
-  <a href="https://definitelynot.ai"><img src=".github/assets/buttons/definitelynot@2x.png" alt="definitelynot.ai" width="176" height="62"></a>&nbsp;
-  <a href="https://internetuniverse.org"><img src=".github/assets/buttons/internetuniverse@2x.png" alt="Internet Universe" width="176" height="62"></a>&nbsp;
-  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>
-</p>
-
-# John Zachary Fitch
-
-<p align="center">
+  <a href="https://johnzfitch.github.io/johnzfitch/">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cards/typing-philosophy-dark.svg">
     <img alt="Philosophy" src=".github/assets/cards/typing-philosophy-light.svg" width="100%">
   </picture>
-</p>
-
 Software engineer with mathematics background specializing in systems programming, security research, and AI/ML applications.
-
-<p align="center">
-  <a href="https://johnzfitch.github.io/johnzfitch/">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cards/portal-badge-dark.svg">
-      <img alt="Portal badge (no tracking)" src=".github/assets/cards/portal-badge-light.svg" width="100%">
-    </picture>
-  </a>
 </p>
-
-## <img src=".github/assets/icons/compass.png" width="24" height="24" alt=""> Education
-
 <p align="center">
+  <a href="https://definitelynot.ai"><img src=".github/assets/buttons/definitelynot@2x.png" alt="definitelynot.ai" width="176" height="62"></a>&nbsp;
+  <a href="https://internetuniverse.org"><img src=".github/assets/buttons/internetuniverse@2x.png" alt="Internet Universe" width="176" height="62"></a>&nbsp;
   <a href="https://math.berkeley.edu"><img src=".github/assets/buttons/berkeley-math@2x.png" alt="UC Berkeley Mathematics" width="176" height="62"></a>
+  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>
 </p>
 
 ---
 
 ## OpenAI Codex: Finding the Ghost in the Machine
 
-**TL;DR**: Solved a pre-`main()` environment stripping bug causing 11-300x GPU slowdowns that eluded OpenAI's debugging team for months.
+**TL;DR**: Solved a pre-`main()` environment stripping bug causing 11-300x GPU slowdowns that eluded OpenAI's debugging team for months. This was the main blocker to Codex spawning effective subagents, and also explains why OpenAI wasn't able to use Codex in-house until February 2026. 
 
 Proof: [Issue #8945](https://github.com/openai/codex/issues/8945) | [PR #8951](https://github.com/openai/codex/pull/8951) | [Release notes (rust-v0.80.0)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
@@ -47,7 +29,7 @@ Proof: [Issue #8945](https://github.com/openai/codex/issues/8945) | [PR #8951](h
 
 ### The Ghost
 
-In October 2025, OpenAI assembled a specialized debugging team to investigate mysterious slowdowns affecting **Codex** - their own coding tool they use to write OpenAI's code. After a week of intensive investigation: **nothing**.
+In October 2025, OpenAI assembled a specialized debugging team to investigate mysterious slowdowns affecting **Codex**. After a week of intensive investigation: **nothing**.
 
 The bug was literally a ghost - `pre_main_hardening()` executed before `main()`, stripped critical environment variables (`LD_LIBRARY_PATH`, `DYLD_LIBRARY_PATH`), and disappeared without a trace. Standard profilers saw nothing. Users saw variables in their shell, but inside `codex exec` they vanished.
 
