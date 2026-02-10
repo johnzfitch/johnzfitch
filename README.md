@@ -10,9 +10,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cards/typing-philosophy-dark.svg">
     <img alt="Philosophy" src=".github/assets/cards/typing-philosophy-light.svg" width="100%">
-  </picture>
-Resume
-</p>
+  </picture></p>
 
 ---
 
