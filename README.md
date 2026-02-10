@@ -11,7 +11,7 @@
     <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cards/typing-philosophy-dark.svg">
     <img alt="Philosophy" src=".github/assets/cards/typing-philosophy-light.svg" width="100%">
   </picture>
-Software engineer with mathematics background specializing in systems programming, security research, and AI/ML applications.
+Resume
 </p>
 
 ---
