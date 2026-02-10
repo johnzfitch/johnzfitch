@@ -35,7 +35,7 @@
   </g>
 
   <text x="28" y="62" class="title">PROJECT DASHBOARD</text>
-  <text x="28" y="84" class="meta">Signal: 7 stars | Last push: 2026-02-08 | Layout: desktop</text>
+  <text x="28" y="84" class="meta">Signal: 7 stars | Last push: 2026-02-10 | Layout: desktop</text>
 
 <rect x="28" y="108" width="558.0" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
 <image x="38" y="113" width="24" height="24" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAQAAABKfvVzAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAACYktHRAD/h4/MvwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB+kMFwMpDLoXD1QAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjUtMTItMjNUMDM6NDE6MTIrMDA6MDAS1u11AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDI1LTEyLTIzVDAzOjQxOjEyKzAwOjAwY4tVyQAAACh0RVh0ZGF0ZTp0aW1lc3RhbXAAMjAyNS0xMi0yM1QwMzo0MToxMiswMDowMDSedBYAAAHNSURBVDjLlZK/ixNBFMc/M7O7iTFmSbi7xOMqWxsF0UPExlYU/wDRxkpRrER7QdDO2uL+Br3aiJVcpSAHdir+2DMRcpdk7zaz8yySM7vZBPRNM/t4n33v+74D/xlqet3AERAQUCUoFCb0MVyeAi9QuLJ/KThV9isYJPsvBPtx+MrGMd40+ZRHN8MnpVCosFToEA+ixx+eNUd6mrpTr1yvhiVK7DIkxeaOfzS43zivsh3UEb/lA+CICItyl+XKg7deNqWVARQeEbYAOJIz1+oZQETZMRDQZTdf7OxvSXqS+jlAp+PPkLO43O57g09337WPSfArC6DxUAhqxgcF0tq58GMbyAEGf4G7BtGr3JsFtPIWAmpiZK5Cic75mxvqELg9SX2jniqrUcic8qm/XoKpDWopHbe2fNLM7zAGJh1W2b9x+mE5BWdkySwc6a+GKjI83mxoYYTPIg2ZkXocvP/ZkRWwNDEsCJF0rE3H7G3vvPlOxJAGeu6BuDv4MgTABJwbRV/dulk5QavwqC2WAzp7n59vbIbu9cR1lHfr4trVck1pKUjQogb9rfbLdne8bwVNIk1AlcpcCUJCn7hs9w+ByRp0ZhWziMPN8fPf4g/wjabyUaxVxAAAAABJRU5ErkJggg==" />
@@ -106,7 +106,7 @@
 <image x="624.0" y="113" width="24" height="24" href="data:image/png;base64,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" />
 <text x="658.0" y="130" class="cat">AI / ML</text>
 <text x="626.0" y="169" class="name">observatory</text>
-<text x="1160.0" y="169" class="stats" text-anchor="end">0* 2026-01-02</text>
+<text x="1160.0" y="169" class="stats" text-anchor="end">0* 2026-02-10</text>
 <text x="626.0" y="188" class="desc">WebGPU deepfake detection; 4 ML models client-side. (JS, WebGPU, ONNX)</text>
 <line x1="624.0" y1="198" x2="1162.0" y2="198" stroke="#26324a" stroke-width="1" opacity="0.35" />
 <text x="626.0" y="215" class="name">specHO</text>
@@ -114,7 +114,7 @@
 <text x="626.0" y="234" class="desc">LLM detection via phonetic/semantic analysis (Echo Rule). (Python, NLP)</text>
 <line x1="624.0" y1="244" x2="1162.0" y2="244" stroke="#26324a" stroke-width="1" opacity="0.35" />
 <text x="626.0" y="261" class="name">definitelynot.ai</text>
-<text x="1160.0" y="261" class="stats" text-anchor="end">2* 2026-02-08</text>
+<text x="1160.0" y="261" class="stats" text-anchor="end">2* 2026-02-09</text>
 <text x="626.0" y="280" class="desc">Unicode security (Trojan Source, homoglyph, BiDi defense). (PHP, JS, ICU)</text>
 <line x1="624.0" y1="290" x2="1162.0" y2="290" stroke="#26324a" stroke-width="1" opacity="0.35" />
 <text x="626.0" y="307" class="name">marginium</text>
