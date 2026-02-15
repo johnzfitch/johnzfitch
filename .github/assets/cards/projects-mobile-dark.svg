@@ -35,7 +35,7 @@
   </g>
 
   <text x="28" y="62" class="title">PROJECT DASHBOARD</text>
-  <text x="28" y="84" class="meta">Signal: 7 stars | Last push: 2026-02-11 | Layout: mobile</text>
+  <text x="28" y="84" class="meta">Signal: 5 stars | Last push: 2026-02-11 | Layout: mobile</text>
 
 <rect x="28" y="108" width="864" height="34" rx="10" fill="url(#hdr)" opacity="0.92" />
 <image x="38" y="113" width="24" height="24" href="data:image/png;base64,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" />
@@ -49,7 +49,7 @@
 <text x="40" y="234" class="desc">LLM detection via phonetic/semantic analysis (Echo Rule). (Python, NLP)</text>
 <line x1="38" y1="244" x2="882" y2="244" stroke="#26324a" stroke-width="1" opacity="0.35" />
 <text x="40" y="261" class="name">definitelynot.ai</text>
-<text x="880" y="261" class="stats" text-anchor="end">2* 2026-02-09</text>
+<text x="880" y="261" class="stats" text-anchor="end">--* ----</text>
 <text x="40" y="280" class="desc">Unicode security (Trojan Source, homoglyph, BiDi defense). (PHP, JS, ICU)</text>
 <line x1="38" y1="290" x2="882" y2="290" stroke="#26324a" stroke-width="1" opacity="0.35" />
 <text x="40" y="307" class="name">marginium</text>
