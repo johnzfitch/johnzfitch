@@ -1,18 +1,15 @@
-![Header](.github/assets/header.svg)
+<figure>
+  <img src=".github/assets/header.svg" alt="Header">
+</figure>
 <p align="center">
   <a href="https://definitelynot.ai"><img src=".github/assets/buttons/definitelynot@2x.png" alt="definitelynot.ai" width="176" height="62"></a>&nbsp;
   <a href="https://internetuniverse.org"><img src=".github/assets/buttons/internetuniverse@2x.png" alt="Internet Universe" width="176" height="62"></a>&nbsp;
-  <a href="https://math.berkeley.edu"><img src=".github/assets/buttons/berkeley-math@2x.png" alt="UC Berkeley Mathematics" width="176" height="62"></a>
+  <a href="https://math.berkeley.edu"><img src=".github/assets/buttons/berkeley-math@2x.png" alt="UC Berkeley Mathematics" width="176" height="62"></a>&nbsp;
   <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>
 </p>
 <p align="center">
-  <a href="https://johnzfitch.github.io/johnzfitch/">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cards/typing-philosophy-dark.svg">
-    <img alt="Philosophy" src=".github/assets/cards/typing-philosophy-light.svg" width="100%">
-  </picture></p>
-
----
+  <sub>SF Bay Area | <a href="https://johnzfitch.github.io/johnzfitch">Git Page</a> | All icons from <a href="https://github.com/johnzfitch/iconics">iconics</a></sub>
+</p>
 
 ## OpenAI Codex: Finding the Ghost in the Machine
 
@@ -29,7 +26,7 @@ Proof: [Issue #8945](https://github.com/openai/codex/issues/8945) | [PR #8951](h
 
 In October 2025, OpenAI assembled a specialized debugging team to investigate mysterious slowdowns affecting **Codex**. After a week of intensive investigation: **nothing**.
 
-The bug was literally a ghost - `pre_main_hardening()` executed before `main()`, stripped critical environment variables (`LD_LIBRARY_PATH`, `DYLD_LIBRARY_PATH`), and disappeared without a trace. Standard profilers saw nothing. Users saw variables in their shell, but inside `codex exec` they vanished.
+The bug was literally a ghost &mdash; `pre_main_hardening()` executed before `main()`, stripped critical environment variables (<var>LD_LIBRARY_PATH</var>, <var>DYLD_LIBRARY_PATH</var>), and disappeared without a trace. Standard profilers saw nothing. Users saw variables in their shell, but inside `codex exec` they vanished.
 
 ---
 
@@ -41,20 +38,20 @@ But identification is not proof. I spent **2 months** building an undeniable cas
 
 #### Timeline
 
-- **Sept 30, 2025** - PR #4521 merges, enabling `pre_main_hardening()` in release builds
-- **Oct 1, 2025** - `rust-v0.43.0` ships (first affected release)
-- **Oct 6, 2025** - First "painfully slow" regression reports
-- **Oct 1-29, 2025** - Spike in env/PATH inheritance issues across platforms
-- **Oct 29, 2025** - Emergency PATH fix lands (did not catch root cause)
-- **Late Oct 2025** - OpenAI's specialized team investigates, declares there is no root cause, identifies issue as user behavior change
-- **Jan 9, 2026** - My fix merged, credited in release notes
+- **<time datetime="2025-09-30">Sept 30, 2025</time>** &mdash; PR #4521 merges, enabling `pre_main_hardening()` in release builds
+- **<time datetime="2025-10-01">Oct 1, 2025</time>** &mdash; `rust-v0.43.0` ships (first affected release)
+- **<time datetime="2025-10-06">Oct 6, 2025</time>** &mdash; First "painfully slow" regression reports
+- **Oct 1-29, 2025** &mdash; Spike in env/PATH inheritance issues across platforms
+- **<time datetime="2025-10-29">Oct 29, 2025</time>** &mdash; Emergency PATH fix lands (did not catch root cause)
+- **Late Oct 2025** &mdash; OpenAI's specialized team investigates, declares there is no root cause, identifies issue as user behavior change
+- **<time datetime="2026-01-09">Jan 9, 2026</time>** &mdash; My fix merged, credited in release notes
 
 #### Evidence Collected
 
 | Platform | Issues | Failure Mode |
 |----------|--------|--------------|
-| **macOS** | #6012, #5679, #5339, #6243, #6218 | `DYLD_*` stripping breaking dynamic linking |
-| **Linux/WSL2** | #4843, #3891, #6200, #5837, #6263 | `LD_LIBRARY_PATH` stripping -> silent CUDA/MKL degradation |
+| **macOS** | #6012, #5679, #5339, #6243, #6218 | <var>DYLD_*</var> stripping breaking dynamic linking |
+| **Linux/WSL2** | #4843, #3891, #6200, #5837, #6263 | <var>LD_LIBRARY_PATH</var> stripping &rarr; silent CUDA/MKL degradation |
 
 **Compiled evidence packages:**
 
@@ -72,11 +69,11 @@ But identification is not proof. I spent **2 months** building an undeniable cas
 
 The bug was designed to be invisible:
 
-- **Pre-main execution** - Used `#[ctor::ctor]` to run before `main()`, before any logging/instrumentation
-- **Silent stripping** - No warnings, no errors, just missing environment variables
-- **Distributed symptoms** - Appeared as unrelated issues across different platforms/configs
-- **User attribution** - Everyone assumed they misconfigured something (shell looked fine)
-- **Wrong search space** - Team was debugging post-main application code
+- **Pre-main execution** &mdash; Used `#[ctor::ctor]` to run before `main()`, before any logging/instrumentation
+- **Silent stripping** &mdash; No warnings, no errors, just missing environment variables
+- **Distributed symptoms** &mdash; Appeared as unrelated issues across different platforms/configs
+- **User attribution** &mdash; Everyone assumed they misconfigured something (shell looked fine)
+- **Wrong search space** &mdash; Team was debugging post-main application code
 
 Standard debugging tools cannot see pre-main execution. Profilers start at `main()`. Log hooks are not initialized yet. The code executes, modifies the environment, and vanishes.
 
@@ -104,11 +101,11 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
 ## Selected Work
 
-- **[Observatory](https://look.definitelynot.ai)** - WebGPU deepfake detection running 4 ML models in browser (live demo)
-- **[specHO](https://github.com/johnzfitch/specHO)** - LLM watermark detection via phonetic/semantic analysis (The Echo Rule)
-- **[filearchy](https://github.com/johnzfitch/filearchy)** - COSMIC Files fork with sub-10ms trigram search (Rust)
-- **[nautilus-plus](https://github.com/johnzfitch/nautilus-plus)** - Enhanced GNOME Files with sub-ms search (AUR)
-- **[indepacer](https://github.com/johnzfitch/indepacer)** - PACER CLI for federal court research (PyPI: pacersdk)
+- **[Observatory](https://look.definitelynot.ai)** &mdash; WebGPU deepfake detection running 4 ML models in browser (live demo)
+- **[specHO](https://github.com/johnzfitch/specHO)** &mdash; LLM watermark detection via phonetic/semantic analysis (The Echo Rule)
+- **[filearchy](https://github.com/johnzfitch/filearchy)** &mdash; COSMIC Files fork with sub-10ms trigram search (Rust)
+- **[nautilus-plus](https://github.com/johnzfitch/nautilus-plus)** &mdash; Enhanced GNOME Files with sub-ms search (AUR)
+- **[indepacer](https://github.com/johnzfitch/indepacer)** &mdash; <abbr title="Public Access to Court Electronic Records">PACER</abbr> CLI for federal court research (PyPI: pacersdk)
 
 Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, authoritative DNS, and containerized services.
 
@@ -116,7 +113,7 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 
 ## Featured
 
-### <img src=".github/assets/icons/observatory-eye.png" width="24" height="24" alt=""> Observatory - WebGPU Deepfake Detection
+### <img src=".github/assets/icons/observatory-eye.png" width="24" height="24" alt=""> Observatory &mdash; WebGPU Deepfake Detection
 
 **Live Demo:** [look.definitelynot.ai](https://look.definitelynot.ai)
 
@@ -129,11 +126,11 @@ Browser-based AI image detection running 4 specialized ML models (ViT, Swin Tran
 | Deep-Fake-Detector-v2 | 92.1% | ViT-Base |
 | umm_maybe | 94.2% | Vision Transformer |
 
-**Stack:** JavaScript (ES6), Transformers.js, ONNX, WebGPU/WASM
+**Stack:** JavaScript (ES6), Transformers.js, <abbr title="Open Neural Network Exchange">ONNX</abbr>, WebGPU/<abbr title="WebAssembly">WASM</abbr>
 
 ---
 
-### <img src=".github/assets/icons/folder.png" width="24" height="24" alt=""> iconics - Semantic Icon Library
+### <img src=".github/assets/icons/folder.png" width="24" height="24" alt=""> iconics &mdash; Semantic Icon Library
 
 3,372+ PNG icons with semantic CLI discovery. Find the right icon by meaning, not filename.
 
@@ -143,12 +140,12 @@ icon suggest data           # -> chart, database, folder...
 icon use lock shield        # Export to ./icons/
 ```
 
-**Features:** Fuzzy search, theme variants, batch export, markdown integration
+**Features:** Fuzzy search, theme variants, batch export, markdown integration\
 **Stack:** Python, FuzzyWuzzy, PIL
 
 ---
 
-### <img src=".github/assets/icons/script.png" width="24" height="24" alt=""> filearchy + triglyph - Sub-10ms File Search
+### <img src=".github/assets/icons/script.png" width="24" height="24" alt=""> filearchy + triglyph &mdash; Sub-10ms File Search
 
 COSMIC Files fork with embedded trigram search engine. Memory-mapped indices achieve sub-millisecond searches across 2.15M+ files with near-zero resident memory.
 
@@ -158,12 +155,12 @@ filearchy/
 `-- triglyphd/     # D-Bus daemon for system-wide search
 ```
 
-**Performance:** 2.15M files indexed, sub-10ms query time, 156MB index on disk
+**Performance:** 2.15M files indexed, sub-10ms query time, 156MB index on disk\
 **Stack:** Rust, libcosmic, memmap2, zbus
 
 ---
 
-### <img src=".github/assets/icons/radar.png" width="24" height="24" alt=""> The Echo Rule - LLM Detection Methodology
+### <img src=".github/assets/icons/radar.png" width="24" height="24" alt=""> The Echo Rule &mdash; LLM Detection Methodology
 
 LLMs echo their training data. That echo is detectable through pattern recognition:
 
@@ -201,48 +198,50 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 <details>
 <summary><b>Text project index (copyable)</b></summary>
 
+<br>
+
 ### AI / ML
-- [observatory](https://github.com/johnzfitch/observatory) - WebGPU deepfake detection (live: https://look.definitelynot.ai)
-- [specHO](https://github.com/johnzfitch/specHO) - LLM watermark detection (Echo Rule)
-- [definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai) - Unicode security defenses
-- [marginium](https://github.com/johnzfitch/marginium) - Multimodal generation tooling
-- [gemini-cli](https://github.com/johnzfitch/gemini-cli) - Privacy-enhanced Gemini CLI fork
+- [observatory](https://github.com/johnzfitch/observatory) &mdash; WebGPU deepfake detection (live: https://look.definitelynot.ai)
+- [specHO](https://github.com/johnzfitch/specHO) &mdash; LLM watermark detection (Echo Rule)
+- [definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai) &mdash; Unicode security defenses
+- [marginium](https://github.com/johnzfitch/marginium) &mdash; Multimodal generation tooling
+- [gemini-cli](https://github.com/johnzfitch/gemini-cli) &mdash; Privacy-enhanced Gemini CLI fork
 
 ### Security Research
-- eero (private) - Mesh WiFi router security analysis
-- blizzarchy (private) - OAuth analysis and telemetry RE
-- [featherarchy](https://github.com/johnzfitch/featherarchy) - Security-hardened Monero wallet fork
-- alienware-monitor (private) - Firmware RE
-- proxyforge (private) - Transparent MITM proxy
+- eero (private) &mdash; Mesh WiFi router security analysis
+- blizzarchy (private) &mdash; OAuth analysis and telemetry RE
+- [featherarchy](https://github.com/johnzfitch/featherarchy) &mdash; Security-hardened Monero wallet fork
+- alienware-monitor (private) &mdash; Firmware RE
+- proxyforge (private) &mdash; Transparent MITM proxy
 
 ### Systems Programming
-- [filearchy](https://github.com/johnzfitch/filearchy) - COSMIC Files fork with trigram search
-- [triglyph](https://github.com/johnzfitch/triglyph) - Trigram index library
-- [triglyphd](https://github.com/johnzfitch/triglyphd) - D-Bus search daemon
-- [nautilus-plus](https://github.com/johnzfitch/nautilus-plus) - Enhanced GNOME Files
-- [search-cache](https://github.com/johnzfitch/search-cache) - Sub-ms search cache/index
-- [cod3x](https://github.com/johnzfitch/cod3x) - Terminal coding agent
-- bitmail (private) - Bitmessage client
+- [filearchy](https://github.com/johnzfitch/filearchy) &mdash; COSMIC Files fork with trigram search
+- [triglyph](https://github.com/johnzfitch/triglyph) &mdash; Trigram index library
+- [triglyphd](https://github.com/johnzfitch/triglyphd) &mdash; D-Bus search daemon
+- [nautilus-plus](https://github.com/johnzfitch/nautilus-plus) &mdash; Enhanced GNOME Files
+- [search-cache](https://github.com/johnzfitch/search-cache) &mdash; Sub-ms search cache/index
+- [cod3x](https://github.com/johnzfitch/cod3x) &mdash; Terminal coding agent
+- bitmail (private) &mdash; Bitmessage client
 
 ### CLI Tools
-- [indepacer](https://github.com/johnzfitch/indepacer) - PACER CLI
-- [iconics](https://github.com/johnzfitch/iconics) - Semantic icon library
-- [gemini-sharp](https://github.com/johnzfitch/gemini-sharp) - Single-file Gemini CLI binaries
+- [indepacer](https://github.com/johnzfitch/indepacer) &mdash; PACER CLI
+- [iconics](https://github.com/johnzfitch/iconics) &mdash; Semantic icon library
+- [gemini-sharp](https://github.com/johnzfitch/gemini-sharp) &mdash; Single-file Gemini CLI binaries
 
 ### Desktop / Linux
-- [omarchy](https://github.com/johnzfitch/omarchy) - Omarchy fork
-- [waybar-config](https://github.com/johnzfitch/waybar-config) - Waybar RSS ticker
-- [claude-desktop-arch](https://github.com/johnzfitch/claude-desktop-arch) - Claude patch for Arch
-- [qualcomm-x870e-linux-bug-patch](https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch) - WiFi 7 firmware fix
-- [arch-dependency-matrices](https://github.com/johnzfitch/arch-dependency-matrices) - Graph theory analysis
+- [omarchy](https://github.com/johnzfitch/omarchy) &mdash; Omarchy fork
+- [waybar-config](https://github.com/johnzfitch/waybar-config) &mdash; Waybar RSS ticker
+- [claude-desktop-arch](https://github.com/johnzfitch/claude-desktop-arch) &mdash; Claude patch for Arch
+- [qualcomm-x870e-linux-bug-patch](https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch) &mdash; WiFi 7 firmware fix
+- [arch-dependency-matrices](https://github.com/johnzfitch/arch-dependency-matrices) &mdash; Graph theory analysis
 
 ### Web / Mobile
-- [NetworkBatcher](https://github.com/johnzfitch/NetworkBatcher) - Network batching for iOS
-- [Liberty-Links](https://github.com/johnzfitch/Liberty-Links) - Privacy-respecting link alternatives
+- [NetworkBatcher](https://github.com/johnzfitch/NetworkBatcher) &mdash; Network batching for iOS
+- [Liberty-Links](https://github.com/johnzfitch/Liberty-Links) &mdash; Privacy-respecting link alternatives
 
 ### Infrastructure
-- NixOS Server (private) - Post-quantum SSH, Rosenpass VPN, authoritative DNS
-- unbound-config (private) - Recursive DNS with DNSSEC and ad blocking
+- NixOS Server (private) &mdash; Post-quantum SSH, Rosenpass VPN, authoritative DNS
+- unbound-config (private) &mdash; Recursive DNS with DNSSEC and ad blocking
 
 </details>
 
@@ -252,13 +251,21 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 **Primary server:** Dedicated bare-metal NixOS host (details available on request)
 
-- Security: Post-quantum SSH, Rosenpass VPN, nftables firewall
-- DNS: Unbound resolver with DNSSEC, ad/tracker blocking
-- Services: FreshRSS, Caddy (HTTPS/HTTP3), cPanel/WHM, Podman containers
-- Network: Local 10Gbps, authoritative BIND9 with RFC2136 ACME
+<dl>
+  <dt>Security</dt>
+  <dd>Post-quantum SSH, Rosenpass VPN, nftables firewall</dd>
+  <dt>DNS</dt>
+  <dd>Unbound resolver with DNSSEC, ad/tracker blocking</dd>
+  <dt>Services</dt>
+  <dd>FreshRSS, Caddy (HTTPS/HTTP3), cPanel/WHM, Podman containers</dd>
+  <dt>Network</dt>
+  <dd>Local 10Gbps, authoritative BIND9 with RFC2136 ACME</dd>
+</dl>
 
 <details>
 <summary><b>Infrastructure matrix</b></summary>
+
+<br>
 
 | Service | Technology |
 |---------|------------|
@@ -269,8 +276,11 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 </details>
 
----
-
 <p align="center">
-  <sub>SF Bay Area | Open to remote | Icons from <a href="https://github.com/johnzfitch/iconics">iconics</a></sub>
+  <a href="https://johnzfitch.github.io/johnzfitch/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cards/typing-philosophy-dark.svg">
+    <img alt="Philosophy" src=".github/assets/cards/typing-philosophy-light.svg" width="100%">
+  </picture>
+  </a>
 </p>
