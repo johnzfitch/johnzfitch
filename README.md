@@ -176,9 +176,7 @@ OpenAI confirmed and merged the fix within 24 hours, explicitly crediting the in
   </tbody>
 </table>
 
-When the tools are blind, the system lies, and everyone else has stopped looking for it — this is the type of problem I love solving.
-
-</details>
+When the tools are blind, the system lies, and everyone else has stopped looking for it..</details>
 
 -----
 
