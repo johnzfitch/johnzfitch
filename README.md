@@ -18,7 +18,8 @@
 ## OpenAI Codex: Finding the Ghost in the Machine
 
 > [!IMPORTANT]
-> Solved a <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> environment stripping bug causing <mark>11–300× <abbr title="Graphics Processing Unit">GPU</abbr> slowdowns</mark> that eluded OpenAI’s debugging team for months. This was the main blocker to Codex spawning effective subagents, and also explains why OpenAI wasn’t able to use Codex in-house until <time datetime="2026-02">February 2026</time>.
+> Solved a <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> environment stripping bug causing <mark>11–300× <abbr title="Graphics Processing Unit">GPU</abbr> slowdowns</mark> that eluded OpenAI’s debugging team for months. This was the main blocker to Codex spawning effective subagents, or tools
+requiring CUDA/MKL.
 
 Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951](https://github.com/openai/codex/pull/8951)  |  [Release notes (<samp>rust-v0.80.0</samp>)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
