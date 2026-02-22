@@ -18,8 +18,7 @@
 ## OpenAI Codex: Finding the Ghost in the Machine
 
 > [!IMPORTANT]
-> Solved a <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> environment stripping bug causing <mark>11–300× <abbr title="Graphics Processing Unit">GPU</abbr> slowdowns</mark> that eluded OpenAI’s debugging team for months. This was the main blocker to Codex spawning and controlling effective subagents. The "ghost" regression often times forced cpu fallback or silent failures in ML-related tasks that required CUDA/MKL.
-requiring CUDA/MKL.
+> Solved a <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> environment stripping bug causing <mark>11–300× <abbr title="Graphics Processing Unit">GPU</abbr> slowdowns</mark> that eluded OpenAI’s debugging team for months. This was the main blocker to Codex spawning and controlling effective subagents. The regression often times caused delayed cpu fallback or silent failures (codex infinite hang) with ML-related tasks.
 
 Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951](https://github.com/openai/codex/pull/8951)  |  [Release notes (<samp>rust-v0.80.0</samp>)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
