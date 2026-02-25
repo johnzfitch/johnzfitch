@@ -18,9 +18,9 @@
 ## OpenAI Codex: Finding the Ghost in the Machine
 
 > [!IMPORTANT]
-> Solved a <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> environment stripping bug causing <mark>11–300× <abbr title="Graphics Processing Unit">GPU</abbr> slowdowns</mark> that eluded OpenAI’s debugging team for months. This was the main blocker to Codex spawning and controlling effective subagents. The regression often times caused delayed cpu fallback or silent failures in ML-related tasks across all operating systems.
+> Solved a <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> environment stripping bug causing <mark>11–300× <abbr title="Graphics Processing Unit">GPU</abbr> slowdowns</mark> that eluded OpenAI's debugging team for months. This was the main blocker to Codex spawning and controlling effective subagents. The regression often times caused delayed cpu fallback or silent failures in ML-related tasks across all operating systems.
 
-Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951](https://github.com/openai/codex/pull/8951)  |  [Release notes (<samp>rust-v0.80.0</samp>)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
+Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951](https://github.com/openai/codex/pull/8951)  |  [Release notes (<samp>rust-v0.80.0</samp>)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
 <details>
 <summary><b>Full Investigation Details</b></summary>
@@ -115,8 +115,8 @@ But identification is not proof. I spent <b>2 months</b> building an undeniable 
   <dd>Cross-referenced 15+ scattered user reports over 3 months, traced process environment inheritance through <code>fork</code>/<code>exec</code> boundaries</dd>
 </dl>
 
-  <img src=".github/assets/icons/script.png" width="24" height="24" alt=""> [Comprehensive Technical Analysis](https://github.com/user-attachments/files/24510983/GITHUB_ISSUE_DETAILED.md)<br>
-  <img src=".github/assets/icons/lightbulb.png" width="24" height="24" alt=""> [Investigation Methodology](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit)
+  <img src=".github/assets/icons/script.png" width="24" height="24" alt=""> [Comprehensive Technical Analysis](https://github.com/user-attachments/files/24510983/GITHUB_ISSUE_DETAILED.md)<br>
+  <img src=".github/assets/icons/lightbulb.png" width="24" height="24" alt=""> [Investigation Methodology](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit)
 
 -----
 
@@ -147,7 +147,7 @@ The bug was designed to be invisible:
 
 OpenAI confirmed and merged the fix within 24 hours, explicitly crediting the investigation in <samp>v0.80.0</samp> release notes:
 
-> “Codex <abbr title="Command Line Interface">CLI</abbr> subprocesses again inherit env vars like <var>LD_LIBRARY_PATH</var>/<var>DYLD_LIBRARY_PATH</var> to avoid runtime issues. As explained in #8945, failure to pass along these environment variables to subprocesses that expect them (notably <abbr title="Graphics Processing Unit">GPU</abbr>-related ones), was causing 10×+ performance regressions! Special thanks to <kbd>@johnzfitch</kbd> for the detailed investigation and write-up in #8945.”
+> "Codex <abbr title="Command Line Interface">CLI</abbr> subprocesses again inherit env vars like <var>LD_LIBRARY_PATH</var>/<var>DYLD_LIBRARY_PATH</var> to avoid runtime issues. As explained in #8945, failure to pass along these environment variables to subprocesses that expect them (notably <abbr title="Graphics Processing Unit">GPU</abbr>-related ones), was causing 10×+ performance regressions! Special thanks to <kbd>@johnzfitch</kbd> for the detailed investigation and write-up in #8945."
 
 **Restored:**
 
@@ -180,11 +180,38 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
 -----
 
+## Recent Work
+
+<dl>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐32</sub></dt>
+  <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering and native module stubbing</dd>
+
+  <dt><a href="https://github.com/johnzfitch/grove"><b>grove</b></a></dt>
+  <dd>Kanban-style <abbr title="Terminal User Interface">TUI</abbr> for parallel AI coding — manage Git worktrees as tasks, run multiple agents in isolated tmux sessions</dd>
+
+  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐4</sub></dt>
+  <dd>Token-saving hooks for Claude Code — prevents verbose output, blocks binary reads, enforces subagent budgets</dd>
+
+  <dt><a href="https://github.com/johnzfitch/sites"><b>sites</b></a></dt>
+  <dd>Mutable topology layer for static sites on NixOS — reconciler-based deployer with zero webhooks</dd>
+
+  <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
+  <dd>Codebase indexer with BM25 search and semantic chunk exports for local agent consumption</dd>
+
+  <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
+  <dd>Defense of the Artifacts — post-quantum secure secrets manager with <abbr title="Terminal User Interface">TUI</abbr></dd>
+</dl>
+
+-----
+
 ## Selected Work
 
 <dl>
   <dt><a href="https://look.definitelynot.ai"><b>Observatory</b></a></dt>
   <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection running 4 ML models in browser <a href="https://look.definitelynot.ai"><sub>(live demo)</sub></a></dd>
+
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a></dt>
+  <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories</dd>
 
   <dt><a href="https://github.com/johnzfitch/specHO"><b>specHO</b></a></dt>
   <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em></dd>
@@ -243,7 +270,7 @@ Browser-based AI image detection running 4 specialized ML models (<abbr title="V
   </tbody>
 </table>
 
-**Stack:** JavaScript (ES6)  •  Transformers.js  •  <abbr title="Open Neural Network Exchange">ONNX</abbr>  •  <abbr title="Web Graphics Processing Unit">WebGPU</abbr>/<abbr title="WebAssembly">WASM</abbr>
+**Stack:** JavaScript (ES6)  •  Transformers.js  •  <abbr title="Open Neural Network Exchange">ONNX</abbr>  •  <abbr title="Web Graphics Processing Unit">WebGPU</abbr>/<abbr title="WebAssembly">WASM</abbr>
 
 -----
 
@@ -257,8 +284,8 @@ icon suggest data           # → chart, database, folder…
 icon use lock shield        # Export to ./icons/
 ```
 
-**Features:** Fuzzy search  •  theme variants  •  batch export  •  markdown integration<br>
-**Stack:** Python  •  FuzzyWuzzy  •  <abbr title="Python Imaging Library">PIL</abbr>
+**Features:** Fuzzy search  •  theme variants  •  batch export  •  markdown integration<br>
+**Stack:** Python  •  FuzzyWuzzy  •  <abbr title="Python Imaging Library">PIL</abbr>
 
 -----
 
@@ -320,7 +347,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <img alt="Technical focus — skills breakdown" src=".github/assets/charts/skills-light.svg">
 </picture>
 
-**Core:** Rust  |  Python  |  TypeScript  |  C  |  Nix  |  Shell
+**Core:** Rust  |  Python  |  TypeScript  |  C  |  Nix  |  Shell
 
 -----
 
@@ -338,32 +365,46 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 <br>
 
-### AI / ML
+### AI / ML / Agent Tooling
 
 <dl>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <sub>⭐32</sub></dt>
+  <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <sub>⭐4</sub></dt>
+  <dd>Token-saving hooks for Claude Code</dd>
+  <dt><a href="https://github.com/johnzfitch/grove">grove</a></dt>
+  <dd>Kanban-style <abbr title="Terminal User Interface">TUI</abbr> for parallel AI coding</dd>
+  <dt><a href="https://github.com/johnzfitch/llmx">llmx</a></dt>
+  <dd>Codebase indexer with BM25 search for agent consumption</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki">claude-wiki</a></dt>
+  <dd>Comprehensive Anthropic documentation wiki — 749+ docs</dd>
   <dt><a href="https://github.com/johnzfitch/observatory">observatory</a></dt>
-  <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection &mdash; live: <a href="https://look.definitelynot.ai">look.definitelynot.ai</a></dd>
+  <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection — live: <a href="https://look.definitelynot.ai">look.definitelynot.ai</a></dd>
   <dt><a href="https://github.com/johnzfitch/specHO">specHO</a></dt>
   <dd><abbr title="Large Language Model">LLM</abbr> watermark detection <em>(Echo Rule)</em></dd>
   <dt><a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></dt>
   <dd>Unicode security defenses</dd>
-  <dt>[marginium]</dt>
-  <dd>Multimodal generation tooling</dd>
-  <dt>[gemini-cli]</dt>
-  <dd>Privacy-enhanced Gemini <abbr title="Command Line Interface">CLI</abbr> fork</dd>
+  <dt><a href="https://github.com/johnzfitch/raley-bot">raley-bot</a></dt>
+  <dd>Grocery shopping assistant with MCP integration</dd>
+  <dt><a href="https://github.com/johnzfitch/gemini-sharp">gemini-sharp</a></dt>
+  <dd>Privacy-focused Gemini <abbr title="Command Line Interface">CLI</abbr> with custom themes</dd>
 </dl>
 
 ### Security Research
 
 <dl>
+  <dt><a href="https://github.com/johnzfitch/dota">dota</a></dt>
+  <dd>Post-quantum secure secrets manager with <abbr title="Terminal User Interface">TUI</abbr></dd>
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></dt>
+  <dd>Lightweight MCP server for Ghidra reverse engineering</dd>
+  <dt><a href="https://github.com/johnzfitch/cookiepeek">cookiepeek</a></dt>
+  <dd>Browser extension for viewing, decoding, and editing cookies</dd>
+  <dt><a href="https://github.com/johnzfitch/pagescope">pagescope</a></dt>
+  <dd>Privacy-focused Firefox extension for page structure analysis</dd>
   <dt>eero <sub>(private)</sub></dt>
   <dd>Mesh WiFi router security analysis</dd>
   <dt>blizzarchy <sub>(private)</sub></dt>
   <dd>OAuth analysis and telemetry <abbr title="Reverse Engineering">RE</abbr></dd>
-  <dt>[featherarchy]</dt>
-  <dd>Security-hardened Monero wallet fork</dd>
-  <dt>alienware-monitor <sub>(private)</sub></dt>
-  <dd>Firmware <abbr title="Reverse Engineering">RE</abbr></dd>
   <dt>proxyforge <sub>(private)</sub></dt>
   <dd>Transparent <abbr title="Machine-in-the-Middle">MITM</abbr> proxy</dd>
 </dl>
@@ -371,55 +412,40 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 ### Systems Programming
 
 <dl>
-  <dt>[filearchy]</dt>
+  <dt><a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></dt>
+  <dd>Automated code patching system for Rust with byte-span replacement</dd>
+  <dt><a href="https://github.com/johnzfitch/filearchy">filearchy</a></dt>
   <dd><abbr title="COSMIC desktop environment">COSMIC</abbr> Files fork with trigram search</dd>
-  <dt>[triglyph]</dt>
-  <dd>Trigram index library</dd>
-  <dt>[triglyphd]</dt>
-  <dd>D-Bus search daemon</dd>
-  <dt>[nautilus-plus]</dt>
+  <dt><a href="https://github.com/johnzfitch/swappy2">swappy2</a></dt>
+  <dd>Enhanced screenshot editor with Scale2x sharp zoom</dd>
+  <dt><a href="https://github.com/johnzfitch/nautilus-plus">nautilus-plus</a></dt>
   <dd>Enhanced GNOME Files</dd>
-  <dt>[search-cache]</dt>
-  <dd>Sub-ms search cache/index</dd>
-  <dt>[cod3x]</dt>
-  <dd>Terminal coding agent</dd>
-  <dt>bitmail <sub>(private)</sub></dt>
-  <dd>Bitmessage client</dd>
+  <dt><a href="https://github.com/johnzfitch/sites">sites</a></dt>
+  <dd>Reconciler-based static site deployer for NixOS</dd>
 </dl>
 
 ### <abbr title="Command Line Interface">CLI</abbr> Tools
 
 <dl>
-  <dt>[indepacer]</dt>
+  <dt><a href="https://github.com/johnzfitch/indepacer">indepacer</a></dt>
   <dd><abbr title="Public Access to Court Electronic Records">PACER</abbr> <abbr title="Command Line Interface">CLI</abbr></dd>
-  <dt>[iconics]</dt>
-  <dd>Semantic icon library</dd>
-  <dt>[gemini-sharp]</dt>
-  <dd>Single-file Gemini <abbr title="Command Line Interface">CLI</abbr> binaries</dd>
+  <dt><a href="https://github.com/johnzfitch/iconics">iconics</a> <sub>⭐2</sub></dt>
+  <dd>Semantic icon library — 3,372+ icons</dd>
+  <dt><a href="https://github.com/johnzfitch/smsbox">smsbox</a></dt>
+  <dd>Receive SMS verification codes via Twilio</dd>
+  <dt><a href="https://github.com/johnzfitch/docs-browser">docs-browser</a></dt>
+  <dd>Unified documentation browser with Walker integration</dd>
 </dl>
 
-### Desktop / Linux
+### Desktop / Linux
 
 <dl>
-  <dt>[omarchy]</dt>
-  <dd>Omarchy fork</dd>
-  <dt>[waybar-config]</dt>
-  <dd>Waybar <abbr title="Really Simple Syndication">RSS</abbr> ticker</dd>
-  <dt>[claude-desktop-arch]</dt>
-  <dd>Claude patch for Arch</dd>
+  <dt><a href="https://github.com/johnzfitch/bartender">bartender</a></dt>
+  <dd>GTK4 status bar for Hyprland built with AGS</dd>
+  <dt><a href="https://github.com/johnzfitch/omarchy">omarchy</a></dt>
+  <dd>Beautiful, modern & opinionated Linux</dd>
   <dt><a href="https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch">qualcomm-x870e-linux-bug-patch</a></dt>
   <dd>WiFi 7 firmware fix</dd>
-  <dt>[arch-deps]</dt>
-  <dd>Graph theory analysis</dd>
-</dl>
-
-### Web / Mobile
-
-<dl>
-  <dt>[NetworkBatcher]</dt>
-  <dd>Network batching for iOS</dd>
-  <dt>[Liberty-Links]</dt>
-  <dd>Privacy-respecting link alternatives</dd>
 </dl>
 
 ### Infrastructure
