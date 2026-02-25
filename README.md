@@ -115,8 +115,8 @@ But identification is not proof. I spent <b>2 months</b> building an undeniable 
   <dd>Cross-referenced 15+ scattered user reports over 3 months, traced process environment inheritance through <code>fork</code>/<code>exec</code> boundaries</dd>
 </dl>
 
-  <img src=".github/assets/icons/script.png" width="24" height="24" alt=""> [Comprehensive Technical Analysis](https://github.com/user-attachments/files/24510983/GITHUB_ISSUE_DETAILED.md)<br>
-  <img src=".github/assets/icons/lightbulb.png" width="24" height="24" alt=""> [Investigation Methodology](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit)
+  <img src=".github/assets/icons/script.png" width="20" height="20" alt=""> [Comprehensive Technical Analysis](https://github.com/user-attachments/files/24510983/GITHUB_ISSUE_DETAILED.md)<br>
+  <img src=".github/assets/icons/lightbulb.png" width="20" height="20" alt=""> [Investigation Methodology](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit)
 
 -----
 
@@ -256,7 +256,7 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 
 ## Featured
 
-### <img src=".github/assets/icons/observatory-eye.png" width="24" height="24" alt=""> Observatory — <abbr title="Web Graphics Processing Unit">WebGPU</abbr> Deepfake Detection
+### <img src=".github/assets/icons/observatory-eye.png" width="20" height="20" alt=""> Observatory — <abbr title="Web Graphics Processing Unit">WebGPU</abbr> Deepfake Detection
 
 **Live Demo:** [look.definitelynot.ai](https://look.definitelynot.ai)
 
@@ -298,7 +298,7 @@ Browser-based AI image detection running 4 specialized ML models (<abbr title="V
 
 -----
 
-### <img src=".github/assets/icons/folder.png" width="24" height="24" alt=""> iconics — Semantic Icon Library
+### <img src=".github/assets/icons/folder.png" width="20" height="20" alt=""> iconics — Semantic Icon Library
 
 3,372+ <abbr title="Portable Network Graphics">PNG</abbr> icons with semantic <abbr title="Command Line Interface">CLI</abbr> discovery. Find the right icon by meaning, not filename.
 
@@ -313,7 +313,7 @@ icon use lock shield        # Export to ./icons/
 
 -----
 
-### <img src=".github/assets/icons/script.png" width="24" height="24" alt=""> filearchy + triglyph — Sub-10ms File Search
+### <img src=".github/assets/icons/script.png" width="20" height="20" alt=""> filearchy + triglyph — Sub-10ms File Search
 
 <abbr title="COSMIC desktop environment">COSMIC</abbr> Files fork with embedded trigram search engine. Memory-mapped indices achieve sub-millisecond searches across 2.15M+ files with near-zero resident memory.
 
@@ -332,7 +332,7 @@ filearchy/
 
 -----
 
-### <img src=".github/assets/icons/radar.png" width="24" height="24" alt=""> The Echo Rule — <abbr title="Large Language Model">LLM</abbr> Detection Methodology
+### <img src=".github/assets/icons/radar.png" width="20" height="20" alt=""> The Echo Rule — <abbr title="Large Language Model">LLM</abbr> Detection Methodology
 
 <abbr title="Large Language Models">LLMs</abbr> echo their training data. That echo is detectable through pattern recognition:
 
@@ -363,7 +363,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 -----
 
-## <img src=".github/assets/icons/chart.png" width="24" height="24" alt=""> Skills
+## <img src=".github/assets/icons/chart.png" width="20" height="20" alt=""> Skills
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/charts/skills-dark.svg">
@@ -375,7 +375,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 -----
 
-## <img src=".github/assets/icons/folder.png" width="24" height="24" alt=""> Project Dashboard
+## <img src=".github/assets/icons/folder.png" width="20" height="20" alt=""> Project Dashboard
 
 <picture>
   <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset=".github/assets/cards/projects-mobile-dark.svg">
@@ -489,7 +489,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 -----
 
-## <img src=".github/assets/icons/server.png" width="24" height="24" alt=""> Infrastructure
+## <img src=".github/assets/icons/server.png" width="20" height="20" alt=""> Infrastructure
 
 **Primary server:** Dedicated bare-metal NixOS host <sub>(details available on request)</sub>
 
