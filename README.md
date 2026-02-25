@@ -180,14 +180,11 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
 -----
 
-## <img src=".github/assets/icons/rocket.png" width="20" height="20" alt=""> Recent Work
+## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐32</sub></dt>
   <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering and native module stubbing</dd>
-
-  <dt><a href="https://github.com/johnzfitch/grove"><b>grove</b></a></dt>
-  <dd>Kanban-style <abbr title="Terminal User Interface">TUI</abbr> for parallel AI coding — manage Git worktrees as tasks, run multiple agents in isolated tmux sessions</dd>
 
   <dt><a href="https://github.com/johnzfitch/human-interface-markdown"><b>human-interface-markdown</b></a></dt>
   <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents spanning Lisa, Mac, NeXT, Newton, Aqua, and iOS eras</dd>
@@ -239,7 +236,7 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 
 -----
 
-## <img src=".github/assets/icons/lightning.png" width="20" height="20" alt=""> Live Demos
+## <img src=".github/assets/icons/globe.png" width="20" height="20" alt=""> Live Demos
 
 <dl>
   <dt><a href="https://definitelynot.ai"><b>Cosmic Code Cleaner</b></a> @ definitelynot.ai</dt>
@@ -401,8 +398,6 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents for <abbr title="Large Language Model">LLM</abbr> consumption</dd>
   <dt><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <sub>⭐4</sub></dt>
   <dd>Token-saving hooks for Claude Code</dd>
-  <dt><a href="https://github.com/johnzfitch/grove">grove</a></dt>
-  <dd>Kanban-style <abbr title="Terminal User Interface">TUI</abbr> for parallel AI coding</dd>
   <dt><a href="https://github.com/johnzfitch/llmx">llmx</a></dt>
   <dd>Codebase indexer with BM25 search — live: <a href="https://llm.cat">llm.cat</a></dd>
   <dt><a href="https://github.com/johnzfitch/claude-wiki">claude-wiki</a></dt>
