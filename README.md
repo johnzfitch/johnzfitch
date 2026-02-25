@@ -213,9 +213,6 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐4</sub></dt>
   <dd>Token-saving hooks for Claude Code — prevents verbose output, blocks binary reads, enforces subagent budgets</dd>
 
-  <dt><a href="https://github.com/johnzfitch/marginium"><b>marginium</b></a></dt>
-  <dd>Multimodal generation framework — gives language models live visual awareness of their own output structure</dd>
-
   <dt><a href="https://github.com/johnzfitch/sites"><b>sites</b></a></dt>
   <dd>Mutable topology layer for static sites on NixOS — reconciler-based deployer with zero webhooks</dd>
 
@@ -403,8 +400,6 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <dd>Token-saving hooks for Claude Code</dd>
   <dt><a href="https://github.com/johnzfitch/grove">grove</a></dt>
   <dd>Kanban-style <abbr title="Terminal User Interface">TUI</abbr> for parallel AI coding</dd>
-  <dt><a href="https://github.com/johnzfitch/marginium">marginium</a></dt>
-  <dd>Multimodal generation framework with live visual awareness</dd>
   <dt><a href="https://github.com/johnzfitch/llmx">llmx</a></dt>
   <dd>Codebase indexer with BM25 search — live: <a href="https://llm.cat">llm.cat</a></dd>
   <dt><a href="https://github.com/johnzfitch/claude-wiki">claude-wiki</a></dt>
@@ -419,8 +414,6 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <dd>Grocery shopping assistant with MCP integration</dd>
   <dt><a href="https://github.com/johnzfitch/gemini-sharp">gemini-sharp</a></dt>
   <dd>Privacy-focused Gemini <abbr title="Command Line Interface">CLI</abbr> with custom themes</dd>
-  <dt><a href="https://github.com/johnzfitch/superbpe">superbpe</a></dt>
-  <dd>Space Travel for Language Models — official research code</dd>
 </dl>
 
 ### Security Research
@@ -472,8 +465,6 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <dd>Receive SMS verification codes via Twilio</dd>
   <dt><a href="https://github.com/johnzfitch/docs-browser">docs-browser</a></dt>
   <dd>Unified documentation browser with Walker integration</dd>
-  <dt><a href="https://github.com/johnzfitch/claude-desktop-arch">claude-desktop-arch</a></dt>
-  <dd>Enable Claude Code preview in Claude Desktop on Arch Linux</dd>
 </dl>
 
 ### Desktop / Linux
