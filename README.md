@@ -180,7 +180,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
 -----
 
-## Recent Work
+## <img src=".github/assets/icons/rocket.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐32</sub></dt>
@@ -207,7 +207,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
 -----
 
-## Selected Work
+## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a></dt>
@@ -236,7 +236,7 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 
 -----
 
-## Live Demos
+## <img src=".github/assets/icons/lightning.png" width="20" height="20" alt=""> Live Demos
 
 <dl>
   <dt><a href="https://definitelynot.ai"><b>Cosmic Code Cleaner</b></a> @ definitelynot.ai</dt>
