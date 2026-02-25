@@ -375,117 +375,18 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 
 -----
 
-## <img src=".github/assets/icons/folder.png" width="20" height="20" alt=""> Project Dashboard
+## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-<picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset=".github/assets/cards/projects-mobile-dark.svg">
-  <source media="(prefers-color-scheme: light) and (max-width: 600px)" srcset=".github/assets/cards/projects-mobile-light.svg">
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/cards/projects-desktop-dark.svg">
-  <img alt="Projects grouped by category" src=".github/assets/cards/projects-desktop-light.svg">
-</picture>
-
-<details>
-<summary><b>Text project index</b> <sub>(copyable)</sub></summary>
-
-<br>
-
-### AI / ML / Agent Tooling
-
-<dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <sub>⭐32</sub></dt>
-  <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering</dd>
-  <dt><a href="https://github.com/johnzfitch/human-interface-markdown">human-interface-markdown</a></dt>
-  <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents for <abbr title="Large Language Model">LLM</abbr> consumption</dd>
-  <dt><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <sub>⭐4</sub></dt>
-  <dd>Token-saving hooks for Claude Code</dd>
-  <dt><a href="https://github.com/johnzfitch/llmx">llmx</a></dt>
-  <dd>Codebase indexer with BM25 search — live: <a href="https://llm.cat">llm.cat</a></dd>
-  <dt><a href="https://github.com/johnzfitch/claude-wiki">claude-wiki</a></dt>
-  <dd>Comprehensive Anthropic documentation wiki — 749+ docs</dd>
-  <dt><a href="https://github.com/johnzfitch/observatory">observatory</a></dt>
-  <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection — live: <a href="https://look.definitelynot.ai">look.definitelynot.ai</a></dd>
-  <dt><a href="https://github.com/johnzfitch/specHO">specHO</a></dt>
-  <dd><abbr title="Large Language Model">LLM</abbr> watermark detection — live: <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
-  <dt><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></dt>
-  <dd>Claude Code plugin for the Burn deep learning framework</dd>
-  <dt><a href="https://github.com/johnzfitch/raley-bot">raley-bot</a></dt>
-  <dd>Grocery shopping assistant with MCP integration</dd>
-  <dt><a href="https://github.com/johnzfitch/gemini-sharp">gemini-sharp</a></dt>
-  <dd>Privacy-focused Gemini <abbr title="Command Line Interface">CLI</abbr> with custom themes</dd>
-</dl>
-
-### Security Research
-
-<dl>
-  <dt><a href="https://github.com/johnzfitch/dota">dota</a></dt>
-  <dd>Post-quantum secure secrets manager with <abbr title="Terminal User Interface">TUI</abbr></dd>
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></dt>
-  <dd>Lightweight MCP server for Ghidra reverse engineering</dd>
-  <dt><a href="https://github.com/johnzfitch/cookiepeek">cookiepeek</a></dt>
-  <dd>Browser extension for viewing, decoding, and editing cookies</dd>
-  <dt><a href="https://github.com/johnzfitch/pagescope">pagescope</a></dt>
-  <dd>Privacy-focused Firefox extension for page structure analysis</dd>
-  <dt>eero <sub>(private)</sub></dt>
-  <dd>Mesh WiFi router security analysis</dd>
-  <dt>blizzarchy <sub>(private)</sub></dt>
-  <dd>OAuth analysis and telemetry <abbr title="Reverse Engineering">RE</abbr></dd>
-  <dt>proxyforge <sub>(private)</sub></dt>
-  <dd>Transparent <abbr title="Machine-in-the-Middle">MITM</abbr> proxy</dd>
-</dl>
-
-### Systems Programming
-
-<dl>
-  <dt><a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></dt>
-  <dd>Automated code patching system for Rust with byte-span replacement</dd>
-  <dt><a href="https://github.com/johnzfitch/filearchy">filearchy</a></dt>
-  <dd><abbr title="COSMIC desktop environment">COSMIC</abbr> Files fork with trigram search</dd>
-  <dt><a href="https://github.com/johnzfitch/swappy2">swappy2</a></dt>
-  <dd>Enhanced screenshot editor with Scale2x sharp zoom</dd>
-  <dt><a href="https://github.com/johnzfitch/nautilus-plus">nautilus-plus</a></dt>
-  <dd>Enhanced GNOME Files</dd>
-  <dt><a href="https://github.com/johnzfitch/sites">sites</a></dt>
-  <dd>Reconciler-based static site deployer for NixOS</dd>
-  <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices">arch-dependency-matrices</a></dt>
-  <dd>Mathematical analysis of 1,553 Arch Linux packages using graph theory and spectral analysis</dd>
-</dl>
-
-### <abbr title="Command Line Interface">CLI</abbr> Tools & Documentation
-
-<dl>
-  <dt><a href="https://github.com/johnzfitch/htmx-docs">htmx-docs</a></dt>
-  <dd>Organized HTMX ecosystem documentation corpus in Markdown</dd>
-  <dt><a href="https://github.com/johnzfitch/indepacer">indepacer</a></dt>
-  <dd><abbr title="Public Access to Court Electronic Records">PACER</abbr> <abbr title="Command Line Interface">CLI</abbr></dd>
-  <dt><a href="https://github.com/johnzfitch/iconics">iconics</a> <sub>⭐2</sub></dt>
-  <dd>Semantic icon library — 3,372+ icons</dd>
-  <dt><a href="https://github.com/johnzfitch/smsbox">smsbox</a></dt>
-  <dd>Receive SMS verification codes via Twilio</dd>
-  <dt><a href="https://github.com/johnzfitch/docs-browser">docs-browser</a></dt>
-  <dd>Unified documentation browser with Walker integration</dd>
-</dl>
-
-### Desktop / Linux
-
-<dl>
-  <dt><a href="https://github.com/johnzfitch/bartender">bartender</a></dt>
-  <dd>GTK4 status bar for Hyprland built with AGS</dd>
-  <dt><a href="https://github.com/johnzfitch/omarchy">omarchy</a></dt>
-  <dd>Beautiful, modern & opinionated Linux</dd>
-  <dt><a href="https://github.com/johnzfitch/qualcomm-x870e-linux-bug-patch">qualcomm-x870e-linux-bug-patch</a></dt>
-  <dd>WiFi 7 firmware fix</dd>
-</dl>
-
-### Infrastructure
-
-<dl>
-  <dt>NixOS Server <sub>(private)</sub></dt>
-  <dd>Post-quantum <abbr title="Secure Shell">SSH</abbr>, Rosenpass <abbr title="Virtual Private Network">VPN</abbr>, authoritative <abbr title="Domain Name System">DNS</abbr></dd>
-  <dt>unbound-config <sub>(private)</sub></dt>
-  <dd>Recursive <abbr title="Domain Name System">DNS</abbr> with <abbr title="Domain Name System Security Extensions">DNSSEC</abbr> and ad blocking</dd>
-</dl>
-
-</details>
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** ⭐32 — Run Claude Desktop's Cowork feature on Linux through reverse engineering
+- **[human-interface-markdown](https://github.com/johnzfitch/human-interface-markdown)** — Apple Human Interface Guidelines archive (1980-2014) — 35 documents for LLM consumption
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** ⭐4 — Token-saving hooks for Claude Code
+- **[llmx](https://github.com/johnzfitch/llmx)** — Codebase indexer with BM25 search — live: [llm.cat](https://llm.cat)
+- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** — Comprehensive Anthropic documentation wiki — 749+ docs
+- **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection — live: [look.definitelynot.ai](https://look.definitelynot.ai)
+- **[specHO](https://github.com/johnzfitch/specHO)** — LLM watermark detection — live: [definitelynot.ai](https://definitelynot.ai)
+- **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin for the Burn deep learning framework
+- **[raley-bot](https://github.com/johnzfitch/raley-bot)** — Grocery shopping assistant with MCP integration
+- **[gemini-sharp](https://github.com/johnzfitch/gemini-sharp)** — Privacy-focused Gemini CLI with custom themes
 
 -----
 
