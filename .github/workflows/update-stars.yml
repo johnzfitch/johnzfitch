@@ -1,0 +1,70 @@
+name: Update Star Counts
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Daily at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-stars:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch star counts
+        id: stars
+        run: |
+          # Fetch current star counts using GitHub CLI
+          COWORK_STARS=$(gh api repos/johnzfitch/claude-cowork-linux --jq '.stargazers_count')
+          WARDEN_STARS=$(gh api repos/johnzfitch/claude-warden --jq '.stargazers_count')
+          ICONICS_STARS=$(gh api repos/johnzfitch/iconics --jq '.stargazers_count')
+
+          echo "cowork=$COWORK_STARS" >> $GITHUB_OUTPUT
+          echo "warden=$WARDEN_STARS" >> $GITHUB_OUTPUT
+          echo "iconics=$ICONICS_STARS" >> $GITHUB_OUTPUT
+
+          echo "Star counts: cowork=$COWORK_STARS, warden=$WARDEN_STARS, iconics=$ICONICS_STARS"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Update README
+        run: |
+          # Update claude-cowork-linux stars in multiple places
+          sed -i 's|claude-cowork-linux</b></a> <sub>⭐[0-9]*</sub>|claude-cowork-linux</b></a> <sub>⭐${{ steps.stars.outputs.cowork }}</sub>|g' README.md
+          sed -i 's|claude-cowork-linux</a> <sub>⭐[0-9]*</sub>|claude-cowork-linux</a> <sub>⭐${{ steps.stars.outputs.cowork }}</sub>|g' README.md
+
+          # Update claude-warden stars
+          sed -i 's|claude-warden</b></a> <sub>⭐[0-9]*</sub>|claude-warden</b></a> <sub>⭐${{ steps.stars.outputs.warden }}</sub>|g' README.md
+          sed -i 's|claude-warden</a> <sub>⭐[0-9]*</sub>|claude-warden</a> <sub>⭐${{ steps.stars.outputs.warden }}</sub>|g' README.md
+
+          # Update iconics stars
+          sed -i 's|iconics</a> <sub>⭐[0-9]*</sub>|iconics</a> <sub>⭐${{ steps.stars.outputs.iconics }}</sub>|g' README.md
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet README.md; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Changes detected:"
+            git diff README.md
+          fi
+
+      - name: Commit and push if changed
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "Update star counts [skip ci]
+
+          - claude-cowork-linux: ${{ steps.stars.outputs.cowork }} stars
+          - claude-warden: ${{ steps.stars.outputs.warden }} stars
+          - iconics: ${{ steps.stars.outputs.iconics }} stars"
+          git push
