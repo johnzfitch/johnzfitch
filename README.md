@@ -180,6 +180,24 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
 -----
 
+## Live Demos
+
+<dl>
+  <dt><a href="https://definitelynot.ai"><b>Cosmic Code Cleaner</b></a> @ definitelynot.ai</dt>
+  <dd>LLM paste sanitizer with vectorhit algorithm — fix curly quotes, invisible Unicode, confusable punctuation, dedent blocks</dd>
+
+  <dt><a href="https://llm.cat"><b>LLMX Ingestor</b></a> @ llm.cat</dt>
+  <dd>WebAssembly codebase indexer — private, deterministic chunking and BM25 search for large folders</dd>
+
+  <dt><a href="https://internetuniverse.org"><b>LINTENIUM FIELD</b></a> @ internetuniverse.org</dt>
+  <dd>Terminal-based <abbr title="Alternate Reality Game">ARG</abbr> experience — interactive mystery with audio visualizations</dd>
+
+  <dt><a href="https://look.definitelynot.ai"><b>Observatory</b></a> @ look.definitelynot.ai</dt>
+  <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection running 4 ML models in browser</dd>
+</dl>
+
+-----
+
 ## Recent Work
 
 <dl>
@@ -189,14 +207,20 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/grove"><b>grove</b></a></dt>
   <dd>Kanban-style <abbr title="Terminal User Interface">TUI</abbr> for parallel AI coding — manage Git worktrees as tasks, run multiple agents in isolated tmux sessions</dd>
 
+  <dt><a href="https://github.com/johnzfitch/human-interface-markdown"><b>human-interface-markdown</b></a></dt>
+  <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents spanning Lisa, Mac, NeXT, Newton, Aqua, and iOS eras</dd>
+
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐4</sub></dt>
   <dd>Token-saving hooks for Claude Code — prevents verbose output, blocks binary reads, enforces subagent budgets</dd>
+
+  <dt><a href="https://github.com/johnzfitch/marginium"><b>marginium</b></a></dt>
+  <dd>Multimodal generation framework — gives language models live visual awareness of their own output structure</dd>
 
   <dt><a href="https://github.com/johnzfitch/sites"><b>sites</b></a></dt>
   <dd>Mutable topology layer for static sites on NixOS — reconciler-based deployer with zero webhooks</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Codebase indexer with BM25 search and semantic chunk exports for local agent consumption</dd>
+  <dd>Codebase indexer with BM25 search and semantic chunk exports — live demo at <a href="https://llm.cat">llm.cat</a></dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Defense of the Artifacts — post-quantum secure secrets manager with <abbr title="Terminal User Interface">TUI</abbr></dd>
@@ -207,14 +231,17 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## Selected Work
 
 <dl>
-  <dt><a href="https://look.definitelynot.ai"><b>Observatory</b></a></dt>
-  <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection running 4 ML models in browser <a href="https://look.definitelynot.ai"><sub>(live demo)</sub></a></dd>
-
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a></dt>
   <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories</dd>
 
   <dt><a href="https://github.com/johnzfitch/specHO"><b>specHO</b></a></dt>
-  <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em></dd>
+  <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em> — live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
+
+  <dt><a href="https://github.com/johnzfitch/codex-patcher"><b>codex-patcher</b></a></dt>
+  <dd>Automated code patching system for Rust with byte-span replacement and tree-sitter integration</dd>
+
+  <dt><a href="https://github.com/johnzfitch/htmx-docs"><b>htmx-docs</b></a></dt>
+  <dd>Organized HTMX ecosystem documentation corpus in Markdown (htmx.org, Big Sky repos, <abbr title="Request for Comments">RFC</abbr> 9110/9113/9114)</dd>
 
   <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
   <dd><abbr title="COSMIC desktop environment">COSMIC</abbr> Files fork with <ruby>sub-10ms<rp>(</rp><rt>2.15M files</rt><rp>)</rp></ruby> trigram search (Rust)</dd>
@@ -370,24 +397,30 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <sub>⭐32</sub></dt>
   <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering</dd>
+  <dt><a href="https://github.com/johnzfitch/human-interface-markdown">human-interface-markdown</a></dt>
+  <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents for <abbr title="Large Language Model">LLM</abbr> consumption</dd>
   <dt><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <sub>⭐4</sub></dt>
   <dd>Token-saving hooks for Claude Code</dd>
   <dt><a href="https://github.com/johnzfitch/grove">grove</a></dt>
   <dd>Kanban-style <abbr title="Terminal User Interface">TUI</abbr> for parallel AI coding</dd>
+  <dt><a href="https://github.com/johnzfitch/marginium">marginium</a></dt>
+  <dd>Multimodal generation framework with live visual awareness</dd>
   <dt><a href="https://github.com/johnzfitch/llmx">llmx</a></dt>
-  <dd>Codebase indexer with BM25 search for agent consumption</dd>
+  <dd>Codebase indexer with BM25 search — live: <a href="https://llm.cat">llm.cat</a></dd>
   <dt><a href="https://github.com/johnzfitch/claude-wiki">claude-wiki</a></dt>
   <dd>Comprehensive Anthropic documentation wiki — 749+ docs</dd>
   <dt><a href="https://github.com/johnzfitch/observatory">observatory</a></dt>
   <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection — live: <a href="https://look.definitelynot.ai">look.definitelynot.ai</a></dd>
   <dt><a href="https://github.com/johnzfitch/specHO">specHO</a></dt>
-  <dd><abbr title="Large Language Model">LLM</abbr> watermark detection <em>(Echo Rule)</em></dd>
-  <dt><a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></dt>
-  <dd>Unicode security defenses</dd>
+  <dd><abbr title="Large Language Model">LLM</abbr> watermark detection — live: <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
+  <dt><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></dt>
+  <dd>Claude Code plugin for the Burn deep learning framework</dd>
   <dt><a href="https://github.com/johnzfitch/raley-bot">raley-bot</a></dt>
   <dd>Grocery shopping assistant with MCP integration</dd>
   <dt><a href="https://github.com/johnzfitch/gemini-sharp">gemini-sharp</a></dt>
   <dd>Privacy-focused Gemini <abbr title="Command Line Interface">CLI</abbr> with custom themes</dd>
+  <dt><a href="https://github.com/johnzfitch/superbpe">superbpe</a></dt>
+  <dd>Space Travel for Language Models — official research code</dd>
 </dl>
 
 ### Security Research
@@ -422,11 +455,15 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <dd>Enhanced GNOME Files</dd>
   <dt><a href="https://github.com/johnzfitch/sites">sites</a></dt>
   <dd>Reconciler-based static site deployer for NixOS</dd>
+  <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices">arch-dependency-matrices</a></dt>
+  <dd>Mathematical analysis of 1,553 Arch Linux packages using graph theory and spectral analysis</dd>
 </dl>
 
-### <abbr title="Command Line Interface">CLI</abbr> Tools
+### <abbr title="Command Line Interface">CLI</abbr> Tools & Documentation
 
 <dl>
+  <dt><a href="https://github.com/johnzfitch/htmx-docs">htmx-docs</a></dt>
+  <dd>Organized HTMX ecosystem documentation corpus in Markdown</dd>
   <dt><a href="https://github.com/johnzfitch/indepacer">indepacer</a></dt>
   <dd><abbr title="Public Access to Court Electronic Records">PACER</abbr> <abbr title="Command Line Interface">CLI</abbr></dd>
   <dt><a href="https://github.com/johnzfitch/iconics">iconics</a> <sub>⭐2</sub></dt>
@@ -435,6 +472,8 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
   <dd>Receive SMS verification codes via Twilio</dd>
   <dt><a href="https://github.com/johnzfitch/docs-browser">docs-browser</a></dt>
   <dd>Unified documentation browser with Walker integration</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-desktop-arch">claude-desktop-arch</a></dt>
+  <dd>Enable Claude Code preview in Claude Desktop on Arch Linux</dd>
 </dl>
 
 ### Desktop / Linux
