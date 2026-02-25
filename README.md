@@ -213,7 +213,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a></dt>
   <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories</dd>
 
-  <dt><a href="https://github.com/johnzfitch/specHO"><b>specHO</b></a></dt>
+  <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
   <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em> — live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
 
   <dt><a href="https://github.com/johnzfitch/codex-patcher"><b>codex-patcher</b></a></dt>
@@ -359,7 +359,7 @@ filearchy/
   </tbody>
 </table>
 
-Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preprocessor test pass rate. Live demo at [definitelynot.ai](https://definitelynot.ai).
+Implemented in [specHO](https://github.com/johnzfitch/specho-v2) with 98.6% preprocessor test pass rate. Live demo at [definitelynot.ai](https://definitelynot.ai).
 
 -----
 
@@ -383,7 +383,7 @@ Implemented in [specHO](https://github.com/johnzfitch/specHO) with 98.6% preproc
 - **[llmx](https://github.com/johnzfitch/llmx)** — Codebase indexer with BM25 search — live: [llm.cat](https://llm.cat)
 - **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** — Comprehensive Anthropic documentation wiki — 749+ docs
 - **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection — live: [look.definitelynot.ai](https://look.definitelynot.ai)
-- **[specHO](https://github.com/johnzfitch/specHO)** — LLM watermark detection — live: [definitelynot.ai](https://definitelynot.ai)
+- **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection — live: [definitelynot.ai](https://definitelynot.ai)
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin for the Burn deep learning framework
 - **[raley-bot](https://github.com/johnzfitch/raley-bot)** — Grocery shopping assistant with MCP integration
 - **[gemini-sharp](https://github.com/johnzfitch/gemini-sharp)** — Privacy-focused Gemini CLI with custom themes
