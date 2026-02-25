@@ -195,6 +195,9 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐4</sub></dt>
   <dd>Token-saving hooks for Claude Code — prevents verbose output, blocks binary reads, enforces subagent budgets</dd>
 
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a></dt>
+  <dd>Lightweight MCP server for Ghidra reverse engineering — official MCP server listing</dd>
+
   <dt><a href="https://github.com/johnzfitch/sites"><b>sites</b></a></dt>
   <dd>Mutable topology layer for static sites on NixOS — reconciler-based deployer with zero webhooks</dd>
 
