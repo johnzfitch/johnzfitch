@@ -183,13 +183,13 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐41</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐42</sub></dt>
   <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering and native module stubbing</dd>
 
   <dt><a href="https://github.com/johnzfitch/human-interface-markdown"><b>human-interface-markdown</b></a></dt>
   <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents spanning Lisa, Mac, NeXT, Newton, Aqua, and iOS eras</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐7</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐18</sub></dt>
   <dd>Token-saving hooks for Claude Code — prevents verbose output, blocks binary reads, enforces subagent budgets</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a></dt>
