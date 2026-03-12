@@ -1,54 +1,34 @@
 {
-  "johnzfitch/filearchy": {
-    "sha": "98fa67ece47ff85effaf283b4d009efb421c1790",
-    "desc": "Filearchy is a Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal integration."
-  },
-  "johnzfitch/nautilus-plus": {
-    "sha": "5e6e936761c360e3bb43dc466b6b36369aaa725e",
-    "desc": "Enhanced Nautilus file manager with sub-millisecond search, large animated thumbnail support, and crash prevention features."
-  },
-  "johnzfitch/indepacer": {
-    "sha": "14881a3484d3b867eed83f1f4e60dc56b2c99f48",
-    "desc": "CLI tool for querying PACER, enabling case searches, docket downloads, and document retrieval from federal court records."
-  },
   "johnzfitch/claude-cowork-linux": {
     "sha": "b74e4344f535d67c63c481cb846754a2ab858634",
     "desc": "Run Claude Desktop's Cowork mode natively on Linux by reverse-engineering macOS components for direct execution without a VM."
-  },
-  "johnzfitch/claude-warden": {
-    "sha": "90f20d53abd00a3ed6f1031c795e846f0887bdfc",
-    "desc": "Security hooks for Claude Code, enabling SSRF protection, token-saving, and observability with OTEL tracing and MCP compression."
-  },
-  "johnzfitch/pyghidra-lite": {
-    "sha": "aa4af3548f6e7104e943f732a521524705ae9a4f",
-    "desc": "Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support."
-  },
-  "johnzfitch/claude-wiki": {
-    "sha": "f2abcaf14cb26e5b136c46e0dae7f0d48d9ed80b",
-    "desc": "Comprehensive Anthropic documentation mirror with 2000+ Markdown articles on Claude, covering APIs, SDKs, integrations, and more."
-  },
-  "johnzfitch/llmx": {
-    "sha": "9a1c388f4a0e8c097cb689fa47a94463a549abfe",
-    "desc": "Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU."
   },
   "johnzfitch/dota": {
     "sha": "36bef174f1598f3fd294f5e83f57395a94217409",
     "desc": "Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management."
   },
-  "johnzfitch/raley-bot": {
-    "sha": "0d37d2df1844578fa59229f37574dde2348d9d41",
-    "desc": "Automated grocery shopping assistant leveraging an API with intelligent unit pricing, coupon clipping, and MCP server integration."
+  "johnzfitch/claude-wiki": {
+    "sha": "f2abcaf14cb26e5b136c46e0dae7f0d48d9ed80b",
+    "desc": "Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations."
+  },
+  "johnzfitch/pyghidra-lite": {
+    "sha": "aa4af3548f6e7104e943f732a521524705ae9a4f",
+    "desc": "Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support."
+  },
+  "johnzfitch/filearchy": {
+    "sha": "98fa67ece47ff85effaf283b4d009efb421c1790",
+    "desc": "Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal app integration."
   },
   "johnzfitch/privacy-toggles": {
     "sha": "d78c17d846ba546cbcaae515fcb636d08fdf3452",
     "desc": "Control outbound telemetry on macOS with a web dashboard and menu bar app, featuring 61 toggles and DNS sinkhole blocking."
   },
-  "johnzfitch/codex-patcher": {
-    "sha": "a2f9f92908a076c2abfb540d10937e328e0c1dd1",
-    "desc": "Automated Rust code patching tool leveraging tree-sitter for syntax-aware modifications and reliable LLM-generated updates."
+  "johnzfitch/claude-warden": {
+    "sha": "90f20d53abd00a3ed6f1031c795e846f0887bdfc",
+    "desc": "Security hooks for Claude Code that optimize token usage, enforce budgets, and provide observability with OTEL tracing and SSRF protection."
   },
-  "johnzfitch/htmx-docs": {
-    "sha": "8f0e47d5f03f160135f02fdaa69bd39028cc2b2c",
-    "desc": "Curated HTMX documentation in Markdown, including API references, Big Sky repos, and relevant RFCs, organized for easy access."
+  "johnzfitch/llmx": {
+    "sha": "9a1c388f4a0e8c097cb689fa47a94463a549abfe",
+    "desc": "Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU."
   }
 }

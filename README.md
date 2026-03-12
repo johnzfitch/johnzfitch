@@ -186,26 +186,26 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐65</sub></dt>
   <dd>Run Claude Desktop's Cowork mode natively on Linux by reverse-engineering macOS components for direct execution without a VM.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐38</sub></dt>
-  <dd>Security hooks for Claude Code, enabling SSRF protection, token-saving, and observability with OTEL tracing and MCP compression.</dd>
+  <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
+  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a></dt>
+  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐7</sub></dt>
-  <dd>Comprehensive Anthropic documentation mirror with 2000+ Markdown articles on Claude, covering APIs, SDKs, integrations, and more.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
-  <dd>Automated grocery shopping assistant leveraging an API with intelligent unit pricing, coupon clipping, and MCP server integration.</dd>
+  <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
+  <dd>Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal app integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/privacy-toggles"><b>privacy-toggles</b></a></dt>
   <dd>Control outbound telemetry on macOS with a web dashboard and menu bar app, featuring 61 toggles and DNS sinkhole blocking.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐38</sub></dt>
+  <dd>Security hooks for Claude Code that optimize token usage, enforce budgets, and provide observability with OTEL tracing and SSRF protection.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
+  <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
 </dl>
 
 -----

@@ -10,6 +10,10 @@ on:
         description: 'Regenerate descriptions via LLM'
         type: boolean
         default: false
+      rotate_recent:
+        description: 'Rotate Recent Work to most recently pushed repos'
+        type: boolean
+        default: false
   push:
     paths:
       - "data/projects.toml"
@@ -37,8 +41,16 @@ jobs:
       - name: Generate SVG assets and update README
         run: |
           FLAGS=""
+          # Scheduled runs always rotate Recent Work
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            FLAGS="--rotate-recent"
+          fi
+          # Manual trigger options
           if [ "${{ github.event.inputs.update_descriptions }}" = "true" ]; then
-            FLAGS="--update-descriptions"
+            FLAGS="$FLAGS --update-descriptions"
+          fi
+          if [ "${{ github.event.inputs.rotate_recent }}" = "true" ]; then
+            FLAGS="$FLAGS --rotate-recent"
           fi
           python3 scripts/gen_readme_assets.py $FLAGS
         env:

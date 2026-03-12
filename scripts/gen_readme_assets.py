@@ -792,6 +792,98 @@ def _update_readme_descriptions(
     return False
 
 
+def _get_recent_repos(repo_stats: dict[str, RepoStats], count: int = 8) -> list[tuple[str, RepoStats]]:
+    """Get the N most recently pushed repos, sorted by pushed_at descending."""
+    sorted_repos = sorted(
+        repo_stats.items(),
+        key=lambda x: x[1].pushed_at,
+        reverse=True,
+    )
+    return sorted_repos[:count]
+
+
+def _rotate_recent_work(
+    readme_path: Path,
+    repo_stats: dict[str, RepoStats],
+    token: str | None,
+    cache_path: Path,
+    count: int = 8,
+) -> bool:
+    """Rotate Recent Work section to show the N most recently pushed repos."""
+    import re
+
+    if not readme_path.exists():
+        return False
+
+    content = readme_path.read_text(encoding="utf-8")
+    original = content
+
+    # Find Recent Work section
+    pattern = r'(## <img src="\.github/assets/icons/toolbox\.png"[^>]*> Recent Work\s*\n\n)<dl>.*?</dl>'
+    match = re.search(pattern, content, re.DOTALL)
+    if not match:
+        print("Warning: Could not find Recent Work section")
+        return False
+
+    header = match.group(1)
+
+    # Get most recent repos
+    recent = _get_recent_repos(repo_stats, count)
+    if not recent:
+        print("Warning: No repo stats available for rotation")
+        return False
+
+    print(f"Rotating Recent Work to top {len(recent)} recently pushed repos:")
+    for repo, stats in recent:
+        print(f"  {repo}: pushed {stats.pushed_at.strftime('%Y-%m-%d')}, {stats.stars} stars")
+
+    # Load description cache
+    cache = _load_desc_cache(cache_path)
+
+    # Build new <dl> content
+    dl_items = []
+    for repo, stats in recent:
+        repo_name = repo.split("/")[-1]
+
+        # Get description from cache or generate via LLM
+        cached = cache.get(repo, {})
+        description = cached.get("desc")
+
+        if not description and token:
+            print(f"  Generating description for {repo}...")
+            ctx = _fetch_repo_context(repo, token)
+            if ctx:
+                description = _generate_description_llm(ctx, token)
+                if description:
+                    cache[repo] = {"sha": ctx.readme_sha, "desc": description}
+
+        if not description:
+            # Fallback: use GitHub repo description
+            description = f"Repository: {repo}"
+
+        # Format star badge
+        star_badge = f" <sub>⭐{stats.stars}</sub>" if stats.stars >= 10 else ""
+
+        dl_items.append(
+            f'  <dt><a href="https://github.com/{repo}"><b>{repo_name}</b></a>{star_badge}</dt>\n'
+            f'  <dd>{description}</dd>'
+        )
+
+    new_dl = "<dl>\n" + "\n\n".join(dl_items) + "\n</dl>"
+    new_section = header + new_dl
+
+    # Replace the section
+    content = content[:match.start()] + new_section + content[match.end():]
+
+    # Save updated cache
+    _save_desc_cache(cache_path, cache)
+
+    if content != original:
+        readme_path.write_text(content, encoding="utf-8")
+        return True
+    return False
+
+
 def _update_readme_stars(readme_path: Path, repo_stats: dict[str, RepoStats], min_stars: int = 10) -> bool:
     """Update star counts in README.md for repos with >= min_stars."""
     import re
@@ -855,6 +947,17 @@ def main(argv: list[str]) -> int:
         "--update-descriptions",
         action="store_true",
         help="Update Recent Work descriptions using LLM (requires GITHUB_TOKEN).",
+    )
+    ap.add_argument(
+        "--rotate-recent",
+        action="store_true",
+        help="Rotate Recent Work section to show most recently pushed repos.",
+    )
+    ap.add_argument(
+        "--recent-count",
+        type=int,
+        default=8,
+        help="Number of repos to show in Recent Work (default: 8).",
     )
     args = ap.parse_args(argv)
 
@@ -938,6 +1041,20 @@ def main(argv: list[str]) -> int:
 
     # Update README.md star counts for repos with 10+ stars
     readme_path = repo_root / "README.md"
+    cache_path = repo_root / ".github" / "cache" / "readme-desc-cache.json"
+
+    # Rotate Recent Work section (if enabled)
+    if args.rotate_recent:
+        if repo_stats:
+            print("Rotating Recent Work section...")
+            rotated = _rotate_recent_work(
+                readme_path, repo_stats, token, cache_path, count=args.recent_count
+            )
+            if rotated:
+                print(f"README: {readme_path} (Recent Work rotated)")
+        else:
+            print("Warning: --rotate-recent requires repo stats (don't use --no-fetch)")
+
     readme_changed = _update_readme_stars(readme_path, repo_stats, min_stars=10)
     if readme_changed:
         print(f"README: {readme_path} (stars updated)")
@@ -945,7 +1062,6 @@ def main(argv: list[str]) -> int:
     # Update Recent Work descriptions via LLM (if enabled)
     if args.update_descriptions and token:
         print("Updating Recent Work descriptions...")
-        cache_path = repo_root / ".github" / "cache" / "readme-desc-cache.json"
         desc_changed = _update_readme_descriptions(readme_path, repos, token, cache_path)
         if desc_changed:
             print(f"README: {readme_path} (descriptions updated)")
