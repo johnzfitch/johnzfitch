@@ -186,23 +186,23 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐65</sub></dt>
   <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering and native module stubbing</dd>
 
-  <dt><a href="https://github.com/johnzfitch/human-interface-markdown"><b>human-interface-markdown</b></a></dt>
-  <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents spanning Lisa, Mac, NeXT, Newton, Aqua, and iOS eras</dd>
-
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐38</sub></dt>
-  <dd>Token-saving hooks for Claude Code — prevents verbose output, blocks binary reads, enforces subagent budgets</dd>
+  <dd>Defense-in-depth hooks for Claude Code — quiet overrides, <abbr title="Server-Side Request Forgery">SSRF</abbr> protection, subagent budgets, <abbr title="Model Context Protocol">MCP</abbr> compression, <abbr title="OpenTelemetry">OTEL</abbr> tracing</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
   <dd>Lightweight MCP server for Ghidra reverse engineering — official MCP server listing</dd>
 
-  <dt><a href="https://github.com/johnzfitch/sites"><b>sites</b></a></dt>
-  <dd>Mutable topology layer for static sites on NixOS — reconciler-based deployer with zero webhooks</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐7</sub></dt>
+  <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories, optimized for agent consumption</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Codebase indexer with BM25 search and semantic chunk exports — live demo at <a href="https://llm.cat">llm.cat</a></dd>
+  <dd>Neural codebase indexer with Snowflake Arctic embeddings via WebGPU — hybrid BM25+vector search — <a href="https://llm.cat">llm.cat</a></dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Defense of the Artifacts — post-quantum secure secrets manager with <abbr title="Terminal User Interface">TUI</abbr></dd>
+  <dd>Post-quantum secrets manager with ML-KEM-768 + X25519 hybrid encryption, Argon2id <abbr title="Key Derivation Function">KDF</abbr>, Ratatui <abbr title="Terminal User Interface">TUI</abbr></dd>
+
+  <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
+  <dd>Grocery assistant with F5 bot detection evasion, intelligent unit pricing, auto coupon clipping, and <abbr title="Model Context Protocol">MCP</abbr> server for Claude</dd>
 
   <dt><a href="https://github.com/johnzfitch/privacy-toggles"><b>privacy-toggles</b></a></dt>
   <dd>Outbound telemetry control for macOS — 61 toggles, privilege-separated, <abbr title="Domain Name System">DNS</abbr> sinkhole blocking</dd>
@@ -259,7 +259,7 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 
 ## Featured
 
-### <img src=".github/assets/icons/shield.png" width="20" height="20" alt=""> dota — Post-Quantum Secrets Manager
+### <img src=".github/assets/icons/shield.png" width="20" height="20" alt=""> [dota](https://github.com/johnzfitch/dota) — Post-Quantum Secrets Manager
 
 **Defense of the Artifacts**: A secrets manager engineered for cryptographic longevity. While current encryption remains secure, "harvest now, decrypt later" attacks mean secrets stored today may be vulnerable to quantum computers within their lifetime. dota addresses this with hybrid post-quantum encryption that provides security against both classical and quantum adversaries.
 
@@ -301,11 +301,11 @@ The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) provides vim-styl
 
 -----
 
-### <img src=".github/assets/icons/search.png" width="20" height="20" alt=""> llmx — Codebase Indexer for Local Agents
+### <img src=".github/assets/icons/search.png" width="20" height="20" alt=""> [llmx](https://github.com/johnzfitch/llmx) — Codebase Indexer for Local Agents
 
 **Live Demo:** [llm.cat](https://llm.cat) (WebAssembly — runs entirely in browser, no upload)
 
-Local-first codebase indexing designed for <abbr title="Large Language Model">LLM</abbr> agent consumption. Unlike cloud-based solutions, llmx runs entirely on your machine with deterministic chunking — the same codebase always produces identical chunks, enabling reproducible agent workflows and efficient incremental updates.
+Local-first codebase indexing with real neural embeddings (<b>Snowflake Arctic</b>) running via <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. No server, no API calls, no data leaving your machine. Hybrid search combines BM25 keyword ranking with vector similarity using <abbr title="Reciprocal Rank Fusion">RRF</abbr> for best-of-both-worlds retrieval.
 
 ```bash
 llmx index ~/projects/myapp           # Build trigram + BM25 index
@@ -323,34 +323,34 @@ llmx serve --port 8080                # Local HTTP API for agents
   </thead>
   <tbody>
     <tr>
-      <td><b>Semantic Chunking</b></td>
-      <td>tree-sitter AST parsing for 15+ languages — chunks respect function/class boundaries, never split mid-statement</td>
+      <td><b>Neural Embeddings</b></td>
+      <td>Snowflake Arctic vectors with <abbr title="Web Graphics Processing Unit">WebGPU</abbr> acceleration — ~50ms inference, same quality as server-side</td>
     </tr>
     <tr>
       <td><b>Hybrid Search</b></td>
-      <td>BM25 keyword ranking + trigram fuzzy matching; handles typos and partial matches</td>
+      <td>BM25 + vector similarity fused via <abbr title="Reciprocal Rank Fusion">RRF</abbr> — handles exact matches and semantic similarity</td>
     </tr>
     <tr>
-      <td><b>Context Budgeting</b></td>
-      <td>Token-aware export with configurable limits; prioritizes high-relevance chunks</td>
+      <td><b>Smart Chunking</b></td>
+      <td>Deterministic by file type: functions, headings, JSON keys — same input always yields identical chunks</td>
     </tr>
     <tr>
-      <td><b>Incremental Updates</b></td>
-      <td>File watcher with content hashing — only re-indexes changed files</td>
+      <td><b>Semantic Exports</b></td>
+      <td>Hierarchical outline format (<samp>llm.md</samp>) with function names and heading breadcrumbs for selective retrieval</td>
     </tr>
   </tbody>
 </table>
 
 <dl>
-  <dt>Performance</dt>
-  <dd><ruby>50k<rp>(</rp><rt>files/sec</rt><rp>)</rp></ruby> indexing &ensp;&bull;&ensp; <ruby>&lt;5ms<rp>(</rp><rt>p99 search</rt><rp>)</rp></ruby> &ensp;&bull;&ensp; <ruby>~200MB<rp>(</rp><rt>RAM for 1M files</rt><rp>)</rp></ruby></dd>
+  <dt>Proof</dt>
+  <dd><ruby>7,147 files<rp>(</rp><rt>Apple HIG corpus</rt><rp>)</rp></ruby> → <ruby>31 MB index<rp>(</rp><rt></rt><rp>)</rp></ruby> → <ruby>1,625 tokens<rp>(</rp><rt>99.98% savings</rt><rp>)</rp></ruby></dd>
   <dt>Stack</dt>
-  <dd>Rust &ensp;&bull;&ensp; tantivy &ensp;&bull;&ensp; tree-sitter &ensp;&bull;&ensp; <abbr title="WebAssembly">WASM</abbr> (wasm-bindgen)</dd>
+  <dd>Rust &ensp;&bull;&ensp; tantivy &ensp;&bull;&ensp; tree-sitter &ensp;&bull;&ensp; <abbr title="WebAssembly">WASM</abbr> &ensp;&bull;&ensp; WebGPU</dd>
 </dl>
 
 -----
 
-### <img src=".github/assets/icons/lock.png" width="20" height="20" alt=""> claude-warden — Security Hooks for Claude Code
+### <img src=".github/assets/icons/lock.png" width="20" height="20" alt=""> [claude-warden](https://github.com/johnzfitch/claude-warden) — Security Hooks for Claude Code
 
 A defense-in-depth hook system for Claude Code that addresses token efficiency, security boundaries, and observability. Born from months of production use identifying failure modes in <abbr title="Large Language Model">LLM</abbr> coding agents.
 
@@ -406,12 +406,11 @@ $ claude "install dependencies"
 
 ## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** — Comprehensive Anthropic documentation wiki — 749+ docs
-- **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection — live: [look.definitelynot.ai](https://look.definitelynot.ai)
-- **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection — live: [definitelynot.ai](https://definitelynot.ai)
+- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐7 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
+- **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection with 4 ML models — live: [look.definitelynot.ai](https://look.definitelynot.ai)
+- **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection via phonetic/semantic analysis — live: [definitelynot.ai](https://definitelynot.ai)
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin for the Burn deep learning framework
-- **[raley-bot](https://github.com/johnzfitch/raley-bot)** — Grocery shopping assistant with MCP integration
-- **[gemini-sharp](https://github.com/johnzfitch/gemini-sharp)** — Privacy-focused Gemini CLI with custom themes
+- **[raley-bot](https://github.com/johnzfitch/raley-bot)** — Automated grocery assistant with F5 bot detection evasion, unit pricing across bizarre measurements, automatic coupon clipping, and MCP server for Claude Desktop
 
 -----
 
