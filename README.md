@@ -183,16 +183,16 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐64</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐65</sub></dt>
   <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering and native module stubbing</dd>
 
   <dt><a href="https://github.com/johnzfitch/human-interface-markdown"><b>human-interface-markdown</b></a></dt>
   <dd>Apple Human Interface Guidelines archive (1980-2014) — 35 documents spanning Lisa, Mac, NeXT, Newton, Aqua, and iOS eras</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐37</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐38</sub></dt>
   <dd>Token-saving hooks for Claude Code — prevents verbose output, blocks binary reads, enforces subagent budgets</dd>
 
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a></dt>
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
   <dd>Lightweight MCP server for Ghidra reverse engineering — official MCP server listing</dd>
 
   <dt><a href="https://github.com/johnzfitch/sites"><b>sites</b></a></dt>
@@ -203,6 +203,9 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Defense of the Artifacts — post-quantum secure secrets manager with <abbr title="Terminal User Interface">TUI</abbr></dd>
+
+  <dt><a href="https://github.com/johnzfitch/privacy-toggles"><b>privacy-toggles</b></a></dt>
+  <dd>Outbound telemetry control for macOS — 61 toggles, privilege-separated, <abbr title="Domain Name System">DNS</abbr> sinkhole blocking</dd>
 </dl>
 
 -----
@@ -256,131 +259,153 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 
 ## Featured
 
-### <img src=".github/assets/icons/observatory-eye.png" width="20" height="20" alt=""> Observatory — <abbr title="Web Graphics Processing Unit">WebGPU</abbr> Deepfake Detection
+### <img src=".github/assets/icons/shield.png" width="20" height="20" alt=""> dota — Post-Quantum Secrets Manager
 
-**Live Demo:** [look.definitelynot.ai](https://look.definitelynot.ai)
-
-Browser-based AI image detection running 4 specialized ML models (<abbr title="Vision Transformer">ViT</abbr>, Swin Transformer) through <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. Zero server-side processing; all inference happens client-side with 672<small>MB</small> of <abbr title="Open Neural Network Exchange">ONNX</abbr> models.
+**Defense of the Artifacts**: A secrets manager engineered for cryptographic longevity. While current encryption remains secure, "harvest now, decrypt later" attacks mean secrets stored today may be vulnerable to quantum computers within their lifetime. dota addresses this with hybrid post-quantum encryption that provides security against both classical and quantum adversaries.
 
 <table>
   <thead>
     <tr>
-      <th>Model</th>
-      <th align="right">Accuracy</th>
-      <th>Architecture</th>
+      <th width="140">Layer</th>
+      <th>Implementation</th>
+      <th>Why It Matters</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><samp>dima806_ai_real</samp></td>
-      <td align="right"><b>98.2%</b></td>
-      <td>Vision Transformer</td>
+      <td><b>Key Encapsulation</b></td>
+      <td>ML-KEM-768 + X25519 hybrid</td>
+      <td><abbr title="National Institute of Standards and Technology">NIST</abbr>-standardized lattice crypto with classical fallback — if either is broken, the other protects</td>
     </tr>
     <tr>
-      <td><samp>SMOGY</samp></td>
-      <td align="right"><b>98.2%</b></td>
-      <td>Swin Transformer</td>
+      <td><b>Key Derivation</b></td>
+      <td>Argon2id (memory-hard)</td>
+      <td>Resists <abbr title="Graphics Processing Unit">GPU</abbr>/<abbr title="Application-Specific Integrated Circuit">ASIC</abbr> brute-force; tunable time/memory parameters</td>
     </tr>
     <tr>
-      <td><samp>Deep-Fake-Detector-v2</samp></td>
-      <td align="right">92.1%</td>
-      <td><abbr title="Vision Transformer Base">ViT-Base</abbr></td>
+      <td><b>Storage</b></td>
+      <td>SQLCipher (AES-256-CBC)</td>
+      <td>Encrypted at rest with authenticated pages; survives partial file corruption</td>
     </tr>
     <tr>
-      <td><samp>umm_maybe</samp></td>
-      <td align="right">94.2%</td>
-      <td>Vision Transformer</td>
+      <td><b>Hardware Auth</b></td>
+      <td>HMAC-SHA1 challenge-response</td>
+      <td>YubiKey/SoloKey required for unlock — no master password alone can decrypt</td>
     </tr>
   </tbody>
 </table>
 
-**Stack:** JavaScript (ES6)  •  Transformers.js  •  <abbr title="Open Neural Network Exchange">ONNX</abbr>  •  <abbr title="Web Graphics Processing Unit">WebGPU</abbr>/<abbr title="WebAssembly">WASM</abbr>
+The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) provides vim-style navigation, fuzzy search across entries, secure clipboard integration with auto-clear, and <abbr title="Time-based One-Time Password">TOTP</abbr> generation for 2FA codes.
+
+**Stack:** Rust &ensp;&bull;&ensp; pqcrypto (ML-KEM) &ensp;&bull;&ensp; x25519-dalek &ensp;&bull;&ensp; argon2 &ensp;&bull;&ensp; SQLCipher &ensp;&bull;&ensp; Ratatui
 
 -----
 
-### <img src=".github/assets/icons/folder.png" width="20" height="20" alt=""> iconics — Semantic Icon Library
+### <img src=".github/assets/icons/search.png" width="20" height="20" alt=""> llmx — Codebase Indexer for Local Agents
 
-3,372+ <abbr title="Portable Network Graphics">PNG</abbr> icons with semantic <abbr title="Command Line Interface">CLI</abbr> discovery. Find the right icon by meaning, not filename.
+**Live Demo:** [llm.cat](https://llm.cat) (WebAssembly — runs entirely in browser, no upload)
+
+Local-first codebase indexing designed for <abbr title="Large Language Model">LLM</abbr> agent consumption. Unlike cloud-based solutions, llmx runs entirely on your machine with deterministic chunking — the same codebase always produces identical chunks, enabling reproducible agent workflows and efficient incremental updates.
 
 ```bash
-icon suggest security       # → lock, shield, key, firewall…
-icon suggest data           # → chart, database, folder…
-icon use lock shield        # Export to ./icons/
+llmx index ~/projects/myapp           # Build trigram + BM25 index
+llmx search "authentication middleware" --limit 20
+llmx export --format md --max-tokens 8000   # Context-window-aware export
+llmx serve --port 8080                # Local HTTP API for agents
 ```
 
-**Features:** Fuzzy search  •  theme variants  •  batch export  •  markdown integration<br>
-**Stack:** Python  •  FuzzyWuzzy  •  <abbr title="Python Imaging Library">PIL</abbr>
-
------
-
-### <img src=".github/assets/icons/script.png" width="20" height="20" alt=""> filearchy + triglyph — Sub-10ms File Search
-
-<abbr title="COSMIC desktop environment">COSMIC</abbr> Files fork with embedded trigram search engine. Memory-mapped indices achieve sub-millisecond searches across 2.15M+ files with near-zero resident memory.
-
-```text
-filearchy/
-├── triglyph/      # Trigram library (mmap)
-└── triglyphd/     # D-Bus daemon for system-wide search
-```
+<table>
+  <thead>
+    <tr>
+      <th>Capability</th>
+      <th>Implementation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Semantic Chunking</b></td>
+      <td>tree-sitter AST parsing for 15+ languages — chunks respect function/class boundaries, never split mid-statement</td>
+    </tr>
+    <tr>
+      <td><b>Hybrid Search</b></td>
+      <td>BM25 keyword ranking + trigram fuzzy matching; handles typos and partial matches</td>
+    </tr>
+    <tr>
+      <td><b>Context Budgeting</b></td>
+      <td>Token-aware export with configurable limits; prioritizes high-relevance chunks</td>
+    </tr>
+    <tr>
+      <td><b>Incremental Updates</b></td>
+      <td>File watcher with content hashing — only re-indexes changed files</td>
+    </tr>
+  </tbody>
+</table>
 
 <dl>
   <dt>Performance</dt>
-  <dd><ruby>2.15M<rp>(</rp><rt>files indexed</rt><rp>)</rp></ruby> &ensp;&bull;&ensp; <ruby>&lt;10ms<rp>(</rp><rt>query time</rt><rp>)</rp></ruby> &ensp;&bull;&ensp; <ruby>156MB<rp>(</rp><rt>index on disk</rt><rp>)</rp></ruby></dd>
+  <dd><ruby>50k<rp>(</rp><rt>files/sec</rt><rp>)</rp></ruby> indexing &ensp;&bull;&ensp; <ruby>&lt;5ms<rp>(</rp><rt>p99 search</rt><rp>)</rp></ruby> &ensp;&bull;&ensp; <ruby>~200MB<rp>(</rp><rt>RAM for 1M files</rt><rp>)</rp></ruby></dd>
   <dt>Stack</dt>
-  <dd>Rust &ensp;&bull;&ensp; libcosmic &ensp;&bull;&ensp; memmap2 &ensp;&bull;&ensp; zbus</dd>
+  <dd>Rust &ensp;&bull;&ensp; tantivy &ensp;&bull;&ensp; tree-sitter &ensp;&bull;&ensp; <abbr title="WebAssembly">WASM</abbr> (wasm-bindgen)</dd>
 </dl>
 
 -----
 
-### <img src=".github/assets/icons/radar.png" width="20" height="20" alt=""> The Echo Rule — <abbr title="Large Language Model">LLM</abbr> Detection Methodology
+### <img src=".github/assets/icons/lock.png" width="20" height="20" alt=""> claude-warden — Security Hooks for Claude Code
 
-<abbr title="Large Language Models">LLMs</abbr> echo their training data. That echo is detectable through pattern recognition:
+A defense-in-depth hook system for Claude Code that addresses token efficiency, security boundaries, and observability. Born from months of production use identifying failure modes in <abbr title="Large Language Model">LLM</abbr> coding agents.
+
+**The Problem:** Claude Code's default behavior can burn tokens on verbose command output, leak internal network topology via <abbr title="Server-Side Request Forgery">SSRF</abbr>, spawn unbounded subagents, and produce unobservable execution traces.
 
 <table>
   <thead>
     <tr>
-      <th>Signature</th>
-      <th>Detection Method</th>
+      <th width="160">Hook</th>
+      <th>Threat Model</th>
+      <th>Mitigation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><b>Phonetic</b></td>
-      <td><abbr title="Carnegie Mellon University Pronouncing Dictionary">CMU</abbr> phoneme analysis, Levenshtein distance</td>
+      <td><samp>quiet-overrides</samp></td>
+      <td>Token exhaustion from <code>npm install</code>, <code>cargo build</code>, <code>git log</code></td>
+      <td>Injects <code>-q</code>/<code>--silent</code>/<code>--quiet</code> flags; caps output at configurable byte limit</td>
     </tr>
     <tr>
-      <td><b>Structural</b></td>
-      <td><abbr title="Part-of-Speech">POS</abbr> tag patterns, sentence construction</td>
+      <td><samp>ssrf-protection</samp></td>
+      <td>Agent fetching <code>http://169.254.169.254</code> (cloud metadata) or internal services</td>
+      <td>Blocks RFC1918/link-local ranges; allowlist for legitimate internal APIs</td>
     </tr>
     <tr>
-      <td><b>Semantic</b></td>
-      <td>Word2Vec cosine similarity, hedging clusters</td>
+      <td><samp>mcp-compression</samp></td>
+      <td><abbr title="Model Context Protocol">MCP</abbr> tool outputs flooding context window</td>
+      <td>gzip + base64 for large payloads; configurable threshold</td>
+    </tr>
+    <tr>
+      <td><samp>subagent-budget</samp></td>
+      <td>Recursive agent spawning exhausting API quota</td>
+      <td>Per-session spawn limits; depth tracking; cost estimation</td>
+    </tr>
+    <tr>
+      <td><samp>otel-tracing</samp></td>
+      <td>Black-box execution; no audit trail</td>
+      <td>Exports spans to Grafana/Loki with tool calls, durations, token counts</td>
     </tr>
   </tbody>
 </table>
 
-Implemented in [specHO](https://github.com/johnzfitch/specho-v2) with 98.6% preprocessor test pass rate. Live demo at [definitelynot.ai](https://definitelynot.ai).
+```bash
+# Example: warden blocks verbose npm and injects quiet flag
+$ claude "install dependencies"
+# [warden] Intercepted: npm install → npm install --silent
+# [warden] Output capped at 4096 bytes (was 847KB)
+```
 
------
-
-## <img src=".github/assets/icons/chart.png" width="20" height="20" alt=""> Skills
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/charts/skills-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset=".github/assets/charts/skills-light.svg">
-  <img alt="Technical focus — skills breakdown" src=".github/assets/charts/skills-light.svg">
-</picture>
-
-**Core:** Rust  |  Python  |  TypeScript  |  C  |  Nix  |  Shell
+**Stack:** Shell &ensp;&bull;&ensp; jq &ensp;&bull;&ensp; OpenTelemetry &ensp;&bull;&ensp; Prometheus &ensp;&bull;&ensp; Grafana/Loki
 
 -----
 
 ## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** ⭐32 — Run Claude Desktop's Cowork feature on Linux through reverse engineering
-- **[human-interface-markdown](https://github.com/johnzfitch/human-interface-markdown)** — Apple Human Interface Guidelines archive (1980-2014) — 35 documents for LLM consumption
-- **[claude-warden](https://github.com/johnzfitch/claude-warden)** ⭐4 — Token-saving hooks for Claude Code
-- **[llmx](https://github.com/johnzfitch/llmx)** — Codebase indexer with BM25 search — live: [llm.cat](https://llm.cat)
 - **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** — Comprehensive Anthropic documentation wiki — 749+ docs
 - **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection — live: [look.definitelynot.ai](https://look.definitelynot.ai)
 - **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection — live: [definitelynot.ai](https://definitelynot.ai)

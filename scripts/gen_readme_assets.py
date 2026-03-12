@@ -565,6 +565,38 @@ def _write_if_changed(path: Path, content: str) -> bool:
     return True
 
 
+def _update_readme_stars(readme_path: Path, repo_stats: dict[str, RepoStats], min_stars: int = 10) -> bool:
+    """Update star counts in README.md for repos with >= min_stars."""
+    import re
+
+    if not readme_path.exists():
+        return False
+
+    content = readme_path.read_text(encoding="utf-8")
+    original = content
+
+    for repo, stats in repo_stats.items():
+        if stats.stars < min_stars:
+            continue
+
+        repo_name = repo.split("/")[-1]
+
+        # Pattern 1: <sub>⭐XX</sub> after repo link
+        pattern1 = rf'(<a href="https://github\.com/{re.escape(repo)}"><b>{re.escape(repo_name)}</b></a>)\s*(?:<sub>⭐\d+</sub>)?'
+        replacement1 = rf'\1 <sub>⭐{stats.stars}</sub>'
+        content = re.sub(pattern1, replacement1, content)
+
+        # Pattern 2: **[name](url)** ⭐XX format
+        pattern2 = rf'(\*\*\[{re.escape(repo_name)}\]\(https://github\.com/{re.escape(repo)}\)\*\*)\s*(?:⭐\d+)?'
+        replacement2 = rf'\1 ⭐{stats.stars}'
+        content = re.sub(pattern2, replacement2, content)
+
+    if content != original:
+        readme_path.write_text(content, encoding="utf-8")
+        return True
+    return False
+
+
 def _load_png_data_uri(path: Path) -> str | None:
     if not path.exists() or not path.is_file():
         return None
@@ -622,6 +654,16 @@ def main(argv: list[str]) -> int:
             if p.repo and not p.private:
                 repos.append(p.repo)
 
+    # Also scan README.md for johnzfitch repos to track
+    import re
+    readme_path = repo_root / "README.md"
+    if readme_path.exists():
+        readme_content = readme_path.read_text(encoding="utf-8")
+        readme_repos = re.findall(r'https://github\.com/(johnzfitch/[a-zA-Z0-9_-]+)', readme_content)
+        for r in readme_repos:
+            if r not in repos:
+                repos.append(r)
+
     repo_stats: dict[str, RepoStats] = {}
     if not args.no_fetch:
         for i, repo in enumerate(repos):
@@ -661,6 +703,12 @@ def main(argv: list[str]) -> int:
     changed = False
     for name, content in outputs.items():
         changed |= _write_if_changed(out_dir / name, content)
+
+    # Update README.md star counts for repos with 10+ stars
+    readme_path = repo_root / "README.md"
+    readme_changed = _update_readme_stars(readme_path, repo_stats, min_stars=10)
+    if readme_changed:
+        print(f"README: {readme_path} (stars updated)")
 
     print(f"Assets: {out_dir} ({'changed' if changed else 'no changes'})")
     return 0
