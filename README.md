@@ -184,28 +184,28 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐65</sub></dt>
-  <dd>Run Claude Desktop's Cowork feature on Linux through reverse engineering and native module stubbing</dd>
+  <dd>Run Claude Desktop's Cowork mode natively on Linux by reverse-engineering macOS components for direct execution without a VM.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐38</sub></dt>
-  <dd>Defense-in-depth hooks for Claude Code — quiet overrides, <abbr title="Server-Side Request Forgery">SSRF</abbr> protection, subagent budgets, <abbr title="Model Context Protocol">MCP</abbr> compression, <abbr title="OpenTelemetry">OTEL</abbr> tracing</dd>
+  <dd>Security hooks for Claude Code, enabling SSRF protection, token-saving, and observability with OTEL tracing and MCP compression.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
-  <dd>Lightweight MCP server for Ghidra reverse engineering — official MCP server listing</dd>
+  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐7</sub></dt>
-  <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories, optimized for agent consumption</dd>
+  <dd>Comprehensive Anthropic documentation mirror with 2000+ Markdown articles on Claude, covering APIs, SDKs, integrations, and more.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Neural codebase indexer with Snowflake Arctic embeddings via WebGPU — hybrid BM25+vector search — <a href="https://llm.cat">llm.cat</a></dd>
+  <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secrets manager with ML-KEM-768 + X25519 hybrid encryption, Argon2id <abbr title="Key Derivation Function">KDF</abbr>, Ratatui <abbr title="Terminal User Interface">TUI</abbr></dd>
+  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
 
   <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
-  <dd>Grocery assistant with F5 bot detection evasion, intelligent unit pricing, auto coupon clipping, and <abbr title="Model Context Protocol">MCP</abbr> server for Claude</dd>
+  <dd>Automated grocery shopping assistant leveraging an API with intelligent unit pricing, coupon clipping, and MCP server integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/privacy-toggles"><b>privacy-toggles</b></a></dt>
-  <dd>Outbound telemetry control for macOS — 61 toggles, privilege-separated, <abbr title="Domain Name System">DNS</abbr> sinkhole blocking</dd>
+  <dd>Control outbound telemetry on macOS with a web dashboard and menu bar app, featuring 61 toggles and DNS sinkhole blocking.</dd>
 </dl>
 
 -----
@@ -220,19 +220,19 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em> — live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
 
   <dt><a href="https://github.com/johnzfitch/codex-patcher"><b>codex-patcher</b></a></dt>
-  <dd>Automated code patching system for Rust with byte-span replacement and tree-sitter integration</dd>
+  <dd>Automated Rust code patching tool leveraging tree-sitter for syntax-aware modifications and reliable LLM-generated updates.</dd>
 
   <dt><a href="https://github.com/johnzfitch/htmx-docs"><b>htmx-docs</b></a></dt>
-  <dd>Organized HTMX ecosystem documentation corpus in Markdown (htmx.org, Big Sky repos, <abbr title="Request for Comments">RFC</abbr> 9110/9113/9114)</dd>
+  <dd>Curated HTMX documentation in Markdown, including API references, Big Sky repos, and relevant RFCs, organized for easy access.</dd>
 
   <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
-  <dd><abbr title="COSMIC desktop environment">COSMIC</abbr> Files fork with <ruby>sub-10ms<rp>(</rp><rt>2.15M files</rt><rp>)</rp></ruby> trigram search (Rust)</dd>
+  <dd>Filearchy is a Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/nautilus-plus"><b>nautilus-plus</b></a></dt>
-  <dd>Enhanced GNOME Files with sub-ms search (<abbr title="Arch User Repository">AUR</abbr>)</dd>
+  <dd>Enhanced Nautilus file manager with sub-millisecond search, large animated thumbnail support, and crash prevention features.</dd>
 
   <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
-  <dd><abbr title="Public Access to Court Electronic Records">PACER</abbr> <abbr title="Command Line Interface">CLI</abbr> for federal court research (<abbr title="Python Package Index">PyPI</abbr>: <samp>pacersdk</samp>)</dd>
+  <dd>CLI tool for querying PACER, enabling case searches, docket downloads, and document retrieval from federal court records.</dd>
 </dl>
 
 Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, authoritative <abbr title="Domain Name System">DNS</abbr>, and containerized services.

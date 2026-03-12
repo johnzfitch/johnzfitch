@@ -565,6 +565,233 @@ def _write_if_changed(path: Path, content: str) -> bool:
     return True
 
 
+@dataclass
+class RepoContext:
+    """Rich context about a repo for LLM summarization."""
+    repo: str
+    description: str | None
+    topics: list[str]
+    languages: dict[str, int]
+    readme: str
+    readme_sha: str
+    structure: list[str]
+    config_snippets: dict[str, str]
+
+
+def _fetch_repo_context(repo: str, token: str | None) -> RepoContext | None:
+    """Fetch rich context about a repo for LLM summarization."""
+    if not token or "/" not in repo:
+        return None
+
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "Authorization": f"Bearer {token}",
+        "User-Agent": "johnzfitch-readme-dashboard",
+    }
+
+    def fetch_json(url: str) -> dict | list | None:
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        except Exception:
+            return None
+
+    # 1. Repo metadata
+    meta = fetch_json(f"https://api.github.com/repos/{repo}")
+    if not meta or not isinstance(meta, dict):
+        return None
+
+    # 2. README content and SHA
+    readme_data = fetch_json(f"https://api.github.com/repos/{repo}/readme")
+    readme_content = ""
+    readme_sha = ""
+    if readme_data and isinstance(readme_data, dict):
+        readme_sha = readme_data.get("sha", "")
+        if readme_data.get("content"):
+            try:
+                readme_content = base64.b64decode(readme_data["content"]).decode("utf-8", errors="replace")
+            except Exception:
+                pass
+
+    # 3. Languages
+    languages = fetch_json(f"https://api.github.com/repos/{repo}/languages")
+    if not isinstance(languages, dict):
+        languages = {}
+
+    # 4. Directory structure (top-level)
+    tree = fetch_json(f"https://api.github.com/repos/{repo}/contents")
+    structure = []
+    if isinstance(tree, list):
+        structure = [f["name"] for f in tree if isinstance(f, dict) and "name" in f][:20]
+
+    # 5. Config file snippets
+    config_files = ["package.json", "Cargo.toml", "pyproject.toml", "go.mod", "setup.py"]
+    config_snippets: dict[str, str] = {}
+    for cf in config_files:
+        if cf in structure:
+            content_data = fetch_json(f"https://api.github.com/repos/{repo}/contents/{cf}")
+            if content_data and isinstance(content_data, dict) and content_data.get("content"):
+                try:
+                    decoded = base64.b64decode(content_data["content"]).decode("utf-8", errors="replace")
+                    config_snippets[cf] = decoded[:800]
+                except Exception:
+                    pass
+
+    return RepoContext(
+        repo=repo,
+        description=meta.get("description"),
+        topics=meta.get("topics", []),
+        languages=languages,
+        readme=readme_content[:4000],
+        readme_sha=readme_sha,
+        structure=structure,
+        config_snippets=config_snippets,
+    )
+
+
+def _generate_description_llm(ctx: RepoContext, token: str) -> str | None:
+    """Generate a repo description using GitHub Models."""
+    # Build context prompt
+    lang_str = ", ".join(sorted(ctx.languages.keys(), key=lambda k: -ctx.languages[k])[:5])
+    topics_str = ", ".join(ctx.topics[:8]) if ctx.topics else "none"
+    structure_str = ", ".join(ctx.structure[:15])
+
+    prompt = f"""Write a 1-line description (max 140 chars) for this GitHub repo. Be specific about what it does, not generic. No quotes around output. Use technical terms. Mention key tech if relevant.
+
+Repo: {ctx.repo}
+Existing description: {ctx.description or 'none'}
+Topics: {topics_str}
+Languages: {lang_str}
+Files: {structure_str}
+
+README excerpt:
+{ctx.readme[:2500]}
+
+Config snippets:
+{json.dumps(ctx.config_snippets, indent=2)[:1000] if ctx.config_snippets else 'none'}
+
+Output only the description, nothing else:"""
+
+    try:
+        # Use GitHub Models API (OpenAI-compatible)
+        import urllib.request
+
+        body = json.dumps({
+            "model": "gpt-4o-mini",
+            "messages": [{"role": "user", "content": prompt}],
+            "max_tokens": 100,
+            "temperature": 0.3,
+        }).encode("utf-8")
+
+        req = urllib.request.Request(
+            "https://models.inference.ai.azure.com/chat/completions",
+            data=body,
+            headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            result = json.loads(resp.read().decode("utf-8"))
+
+        content = result.get("choices", [{}])[0].get("message", {}).get("content", "")
+        # Clean up response
+        desc = content.strip().strip('"').strip("'")
+        if len(desc) > 160:
+            desc = desc[:157] + "..."
+        return desc if desc else None
+
+    except Exception as e:
+        print(f"  LLM error for {ctx.repo}: {e}")
+        return None
+
+
+def _load_desc_cache(cache_path: Path) -> dict[str, dict]:
+    """Load cached README SHAs and descriptions."""
+    if cache_path.exists():
+        try:
+            return json.loads(cache_path.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {}
+
+
+def _save_desc_cache(cache_path: Path, cache: dict[str, dict]) -> None:
+    """Save cached README SHAs and descriptions."""
+    cache_path.parent.mkdir(parents=True, exist_ok=True)
+    cache_path.write_text(json.dumps(cache, indent=2), encoding="utf-8")
+
+
+def _update_readme_descriptions(
+    readme_path: Path,
+    repos: list[str],
+    token: str | None,
+    cache_path: Path,
+) -> bool:
+    """Update Recent Work descriptions using LLM-generated summaries."""
+    import re
+
+    if not token or not readme_path.exists():
+        return False
+
+    cache = _load_desc_cache(cache_path)
+    content = readme_path.read_text(encoding="utf-8")
+    original = content
+    updated_cache = False
+
+    for repo in repos:
+        repo_name = repo.split("/")[-1]
+
+        # Check if repo is in Recent Work section
+        pattern = rf'<dt><a href="https://github\.com/{re.escape(repo)}"><b>{re.escape(repo_name)}</b></a>.*?</dt>\s*<dd>(.*?)</dd>'
+        match = re.search(pattern, content, re.DOTALL)
+        if not match:
+            continue
+
+        print(f"  Checking {repo}...")
+        ctx = _fetch_repo_context(repo, token)
+        if not ctx or not ctx.readme_sha:
+            continue
+
+        # Check cache - skip if README unchanged
+        cached = cache.get(repo, {})
+        if cached.get("sha") == ctx.readme_sha and cached.get("desc"):
+            print(f"    Cache hit (README unchanged)")
+            continue
+
+        # Generate new description
+        print(f"    Generating description via LLM...")
+        new_desc = _generate_description_llm(ctx, token)
+        if not new_desc:
+            continue
+
+        # Update cache
+        cache[repo] = {"sha": ctx.readme_sha, "desc": new_desc}
+        updated_cache = True
+
+        # Replace description in README
+        old_dd = match.group(1).strip()
+        new_dd = new_desc
+
+        # Preserve any HTML tags/abbr in original if new desc is plain
+        # For now, just do plain replacement
+        full_match = match.group(0)
+        new_full = full_match.replace(f"<dd>{old_dd}</dd>", f"<dd>{new_desc}</dd>")
+        content = content.replace(full_match, new_full)
+        print(f"    Updated: {new_desc[:80]}...")
+
+    if updated_cache:
+        _save_desc_cache(cache_path, cache)
+
+    if content != original:
+        readme_path.write_text(content, encoding="utf-8")
+        return True
+    return False
+
+
 def _update_readme_stars(readme_path: Path, repo_stats: dict[str, RepoStats], min_stars: int = 10) -> bool:
     """Update star counts in README.md for repos with >= min_stars."""
     import re
@@ -623,6 +850,11 @@ def main(argv: list[str]) -> int:
         "--no-fetch",
         action="store_true",
         help="Do not call GitHub API; omit live repo stats.",
+    )
+    ap.add_argument(
+        "--update-descriptions",
+        action="store_true",
+        help="Update Recent Work descriptions using LLM (requires GITHUB_TOKEN).",
     )
     args = ap.parse_args(argv)
 
@@ -709,6 +941,16 @@ def main(argv: list[str]) -> int:
     readme_changed = _update_readme_stars(readme_path, repo_stats, min_stars=10)
     if readme_changed:
         print(f"README: {readme_path} (stars updated)")
+
+    # Update Recent Work descriptions via LLM (if enabled)
+    if args.update_descriptions and token:
+        print("Updating Recent Work descriptions...")
+        cache_path = repo_root / ".github" / "cache" / "readme-desc-cache.json"
+        desc_changed = _update_readme_descriptions(readme_path, repos, token, cache_path)
+        if desc_changed:
+            print(f"README: {readme_path} (descriptions updated)")
+    elif args.update_descriptions and not token:
+        print("Warning: --update-descriptions requires GITHUB_TOKEN")
 
     print(f"Assets: {out_dir} ({'changed' if changed else 'no changes'})")
     return 0

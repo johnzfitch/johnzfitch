@@ -5,6 +5,11 @@ on:
     # Daily refresh. Keeps the dashboard "live" without tracking users.
     - cron: "17 6 * * *"
   workflow_dispatch:
+    inputs:
+      update_descriptions:
+        description: 'Regenerate descriptions via LLM'
+        type: boolean
+        default: false
   push:
     paths:
       - "data/projects.toml"
@@ -13,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  models: read
 
 jobs:
   refresh:
@@ -28,14 +34,19 @@ jobs:
         with:
           python-version: "3.13"
 
-      - name: Generate SVG assets
-        run: python3 scripts/gen_readme_assets.py
+      - name: Generate SVG assets and update README
+        run: |
+          FLAGS=""
+          if [ "${{ github.event.inputs.update_descriptions }}" = "true" ]; then
+            FLAGS="--update-descriptions"
+          fi
+          python3 scripts/gen_readme_assets.py $FLAGS
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Commit changes (if any)
         run: |
-          if git diff --quiet; then
+          if git diff --quiet && git diff --cached --quiet; then
             echo "No changes."
             exit 0
           fi
@@ -44,5 +55,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add .github/assets/cards/*.svg
-          git commit -m "chore: refresh readme dashboard"
+          git add README.md
+          git add .github/cache/*.json 2>/dev/null || true
+
+          git diff --cached --quiet && { echo "No staged changes."; exit 0; }
+
+          git commit -m "chore: refresh readme dashboard [skip ci]"
           git push
