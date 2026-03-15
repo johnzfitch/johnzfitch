@@ -183,6 +183,9 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a></dt>
+  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
+
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
   <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
 
@@ -197,9 +200,6 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a></dt>
-  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/privacy-toggles"><b>privacy-toggles</b></a></dt>
   <dd>Control outbound telemetry on macOS with a web dashboard and menu bar app, featuring 61 toggles and DNS sinkhole blocking.</dd>
