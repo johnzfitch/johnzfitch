@@ -192,7 +192,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
   <dd>Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal app integration.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐81</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐82</sub></dt>
   <dd>Run Claude Desktop's Cowork mode natively on Linux by reverse-engineering macOS components for direct execution without a VM.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
