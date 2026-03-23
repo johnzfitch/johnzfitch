@@ -30,5 +30,9 @@
   "johnzfitch/llmx": {
     "sha": "9a1c388f4a0e8c097cb689fa47a94463a549abfe",
     "desc": "Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU."
+  },
+  "johnzfitch/iconics": {
+    "sha": "fe1d97bb81725e4a66bd68582d31b8e2082de960",
+    "desc": "A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration."
   }
 }
