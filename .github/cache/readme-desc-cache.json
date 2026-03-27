@@ -34,5 +34,13 @@
   "johnzfitch/iconics": {
     "sha": "fe1d97bb81725e4a66bd68582d31b8e2082de960",
     "desc": "A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration."
+  },
+  "johnzfitch/arch-dependency-matrices": {
+    "sha": "a9f30c71804e307c224d0a806b43be0cba5d2144",
+    "desc": "Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python."
+  },
+  "johnzfitch/raley-bot": {
+    "sha": "0d37d2df1844578fa59229f37574dde2348d9d41",
+    "desc": "Automated grocery shopping assistant leveraging web API for intelligent product selection, price tracking, and coupon clipping via CLI and MCP."
   }
 }
