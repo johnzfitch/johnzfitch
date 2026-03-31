@@ -183,6 +183,9 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
+  <dt><a href="https://github.com/johnzfitch/iconics"><b>iconics</b></a></dt>
+  <dd>A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration.</dd>
+
   <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
   <dd>Automated grocery shopping assistant leveraging web API for intelligent product selection, price tracking, and coupon clipping via CLI and MCP.</dd>
 
@@ -194,9 +197,6 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/iconics"><b>iconics</b></a></dt>
-  <dd>A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices"><b>arch-dependency-matrices</b></a></dt>
   <dd>Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python.</dd>
