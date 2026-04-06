@@ -204,7 +204,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐10</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐11</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 </dl>
 
@@ -213,7 +213,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐10</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐11</sub></dt>
   <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
@@ -406,7 +406,7 @@ $ claude "install dependencies"
 
 ## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐10 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
+- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐11 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
 - **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection with 4 ML models — live: [look.definitelynot.ai](https://look.definitelynot.ai)
 - **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection via phonetic/semantic analysis — live: [definitelynot.ai](https://definitelynot.ai)
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin for the Burn deep learning framework
