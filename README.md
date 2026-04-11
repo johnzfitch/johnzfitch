@@ -183,14 +183,14 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐12</sub></dt>
+  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
+
   <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
   <dd>Automated grocery shopping assistant leveraging web API for intelligent product selection, price tracking, and coupon clipping via CLI and MCP.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐32</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐11</sub></dt>
-  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐55</sub></dt>
   <dd>Security hooks for Claude Code that optimize token usage, enforce budgets, and provide observability with OTEL tracing and SSRF protection.</dd>
@@ -213,7 +213,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐11</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐12</sub></dt>
   <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
@@ -406,7 +406,7 @@ $ claude "install dependencies"
 
 ## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐11 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
+- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐12 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
 - **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection with 4 ML models — live: [look.definitelynot.ai](https://look.definitelynot.ai)
 - **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection via phonetic/semantic analysis — live: [definitelynot.ai](https://definitelynot.ai)
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin for the Burn deep learning framework
