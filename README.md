@@ -192,7 +192,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐11</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐54</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐55</sub></dt>
   <dd>Security hooks for Claude Code that optimize token usage, enforce budgets, and provide observability with OTEL tracing and SSRF protection.</dd>
 
   <dt><a href="https://github.com/johnzfitch/iconics"><b>iconics</b></a></dt>
