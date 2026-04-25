@@ -39,16 +39,24 @@ cwork (private)
 - What: A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.
 - Why it matters: Skill systems are what turn ad-hoc prompting into repeatable workflows (especially across many repos).
 
+SECTION: Agent Hardening (Security Boundaries and Observability)
+claude-warden (57 stars)
+- What: Defense-in-depth security hooks for Claude Code: SSRF protection (blocks RFC1918 / link-local / metadata endpoints), MCP output compression, OTEL tracing exported to Grafana/Loki, per-session subagent budgets, and quiet-overrides that cap verbose command output before it floods context.
+- Why it matters: Default Claude Code behavior can burn tokens on noisy command output, leak internal network topology via SSRF, spawn unbounded subagents, and produce unobservable execution traces. Warden makes those failure modes explicit and inspectable.
+- Stack: Shell + jq + OpenTelemetry + Prometheus + Grafana/Loki
+- Repo: https://github.com/johnzfitch/claude-warden
+
 SECTION: MCP Servers (Structured Tool APIs)
-pyghidra-lite
+pyghidra-lite (32 stars)
 - What: Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
+- Registry: Official MCP registry listing: io.github.johnzfitch/pyghidra-lite (v0.1.1, status: active, published 2026-01-29).
 - Why it matters: Good agents use tools. MCP servers let you build high-signal, low-context interfaces that scale beyond ad-hoc prompts.
 - Repo: https://github.com/johnzfitch/pyghidra-lite
 
 SECTION: LLM Desktop Workflow (Anthropic Ecosystem)
-claude-cowork-linux
-- What: Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.
-- Why it matters: Makes Claude a first-class Linux tool without sacrificing isolation.
+claude-cowork-linux (236 stars)
+- What: Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
+- Why it matters: Makes Claude a first-class Linux tool without sacrificing isolation. Highest-adoption project in the portfolio.
 - Note: Unofficial community project; no proprietary Claude code is committed.
 - Repo: https://github.com/johnzfitch/claude-cowork-linux
 

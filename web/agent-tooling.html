@@ -83,9 +83,19 @@
       </section>
 
       <section>
+        <h2>Agent Hardening (Security Boundaries and Observability)</h2>
+        <div class="project-card">
+          <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">&#9733;57</span></h3>
+          <div class="stack">Shell / OpenTelemetry</div>
+          <p><strong>What:</strong> Defense-in-depth security hooks for Claude Code: SSRF protection (blocks RFC1918 / link-local / metadata endpoints), MCP output compression, OTEL tracing exported to Grafana/Loki, per-session subagent budgets, and quiet-overrides that cap verbose command output before it floods context.</p>
+          <p><strong>Why it matters:</strong> Default Claude Code behavior can burn tokens on noisy command output, leak internal network topology via SSRF, spawn unbounded subagents, and produce unobservable execution traces. Warden makes those failure modes explicit and inspectable.</p>
+        </div>
+      </section>
+
+      <section>
         <h2>MCP Servers (Structured Tool APIs)</h2>
         <div class="project-card">
-          <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
+          <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">&#9733;32</span></h3>
           <div class="stack">Python / MCP</div>
           <p><strong>What:</strong> Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).</p>
           <p><strong>Registry:</strong> Official MCP registry listing: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
@@ -96,10 +106,10 @@
       <section>
         <h2>LLM Desktop Workflow (Anthropic Ecosystem)</h2>
         <div class="project-card">
-          <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
+          <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">&#9733;236</span></h3>
           <div class="stack">Linux</div>
-          <p><strong>What:</strong> Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.</p>
-          <p><strong>Why it matters:</strong> Makes Claude a first-class Linux tool without sacrificing isolation.</p>
+          <p><strong>What:</strong> Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.</p>
+          <p><strong>Why it matters:</strong> Makes Claude a first-class Linux tool without sacrificing isolation. Highest-adoption project in the portfolio.</p>
           <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
         </div>
       </section>

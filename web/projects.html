@@ -53,8 +53,15 @@
           <div class="project-card">
             <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
             <div class="stack">Rust / WASM</div>
-            <p><strong>What:</strong> Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).</p>
+            <p><strong>What:</strong> Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.</p>
             <p><strong>Why it matters:</strong> Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">&#9733;57</span></h3>
+            <div class="stack">Shell / OpenTelemetry</div>
+            <p><strong>What:</strong> Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.</p>
+            <p><strong>Why it matters:</strong> Agent runtimes need security boundaries and observability the same way servers do. claude-warden makes those boundaries explicit and inspectable.</p>
           </div>
 
           <div class="project-card">
@@ -81,10 +88,10 @@
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
+            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">&#9733;236</span></h3>
             <div class="stack">Linux</div>
-            <p><strong>What:</strong> Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.</p>
-            <p><strong>Why it matters:</strong> Practical agent workflow enablement (Linux-first, security-aware).</p>
+            <p><strong>What:</strong> Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.</p>
+            <p><strong>Why it matters:</strong> Practical agent workflow enablement (Linux-first, security-aware). Highest-adoption project in the portfolio.</p>
             <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
           </div>
 
@@ -101,7 +108,7 @@
         <h2>MCP Servers (Tool Surfaces for Agents)</h2>
         <div class="project-list">
           <div class="project-card">
-            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
+            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">&#9733;32</span></h3>
             <div class="stack">Python / MCP</div>
             <p><strong>What:</strong> Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).</p>
             <p><strong>Registry:</strong> Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
@@ -152,6 +159,13 @@
       <section>
         <h2>Security and Privacy (Defensive)</h2>
         <div class="project-list">
+          <div class="project-card">
+            <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/dota">dota</a></h3>
+            <div class="stack">Rust</div>
+            <p><strong>What:</strong> Post-quantum secrets manager: hybrid ML-KEM-768 + X25519 key encapsulation, Argon2id KDF, SQLCipher (AES-256-CBC) at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1 challenge-response.</p>
+            <p><strong>Why it matters:</strong> "Harvest now, decrypt later" is real. dota is engineered for cryptographic longevity using NIST-standardized lattice crypto with classical fallback.</p>
+          </div>
+
           <div class="project-card">
             <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></h3>
             <div class="stack">PHP / JS</div>
