@@ -44,6 +44,14 @@ icon = "ai-brain.png"
   desc = "Privacy-enhanced Gemini CLI fork; telemetry disabled."
   tags = ["TS", "Node"]
 
+  [[categories.projects]]
+  id = "llmx"
+  title = "llmx"
+  repo = "johnzfitch/llmx"
+  demo = "https://llm.cat"
+  desc = "Local-first codebase indexer: BM25 + Snowflake Arctic embeddings via WebGPU, hybrid RRF retrieval."
+  tags = ["Rust", "WASM", "WebGPU"]
+
 [[categories]]
 id = "security"
 title = "Security Research"
@@ -163,6 +171,13 @@ icon = "console.png"
   repo = "johnzfitch/gemini-sharp"
   desc = "Single-file Gemini CLI binaries; multiple themes."
   tags = ["C#", ".NET"]
+
+  [[categories.projects]]
+  id = "codex_xtreme"
+  title = "codex-xtreme"
+  repo = "johnzfitch/codex-xtreme"
+  desc = "Interactive wizard for optimized, patched Codex binaries; includes codex-patcher tree-sitter patch engine."
+  tags = ["Rust"]
 
 [[categories]]
 id = "desktop"

@@ -183,26 +183,29 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐13</sub></dt>
-  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
+  <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
+  <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU. Live demo: <a href="https://llm.cat">llm.cat</a></dd>
 
-  <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+  <dt><a href="https://github.com/johnzfitch/codex-xtreme"><b>codex-xtreme</b></a></dt>
+  <dd>Interactive wizard for producing optimized, patched OpenAI Codex binaries; includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>, a tree-sitter-backed verified patch engine for LLM-generated edits.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐32</sub></dt>
-  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
+  <dt><a href="https://github.com/johnzfitch/NetworkBatcher"><b>NetworkBatcher</b></a></dt>
+  <dd>Energy-efficient network request batching framework for iOS 26+, reducing radio wake events and extending battery life via intelligent coalescing.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐57</sub></dt>
   <dd>Security hooks for Claude Code that optimize token usage, enforce budgets, and provide observability with OTEL tracing and SSRF protection.</dd>
 
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐32</sub></dt>
+  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
+  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐13</sub></dt>
+  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
+
   <dt><a href="https://github.com/johnzfitch/iconics"><b>iconics</b></a></dt>
   <dd>A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices"><b>arch-dependency-matrices</b></a></dt>
-  <dd>Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python.</dd>
 
   <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
   <dd>Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal app integration.</dd>
@@ -213,23 +216,20 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐13</sub></dt>
-  <dd>Comprehensive Anthropic/Claude documentation wiki — 749+ docs across 24 categories</dd>
+  <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
+  <dd>Local-first codebase indexer — BM25 + Snowflake Arctic neural embeddings via <abbr title="Web Graphics Processing Unit">WebGPU</abbr>, hybrid <abbr title="Reciprocal Rank Fusion">RRF</abbr> retrieval, deterministic chunking by file type — live at <a href="https://llm.cat">llm.cat</a></dd>
+
+  <dt><a href="https://github.com/johnzfitch/codex-xtreme"><b>codex-xtreme</b></a></dt>
+  <dd>Interactive wizard for optimized, patched Codex binaries (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a> — tree-sitter-backed verified patch engine)</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
   <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em> — live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
 
-  <dt><a href="https://github.com/johnzfitch/codex-patcher"><b>codex-patcher</b></a></dt>
-  <dd>Automated Rust code patching tool leveraging tree-sitter for syntax-aware modifications and reliable LLM-generated updates.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/htmx-docs"><b>htmx-docs</b></a></dt>
-  <dd>Curated HTMX documentation in Markdown, including API references, Big Sky repos, and relevant RFCs, organized for easy access.</dd>
+  <dt><a href="https://github.com/johnzfitch/NetworkBatcher"><b>NetworkBatcher</b></a></dt>
+  <dd>Energy-efficient network batching for iOS 26+, reducing radio wake events via intelligent coalescing (Swift)</dd>
 
   <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
-  <dd>Filearchy is a Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal integration.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/nautilus-plus"><b>nautilus-plus</b></a></dt>
-  <dd>Enhanced Nautilus file manager with sub-millisecond search, large animated thumbnail support, and crash prevention features.</dd>
+  <dd>Wayland file manager forked from cosmic-files with embedded trigram search, custom MIME icons, and extended archive support</dd>
 
   <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
   <dd>CLI tool for querying PACER, enabling case searches, docket downloads, and document retrieval from federal court records.</dd>
@@ -258,48 +258,6 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 -----
 
 ## Featured
-
-### <img src=".github/assets/icons/shield.png" width="20" height="20" alt=""> [dota](https://github.com/johnzfitch/dota) — Post-Quantum Secrets Manager
-
-**Defense of the Artifacts**: A secrets manager engineered for cryptographic longevity. While current encryption remains secure, "harvest now, decrypt later" attacks mean secrets stored today may be vulnerable to quantum computers within their lifetime. dota addresses this with hybrid post-quantum encryption that provides security against both classical and quantum adversaries.
-
-<table>
-  <thead>
-    <tr>
-      <th width="140">Layer</th>
-      <th>Implementation</th>
-      <th>Why It Matters</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>Key Encapsulation</b></td>
-      <td>ML-KEM-768 + X25519 hybrid</td>
-      <td><abbr title="National Institute of Standards and Technology">NIST</abbr>-standardized lattice crypto with classical fallback — if either is broken, the other protects</td>
-    </tr>
-    <tr>
-      <td><b>Key Derivation</b></td>
-      <td>Argon2id (memory-hard)</td>
-      <td>Resists <abbr title="Graphics Processing Unit">GPU</abbr>/<abbr title="Application-Specific Integrated Circuit">ASIC</abbr> brute-force; tunable time/memory parameters</td>
-    </tr>
-    <tr>
-      <td><b>Storage</b></td>
-      <td>SQLCipher (AES-256-CBC)</td>
-      <td>Encrypted at rest with authenticated pages; survives partial file corruption</td>
-    </tr>
-    <tr>
-      <td><b>Hardware Auth</b></td>
-      <td>HMAC-SHA1 challenge-response</td>
-      <td>YubiKey/SoloKey required for unlock — no master password alone can decrypt</td>
-    </tr>
-  </tbody>
-</table>
-
-The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) provides vim-style navigation, fuzzy search across entries, secure clipboard integration with auto-clear, and <abbr title="Time-based One-Time Password">TOTP</abbr> generation for 2FA codes.
-
-**Stack:** Rust &ensp;&bull;&ensp; pqcrypto (ML-KEM) &ensp;&bull;&ensp; x25519-dalek &ensp;&bull;&ensp; argon2 &ensp;&bull;&ensp; SQLCipher &ensp;&bull;&ensp; Ratatui
-
------
 
 ### <img src=".github/assets/icons/search.png" width="20" height="20" alt=""> [llmx](https://github.com/johnzfitch/llmx) — Codebase Indexer for Local Agents
 
@@ -347,6 +305,48 @@ llmx serve --port 8080                # Local HTTP API for agents
   <dt>Stack</dt>
   <dd>Rust &ensp;&bull;&ensp; tantivy &ensp;&bull;&ensp; tree-sitter &ensp;&bull;&ensp; <abbr title="WebAssembly">WASM</abbr> &ensp;&bull;&ensp; WebGPU</dd>
 </dl>
+
+-----
+
+### <img src=".github/assets/icons/shield.png" width="20" height="20" alt=""> [dota](https://github.com/johnzfitch/dota) — Post-Quantum Secrets Manager
+
+**Defense of the Artifacts**: A secrets manager engineered for cryptographic longevity. While current encryption remains secure, "harvest now, decrypt later" attacks mean secrets stored today may be vulnerable to quantum computers within their lifetime. dota addresses this with hybrid post-quantum encryption that provides security against both classical and quantum adversaries.
+
+<table>
+  <thead>
+    <tr>
+      <th width="140">Layer</th>
+      <th>Implementation</th>
+      <th>Why It Matters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Key Encapsulation</b></td>
+      <td>ML-KEM-768 + X25519 hybrid</td>
+      <td><abbr title="National Institute of Standards and Technology">NIST</abbr>-standardized lattice crypto with classical fallback — if either is broken, the other protects</td>
+    </tr>
+    <tr>
+      <td><b>Key Derivation</b></td>
+      <td>Argon2id (memory-hard)</td>
+      <td>Resists <abbr title="Graphics Processing Unit">GPU</abbr>/<abbr title="Application-Specific Integrated Circuit">ASIC</abbr> brute-force; tunable time/memory parameters</td>
+    </tr>
+    <tr>
+      <td><b>Storage</b></td>
+      <td>SQLCipher (AES-256-CBC)</td>
+      <td>Encrypted at rest with authenticated pages; survives partial file corruption</td>
+    </tr>
+    <tr>
+      <td><b>Hardware Auth</b></td>
+      <td>HMAC-SHA1 challenge-response</td>
+      <td>YubiKey/SoloKey required for unlock — no master password alone can decrypt</td>
+    </tr>
+  </tbody>
+</table>
+
+The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) provides vim-style navigation, fuzzy search across entries, secure clipboard integration with auto-clear, and <abbr title="Time-based One-Time Password">TOTP</abbr> generation for 2FA codes.
+
+**Stack:** Rust &ensp;&bull;&ensp; pqcrypto (ML-KEM) &ensp;&bull;&ensp; x25519-dalek &ensp;&bull;&ensp; argon2 &ensp;&bull;&ensp; SQLCipher &ensp;&bull;&ensp; Ratatui
 
 -----
 

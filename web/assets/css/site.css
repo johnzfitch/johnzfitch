@@ -319,6 +319,10 @@ tbody tr:nth-child(even) {
 
 td:last-child,
 th:last-child {
+  text-align: left;
+}
+
+td.num, th.num {
   text-align: right;
 }
 
@@ -423,8 +427,12 @@ dd {
 }
 
 .project-card p {
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   color: var(--text-secondary);
+}
+
+.project-card p:last-child {
+  margin-bottom: 0;
 }
 
 /* Icons */
