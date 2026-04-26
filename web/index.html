@@ -6,6 +6,7 @@
   <title>John Zachary Fitch - Agent Tooling, Systems Performance, Privacy-First Infrastructure</title>
   <meta name="description" content="I build production-grade tools for AI agents and the systems they depend on: deterministic retrieval, safe patching, and self-hosted NixOS infrastructure. Recent: fixed a subtle pre-main regression in OpenAI Codex that caused CUDA/MKL fallbacks and major slowdowns for some users.">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="alternate" type="text/markdown" href="index.md" title="LLM-friendly Markdown version">
 </head>
 <body>
   <header>
@@ -129,31 +130,31 @@
           <div class="project-card">
             <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
             <div class="stack">Rust / WASM</div>
-            <p>Local-first codebase indexing + semantic chunk exports for agents.</p>
-          </div>
-
-	          <div class="project-card">
-	            <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></h3>
-	            <div class="stack">Rust</div>
-	            <p>Interactive wizard for optimized, patched Codex builds (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>).</p>
-	          </div>
-
-          <div class="project-card">
-            <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
-            <div class="stack">Claude Code Plugin</div>
-            <p>Claude Code plugin + skills for the Burn deep learning framework.</p>
+            <p>Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) via WebGPU/WASM. Deterministic chunking, semantic exports for agent context.</p>
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
-            <div class="stack">Python / MCP</div>
-            <p>Token-efficient MCP server for tool-driven program analysis. Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, active).</p>
+            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">57 stars</span></h3>
+            <div class="stack">Shell / OpenTelemetry</div>
+            <p>Security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.</p>
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
+            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">236 stars</span></h3>
             <div class="stack">Linux</div>
-            <p>Run the official Claude Desktop app on Linux with bubblewrap sandboxing.</p>
+            <p>Run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/dota">dota</a></h3>
+            <div class="stack">Rust</div>
+            <p>Post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">32 stars</span></h3>
+            <div class="stack">Python / MCP</div>
+            <p>Token-efficient MCP server for Ghidra. Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, active).</p>
           </div>
 
           <div class="project-card">

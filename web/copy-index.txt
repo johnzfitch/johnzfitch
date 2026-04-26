@@ -47,11 +47,11 @@ SECTION: What I Build
 - Privacy-first infrastructure: declarative NixOS deployments with post-quantum security and DNS/cert automation.
 
 SECTION: Selected Work
-- llmx - local-first codebase indexing + semantic chunk exports for agents (Rust/WASM). https://github.com/johnzfitch/llmx
-- codex-xtreme - interactive wizard for optimized, patched Codex builds (includes codex-patcher). https://github.com/johnzfitch/codex-xtreme
-- burn-plugin - Claude Code plugin + skills for the Burn deep learning framework. https://github.com/johnzfitch/burn-plugin
-- pyghidra-lite - token-efficient MCP server for tool-driven program analysis. https://github.com/johnzfitch/pyghidra-lite
-- claude-cowork-linux - run the official Claude Desktop app on Linux with bubblewrap sandboxing. https://github.com/johnzfitch/claude-cowork-linux
+- llmx (Rust/WASM) - local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) via WebGPU/WASM, deterministic chunking, semantic exports for agent context. https://github.com/johnzfitch/llmx
+- claude-warden (Shell/OTEL) - security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides. ⭐57. https://github.com/johnzfitch/claude-warden
+- claude-cowork-linux (Linux) - run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing. ⭐236. https://github.com/johnzfitch/claude-cowork-linux
+- dota (Rust) - post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1. https://github.com/johnzfitch/dota
+- pyghidra-lite (Python/MCP) - token-efficient MCP server for Ghidra. Official MCP registry: io.github.johnzfitch/pyghidra-lite (v0.1.1, active). ⭐32. https://github.com/johnzfitch/pyghidra-lite
 - SpecHO v2 - 161D linguistic fingerprinting for AI text detection (algorithm-first + tiered runtime). https://github.com/johnzfitch/specho-v2
 - definitelynot.ai - Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense). https://github.com/johnzfitch/definitelynot.ai
 

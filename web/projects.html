@@ -6,6 +6,7 @@
   <title>Selected Work - John Zachary Fitch</title>
   <meta name="description" content="Recruiter-relevant projects across agent tooling, systems performance, ML/detection, and privacy-first infrastructure.">
   <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="alternate" type="text/markdown" href="projects.md" title="LLM-friendly Markdown version">
 </head>
 <body>
   <header>
@@ -53,15 +54,22 @@
           <div class="project-card">
             <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
             <div class="stack">Rust / WASM</div>
-            <p><strong>What:</strong> Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).</p>
-            <p><strong>Why it matters:</strong> Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).</p>
+            <p><strong>What:</strong> Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.</p>
+            <p><strong>Why it matters:</strong> Surfaces only the chunks the agent actually needs. Hybrid keyword + semantic retrieval, channeled through the host machine &mdash; no remote embedding service, no telemetry, no code leaving the workstation. Agents fight blind in large repos without it.</p>
+          </div>
+
+          <div class="project-card">
+            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">&#9733;57</span></h3>
+            <div class="stack">Shell / OpenTelemetry</div>
+            <p><strong>What:</strong> Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.</p>
+            <p><strong>Why it matters:</strong> Wards the agent's perimeter. Hard limits on what it can reach, what it can spawn, and how loud it can scream into the context window. Every action logged to an OTEL orb you can rewind. Operates as a passive aura over Claude Code.</p>
           </div>
 
           <div class="project-card">
             <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a> <span class="muted">(includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</span></h3>
             <div class="stack">Rust</div>
             <p><strong>What:</strong> An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.</p>
-            <p><strong>Why it matters:</strong> Codifies the "agent edit loop" into explicit, debuggable steps.</p>
+            <p><strong>Why it matters:</strong> Forges custom Codex builds with verified patch application. Each strike is auditable; nothing slips into the binary unseen. The "agent edit loop" becomes a reviewable craft instead of hand-waving.</p>
             <p><strong>Primary repo (pin this on GitHub):</strong> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></p>
             <p><strong>Patch engine (linked inside):</strong> <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></p>
           </div>
@@ -70,21 +78,21 @@
             <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
             <div class="stack">Claude Code Plugin</div>
             <p><strong>What:</strong> Claude Code plugin for the Burn deep learning framework (skills + workflows + evidence-driven references).</p>
-            <p><strong>Why it matters:</strong> Demonstrates how to package domain expertise into an agent workflow that can be reused.</p>
+            <p><strong>Why it matters:</strong> Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and evidence &mdash; no re-reading the source tomes.</p>
           </div>
 
           <div class="project-card">
             <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> cwork</h3>
             <div class="stack">Private (available on request)</div>
             <p><strong>What:</strong> A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.</p>
-            <p><strong>Why it matters:</strong> Skill systems and context management are where multi-repo agent workflows succeed or fail.</p>
+            <p><strong>Why it matters:</strong> Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. The wrong context window is the wrong fight.</p>
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></h3>
+            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">&#9733;236</span></h3>
             <div class="stack">Linux</div>
-            <p><strong>What:</strong> Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.</p>
-            <p><strong>Why it matters:</strong> Practical agent workflow enablement (Linux-first, security-aware).</p>
+            <p><strong>What:</strong> Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.</p>
+            <p><strong>Why it matters:</strong> Carries the official Claude Desktop into Linux territory. The host OS becomes the warding circle, bubblewrap seals the chamber, and the ASAR is unpacked from outside &mdash; never from within. Most-summoned artifact in the portfolio.</p>
             <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
           </div>
 
@@ -92,7 +100,7 @@
             <h3><img src="assets/icons/image.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/iconics">Iconics</a></h3>
             <div class="stack">Python</div>
             <p><strong>What:</strong> Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons.</p>
-            <p><strong>Why it matters:</strong> Professional documentation UX at scale (and it's agent-friendly: meaning-based search, deterministic exports).</p>
+            <p><strong>Why it matters:</strong> Eight thousand glyphs catalogued by meaning, not by mood. Search by what an icon does; exports are deterministic, so the same query always yields the same sigil. Replaces emoji incantations with actual heraldry.</p>
           </div>
         </div>
       </section>
@@ -101,11 +109,11 @@
         <h2>MCP Servers (Tool Surfaces for Agents)</h2>
         <div class="project-list">
           <div class="project-card">
-            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></h3>
+            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">&#9733;32</span></h3>
             <div class="stack">Python / MCP</div>
             <p><strong>What:</strong> Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).</p>
             <p><strong>Registry:</strong> Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
-            <p><strong>Why it matters:</strong> In practice, reliable agents are tool-driven. MCP servers are how you turn a complex system into a safe, inspectable interface.</p>
+            <p><strong>Why it matters:</strong> Compresses Ghidra's output to the smallest readable form before handing it to the agent. Listed in the official MCP registry &mdash; agents summon it by name. Reverse engineering at agent speed without burning the context window.</p>
           </div>
         </div>
       </section>
@@ -117,14 +125,14 @@
             <h3><img src="assets/icons/lightning.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/triglyph">Triglyph / Triglyphd</a></h3>
             <div class="stack">Rust</div>
             <p><strong>What:</strong> Zero-RSS trigram index with custom binary formats + a D-Bus daemon for system-wide search.</p>
-            <p><strong>Why it matters:</strong> Low-level performance engineering (mmap, layout, predictable latency).</p>
+            <p><strong>Why it matters:</strong> Zero-RSS trigram index. Memory-mapped, layout-tuned, daemonized over D-Bus. Costs nothing while idle; answers in milliseconds when called.</p>
           </div>
 
           <div class="project-card">
             <h3><img src="assets/icons/folder.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/filearchy">filearchy</a></h3>
             <div class="stack">Rust (fork)</div>
             <p><strong>What:</strong> COSMIC Files fork with io_uring backend and trigram search integration.</p>
-            <p><strong>Why it matters:</strong> Applies systems work in a real product surface (UX + async I/O + search).</p>
+            <p><strong>Why it matters:</strong> COSMIC Files reforged with an io_uring engine and trigram search welded into the panel. Async I/O straight from the kernel; instant filesystem queries from the navigation bar &mdash; no spinner, no remote indexer.</p>
           </div>
         </div>
       </section>
@@ -136,7 +144,7 @@
             <h3><img src="assets/icons/eye.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/observatory">Observatory</a></h3>
             <div class="stack">WebGPU</div>
             <p><strong>What:</strong> AI image detection suite running 4 models entirely client-side (WebGPU/WASM).</p>
-            <p><strong>Why it matters:</strong> Real product constraints: model size, caching, orchestration, UX, and "no server required."</p>
+            <p><strong>Why it matters:</strong> Four detection models cast simultaneously, all in-browser via WebGPU. No upload, no remote inference. Spot synthetic imagery without surrendering the original to anyone.</p>
             <p><strong>Live:</strong> <a href="https://look.definitelynot.ai">look.definitelynot.ai</a></p>
           </div>
 
@@ -144,7 +152,7 @@
             <h3><img src="assets/icons/chart.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/specho-v2">SpecHO v2</a></h3>
             <div class="stack">Python</div>
             <p><strong>What:</strong> 161-dimensional linguistic fingerprinting system for AI text detection and model identification (tiered feature pipeline).</p>
-            <p><strong>Why it matters:</strong> Algorithm-first features, measured discriminators, and clear engineering of runtime tiers.</p>
+            <p><strong>Why it matters:</strong> Probes 161 linguistic dimensions in tiered passes &mdash; only as deep as the verdict requires. Detects AI-authored text and identifies the model behind it without lighting up the whole pipeline for a coin flip.</p>
           </div>
         </div>
       </section>
@@ -153,10 +161,17 @@
         <h2>Security and Privacy (Defensive)</h2>
         <div class="project-list">
           <div class="project-card">
+            <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/dota">dota</a></h3>
+            <div class="stack">Rust</div>
+            <p><strong>What:</strong> Post-quantum secrets manager: hybrid ML-KEM-768 + X25519 key encapsulation, Argon2id KDF, SQLCipher (AES-256-CBC) at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1 challenge-response.</p>
+            <p><strong>Why it matters:</strong> Defense of the Artifacts. Hybrid post-quantum encryption (ML-KEM-768 + X25519) means an enemy must shatter both the new wards and the old ones to take a single secret. Hardware-key required at the door &mdash; no master phrase alone will open the vault.</p>
+          </div>
+
+          <div class="project-card">
             <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></h3>
             <div class="stack">PHP / JS</div>
             <p><strong>What:</strong> Unicode-security-aware text sanitizer with Trojan Source defense, homoglyph mitigation, and BiDi neutralization.</p>
-            <p><strong>Why it matters:</strong> Practical security tooling with a clear UX and an API for integration.</p>
+            <p><strong>Why it matters:</strong> Sanitizes hostile glyphs out of incoming text &mdash; Trojan Source, BiDi smuggling, homoglyph deception. Strips the curse before it reaches your interpreter.</p>
           </div>
         </div>
       </section>
@@ -168,7 +183,7 @@
             <h3><img src="assets/icons/server.png" class="icon" width="16" height="16" alt=""> digitaldelusion</h3>
             <div class="stack">Private</div>
             <p><strong>What:</strong> Bare-metal NixOS infrastructure with authoritative DNS, automated wildcard certs (DNS-01 / RFC2136), and post-quantum VPN (WireGuard + Rosenpass).</p>
-            <p><strong>Why it matters:</strong> Demonstrates production ops maturity, reproducibility, and security-first design.</p>
+            <p><strong>Why it matters:</strong> Bare-metal stronghold, declaratively summoned. Authoritative DNS, post-quantum VPN keys rotating every minute, automated wildcard certs. Rollback is a boot-menu choice, not a weekend campaign.</p>
           </div>
         </div>
       </section>
@@ -180,7 +195,7 @@
             <h3><img src="assets/icons/document.png" class="icon" width="16" height="16" alt=""> AURORA Protocol</h3>
             <div class="stack">Draft spec + thesis-style artifacts</div>
             <p><strong>What:</strong> Design work on robust agent communication in hostile networks (message framing, discovery, encryption-by-default, federation).</p>
-            <p><strong>Why it matters:</strong> Systems thinking across protocols, security, and agent interoperability.</p>
+            <p><strong>Why it matters:</strong> Draft spec for agent-to-agent communication in hostile networks. Encryption-by-default, federation-aware, framing built to survive adversarial intermediaries.</p>
           </div>
         </div>
       </section>

@@ -6,6 +6,7 @@
 	  <title>Resume - John Zachary Fitch</title>
 	  <meta name="description" content="I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about.">
 	  <link rel="stylesheet" href="assets/css/site.css">
+	  <link rel="alternate" type="text/markdown" href="resume.md" title="LLM-friendly Markdown version">
 	</head>
 <body class="resume-page">
   <header>
@@ -57,6 +58,17 @@
 	      </section>
 
       <section>
+        <h2>How I Work</h2>
+        <ul>
+          <li>Construct from first principles rather than refine existing forms.</li>
+          <li>Recover overlooked work &mdash; revisit ideas and approaches that didn't take the first time, with current tools.</li>
+          <li>Probe working systems for hidden assumptions; rebuild the parts that don't hold up.</li>
+          <li>Operate well in complex, debated, high-ambiguity spaces.</li>
+          <li>Find a useful subspace inside a team early; manage well under crisis and time pressure.</li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Core Skills</h2>
         <div class="skills-grid">
           <div class="skill-category">
@@ -85,15 +97,28 @@
       <section>
         <h2>Selected Projects (Public)</h2>
         <ul>
-          <li><strong><a href="https://github.com/johnzfitch/llmx">llmx</a></strong> (Rust/WASM) - local-first codebase indexing + semantic chunk exports for agents</li>
-	          <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust) - optimized, patched Codex builds (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</li>
+          <li><strong><a href="https://github.com/johnzfitch/llmx">llmx</a></strong> (Rust core, JS/WASM web; live: <a href="https://llm.cat">llm.cat</a>) - local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing</li>
+          <li><strong><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a></strong> (Shell/OTEL, &#9733;57) - security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces</li>
+          <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> (Linux, &#9733;236) - native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat</li>
+          <li><strong><a href="https://github.com/johnzfitch/dota">dota</a></strong> (Rust) - post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth</li>
+          <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> (Python/MCP, &#9733;32) - token-efficient MCP server for Ghidra (official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code>, v0.1.1)</li>
+          <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust) - optimized, patched Codex builds (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</li>
           <li><strong><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></strong> - Claude Code plugin + skills for the Burn deep learning framework</li>
-          <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> - token-efficient MCP server for tool-driven program analysis (official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code>, v0.1.1)</li>
-          <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> - run the official Claude Desktop app on Linux with sandboxing</li>
           <li><strong><a href="https://look.definitelynot.ai">Observatory</a></strong> (WebGPU) - client-side AI image detection (live)</li>
           <li><strong><a href="https://github.com/johnzfitch/specho-v2">SpecHO v2</a></strong> (Python) - 161D linguistic fingerprinting for AI text detection</li>
           <li><strong><a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></strong> (PHP/JS) - Unicode-security-aware sanitizer + API</li>
           <li><strong><a href="https://github.com/johnzfitch/iconics">Iconics</a></strong> (Python) - semantic icon library for professional docs (8k+ icons)</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Operating Background</h2>
+        <p>Owner-operator of a regulated chemical-manufacturing business for 10 years; FDA and CPSC oversight, hazardous-substance handling. Sustained a multi-year PMTA process under non-committal regulatory guidance, including FOIA-driven information gathering. Mission: help adults worldwide quit smoking cigarettes. Declined paths that diverged from that mission even when commercially favorable; wound down on deliberate terms in the company's strongest revenue year.</p>
+        <p><strong>What this established:</strong></p>
+        <ul>
+          <li>Tolerance for prolonged regulatory ambiguity without losing direction.</li>
+          <li>Operating discipline at production scale: manufacturing, compliance, hiring, crisis response.</li>
+          <li>Over a decade under public scrutiny &mdash; grounded in the work, confident defending it on the record, practiced at navigating it responsibly.</li>
         </ul>
       </section>
 
@@ -109,7 +134,7 @@
 
       <section>
         <h2>Education</h2>
-        <p><strong>UC Berkeley</strong> - Mathematics</p>
+        <p><strong>UC Berkeley</strong> - Mathematics. Withdrew during the 2020 lockdowns under a granted automatic readmission.</p>
       </section>
 
       <section>

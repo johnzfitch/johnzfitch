@@ -16,6 +16,13 @@ OpenAI Codex - Ghost in the Codex Machine
 - Shipped + credited in release notes: https://github.com/openai/codex/releases/tag/rust-v0.80.0
 - Representative measurement: ~11.3x speedup on MKL/BLAS in my repro harness after fix; CUDA workflows avoided 100x-300x CPU fallback for affected setups.
 
+HOW I WORK
+- Construct from first principles rather than refine existing forms.
+- Recover overlooked work - revisit ideas and approaches that didn't take the first time, with current tools.
+- Probe working systems for hidden assumptions; rebuild the parts that don't hold up.
+- Operate well in complex, debated, high-ambiguity spaces.
+- Find a useful subspace inside a team early; manage well under crisis and time pressure.
+
 CORE SKILLS
 - Rust: performance-critical systems, CLI tools, data structures, correctness-oriented engineering
 - Python: tooling, analysis pipelines, automation, reproducible experiments
@@ -24,15 +31,25 @@ CORE SKILLS
 - Agent integration: MCP servers, skill/plugin packaging, tool-driven workflows
 
 SELECTED PROJECTS (Public)
-- llmx (Rust/WASM) - local-first codebase indexing + semantic chunk exports for agents: https://github.com/johnzfitch/llmx
+- llmx (Rust core, JS/WASM web; live: https://llm.cat) - local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing: https://github.com/johnzfitch/llmx
+- claude-warden (Shell/OTEL, 57 stars) - security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces: https://github.com/johnzfitch/claude-warden
+- claude-cowork-linux (Linux, 236 stars) - native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat: https://github.com/johnzfitch/claude-cowork-linux
+- dota (Rust) - post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth: https://github.com/johnzfitch/dota
+- pyghidra-lite (Python/MCP, 32 stars) - token-efficient MCP server for Ghidra; official MCP registry: io.github.johnzfitch/pyghidra-lite (v0.1.1): https://github.com/johnzfitch/pyghidra-lite
 - codex-xtreme (Rust) - optimized, patched Codex builds (includes codex-patcher): https://github.com/johnzfitch/codex-xtreme
 - burn-plugin - Claude Code plugin + skills for the Burn deep learning framework: https://github.com/johnzfitch/burn-plugin
-- pyghidra-lite - token-efficient MCP server for tool-driven program analysis: https://github.com/johnzfitch/pyghidra-lite
-- claude-cowork-linux - run the official Claude Desktop app on Linux with sandboxing: https://github.com/johnzfitch/claude-cowork-linux
 - Observatory (WebGPU) - client-side AI image detection (live): https://look.definitelynot.ai
 - SpecHO v2 (Python) - 161D linguistic fingerprinting for AI text detection: https://github.com/johnzfitch/specho-v2
 - definitelynot.ai (PHP/JS) - Unicode-security-aware sanitizer + API: https://github.com/johnzfitch/definitelynot.ai
 - Iconics (Python) - semantic icon library for professional docs (8k+ icons): https://github.com/johnzfitch/iconics
+
+OPERATING BACKGROUND
+Owner-operator of a regulated chemical-manufacturing business for 10 years; FDA and CPSC oversight, hazardous-substance handling. Sustained a multi-year PMTA process under non-committal regulatory guidance, including FOIA-driven information gathering. Mission: help adults worldwide quit smoking cigarettes. Declined paths that diverged from that mission even when commercially favorable; wound down on deliberate terms in the company's strongest revenue year.
+
+What this established:
+- Tolerance for prolonged regulatory ambiguity without losing direction.
+- Operating discipline at production scale: manufacturing, compliance, hiring, crisis response.
+- Over a decade under public scrutiny - grounded in the work, confident defending it on the record, practiced at navigating it responsibly.
 
 INFRASTRUCTURE (Self-Hosted)
 I operate production infrastructure on bare metal with:
@@ -41,7 +58,7 @@ I operate production infrastructure on bare metal with:
 - Post-quantum security layers (hybrid SSH KEX, WireGuard + Rosenpass)
 
 EDUCATION
-UC Berkeley - Mathematics
+UC Berkeley - Mathematics. Withdrew during the 2020 lockdowns under a granted automatic readmission.
 
 WHAT I'M LOOKING FOR
 Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.

@@ -1,0 +1,590 @@
+# John Zachary Fitch — Full Site Bundle
+
+> Single-file concatenation of every page on johnzfitch.github.io/johnzfitch, intended for LLM consumption. For the page index, see llms.txt. Last regenerated: 2026-04-26.
+
+---
+
+
+<!-- BEGIN: index.md -->
+
+# John Zachary Fitch
+
+> Agent tooling — systems performance — privacy-first infrastructure.
+
+I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.
+
+Recent highlight: I traced and fixed an invisible pre-main regression in OpenAI's Codex CLI that silently broke CUDA/MKL environments for some users (10×–300× slowdowns depending on the fallback path).
+
+## Featured Impact (Jan 2026)
+
+### Ghost in the Codex Machine — OpenAI Codex
+
+A security-hardening routine ran before `main()` in release builds and stripped `LD_*` / `DYLD_*` environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and shipped the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and removes a hard-to-diagnose failure mode.
+
+**Proof:**
+- [Issue #8945](https://github.com/openai/codex/issues/8945)
+- [Fix PR #8951](https://github.com/openai/codex/pull/8951)
+- [Release notes (rust-v0.80.0)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
+- [OpenAI Codex changelog](https://developers.openai.com/codex/changelog)
+
+**Impact (representative; varies by environment):**
+
+| Workload | Before | After | Why this happens |
+|---|---:|---:|---|
+| MKL/BLAS (repro harness) | ~2.71s | ~0.239s | Losing `LD_LIBRARY_PATH` forces a slow BLAS fallback |
+| CUDA workflows | 11×–300× slower | restored | Missing CUDA libs can trigger CPU fallback in downstream tooling |
+
+What this demonstrates:
+- Systems debugging under real-world constraints (pre-main execution, release-only behavior, silent failures)
+- Performance engineering with reproducible measurement
+- Security tradeoff reasoning that preserves developer usability
+- Upstream collaboration: issue → fix → verification → shipped release notes
+
+## What I Build
+
+- **Agent tooling:** local-first retrieval, MCP tool surfaces, and patch application that stays deterministic and debuggable.
+- **Systems performance:** mmap indices, custom binary formats, and fast search over large file trees.
+- **ML in the product surface:** WebGPU client-side inference and evaluation-aware UX.
+- **Privacy-first infrastructure:** declarative NixOS deployments with post-quantum security and DNS/cert automation.
+
+## Selected Work
+
+- **[llmx](https://github.com/johnzfitch/llmx)** (Rust/WASM) — local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) via WebGPU/WASM, deterministic chunking, semantic exports for agent context.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
+- **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1.
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 32 stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active).
+- **[SpecHO v2](https://github.com/johnzfitch/specho-v2)** (Python) — 161D linguistic fingerprinting for AI text detection.
+- **[definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)** (PHP/JS) — Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense).
+
+## Infrastructure Snapshot
+
+I run production infrastructure on dedicated bare metal with declarative NixOS configuration, authoritative DNS, automated wildcard certs via DNS-01 (RFC2136), and a post-quantum VPN layer (WireGuard + Rosenpass). I optimize for data sovereignty, reliability, and a small, auditable surface area.
+
+- Multi-IP, multi-subnet DNS redundancy and DDoS resilience
+- Caddy with HTTP/3, rootless containers (Podman), and reproducible deployments
+- Post-quantum SSH key exchange + post-quantum VPN key exchange overlay
+- Encrypted secrets and automated backups
+
+## Now
+
+- **Looking for:** roles building agent runtimes, developer tools, retrieval systems, and privacy/security foundations.
+- **Operating style:** evidence-first, performance-aware, pragmatic about tradeoffs.
+
+## Contact
+
+- Email: [webmaster@internetuniverse.org](mailto:webmaster@internetuniverse.org)
+- GitHub: [github.com/johnzfitch](https://github.com/johnzfitch)
+
+<!-- END: index.md -->
+
+---
+
+
+<!-- BEGIN: resume.md -->
+
+# Resume — John Zachary Fitch
+
+> Agent tooling | systems performance | privacy-first infrastructure
+
+I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.
+
+## Recent Highlight (Jan 2026)
+
+**OpenAI Codex — Ghost in the Codex Machine**
+
+Investigated and helped fix an "invisible" release-only regression where a pre-main constructor stripped `LD_*` / `DYLD_*` environment variables, breaking CUDA/MKL library discovery inside tool subprocesses. Shipped upstream with release-notes credit.
+
+- [Issue #8945](https://github.com/openai/codex/issues/8945) / [Fix PR #8951](https://github.com/openai/codex/pull/8951)
+- [Shipped + credited in rust-v0.80.0](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
+
+Representative impact:
+- MKL/BLAS (repro harness): ~2.71s → ~0.239s (11.3×)
+- CUDA workflows: restored expected library discovery to avoid CPU fallback in affected setups.
+
+> "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
+
+## How I Work
+
+- Construct from first principles rather than refine existing forms.
+- Recover overlooked work — revisit ideas and approaches that didn't take the first time, with current tools.
+- Probe working systems for hidden assumptions; rebuild the parts that don't hold up.
+- Operate well in complex, debated, high-ambiguity spaces.
+- Find a useful subspace inside a team early; manage well under crisis and time pressure.
+
+## Core Skills
+
+- **Rust** — performance-critical systems, CLI tools, data structures, correctness-oriented engineering.
+- **Python** — tooling, analysis pipelines, automation, reproducible experiments.
+- **Web** — WebGPU/WASM applications, client-side ML inference, offline-first UX.
+- **Systems** — Linux, NixOS, DNS, TLS automation, containerized services, security hardening.
+- **Agent integration** — MCP servers, skill/plugin packaging, tool-driven workflows.
+
+## Selected Projects (Public)
+
+- **[llmx](https://github.com/johnzfitch/llmx)** (Rust core, JS/WASM web; live: [llm.cat](https://llm.cat)) — local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat.
+- **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth.
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 32 stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1).
+- **[codex-xtreme](https://github.com/johnzfitch/codex-xtreme)** (Rust) — optimized, patched Codex builds (includes [codex-patcher](https://github.com/johnzfitch/codex-patcher)).
+- **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin + skills for the Burn deep learning framework.
+- **[Observatory](https://look.definitelynot.ai)** (WebGPU) — client-side AI image detection (live).
+- **[SpecHO v2](https://github.com/johnzfitch/specho-v2)** (Python) — 161D linguistic fingerprinting for AI text detection.
+- **[definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)** (PHP/JS) — Unicode-security-aware sanitizer + API.
+- **[Iconics](https://github.com/johnzfitch/iconics)** (Python) — semantic icon library for professional docs (8k+ icons).
+
+## Operating Background
+
+Owner-operator of a regulated chemical-manufacturing business for 10 years; FDA and CPSC oversight, hazardous-substance handling. Sustained a multi-year PMTA process under non-committal regulatory guidance, including FOIA-driven information gathering. Mission: help adults worldwide quit smoking cigarettes. Declined paths that diverged from that mission even when commercially favorable; wound down on deliberate terms in the company's strongest revenue year.
+
+What this established:
+- Tolerance for prolonged regulatory ambiguity without losing direction.
+- Operating discipline at production scale: manufacturing, compliance, hiring, crisis response.
+- Over a decade under public scrutiny — grounded in the work, confident defending it on the record, practiced at navigating it responsibly.
+
+## Infrastructure (Self-Hosted)
+
+I operate production infrastructure on bare metal with:
+- Declarative NixOS configuration (reproducible, atomic upgrades, rollbacks).
+- Authoritative DNS and automated wildcard certificates (DNS-01 / RFC2136).
+- Post-quantum security layers (hybrid SSH KEX, WireGuard + Rosenpass).
+
+## Education
+
+UC Berkeley — Mathematics. Withdrew during the 2020 lockdowns under a granted automatic readmission.
+
+## What I'm Looking For
+
+Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.
+
+## Contact
+
+- Email: [webmaster@internetuniverse.org](mailto:webmaster@internetuniverse.org)
+- GitHub: [github.com/johnzfitch](https://github.com/johnzfitch)
+- PDF: [resume.pdf](resume.pdf)
+
+<!-- END: resume.md -->
+
+---
+
+
+<!-- BEGIN: ghost.md -->
+
+# Ghost in the Codex Machine
+
+> Fixing an "invisible" pre-main regression in OpenAI Codex that silently broke CUDA/MKL environments.
+
+## Executive Summary
+
+This was a performance regression that didn't look like a performance regression.
+
+In release builds, a pre-main hardening routine executed before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For a subset of users (CUDA, Conda/MKL, HPC, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex subprocesses. The downstream effect was dramatic: slow fallback BLAS, CPU fallback for GPU workflows, timeouts, and "Codex feels slow" reports that were difficult to attribute to a single root cause.
+
+I traced the behavior back to the introducing change, wrote a reproduction + benchmark-backed issue, and shipped the upstream fix. The fix is called out in the rust-v0.80.0 release notes with attribution.
+
+## Primary Links (Proof)
+
+- [Issue #8945](https://github.com/openai/codex/issues/8945)
+- [Fix PR #8951](https://github.com/openai/codex/pull/8951)
+- [Release notes (rust-v0.80.0)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
+- [OpenAI Codex changelog](https://developers.openai.com/codex/changelog)
+
+**Related context:** the PR that introduced always-on pre-main hardening — [PR #4521](https://github.com/openai/codex/pull/4521).
+
+## Timeline (Key Dates)
+
+| Date | Event |
+|---|---|
+| 2025-09-30 | PR #4521 merges (process hardening executes pre-main in CLI release builds) |
+| 2025-10-01 | First affected release ships (rust-v0.43.0) |
+| 2025-10-31 | "Ghosts in the Codex Machine" investigation published (concludes there is no single conclusive large issue) |
+| 2026-01-08 | I open Issue #8945 with root cause + reproduction + benchmarks |
+| 2026-01-09 | Fix merged in PR #8951 |
+| 2026-01-09+ | Fix shipped in rust-v0.80.0 (release notes call-out) |
+
+## The Problem (What Users Experienced)
+
+When Codex runs tools (Python, Node, build systems, CLIs), it does so by spawning subprocesses. For dev workflows, the correct baseline is simple: subprocesses should inherit the developer's environment unless a specific policy says otherwise.
+
+When `LD_LIBRARY_PATH` / `DYLD_LIBRARY_PATH` disappears, the failure mode is often not a clean error. Instead, the dynamic linker "finds something else," and performance collapses:
+
+- BLAS libraries fall back to unaccelerated implementations.
+- CUDA tooling may fall back to CPU execution.
+- Some enterprise/custom libraries fail to load entirely.
+
+## Root Cause (Why This Was a "Ghost")
+
+The stripping happened before `main()` and before most instrumentation/logging was initialized:
+
+- Implemented as a pre-main constructor in release builds (`#[ctor::ctor]`-style behavior).
+- Silent by default (no warning when variables were removed).
+- Reproduced only on specific environment layouts (non-RPATH installs, legacy Conda, HPC module stacks, custom vendor libraries).
+- Users could see `LD_LIBRARY_PATH` set correctly in their shell, but inside `codex exec` it was empty.
+
+## Evidence and Reproduction (How I Proved It)
+
+I approached this like a systems regression:
+
+- Correlated the introducing change with a cluster of "environment disappeared" reports.
+- Wrote a minimal reproduction that directly inspects env vars inside Codex tool calls.
+- Used benchmarks that isolate library fallback behavior (e.g., matrix multiplication and CUDA library loading).
+- Documented results in a way upstream could validate quickly.
+
+## Fix (What Shipped Upstream)
+
+Security hardening is valuable, but in a developer CLI it must not silently rewrite the user's execution environment.
+
+My proposed posture was "opt-in maximum hardening." Upstream shipped a pragmatic equivalent:
+
+- Remove pre-main hardening from the Codex CLI to restore environment inheritance for subprocesses.
+- Keep pre-main hardening in the responses API proxy (where it is more appropriate).
+
+Release notes excerpt:
+
+> "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
+
+## Measured Impact (Representative)
+
+Performance varies by workload and environment. The key point is the failure mode: stripping env vars can force slow, silent fallbacks.
+
+| Workload | Before | After | Speedup |
+|---|---:|---:|---:|
+| MKL/BLAS (repro harness) | ~2.71s | ~0.239s | 11.3× |
+| CUDA workflows (library discovery / GPU fallback) | 100×–300× slower | restored | varies |
+
+## Why This Matters (Beyond One Bug)
+
+This is the kind of engineering failure that only shows up in real-world environments:
+
+- **Subprocess correctness is a product feature** — tools must behave the same "inside Codex" as they do in the user's terminal.
+- **Security controls must be explicit, not surprising.**
+- **Performance regressions can hide inside "correct" behavior** when the system silently falls back.
+- **Substrate bugs distort everything built on top** — tooling, orchestration, higher-level features all pay the tax.
+
+## What This Demonstrates
+
+- Deep systems debugging (pre-main execution, env inheritance, dynamic linking).
+- Performance engineering with hard evidence.
+- Security tradeoff reasoning grounded in practical threat models.
+- High-quality upstream collaboration: clear issue, reproducible repro, verified fix, shipped release.
+
+## What I Would Add Next (Engineering Hygiene)
+
+- Integration tests asserting env-var inheritance for subprocess execution.
+- A documented "secure mode" switch with explicit tradeoffs.
+- A debug command to dump the effective execution environment (for users and support).
+
+<!-- END: ghost.md -->
+
+---
+
+
+<!-- BEGIN: projects.md -->
+
+# Selected Work
+
+> Recruiter-relevant projects across agent tooling, systems performance, ML/detection, and privacy-first infrastructure. The list is intentionally curated.
+
+## Recent Upstream Impact
+
+**OpenAI Codex — "Ghost in the Codex Machine" Fix.** Root-caused and fixed a pre-main environment regression that stripped `LD_*` / `DYLD_*` env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.
+
+- [Issue #8945](https://github.com/openai/codex/issues/8945)
+- [Fix PR #8951](https://github.com/openai/codex/pull/8951)
+- [Shipped: rust-v0.80.0 release notes (with attribution)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
+
+## Agent Tooling (LLM-Centric)
+
+### [llmx](https://github.com/johnzfitch/llmx)
+*Rust / WASM*
+
+- **What:** Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.
+- **Why it matters:** Surfaces only the chunks the agent actually needs. Hybrid keyword + semantic retrieval, channeled through the host machine — no remote embedding service, no telemetry, no code leaving the workstation. Agents fight blind in large repos without it.
+
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
+*Shell / OpenTelemetry*
+
+- **What:** Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.
+- **Why it matters:** Wards the agent's perimeter. Hard limits on what it can reach, what it can spawn, and how loud it can scream into the context window. Every action logged to an OTEL orb you can rewind. Operates as a passive aura over Claude Code.
+
+### [codex-xtreme](https://github.com/johnzfitch/codex-xtreme)
+*Rust* (includes [codex-patcher](https://github.com/johnzfitch/codex-patcher))
+
+- **What:** An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
+- **Why it matters:** Forges custom Codex builds with verified patch application. Each strike is auditable; nothing slips into the binary unseen. The "agent edit loop" becomes a reviewable craft instead of hand-waving.
+
+### [burn-plugin](https://github.com/johnzfitch/burn-plugin)
+*Claude Code Plugin*
+
+- **What:** Claude Code plugin for the Burn deep learning framework (skills + workflows + evidence-driven references).
+- **Why it matters:** Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and evidence — no re-reading the source tomes.
+
+### cwork
+*Private (available on request)*
+
+- **What:** A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.
+- **Why it matters:** Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. The wrong context window is the wrong fight.
+
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
+*Linux*
+
+- **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
+- **Why it matters:** Carries the official Claude Desktop into Linux territory. The host OS becomes the warding circle, bubblewrap seals the chamber, and the ASAR is unpacked from outside — never from within. Most-summoned artifact in the portfolio.
+- *Unofficial community project; no proprietary Claude code is committed.*
+
+### [Iconics](https://github.com/johnzfitch/iconics)
+*Python*
+
+- **What:** Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons.
+- **Why it matters:** Eight thousand glyphs catalogued by meaning, not by mood. Search by what an icon does; exports are deterministic, so the same query always yields the same sigil. Replaces emoji incantations with actual heraldry.
+
+## MCP Servers (Tool Surfaces for Agents)
+
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
+*Python / MCP*
+
+- **What:** Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).
+- **Registry:** Official MCP registry — `io.github.johnzfitch/pyghidra-lite` (v0.1.1, status: active, published 2026-01-29).
+- **Why it matters:** Compresses Ghidra's output to the smallest readable form before handing it to the agent. Listed in the official MCP registry — agents summon it by name. Reverse engineering at agent speed without burning the context window.
+
+## Systems Performance
+
+### [Triglyph / Triglyphd](https://github.com/johnzfitch/triglyph)
+*Rust*
+
+- **What:** Zero-RSS trigram index with custom binary formats + a D-Bus daemon for system-wide search.
+- **Why it matters:** Zero-RSS trigram index. Memory-mapped, layout-tuned, daemonized over D-Bus. Costs nothing while idle; answers in milliseconds when called.
+
+### [filearchy](https://github.com/johnzfitch/filearchy)
+*Rust (fork)*
+
+- **What:** COSMIC Files fork with io_uring backend and trigram search integration.
+- **Why it matters:** COSMIC Files reforged with an io_uring engine and trigram search welded into the panel. Async I/O straight from the kernel; instant filesystem queries from the navigation bar — no spinner, no remote indexer.
+
+## ML / Detection
+
+### [Observatory](https://github.com/johnzfitch/observatory)
+*WebGPU*
+
+- **What:** AI image detection suite running 4 models entirely client-side (WebGPU/WASM).
+- **Why it matters:** Four detection models cast simultaneously, all in-browser via WebGPU. No upload, no remote inference. Spot synthetic imagery without surrendering the original to anyone.
+- **Live:** [look.definitelynot.ai](https://look.definitelynot.ai)
+
+### [SpecHO v2](https://github.com/johnzfitch/specho-v2)
+*Python*
+
+- **What:** 161-dimensional linguistic fingerprinting system for AI text detection and model identification (tiered feature pipeline).
+- **Why it matters:** Probes 161 linguistic dimensions in tiered passes — only as deep as the verdict requires. Detects AI-authored text and identifies the model behind it without lighting up the whole pipeline for a coin flip.
+
+## Security and Privacy (Defensive)
+
+### [dota](https://github.com/johnzfitch/dota)
+*Rust*
+
+- **What:** Post-quantum secrets manager: hybrid ML-KEM-768 + X25519 key encapsulation, Argon2id KDF, SQLCipher (AES-256-CBC) at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1 challenge-response.
+- **Why it matters:** Defense of the Artifacts. Hybrid post-quantum encryption (ML-KEM-768 + X25519) means an enemy must shatter both the new wards and the old ones to take a single secret. Hardware-key required at the door — no master phrase alone will open the vault.
+
+### [definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)
+*PHP / JS*
+
+- **What:** Unicode-security-aware text sanitizer with Trojan Source defense, homoglyph mitigation, and BiDi neutralization.
+- **Why it matters:** Sanitizes hostile glyphs out of incoming text — Trojan Source, BiDi smuggling, homoglyph deception. Strips the curse before it reaches your interpreter.
+
+## Infrastructure (Self-Hosted)
+
+### digitaldelusion
+*Private*
+
+- **What:** Bare-metal NixOS infrastructure with authoritative DNS, automated wildcard certs (DNS-01 / RFC2136), and post-quantum VPN (WireGuard + Rosenpass).
+- **Why it matters:** Bare-metal stronghold, declaratively summoned. Authoritative DNS, post-quantum VPN keys rotating every minute, automated wildcard certs. Rollback is a boot-menu choice, not a weekend campaign.
+
+## Writing / Research (Available on Request)
+
+### AURORA Protocol
+*Draft spec + thesis-style artifacts*
+
+- **What:** Design work on robust agent communication in hostile networks (message framing, discovery, encryption-by-default, federation).
+- **Why it matters:** Draft spec for agent-to-agent communication in hostile networks. Encryption-by-default, federation-aware, framing built to survive adversarial intermediaries.
+
+## Selected Private Work (Names Only)
+
+- eero (private)
+- alienware-monitor (private)
+- proxyforge (private)
+
+<!-- END: projects.md -->
+
+---
+
+
+<!-- BEGIN: agent-tooling.md -->
+
+# Agent Tooling
+
+> Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.
+
+My bias is pragmatic: agents should do real work without surprising the user.
+
+That means:
+- **Determinism over magic** (same inputs produce the same outputs).
+- **Auditability over vibes** (you can inspect what changed and why).
+- **Privacy-first defaults** (local processing whenever possible).
+
+## Retrieval That Scales (Local-First Hybrid Search)
+
+### [llmx](https://github.com/johnzfitch/llmx)
+*Rust core, JS/WASM web; deterministic chunking; hybrid search (BM25 + neural embeddings) fused via RRF*
+
+- **What:** Local-first codebase indexer with hybrid retrieval — BM25 keyword ranking combined with neural embeddings (Snowflake Arctic) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.
+- **Why it matters:** Most agent fights in large repos are lost on retrieval, not on intelligence. llmx hands the agent a working map: hybrid scoring, deterministic chunks, semantic quality without a remote oracle in the call chain.
+
+## Verifiable Editing and Reproducible Builds (Codex Toolchain)
+
+### [codex-xtreme](https://github.com/johnzfitch/codex-xtreme) (includes [codex-patcher](https://github.com/johnzfitch/codex-patcher))
+*Rust*
+
+- **What:** An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
+- **Why it matters:** The "edit loop" made explicit: apply changes reliably, then build and run in a reproducible chamber. Each strike is auditable; nothing slips into the binary unseen.
+
+## Packaging Domain Expertise for Agents
+
+### [burn-plugin](https://github.com/johnzfitch/burn-plugin)
+*Claude Code Plugin*
+
+- **What:** Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.
+- **Why it matters:** Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and references — verifiable, reusable, no re-reading the source tomes.
+
+## Skill Systems (Available on Request)
+
+### cwork
+*Private*
+
+- **What:** A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.
+- **Why it matters:** Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. Turns ad-hoc prompting into a repeatable rite.
+
+## Agent Hardening (Security Boundaries and Observability)
+
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
+*Shell / OpenTelemetry*
+
+- **What:** Defense-in-depth security hooks for Claude Code: SSRF protection (blocks RFC1918 / link-local / metadata endpoints), MCP output compression, OTEL tracing exported to Grafana/Loki, per-session subagent budgets, and quiet-overrides that cap verbose command output before it floods context.
+- **Why it matters:** Default Claude Code can incinerate tokens on noisy command output, leak internal network topology via SSRF probes, spawn unbounded subagents, and produce traces nobody can inspect. Warden seals each leak and turns the runtime into something you can audit after the fact.
+
+## MCP Servers (Structured Tool APIs)
+
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
+*Python / MCP*
+
+- **What:** Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
+- **Registry:** Official MCP registry — `io.github.johnzfitch/pyghidra-lite` (v0.1.1, status: active, published 2026-01-29).
+- **Why it matters:** Good agents are tool-driven. An MCP server is a contracted interface: the agent reads it, calls it, reasons about it. pyghidra-lite compresses Ghidra's torrent into the smallest readable form so the context window survives the encounter.
+
+## LLM Desktop Workflow (Anthropic Ecosystem)
+
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
+*Linux*
+
+- **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
+- **Why it matters:** Makes Claude Desktop a first-class Linux artifact without sacrificing isolation. The host OS is the warding circle; bubblewrap seals the chamber. Most-summoned project in the portfolio.
+- *Unofficial community project; no proprietary Claude code is committed.*
+
+## Professional UX (No Emojis)
+
+### [Iconics](https://github.com/johnzfitch/iconics)
+*Python*
+
+- **What:** Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.
+- **Why it matters:** Documentation is a product surface. Consistent heraldry beats emoji incantations every time — meaning-based search and deterministic exports keep the same query yielding the same sigil across docs and agent contexts alike.
+
+---
+
+**Closing thought:** My working model — start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.
+
+<!-- END: agent-tooling.md -->
+
+---
+
+
+<!-- BEGIN: infrastructure.md -->
+
+# Infrastructure
+
+> Bare-metal NixOS, authoritative DNS, and post-quantum-ready security — built and operated end-to-end.
+
+I run my own production infrastructure because I care about three things: data sovereignty, reliability, and systems that behave predictably under failure.
+
+Everything is declarative. Everything is reproducible. If something breaks, rollback is a boot-menu option, not a weekend.
+
+## What I Run (High-Level)
+
+- Dedicated bare-metal host (NixOS) with reproducible configuration via flakes.
+- Multi-IP, multi-subnet design for redundancy and failure isolation.
+- Authoritative DNS (BIND9) with recursion disabled, rate limiting, and tightly-scoped zone-transfer policies.
+- Automated wildcard TLS via DNS-01 using RFC 2136 dynamic updates (TSIG-authenticated) so cert renewals are hands-off.
+- Reverse proxy and HTTPS termination via Caddy, including HTTP/3.
+- Rootless containers (Podman) managed declaratively through NixOS/systemd.
+- Encrypted secrets (agenix) and automated backups with retention policies.
+
+## Post-Quantum Security (Pragmatic, Layered)
+
+Post-quantum is a moving target, so the design is defense-in-depth:
+
+- Post-quantum/hybrid SSH key exchange (`sntrup761x25519-sha512@openssh.com`).
+- WireGuard VPN with a Rosenpass post-quantum key exchange overlay (PSK rotation on the order of minutes), designed to mitigate "store now, decrypt later."
+
+## DNS Redundancy (Why It's Not Just "I Run BIND")
+
+The design goal is resilience when the most common failure modes happen:
+- One IP is unreachable.
+- One subnet is degraded.
+- A full data center or provider has issues.
+
+Redundancy model (simplified):
+- **Layer 1:** Self-hosted authoritative DNS (multi-IP, multi-subnet)
+- **Layer 2:** Secondary authoritative DNS provider (geographic diversity)
+- **Layer 3:** Client resolver failover across all NS records
+
+## Services (Public Examples)
+
+- [definitelynot.ai](https://definitelynot.ai) — Unicode-security tooling and demos.
+- [look.definitelynot.ai](https://look.definitelynot.ai) — WebGPU ML demo ("Observatory").
+
+## Why This Matters (Recruiter-Relevant)
+
+- **Production operations:** monitoring, backups, rollback, incident-friendly design.
+- **Security posture:** explicit threat modeling and layered controls, not checkbox security.
+- **Systems thinking:** DNS, TLS automation, firewalling, and deployment all treated as one system.
+
+<!-- END: infrastructure.md -->
+
+---
+
+
+<!-- BEGIN: contact.md -->
+
+# Contact
+
+If you're hiring for agent tooling, systems performance, or privacy/security foundations, I'd love to talk.
+
+## Primary
+
+- Email: [webmaster@internetuniverse.org](mailto:webmaster@internetuniverse.org)
+- GitHub: [github.com/johnzfitch](https://github.com/johnzfitch)
+- Website: [definitelynot.ai](https://definitelynot.ai)
+
+## Good Conversations
+
+- Debugging and performance regressions in real developer environments.
+- Agent tooling: retrieval, patching, deterministic workflows, and guardrails.
+- WebGPU/WASM product work for client-side ML.
+- Infrastructure: NixOS, DNS, TLS automation, and operational reliability.
+
+## Response Time
+
+I typically respond within 1–2 days.
+
+<!-- END: contact.md -->
+
+---
+

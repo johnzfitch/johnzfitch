@@ -14,80 +14,91 @@ OpenAI Codex - "Ghost in the Codex Machine" Fix
 
 SECTION: Agent Tooling (LLM-Centric)
 llmx (Rust/WASM)
-- What: Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).
-- Why it matters: Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).
+- What: Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.
+- Why it matters: Surfaces only the chunks the agent actually needs. Hybrid keyword + semantic retrieval, channeled through the host machine - no remote embedding service, no telemetry, no code leaving the workstation. Agents fight blind in large repos without it.
 - Repo: https://github.com/johnzfitch/llmx
+
+claude-warden (Shell/OpenTelemetry, 57 stars)
+- What: Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.
+- Why it matters: Wards the agent's perimeter. Hard limits on what it can reach, what it can spawn, and how loud it can scream into the context window. Every action logged to an OTEL orb you can rewind. Operates as a passive aura over Claude Code.
+- Repo: https://github.com/johnzfitch/claude-warden
 
 codex-xtreme (Rust, includes codex-patcher)
 - What: An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
-- Why it matters: Codifies the "agent edit loop" into explicit, debuggable steps.
+- Why it matters: Forges custom Codex builds with verified patch application. Each strike is auditable; nothing slips into the binary unseen. The "agent edit loop" becomes a reviewable craft instead of hand-waving.
 - Primary repo (pin this on GitHub): https://github.com/johnzfitch/codex-xtreme
 - Patch engine (linked inside): https://github.com/johnzfitch/codex-patcher
 
 burn-plugin
 - What: Claude Code plugin for the Burn deep learning framework (skills + workflows + evidence-driven references).
-- Why it matters: Demonstrates how to package domain expertise into an agent workflow that can be reused.
+- Why it matters: Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and evidence - no re-reading the source tomes.
 - Repo: https://github.com/johnzfitch/burn-plugin
 
 cwork (private, available on request)
 - What: A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.
-- Why it matters: Skill systems and context management are where multi-repo agent workflows succeed or fail.
+- Why it matters: Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. The wrong context window is the wrong fight.
 
-claude-cowork-linux
-- What: Run the official Claude Desktop app on Linux using compatibility stubs and a bubblewrap sandbox.
-- Why it matters: Practical agent workflow enablement (Linux-first, security-aware).
+claude-cowork-linux (236 stars)
+- What: Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
+- Why it matters: Carries the official Claude Desktop into Linux territory. The host OS becomes the warding circle, bubblewrap seals the chamber, and the ASAR is unpacked from outside - never from within. Most-summoned artifact in the portfolio.
 - Note: Unofficial community project; no proprietary Claude code is committed.
 - Repo: https://github.com/johnzfitch/claude-cowork-linux
 
 Iconics
 - What: Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons.
-- Why it matters: Professional documentation UX at scale (and it's agent-friendly: meaning-based search, deterministic exports).
+- Why it matters: Eight thousand glyphs catalogued by meaning, not by mood. Search by what an icon does; exports are deterministic, so the same query always yields the same sigil. Replaces emoji incantations with actual heraldry.
 - Repo: https://github.com/johnzfitch/iconics
 
 SECTION: MCP Servers (Tool Surfaces for Agents)
-pyghidra-lite
+pyghidra-lite (32 stars)
 - What: Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).
-- Why it matters: In practice, reliable agents are tool-driven. MCP servers are how you turn a complex system into a safe, inspectable interface.
+- Registry: Official MCP registry: io.github.johnzfitch/pyghidra-lite (v0.1.1, status: active, published 2026-01-29).
+- Why it matters: Compresses Ghidra's output to the smallest readable form before handing it to the agent. Listed in the official MCP registry - agents summon it by name. Reverse engineering at agent speed without burning the context window.
 - Repo: https://github.com/johnzfitch/pyghidra-lite
 
 SECTION: Systems Performance (Real Data Structures, Real Constraints)
 Triglyph / Triglyphd (Rust)
 - What: Zero-RSS trigram index with custom binary formats + a D-Bus daemon for system-wide search.
-- Why it matters: Low-level performance engineering (mmap, layout, predictable latency).
+- Why it matters: Zero-RSS trigram index. Memory-mapped, layout-tuned, daemonized over D-Bus. Costs nothing while idle; answers in milliseconds when called.
 - Repo: https://github.com/johnzfitch/triglyph
 
 filearchy (Rust, fork)
 - What: COSMIC Files fork with io_uring backend and trigram search integration.
-- Why it matters: Applies systems work in a real product surface (UX + async I/O + search).
+- Why it matters: COSMIC Files reforged with an io_uring engine and trigram search welded into the panel. Async I/O straight from the kernel; instant filesystem queries from the navigation bar - no spinner, no remote indexer.
 - Repo: https://github.com/johnzfitch/filearchy
 
 SECTION: ML / Detection (Algorithm-First, Production-Aware)
 Observatory (WebGPU)
 - What: AI image detection suite running 4 models entirely client-side (WebGPU/WASM).
-- Why it matters: Real product constraints: model size, caching, orchestration, UX, and "no server required."
+- Why it matters: Four detection models cast simultaneously, all in-browser via WebGPU. No upload, no remote inference. Spot synthetic imagery without surrendering the original to anyone.
 - Live: https://look.definitelynot.ai
 - Repo: https://github.com/johnzfitch/observatory
 
 SpecHO v2
 - What: 161-dimensional linguistic fingerprinting system for AI text detection and model identification (tiered feature pipeline).
-- Why it matters: Algorithm-first features, measured discriminators, and clear engineering of runtime tiers.
+- Why it matters: Probes 161 linguistic dimensions in tiered passes - only as deep as the verdict requires. Detects AI-authored text and identifies the model behind it without lighting up the whole pipeline for a coin flip.
 - Repo: https://github.com/johnzfitch/specho-v2
 
 SECTION: Security and Privacy (Defensive)
+dota (Rust)
+- What: Post-quantum secrets manager: hybrid ML-KEM-768 + X25519 key encapsulation, Argon2id KDF, SQLCipher (AES-256-CBC) at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1 challenge-response.
+- Why it matters: Defense of the Artifacts. Hybrid post-quantum encryption (ML-KEM-768 + X25519) means an enemy must shatter both the new wards and the old ones to take a single secret. Hardware-key required at the door - no master phrase alone will open the vault.
+- Repo: https://github.com/johnzfitch/dota
+
 definitelynot.ai
 - What: Unicode-security-aware text sanitizer with Trojan Source defense, homoglyph mitigation, and BiDi neutralization.
-- Why it matters: Practical security tooling with a clear UX and an API for integration.
+- Why it matters: Sanitizes hostile glyphs out of incoming text - Trojan Source, BiDi smuggling, homoglyph deception. Strips the curse before it reaches your interpreter.
 - Repo: https://github.com/johnzfitch/definitelynot.ai
 
 SECTION: Infrastructure (Self-Hosted)
 digitaldelusion (private)
 - What: Bare-metal NixOS infrastructure with authoritative DNS, automated wildcard certs (DNS-01 / RFC2136), and post-quantum VPN (WireGuard + Rosenpass).
-- Why it matters: Demonstrates production ops maturity, reproducibility, and security-first design.
+- Why it matters: Bare-metal stronghold, declaratively summoned. Authoritative DNS, post-quantum VPN keys rotating every minute, automated wildcard certs. Rollback is a boot-menu choice, not a weekend campaign.
 
 SECTION: Writing / Research (Available on Request)
 AURORA Protocol (draft spec + thesis-style artifacts)
 - What: Design work on robust agent communication in hostile networks (message framing, discovery, encryption-by-default, federation).
-- Why it matters: Systems thinking across protocols, security, and agent interoperability.
+- Why it matters: Draft spec for agent-to-agent communication in hostile networks. Encryption-by-default, federation-aware, framing built to survive adversarial intermediaries.
 
 SECTION: Selected Private Work (Names Only)
 - eero (private)

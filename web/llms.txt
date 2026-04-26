@@ -1,0 +1,24 @@
+# John Zachary Fitch
+
+> Personal site of John Zachary Fitch (johnzfitch). Agent tooling — systems performance — privacy-first infrastructure. Berkeley Mathematics. Owner-operator background. Recent: traced and fixed a pre-main regression in OpenAI Codex (rust-v0.80.0, release-notes credit).
+
+This is the LLM-friendly index of the site. Each page below has a Markdown mirror of the human-facing HTML. A single concatenated bundle is also available at `llms-full.txt`.
+
+## Site
+
+- [Home](index.md): overview, recent impact, what I build, selected work, infrastructure snapshot.
+- [Resume](resume.md): summary, how I work, core skills, selected projects, operating background, education.
+- [Case Study — Ghost in the Codex Machine](ghost.md): full investigation of the OpenAI Codex pre-main regression, timeline, evidence, fix, measured impact.
+- [Selected Work](projects.md): curated project list across agent tooling, MCP servers, systems performance, ML/detection, security, and infrastructure.
+- [Agent Tooling](agent-tooling.md): retrieval, verifiable editing, agent hardening, MCP servers, skill packaging.
+- [Infrastructure](infrastructure.md): self-hosted NixOS bare-metal, authoritative DNS, post-quantum security layers.
+- [Contact](contact.md): email, GitHub, response expectations.
+
+## Bundle
+
+- [llms-full.txt](llms-full.txt): all pages concatenated as a single Markdown document.
+
+## Optional
+
+- [resume.pdf](resume.pdf): rendered PDF of the resume page.
+- [GitHub profile](https://github.com/johnzfitch): canonical project list with star counts and live stats.
