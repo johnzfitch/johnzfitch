@@ -41,6 +41,26 @@ class RepoStats:
     pushed_at: datetime
 
 
+# Top of Recent Work, in order. Bypasses pushed_at sort.
+PINNED_RECENT_WORK: list[str] = [
+    "johnzfitch/claude-cowork-linux",
+]
+
+# Hand-curated descriptions; bypass LLM regeneration in both rotation paths.
+MANUAL_RECENT_WORK_DESCRIPTIONS: dict[str, str] = {
+    "johnzfitch/claude-cowork-linux": (
+        "Native Linux port of Claude Desktop's Cowork mode. The host OS "
+        "becomes the VM; bubblewrap seals the chamber; the ASAR is "
+        "unpacked from outside, never from within."
+    ),
+    "johnzfitch/claude-warden": (
+        "Security hooks for Claude Code: blocks SSRF probes, caps subagent "
+        "spawn budgets, compresses MCP outputs, and exports every tool "
+        "call to OTEL traces."
+    ),
+}
+
+
 def _die(msg: str) -> None:
     raise SystemExit(msg)
 
@@ -743,6 +763,8 @@ def _update_readme_descriptions(
     updated_cache = False
 
     for repo in repos:
+        if repo in MANUAL_RECENT_WORK_DESCRIPTIONS:
+            continue
         repo_name = repo.split("/")[-1]
 
         # Check if repo is in Recent Work section
@@ -793,13 +815,18 @@ def _update_readme_descriptions(
 
 
 def _get_recent_repos(repo_stats: dict[str, RepoStats], count: int = 8) -> list[tuple[str, RepoStats]]:
-    """Get the N most recently pushed repos, sorted by pushed_at descending."""
-    sorted_repos = sorted(
-        repo_stats.items(),
+    """Get N repos for Recent Work: pinned first, then most-recently-pushed."""
+    pinned = [
+        (repo, repo_stats[repo])
+        for repo in PINNED_RECENT_WORK
+        if repo in repo_stats
+    ]
+    remaining = sorted(
+        ((r, s) for r, s in repo_stats.items() if r not in PINNED_RECENT_WORK),
         key=lambda x: x[1].pushed_at,
         reverse=True,
     )
-    return sorted_repos[:count]
+    return (pinned + remaining)[:count]
 
 
 def _rotate_recent_work(
@@ -845,20 +872,21 @@ def _rotate_recent_work(
     for repo, stats in recent:
         repo_name = repo.split("/")[-1]
 
-        # Get description from cache or generate via LLM
-        cached = cache.get(repo, {})
-        description = cached.get("desc")
-
-        if not description and token:
-            print(f"  Generating description for {repo}...")
-            ctx = _fetch_repo_context(repo, token)
-            if ctx:
-                description = _generate_description_llm(ctx, token)
-                if description:
-                    cache[repo] = {"sha": ctx.readme_sha, "desc": description}
+        description = MANUAL_RECENT_WORK_DESCRIPTIONS.get(repo)
 
         if not description:
-            # Fallback: use GitHub repo description
+            cached = cache.get(repo, {})
+            description = cached.get("desc")
+
+            if not description and token:
+                print(f"  Generating description for {repo}...")
+                ctx = _fetch_repo_context(repo, token)
+                if ctx:
+                    description = _generate_description_llm(ctx, token)
+                    if description:
+                        cache[repo] = {"sha": ctx.readme_sha, "desc": description}
+
+        if not description:
             description = f"Repository: {repo}"
 
         # Format star badge

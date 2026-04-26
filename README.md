@@ -15,10 +15,10 @@
 
 -----
 
-## OpenAI Codex: Finding the Ghost in the Machine
+## OpenAI Codex — The Ghost in the Machine
 
 > [!IMPORTANT]
-> Solved a <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> environment stripping bug causing <mark>11–300× <abbr title="Graphics Processing Unit">GPU</abbr> slowdowns</mark> that eluded OpenAI's debugging team for months. This was the main blocker to Codex spawning and controlling effective subagents. The regression often times caused delayed cpu fallback or silent failures in ML-related tasks across all operating systems.
+> A <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> constructor was silently stripping <var>LD_*</var> / <var>DYLD_*</var> from Codex tool subprocesses, forcing <mark>11–300× slowdowns</mark> through CUDA/MKL fallbacks across every supported OS. OpenAI's specialized debugging team investigated for weeks and walked away without a root cause &mdash; the diagnostics couldn't see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and shipped the upstream fix in <samp>rust-v0.80.0</samp> with attribution. It was the main blocker to Codex spawning and controlling effective subagents.
 
 Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951](https://github.com/openai/codex/pull/8951)  |  [Release notes (<samp>rust-v0.80.0</samp>)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
@@ -31,15 +31,15 @@ Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951]
 
 In <time datetime="2025-10">October 2025</time>, OpenAI assembled a specialized debugging team to investigate mysterious slowdowns affecting <b>Codex</b>. After a week of intensive investigation: <b>nothing</b>.
 
-The bug was literally a ghost — `pre_main_hardening()` executed before `main()`, stripped critical environment variables (<var>LD_LIBRARY_PATH</var>, <var>DYLD_LIBRARY_PATH</var>), and disappeared without a trace. Standard profilers saw nothing. Users saw variables in their shell, but inside <samp>codex exec</samp> they vanished.
+The name fits. `pre_main_hardening()` executed before `main()` &mdash; before profilers attached, before logging initialized, before any instrumentation could see it run. It stripped <var>LD_LIBRARY_PATH</var> and <var>DYLD_LIBRARY_PATH</var> from the process environment, then control returned to `main()` and the constructor was gone. Users could see the variables set in their shell. Inside <samp>codex exec</samp>, they were empty.
 
 -----
 
 ### The Hunt
 
-Within <b>3 days</b> of their announcement, I identified the problematic commit [PR #4521](https://github.com/openai/codex/pull/4521) and contacted <kbd>@tibo_openai</kbd>.
+Within <b>3 days</b> of their announcement, I had the introducing commit ([PR #4521](https://github.com/openai/codex/pull/4521)) and a working hypothesis. I sent both to <kbd>@tibo_openai</kbd>.
 
-But identification is not proof. I spent <b>2 months</b> building an undeniable case.
+Identification is not proof. The next <b>2 months</b> were repro harnesses, benchmarks across CUDA / Conda / MKL / HPC stacks, and cross-referencing 15+ scattered user reports until the pattern was undeniable.
 
 #### Timeline
 
@@ -176,27 +176,27 @@ OpenAI confirmed and merged the fix within 24 hours, explicitly crediting the in
   </tbody>
 </table>
 
-When the tools are blind, the system lies, and everyone else has stopped looking for it..</details>
+When the tools are blind, the system lies. Everyone else has stopped looking.</details>
 
 -----
 
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐32</sub></dt>
-  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐236</sub></dt>
-  <dd>Run Claude Desktop's Cowork mode natively on Linux by reverse-engineering macOS components for direct execution without a VM.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐238</sub></dt>
+  <dd>Native Linux port of Claude Desktop's Cowork mode. The host OS becomes the VM; bubblewrap seals the chamber; the ASAR is unpacked from outside, never from within.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐13</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
+  <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
+  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐32</sub></dt>
+  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
+
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐57</sub></dt>
-  <dd>Security hooks for Claude Code that optimize token usage, enforce budgets, and provide observability with OTEL tracing and SSRF protection.</dd>
+  <dd>Security hooks for Claude Code: blocks SSRF probes, caps subagent spawn budgets, compresses MCP outputs, and exports every tool call to OTEL traces.</dd>
 
   <dt><a href="https://github.com/johnzfitch/iconics"><b>iconics</b></a></dt>
   <dd>A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration.</dd>
@@ -206,6 +206,9 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 
   <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices"><b>arch-dependency-matrices</b></a></dt>
   <dd>Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
+  <dd>Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal app integration.</dd>
 </dl>
 
 -----
@@ -213,7 +216,7 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐236</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐238</sub></dt>
   <dd>Run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing — highest-adoption project in the portfolio</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
