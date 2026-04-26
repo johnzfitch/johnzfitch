@@ -15,7 +15,7 @@ That means:
 *Rust core, JS/WASM web; deterministic chunking; hybrid search (BM25 + neural embeddings) fused via RRF*
 
 - **What:** Local-first codebase indexer with hybrid retrieval — BM25 keyword ranking combined with neural embeddings (Snowflake Arctic) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.
-- **Why it matters:** Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable, with semantic quality available without sending code anywhere.
+- **Why it matters:** Most agent fights in large repos are lost on retrieval, not on intelligence. llmx hands the agent a working map: hybrid scoring, deterministic chunks, semantic quality without a remote oracle in the call chain.
 
 ## Verifiable Editing and Reproducible Builds (Codex Toolchain)
 
@@ -23,7 +23,7 @@ That means:
 *Rust*
 
 - **What:** An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
-- **Why it matters:** This is the "edit loop" for agents made explicit: apply changes reliably, then build/run in a reproducible way.
+- **Why it matters:** The "edit loop" made explicit: apply changes reliably, then build and run in a reproducible chamber. Each strike is auditable; nothing slips into the binary unseen.
 
 ## Packaging Domain Expertise for Agents
 
@@ -31,7 +31,7 @@ That means:
 *Claude Code Plugin*
 
 - **What:** Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.
-- **Why it matters:** "Agent tooling" isn't just code. Packaging knowledge so it is verifiable and reusable is what makes tools scale across teams.
+- **Why it matters:** Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and references — verifiable, reusable, no re-reading the source tomes.
 
 ## Skill Systems (Available on Request)
 
@@ -39,7 +39,7 @@ That means:
 *Private*
 
 - **What:** A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.
-- **Why it matters:** Skill systems are what turn ad-hoc prompting into repeatable workflows (especially across many repos).
+- **Why it matters:** Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. Turns ad-hoc prompting into a repeatable rite.
 
 ## Agent Hardening (Security Boundaries and Observability)
 
@@ -47,7 +47,7 @@ That means:
 *Shell / OpenTelemetry*
 
 - **What:** Defense-in-depth security hooks for Claude Code: SSRF protection (blocks RFC1918 / link-local / metadata endpoints), MCP output compression, OTEL tracing exported to Grafana/Loki, per-session subagent budgets, and quiet-overrides that cap verbose command output before it floods context.
-- **Why it matters:** Default Claude Code behavior can burn tokens on noisy command output, leak internal network topology via SSRF, spawn unbounded subagents, and produce unobservable execution traces. Warden makes those failure modes explicit and inspectable.
+- **Why it matters:** Default Claude Code can incinerate tokens on noisy command output, leak internal network topology via SSRF probes, spawn unbounded subagents, and produce traces nobody can inspect. Warden seals each leak and turns the runtime into something you can audit after the fact.
 
 ## MCP Servers (Structured Tool APIs)
 
@@ -56,7 +56,7 @@ That means:
 
 - **What:** Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
 - **Registry:** Official MCP registry — `io.github.johnzfitch/pyghidra-lite` (v0.1.1, status: active, published 2026-01-29).
-- **Why it matters:** Good agents use tools. MCP servers let you build high-signal, low-context interfaces that scale beyond ad-hoc prompts.
+- **Why it matters:** Good agents are tool-driven. An MCP server is a contracted interface: the agent reads it, calls it, reasons about it. pyghidra-lite compresses Ghidra's torrent into the smallest readable form so the context window survives the encounter.
 
 ## LLM Desktop Workflow (Anthropic Ecosystem)
 
@@ -64,7 +64,7 @@ That means:
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
-- **Why it matters:** Makes Claude a first-class Linux tool without sacrificing isolation. Highest-adoption project in the portfolio.
+- **Why it matters:** Makes Claude Desktop a first-class Linux artifact without sacrificing isolation. The host OS is the warding circle; bubblewrap seals the chamber. Most-summoned project in the portfolio.
 - *Unofficial community project; no proprietary Claude code is committed.*
 
 ## Professional UX (No Emojis)
@@ -73,7 +73,7 @@ That means:
 *Python*
 
 - **What:** Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.
-- **Why it matters:** Documentation is a product surface. Consistent visuals improve scannability and trust, especially in technical docs.
+- **Why it matters:** Documentation is a product surface. Consistent heraldry beats emoji incantations every time — meaning-based search and deterministic exports keep the same query yielding the same sigil across docs and agent contexts alike.
 
 ---
 
