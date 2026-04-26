@@ -38,10 +38,10 @@ Representative impact:
 ## Selected Projects (Public)
 
 - **[llmx](https://github.com/johnzfitch/llmx)** (Rust core, JS/WASM web; live: [llm.cat](https://llm.cat)) — local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing.
-- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, ⭐57) — security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces.
-- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, ⭐236) — native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat.
 - **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth.
-- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, ⭐32) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1).
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 32 stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1).
 - **[codex-xtreme](https://github.com/johnzfitch/codex-xtreme)** (Rust) — optimized, patched Codex builds (includes [codex-patcher](https://github.com/johnzfitch/codex-patcher)).
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin + skills for the Burn deep learning framework.
 - **[Observatory](https://look.definitelynot.ai)** (WebGPU) — client-side AI image detection (live).

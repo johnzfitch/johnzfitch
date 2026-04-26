@@ -50,10 +50,10 @@ What this demonstrates:
 ## Selected Work
 
 - **[llmx](https://github.com/johnzfitch/llmx)** (Rust/WASM) — local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) via WebGPU/WASM, deterministic chunking, semantic exports for agent context.
-- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, ⭐57) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
-- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, ⭐236) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
 - **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1.
-- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, ⭐32) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active).
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 32 stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active).
 - **[SpecHO v2](https://github.com/johnzfitch/specho-v2)** (Python) — 161D linguistic fingerprinting for AI text detection.
 - **[definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)** (PHP/JS) — Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense).
 
@@ -123,10 +123,10 @@ Representative impact:
 ## Selected Projects (Public)
 
 - **[llmx](https://github.com/johnzfitch/llmx)** (Rust core, JS/WASM web; live: [llm.cat](https://llm.cat)) — local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing.
-- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, ⭐57) — security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces.
-- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, ⭐236) — native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat.
 - **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth.
-- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, ⭐32) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1).
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 32 stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1).
 - **[codex-xtreme](https://github.com/johnzfitch/codex-xtreme)** (Rust) — optimized, patched Codex builds (includes [codex-patcher](https://github.com/johnzfitch/codex-patcher)).
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin + skills for the Burn deep learning framework.
 - **[Observatory](https://look.definitelynot.ai)** (WebGPU) — client-side AI image detection (live).
@@ -302,7 +302,7 @@ This is the kind of engineering failure that only shows up in real-world environ
 - **What:** Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.
 - **Why it matters:** Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).
 
-### [claude-warden](https://github.com/johnzfitch/claude-warden) ⭐57
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
 *Shell / OpenTelemetry*
 
 - **What:** Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.
@@ -326,7 +326,7 @@ This is the kind of engineering failure that only shows up in real-world environ
 - **What:** A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.
 - **Why it matters:** Skill systems and context management are where multi-repo agent workflows succeed or fail.
 
-### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) ⭐236
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
@@ -341,7 +341,7 @@ This is the kind of engineering failure that only shows up in real-world environ
 
 ## MCP Servers (Tool Surfaces for Agents)
 
-### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) ⭐32
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
 *Python / MCP*
 
 - **What:** Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).
@@ -431,13 +431,13 @@ That means:
 - **Auditability over vibes** (you can inspect what changed and why).
 - **Privacy-first defaults** (local processing whenever possible).
 
-## Retrieval That Scales (Without Embeddings as a Requirement)
+## Retrieval That Scales (Local-First Hybrid Search)
 
 ### [llmx](https://github.com/johnzfitch/llmx)
-*Rust + WASM, deterministic chunking, inverted index + BM25-style ranking*
+*Rust core, JS/WASM web; deterministic chunking; hybrid search (BM25 + neural embeddings) fused via RRF*
 
-- **What:** Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).
-- **Why it matters:** Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.
+- **What:** Local-first codebase indexer with hybrid retrieval — BM25 keyword ranking combined with neural embeddings (Snowflake Arctic) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.
+- **Why it matters:** Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable, with semantic quality available without sending code anywhere.
 
 ## Verifiable Editing and Reproducible Builds (Codex Toolchain)
 
@@ -465,7 +465,7 @@ That means:
 
 ## Agent Hardening (Security Boundaries and Observability)
 
-### [claude-warden](https://github.com/johnzfitch/claude-warden) ⭐57
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
 *Shell / OpenTelemetry*
 
 - **What:** Defense-in-depth security hooks for Claude Code: SSRF protection (blocks RFC1918 / link-local / metadata endpoints), MCP output compression, OTEL tracing exported to Grafana/Loki, per-session subagent budgets, and quiet-overrides that cap verbose command output before it floods context.
@@ -473,7 +473,7 @@ That means:
 
 ## MCP Servers (Structured Tool APIs)
 
-### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) ⭐32
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
 *Python / MCP*
 
 - **What:** Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
@@ -482,7 +482,7 @@ That means:
 
 ## LLM Desktop Workflow (Anthropic Ecosystem)
 
-### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) ⭐236
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.

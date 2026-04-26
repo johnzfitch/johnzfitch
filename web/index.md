@@ -41,10 +41,10 @@ What this demonstrates:
 ## Selected Work
 
 - **[llmx](https://github.com/johnzfitch/llmx)** (Rust/WASM) — local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) via WebGPU/WASM, deterministic chunking, semantic exports for agent context.
-- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, ⭐57) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
-- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, ⭐236) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
 - **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1.
-- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, ⭐32) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active).
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 32 stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active).
 - **[SpecHO v2](https://github.com/johnzfitch/specho-v2)** (Python) — 161D linguistic fingerprinting for AI text detection.
 - **[definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)** (PHP/JS) — Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense).
 

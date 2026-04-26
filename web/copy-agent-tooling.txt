@@ -14,11 +14,11 @@ That means:
 - Auditability over vibes (you can inspect what changed and why).
 - Privacy-first defaults (local processing whenever possible).
 
-SECTION: Retrieval That Scales (Without Embeddings as a Requirement)
+SECTION: Retrieval That Scales (Local-First Hybrid Search)
 llmx
-- What: Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).
-- Why it matters: Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.
-- Stack: Rust + WASM, deterministic chunking, inverted index + BM25-style ranking
+- What: Local-first codebase indexer with hybrid retrieval - BM25 keyword ranking combined with neural embeddings (Snowflake Arctic) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.
+- Why it matters: Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable, with semantic quality available without sending code anywhere.
+- Stack: Rust core, JS/WASM web; deterministic chunking; hybrid search (BM25 + neural embeddings) fused via RRF
 - Repo: https://github.com/johnzfitch/llmx
 
 SECTION: Verifiable Editing and Reproducible Builds (Codex Toolchain)

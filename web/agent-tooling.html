@@ -42,12 +42,12 @@
       </section>
 
       <section>
-        <h2>Retrieval That Scales (Without Embeddings as a Requirement)</h2>
+        <h2>Retrieval That Scales (Local-First Hybrid Search)</h2>
         <div class="project-card">
           <h3><img src="assets/icons/search.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/llmx">llmx</a></h3>
-          <div class="stack">Rust + WASM, deterministic chunking, inverted index + BM25-style ranking</div>
-          <p><strong>What:</strong> Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).</p>
-          <p><strong>Why it matters:</strong> Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.</p>
+          <div class="stack">Rust core, JS/WASM web; deterministic chunking; hybrid search (BM25 + neural embeddings) fused via RRF</div>
+          <p><strong>What:</strong> Local-first codebase indexer with hybrid retrieval &mdash; BM25 keyword ranking combined with neural embeddings (Snowflake Arctic) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.</p>
+          <p><strong>Why it matters:</strong> Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable, with semantic quality available without sending code anywhere.</p>
         </div>
       </section>
 

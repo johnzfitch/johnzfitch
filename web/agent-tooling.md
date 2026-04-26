@@ -9,13 +9,13 @@ That means:
 - **Auditability over vibes** (you can inspect what changed and why).
 - **Privacy-first defaults** (local processing whenever possible).
 
-## Retrieval That Scales (Without Embeddings as a Requirement)
+## Retrieval That Scales (Local-First Hybrid Search)
 
 ### [llmx](https://github.com/johnzfitch/llmx)
-*Rust + WASM, deterministic chunking, inverted index + BM25-style ranking*
+*Rust core, JS/WASM web; deterministic chunking; hybrid search (BM25 + neural embeddings) fused via RRF*
 
-- **What:** Local-first codebase indexer with BM25 search and semantic chunk exports (agents can retrieve only what they need).
-- **Why it matters:** Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable.
+- **What:** Local-first codebase indexer with hybrid retrieval — BM25 keyword ranking combined with neural embeddings (Snowflake Arctic) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.
+- **Why it matters:** Most agent failures in large repos are retrieval failures, not "model" failures. llmx makes retrieval fast, cheap, and debuggable, with semantic quality available without sending code anywhere.
 
 ## Verifiable Editing and Reproducible Builds (Codex Toolchain)
 
@@ -43,7 +43,7 @@ That means:
 
 ## Agent Hardening (Security Boundaries and Observability)
 
-### [claude-warden](https://github.com/johnzfitch/claude-warden) ⭐57
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
 *Shell / OpenTelemetry*
 
 - **What:** Defense-in-depth security hooks for Claude Code: SSRF protection (blocks RFC1918 / link-local / metadata endpoints), MCP output compression, OTEL tracing exported to Grafana/Loki, per-session subagent budgets, and quiet-overrides that cap verbose command output before it floods context.
@@ -51,7 +51,7 @@ That means:
 
 ## MCP Servers (Structured Tool APIs)
 
-### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) ⭐32
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
 *Python / MCP*
 
 - **What:** Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
@@ -60,7 +60,7 @@ That means:
 
 ## LLM Desktop Workflow (Anthropic Ecosystem)
 
-### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) ⭐236
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.

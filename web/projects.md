@@ -18,7 +18,7 @@
 - **What:** Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.
 - **Why it matters:** Retrieval that is fast, deterministic, and privacy-preserving (no embedding service required).
 
-### [claude-warden](https://github.com/johnzfitch/claude-warden) ⭐57
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
 *Shell / OpenTelemetry*
 
 - **What:** Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.
@@ -42,7 +42,7 @@
 - **What:** A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.
 - **Why it matters:** Skill systems and context management are where multi-repo agent workflows succeed or fail.
 
-### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) ⭐236
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
@@ -57,7 +57,7 @@
 
 ## MCP Servers (Tool Surfaces for Agents)
 
-### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) ⭐32
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
 *Python / MCP*
 
 - **What:** Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).
