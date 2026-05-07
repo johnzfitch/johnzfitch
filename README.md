@@ -183,11 +183,11 @@ When the tools are blind, the system lies, and everyone else has stopped looking
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐270</sub></dt>
-  <dd>Run Claude Desktop's Cowork mode natively on Linux by reverse-engineering macOS components for direct execution without a VM.</dd>
-
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐270</sub></dt>
+  <dd>Run Claude Desktop's Cowork mode natively on Linux by reverse-engineering macOS components for direct execution without a VM.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐32</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
