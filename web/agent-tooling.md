@@ -2,9 +2,9 @@
 
 > Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.
 
-My bias is pragmatic: agents should do real work without surprising the user.
+My bias is pragmatic. The tooling around the model should be reliable; the model itself doesn't have to be.
 
-That means:
+What that means for the substrate:
 - **Determinism over magic** (same inputs produce the same outputs).
 - **Auditability over vibes** (you can inspect what changed and why).
 - **Privacy-first defaults** (local processing whenever possible).
@@ -77,4 +77,4 @@ That means:
 
 ---
 
-**Closing thought:** My working model — start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.
+**Closing thought:** Algorithms and invariants first. Model intelligence on top.
