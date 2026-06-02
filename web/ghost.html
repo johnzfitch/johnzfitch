@@ -35,7 +35,7 @@
 	        <h2>Executive Summary</h2>
 	        <p>The symptom wasn't a crash. It was worse: "Codex feels slow" in certain real developer environments.</p>
 	        <p>In release builds, a pre-main hardening routine executed before <code>main()</code> and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. For a subset of users (CUDA, Conda/MKL, HPC module stacks, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex tool subprocesses. The downstream effect was dramatic but quiet: BLAS fell back to slow implementations; GPU workflows fell back to CPU; and engineers lost time chasing the wrong layer because nothing obviously "failed."</p>
-	        <p>I was able to trace the behavior back to the introducing change, reduce it to a minimal reproduction + representative measurements, and open an upstream issue that maintainers could validate quickly. The fix shipped and is called out in the rust-v0.80.0 release notes with attribution.</p>
+	        <p>Affected users saw 11&ndash;300&times; slowdowns through CUDA/MKL fallbacks. OpenAI&rsquo;s specialized debugging team investigated for weeks and walked away without a root cause &mdash; the diagnostics couldn&rsquo;t see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and shipped the upstream fix in rust-v0.80.0 with attribution. It was the main blocker to Codex spawning and controlling effective subagents.</p>
 	
 	        <div class="panel">
 	          <div class="panel-header">If You Were Debugging This</div>
@@ -119,7 +119,7 @@
       <section>
         <h2>Root Cause</h2>
         <h3>Why This Was a "Ghost"</h3>
-        <p>The stripping happened before <code>main()</code> and before most instrumentation/logging was initialized:</p>
+        <p>The stripping happened before <code>main()</code> — before profilers attached, before logging initialized, before any instrumentation could see it run.</p>
         <ul>
           <li>It was implemented as a pre-main constructor in release builds (<code>#[ctor::ctor]</code>-style behavior).</li>
           <li>It was silent by default (no warning when variables were removed).</li>
