@@ -184,7 +184,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐238</sub></dt>
-  <dd>Native Linux port of Claude Desktop's Cowork mode. The host OS becomes the VM; bubblewrap seals the chamber; the ASAR is unpacked from outside, never from within.</dd>
+  <dd>Native Linux port of Claude Desktop's Cowork mode. Avoids a virtual machine layer by using bubblewrap sandboxing directly on the host, with secure extraction of the ASAR and native stubs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐13</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>

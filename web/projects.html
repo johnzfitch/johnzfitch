@@ -63,14 +63,14 @@
             <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">&#9733;57</span></h3>
             <div class="stack">Shell / OpenTelemetry</div>
             <p><strong>What:</strong> Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.</p>
-            <p><strong>Why it matters:</strong> Wards the agent's perimeter. Hard limits on what it can reach, what it can spawn, and how loud it can scream into the context window. Every action logged to an OTEL orb you can rewind. Operates as a passive aura over Claude Code.</p>
+            <p><strong>Why it matters:</strong> Secures the agent's operating boundary. Imposes hard limits on network access, subagent nesting, and console output to prevent excessive token consumption and local network exposure. Outbound tracing ensures all model actions are fully auditable.</p>
           </div>
 
           <div class="project-card">
             <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a> <span class="muted">(includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</span></h3>
             <div class="stack">Rust</div>
             <p><strong>What:</strong> An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.</p>
-            <p><strong>Why it matters:</strong> Forges custom Codex builds with verified patch application. Each strike is auditable; nothing slips into the binary unseen. The "agent edit loop" becomes a reviewable craft instead of hand-waving.</p>
+            <p><strong>Why it matters:</strong> Enables custom Codex builds with verified patch application. Every modification is fully auditable, and no changes go unverified before compilation. The "agent edit-test-build" loop becomes a robust, reviewable software process.</p>
             <p><strong>Primary repo (pin this on GitHub):</strong> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></p>
             <p><strong>Patch engine (linked inside):</strong> <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></p>
           </div>
@@ -79,21 +79,21 @@
             <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
             <div class="stack">Claude Code Plugin</div>
             <p><strong>What:</strong> Claude Code plugin for the Burn deep learning framework (skills + workflows + evidence-driven references).</p>
-            <p><strong>Why it matters:</strong> Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and evidence &mdash; no re-reading the source tomes.</p>
+            <p><strong>Why it matters:</strong> Packages deep-learning domain expertise into a portable toolchain plugin. Any developer or agent can leverage the same pre-verified workflows and references, eliminating the need to repeatedly read and parse complex source libraries.</p>
           </div>
 
           <div class="project-card">
             <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> cwork</h3>
             <div class="stack">Private (available on request)</div>
             <p><strong>What:</strong> A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.</p>
-            <p><strong>Why it matters:</strong> Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. The wrong context window is the wrong fight.</p>
+            <p><strong>Why it matters:</strong> Dynamically constructs minimal, high-relevance prompt contexts for each task: base capabilities + domain primer + project context, distilled to the exact minimum needed. This transforms ad-hoc prompt engineering into a reliable, repeatable software step.</p>
           </div>
 
           <div class="project-card">
             <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">&#9733;236</span></h3>
             <div class="stack">Linux</div>
             <p><strong>What:</strong> Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.</p>
-            <p><strong>Why it matters:</strong> Carries the official Claude Desktop into Linux territory. The host OS becomes the warding circle, bubblewrap seals the chamber, and the ASAR is unpacked from outside &mdash; never from within. Most-summoned artifact in the portfolio.</p>
+            <p><strong>Why it matters:</strong> Makes Claude Desktop a first-class Linux application without sacrificing isolation. Avoids a virtual machine layer by sandboxing the application via bubblewrap directly on the host.</p>
             <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
           </div>
 
@@ -101,7 +101,7 @@
             <h3><img src="assets/icons/image.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/iconics">Iconics</a></h3>
             <div class="stack">Python</div>
             <p><strong>What:</strong> Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons.</p>
-            <p><strong>Why it matters:</strong> Eight thousand glyphs catalogued by meaning, not by mood. Search by what an icon does; exports are deterministic, so the same query always yields the same sigil. Replaces emoji incantations with actual heraldry.</p>
+            <p><strong>Why it matters:</strong> Eight thousand glyphs catalogued by meaning, not by mood. Search by what an icon does; exports are deterministic, so the same query always yields the same icon. Replaces informal emojis with professional, clean iconography.</p>
           </div>
         </div>
       </section>
@@ -114,7 +114,7 @@
             <div class="stack">Python / MCP</div>
             <p><strong>What:</strong> Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).</p>
             <p><strong>Registry:</strong> Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
-            <p><strong>Why it matters:</strong> Compresses Ghidra's output to the smallest readable form before handing it to the agent. Listed in the official MCP registry &mdash; agents summon it by name. Reverse engineering at agent speed without burning the context window.</p>
+            <p><strong>Why it matters:</strong> Compacts Ghidra's highly verbose output into a token-efficient form so that binary analysis workflows fit comfortably within model context limits. Listed in the official MCP registry for easy integration.</p>
           </div>
         </div>
       </section>
@@ -145,7 +145,7 @@
             <h3><img src="assets/icons/eye.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/observatory">Observatory</a></h3>
             <div class="stack">WebGPU</div>
             <p><strong>What:</strong> AI image detection suite running 4 models entirely client-side (WebGPU/WASM).</p>
-            <p><strong>Why it matters:</strong> Four detection models cast simultaneously, all in-browser via WebGPU. No upload, no remote inference. Spot synthetic imagery without surrendering the original to anyone.</p>
+            <p><strong>Why it matters:</strong> Runs four detection models simultaneously in-browser via WebGPU. Local-first execution ensures privacy and zero latency, allowing users to verify synthetic imagery without uploading files to a remote server.</p>
             <p><strong>Live:</strong> <a href="https://look.definitelynot.ai">look.definitelynot.ai</a></p>
           </div>
 
@@ -165,14 +165,14 @@
             <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/dota">dota</a></h3>
             <div class="stack">Rust</div>
             <p><strong>What:</strong> Post-quantum secrets manager: hybrid ML-KEM-768 + X25519 key encapsulation, Argon2id KDF, SQLCipher (AES-256-CBC) at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1 challenge-response.</p>
-            <p><strong>Why it matters:</strong> Defense of the Artifacts. Hybrid post-quantum encryption (ML-KEM-768 + X25519) means an enemy must shatter both the new wards and the old ones to take a single secret. Hardware-key required at the door &mdash; no master phrase alone will open the vault.</p>
+            <p><strong>Why it matters:</strong> Implements post-quantum security for local secrets. Hybrid encryption (ML-KEM-768 + X25519) secures credentials against future decryption risks, with hardware-backed multi-factor authentication (HMAC-SHA1 challenge-response) enforcing physical presence.</p>
           </div>
 
           <div class="project-card">
             <h3><img src="assets/icons/shield.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></h3>
             <div class="stack">PHP / JS</div>
             <p><strong>What:</strong> Unicode-security-aware text sanitizer with Trojan Source defense, homoglyph mitigation, and BiDi neutralization.</p>
-            <p><strong>Why it matters:</strong> Sanitizes hostile glyphs out of incoming text &mdash; Trojan Source, BiDi smuggling, homoglyph deception. Strips the curse before it reaches your interpreter.</p>
+            <p><strong>Why it matters:</strong> Sanitizes adversarial unicode sequences from incoming text to defend against Trojan Source, BiDi smuggling, and homoglyph attacks before the input is processed or interpreted.</p>
           </div>
         </div>
       </section>
@@ -184,7 +184,7 @@
             <h3><img src="assets/icons/server.png" class="icon" width="16" height="16" alt=""> digitaldelusion</h3>
             <div class="stack">Private</div>
             <p><strong>What:</strong> Bare-metal NixOS infrastructure with authoritative DNS, automated wildcard certs (DNS-01 / RFC2136), and post-quantum VPN (WireGuard + Rosenpass).</p>
-            <p><strong>Why it matters:</strong> Bare-metal stronghold, declaratively summoned. Authoritative DNS, post-quantum VPN keys rotating every minute, automated wildcard certs. Rollback is a boot-menu choice, not a weekend campaign.</p>
+            <p><strong>Why it matters:</strong> A fully declarative, bare-metal NixOS infrastructure. Features automated wildcard certificates, authoritative DNS, and VPN tunnels with rapid key rotation, ensuring robust, reproducible, and easily recoverable system deployments.</p>
           </div>
         </div>
       </section>

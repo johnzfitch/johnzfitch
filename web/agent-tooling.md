@@ -23,7 +23,7 @@ What that means for the substrate:
 *Rust*
 
 - **What:** An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
-- **Why it matters:** The "edit loop" made explicit: apply changes reliably, then build and run in a reproducible chamber. Each strike is auditable; nothing slips into the binary unseen.
+- **Why it matters:** The edit-test loop made explicit: apply code modifications reliably, then build and run them in an isolated, reproducible sandbox. Every patch is auditable, ensuring full control over the compiled binary.
 
 ## Packaging Domain Expertise for Agents
 
@@ -31,7 +31,7 @@ What that means for the substrate:
 *Claude Code Plugin*
 
 - **What:** Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.
-- **Why it matters:** Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and references — verifiable, reusable, no re-reading the source tomes.
+- **Why it matters:** Packages the Burn deep-learning framework's reference material and workflows into a portable Claude Code plugin. Enables developers to consistently reuse the same workflows and references without manually re-reading the source documentation.
 
 ## Skill Systems (Available on Request)
 
@@ -39,7 +39,7 @@ What that means for the substrate:
 *Private*
 
 - **What:** A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.
-- **Why it matters:** Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. Turns ad-hoc prompting into a repeatable rite.
+- **Why it matters:** Assembles base capabilities, domain knowledge, and specific project context into a minimal, task-specific prompt package. This turns ad-hoc prompting into a repeatable, structured pipeline that minimizes token waste and keeps agents focused.
 
 ## Agent Hardening (Security Boundaries and Observability)
 
@@ -56,7 +56,7 @@ What that means for the substrate:
 
 - **What:** Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
 - **Registry:** Official MCP registry — `io.github.johnzfitch/pyghidra-lite` (v0.1.1, status: active, published 2026-01-29).
-- **Why it matters:** Good agents are tool-driven. An MCP server is a contracted interface: the agent reads it, calls it, reasons about it. pyghidra-lite compresses Ghidra's torrent into the smallest readable form so the context window survives the encounter.
+- **Why it matters:** Good agents are tool-driven. An MCP server provides a structured, predictable interface. pyghidra-lite compacts Ghidra's highly verbose output into a token-efficient form so that binary analysis workflows fit comfortably within model context limits.
 
 ## LLM Desktop Workflow (Anthropic Ecosystem)
 
@@ -64,7 +64,7 @@ What that means for the substrate:
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
-- **Why it matters:** Makes Claude Desktop a first-class Linux artifact without sacrificing isolation. The host OS is the warding circle; bubblewrap seals the chamber. Most-summoned project in the portfolio.
+- **Why it matters:** Makes Claude Desktop a first-class Linux application without sacrificing isolation. Avoids a virtual machine layer by sandboxing the application via bubblewrap directly on the host.
 - *Unofficial community project; no proprietary Claude code is committed.*
 
 ## Professional UX (No Emojis)
@@ -73,7 +73,7 @@ What that means for the substrate:
 *Python*
 
 - **What:** Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.
-- **Why it matters:** Documentation is a product surface. Consistent heraldry beats emoji incantations every time — meaning-based search and deterministic exports keep the same query yielding the same sigil across docs and agent contexts alike.
+- **Why it matters:** Documentation is a product surface. Consistent iconography is cleaner and more professional than informal emojis. Meaning-based search and deterministic exports ensure the same query always returns the same icon across docs and agent contexts alike.
 
 ---
 

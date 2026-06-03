@@ -49,9 +49,9 @@ PINNED_RECENT_WORK: list[str] = [
 # Hand-curated descriptions; bypass LLM regeneration in both rotation paths.
 MANUAL_RECENT_WORK_DESCRIPTIONS: dict[str, str] = {
     "johnzfitch/claude-cowork-linux": (
-        "Native Linux port of Claude Desktop's Cowork mode. The host OS "
-        "becomes the VM; bubblewrap seals the chamber; the ASAR is "
-        "unpacked from outside, never from within."
+        "Native Linux port of Claude Desktop's Cowork mode. Avoids a virtual "
+        "machine layer by using bubblewrap sandboxing directly on the host, "
+        "with secure extraction of the ASAR and native stubs."
     ),
     "johnzfitch/claude-warden": (
         "Security hooks for Claude Code: blocks SSRF probes, caps subagent "
