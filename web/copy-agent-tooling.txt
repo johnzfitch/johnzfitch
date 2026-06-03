@@ -24,7 +24,7 @@ llmx
 SECTION: Verifiable Editing and Reproducible Builds (Codex Toolchain)
 codex-xtreme (includes codex-patcher)
 - What: An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.
-- Why it matters: The "edit-test-build" loop made explicit: apply changes reliably, then compile and test in a sandboxed, predictable environment. Every modification is fully auditable, and no changes go unverified before compilation.
+- Why it matters: The edit-test loop made explicit: apply code modifications reliably, then build and run them in an isolated, reproducible sandbox. Every patch is auditable, ensuring full control over the compiled binary.
 - Primary repo (pin this on GitHub): https://github.com/johnzfitch/codex-xtreme
 - Patch engine (linked inside): https://github.com/johnzfitch/codex-patcher
 
