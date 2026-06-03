@@ -14,6 +14,7 @@
       <a href="index.html" class="site-title">John Zachary Fitch</a>
       <nav>
         <a href="index.html" class="active">Home</a>
+        <a href="research.html">Research</a>
         <a href="ghost.html">Case Study</a>
         <a href="projects.html">Projects</a>
         <a href="agent-tooling.html">Agent Tooling</a>
@@ -28,9 +29,9 @@
     <div class="container">
       <section class="hero">
         <h1>John Zachary Fitch</h1>
-        <p class="tagline">Agent tooling - systems performance - privacy-first infrastructure</p>
-        <p class="intro">I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.</p>
-        <p class="intro">Recent highlight: I investigated and helped fix a subtle Codex CLI release-build regression where a pre-main hardening step stripped <code>LD_*</code> / <code>DYLD_*</code> for tool subprocesses. In CUDA/Conda/MKL/HPC-style setups, this could silently force slow fallback paths (often 10x+, sometimes 100x+ when GPU workflows fell back to CPU).</p>
+        <p class="tagline">build, break, write</p>
+        <p class="intro">Independent research on transformer internals and agent runtimes. Current work: a typed-embedding proposal grounded in algebraic structure, and a harmonic Maass form framework with structural predictions confirmed across Mistral, Qwen, and Pythia-70M. <a href="research.html">Read the research &rarr;</a></p>
+        <p class="intro">Recent: an upstream fix in OpenAI's Codex CLI, credited in rust-v0.80.0. An invisible pre-main regression forced 11&ndash;300&times; CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for weeks without finding root cause.</p>
 
         <div class="cta-group">
           <a href="ghost.html" class="cta cta-primary">
@@ -211,6 +212,7 @@
         </a>
       </div>
       <div class="footer-copy">John Zachary Fitch</div>
+      <div class="footer-tagline">Made with ❤️ for a human</div>
     </div>
   </footer>
 </body>

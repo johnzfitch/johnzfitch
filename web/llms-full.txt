@@ -1,6 +1,6 @@
 # John Zachary Fitch — Full Site Bundle
 
-> Single-file concatenation of every page on johnzfitch.github.io/johnzfitch, intended for LLM consumption. For the page index, see llms.txt. Last regenerated: 2026-04-26.
+> Single-file concatenation of every page on johnzfitch.github.io/johnzfitch, intended for LLM consumption. For the page index, see llms.txt. Last regenerated: 2026-06-03.
 
 ---
 
@@ -9,11 +9,11 @@
 
 # John Zachary Fitch
 
-> Agent tooling — systems performance — privacy-first infrastructure.
+> build, break, write
 
-I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.
+Independent research on transformer internals and agent runtimes. Current work: a typed-embedding proposal grounded in algebraic structure, and a harmonic Maass form framework with structural predictions confirmed across Mistral, Qwen, and Pythia-70M. [Read the research →](research.md)
 
-Recent highlight: I traced and fixed an invisible pre-main regression in OpenAI's Codex CLI that silently broke CUDA/MKL environments for some users (10×–300× slowdowns depending on the fallback path).
+Recent: an upstream fix in OpenAI's Codex CLI, credited in rust-v0.80.0. An invisible pre-main regression forced 11–300× CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for weeks without finding root cause.
 
 ## Featured Impact (Jan 2026)
 
@@ -77,6 +77,37 @@ I run production infrastructure on dedicated bare metal with declarative NixOS c
 - GitHub: [github.com/johnzfitch](https://github.com/johnzfitch)
 
 <!-- END: index.md -->
+
+---
+
+
+<!-- BEGIN: research.md -->
+
+# What
+
+> Independent research on transformer internals and the mathematical structures they implicitly compute on.
+
+*by John Zachary Fitch*
+
+## Typed Embeddings
+
+Tokens don't just relate pairwise. Language has clauses with structure of their own, and the embedding space should know it — that's an algebra question, not a feature-engineering one. Active work.
+
+## The Harmonic Maass Form Framework
+
+Different teams build different transformers — Mistral, Qwen, Pythia — and they converge on the same internal shape. The framework is one way of saying *why*: what they're all approximating belongs to a specific kind of mathematical object. Structural predictions hold cross-model.
+
+## Shadow-Line Helical Transformer (Transformer²)
+
+Softmax is *soft* — it never actually chooses, it just biases the average. The architecture replaces it with hard structure that still moves: two interlinked helices in a curved space, where the geometry says where you are without forcing a choice.
+
+## Published
+
+**Inherit All of Nothing — Parts 1 and 2.** Eight months of Codex security analysis.
+
+**Who Steers the User.** A 24-hour research project; presented at Dev Day office hours.
+
+<!-- END: research.md -->
 
 ---
 
@@ -154,6 +185,10 @@ I operate production infrastructure on bare metal with:
 
 UC Berkeley — Mathematics. Withdrew during the 2020 lockdowns under a granted automatic readmission.
 
+## Origin
+
+A 2019 napkin sketch from a linear algebra course at SRJC, dated May 21, 2019, worked out modular transformations V → W → {H, I, J} — anticipating the mechanistic interpretability direction this research now operates within.
+
 ## What I'm Looking For
 
 Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.
@@ -181,7 +216,7 @@ This was a performance regression that didn't look like a performance regression
 
 In release builds, a pre-main hardening routine executed before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For a subset of users (CUDA, Conda/MKL, HPC, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex subprocesses. The downstream effect was dramatic: slow fallback BLAS, CPU fallback for GPU workflows, timeouts, and "Codex feels slow" reports that were difficult to attribute to a single root cause.
 
-I traced the behavior back to the introducing change, wrote a reproduction + benchmark-backed issue, and shipped the upstream fix. The fix is called out in the rust-v0.80.0 release notes with attribution.
+Affected users saw 11–300× slowdowns through CUDA/MKL fallbacks. OpenAI's specialized debugging team investigated for weeks and walked away without a root cause — the diagnostics couldn't see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and shipped the upstream fix in rust-v0.80.0 with attribution. It was the main blocker to Codex spawning and controlling effective subagents.
 
 ## Primary Links (Proof)
 
@@ -215,7 +250,7 @@ When `LD_LIBRARY_PATH` / `DYLD_LIBRARY_PATH` disappears, the failure mode is oft
 
 ## Root Cause (Why This Was a "Ghost")
 
-The stripping happened before `main()` and before most instrumentation/logging was initialized:
+The stripping happened before `main()` — before profilers attached, before logging initialized, before any instrumentation could see it run.
 
 - Implemented as a pre-main constructor in release builds (`#[ctor::ctor]`-style behavior).
 - Silent by default (no warning when variables were removed).
@@ -424,9 +459,9 @@ This is the kind of engineering failure that only shows up in real-world environ
 
 > Local-first tooling that makes agents reliable in real repositories: deterministic retrieval, verifiable edits, MCP servers, and reusable skill packaging.
 
-My bias is pragmatic: agents should do real work without surprising the user.
+My bias is pragmatic. The tooling around the model should be reliable; the model itself doesn't have to be.
 
-That means:
+What that means for the substrate:
 - **Determinism over magic** (same inputs produce the same outputs).
 - **Auditability over vibes** (you can inspect what changed and why).
 - **Privacy-first defaults** (local processing whenever possible).
@@ -499,7 +534,7 @@ That means:
 
 ---
 
-**Closing thought:** My working model — start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.
+**Closing thought:** Algorithms and invariants first. Model intelligence on top.
 
 <!-- END: agent-tooling.md -->
 
@@ -587,4 +622,3 @@ I typically respond within 1–2 days.
 <!-- END: contact.md -->
 
 ---
-

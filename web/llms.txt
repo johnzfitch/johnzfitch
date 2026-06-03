@@ -7,6 +7,7 @@ This is the LLM-friendly index of the site. Each page below has a Markdown mirro
 ## Site
 
 - [Home](index.md): overview, recent impact, what I build, selected work, infrastructure snapshot.
+- [What / Research](research.md): independent research on transformer internals — typed embeddings, harmonic Maass form framework, Shadow-Line Helical architecture, published work.
 - [Resume](resume.md): summary, how I work, core skills, selected projects, operating background, education.
 - [Case Study — Ghost in the Codex Machine](ghost.md): full investigation of the OpenAI Codex pre-main regression, timeline, evidence, fix, measured impact.
 - [Selected Work](projects.md): curated project list across agent tooling, MCP servers, systems performance, ML/detection, security, and infrastructure.
