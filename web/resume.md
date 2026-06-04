@@ -69,6 +69,10 @@ I operate production infrastructure on bare metal with:
 
 UC Berkeley — Mathematics. Withdrew during the 2020 lockdowns under a granted automatic readmission.
 
+## Origin
+
+A 2019 napkin sketch from a linear algebra course at SRJC, dated May 21, 2019, worked out modular transformations V → W → {H, I, J} — anticipating the mechanistic interpretability direction this research now operates within.
+
 ## What I'm Looking For
 
 Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.

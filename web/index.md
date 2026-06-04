@@ -1,10 +1,10 @@
 # John Zachary Fitch
 
-> Agent tooling — systems performance — privacy-first infrastructure.
+> build, break, write
 
-I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.
+Independent research on transformer internals and agent runtimes. Current work: a typed-embedding proposal grounded in algebraic structure, and a harmonic Maass form framework with structural predictions confirmed across Mistral, Qwen, and Pythia-70M. [Read the research →](research.md)
 
-Recent highlight: I traced and fixed an invisible pre-main regression in OpenAI's Codex CLI that silently broke CUDA/MKL environments for some users (10×–300× slowdowns depending on the fallback path).
+Recent: an upstream fix in OpenAI's Codex CLI, credited in rust-v0.80.0. An invisible pre-main regression forced 11–300× CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for weeks without finding root cause.
 
 ## Featured Impact (Jan 2026)
 

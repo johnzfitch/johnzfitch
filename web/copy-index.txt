@@ -6,10 +6,10 @@ Description: I build production-grade tools for AI agents and the systems they d
 
 HERO
 John Zachary Fitch
-Agent tooling - systems performance - privacy-first infrastructure
+build, break, write
 
-I build tools that make agents reliable in real codebases: fast retrieval, verifiable edits, reusable skills/plugins, and execution environments you can reason about.
-Recent highlight: I traced and fixed an invisible pre-main regression in OpenAI's Codex CLI that silently broke CUDA/MKL environments for some users (10x-300x slowdowns depending on the fallback path).
+Independent research on transformer internals and agent runtimes. Current work: a typed-embedding proposal grounded in algebraic structure, and a harmonic Maass form framework with structural predictions confirmed across Mistral, Qwen, and Pythia-70M. (See: research / What page.)
+Recent: an upstream fix in OpenAI's Codex CLI, credited in rust-v0.80.0. An invisible pre-main regression forced 11x-300x CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for weeks without finding root cause.
 
 PRIMARY CTAs
 - Read the case study: Ghost in the Codex Machine

@@ -42,9 +42,5 @@
   "johnzfitch/raley-bot": {
     "sha": "0d37d2df1844578fa59229f37574dde2348d9d41",
     "desc": "Automated grocery shopping assistant leveraging web API for intelligent product selection, price tracking, and coupon clipping via CLI and MCP."
-  },
-  "johnzfitch/indepacer": {
-    "sha": "14881a3484d3b867eed83f1f4e60dc56b2c99f48",
-    "desc": "A Python CLI tool for searching PACER federal court cases and downloading dockets/documents using PCL and CM/ECF protocols."
   }
 }

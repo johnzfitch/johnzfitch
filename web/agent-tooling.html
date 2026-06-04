@@ -14,6 +14,7 @@
       <a href="index.html" class="site-title">John Zachary Fitch</a>
       <nav>
         <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
         <a href="ghost.html">Case Study</a>
         <a href="projects.html">Projects</a>
         <a href="agent-tooling.html" class="active">Agent Tooling</a>
@@ -32,8 +33,8 @@
       </section>
 
       <section>
-        <p>My bias is pragmatic: agents should do real work without surprising the user.</p>
-        <p>That means:</p>
+        <p>My bias is pragmatic. The tooling around the model should be reliable; the model itself doesn't have to be.</p>
+        <p>What that means for the substrate:</p>
         <ul>
           <li><strong>Determinism over magic</strong> (same inputs produce the same outputs).</li>
           <li><strong>Auditability over vibes</strong> (you can inspect what changed and why).</li>
@@ -57,7 +58,7 @@
           <h3><img src="assets/icons/tools.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a> <span class="muted">(includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</span></h3>
           <div class="stack">Rust</div>
           <p><strong>What:</strong> An interactive wizard for producing optimized, patched Codex binaries, backed by a verified patch application engine.</p>
-          <p><strong>Why it matters:</strong> The "edit loop" made explicit: apply changes reliably, then build and run in a reproducible chamber. Each strike is auditable; nothing slips into the binary unseen.</p>
+          <p><strong>Why it matters:</strong> The edit-test loop made explicit: apply code modifications reliably, then build and run them in an isolated, reproducible sandbox. Every patch is auditable, ensuring full control over the compiled binary.</p>
           <p><strong>Primary repo (pin this on GitHub):</strong> <a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></p>
           <p><strong>Patch engine (linked inside):</strong> <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a></p>
         </div>
@@ -69,7 +70,7 @@
           <h3><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></h3>
           <div class="stack">Claude Code Plugin</div>
           <p><strong>What:</strong> Claude Code plugin for the Burn deep learning framework, with reusable skills/workflows and evidence-backed references.</p>
-          <p><strong>Why it matters:</strong> Binds the Burn deep-learning grimoire into a portable Claude Code spellbook. Anyone in the party can summon the same workflows and references &mdash; verifiable, reusable, no re-reading the source tomes.</p>
+          <p><strong>Why it matters:</strong> Packages the Burn deep-learning framework's reference material and workflows into a portable Claude Code plugin. Enables developers to consistently reuse the same workflows and references without manually re-reading the source documentation.</p>
         </div>
       </section>
 
@@ -79,7 +80,7 @@
           <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> cwork</h3>
           <div class="stack">Private</div>
           <p><strong>What:</strong> A context compiler that assembles "base capabilities + domain primer + project context" into a minimal, task-specific prompt package.</p>
-          <p><strong>Why it matters:</strong> Composes a fresh focus-stone for each encounter: base capabilities + domain primer + project context, distilled to the minimum the agent needs to act. Turns ad-hoc prompting into a repeatable rite.</p>
+          <p><strong>Why it matters:</strong> Assembles base capabilities, domain knowledge, and specific project context into a minimal, task-specific prompt package. This turns ad-hoc prompting into a repeatable, structured pipeline that minimizes token waste and keeps agents focused.</p>
         </div>
       </section>
 
@@ -100,7 +101,7 @@
           <div class="stack">Python / MCP</div>
           <p><strong>What:</strong> Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).</p>
           <p><strong>Registry:</strong> Official MCP registry listing: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
-          <p><strong>Why it matters:</strong> Good agents are tool-driven. An MCP server is a contracted interface: the agent reads it, calls it, reasons about it. pyghidra-lite compresses Ghidra's torrent into the smallest readable form so the context window survives the encounter.</p>
+          <p><strong>Why it matters:</strong> Good agents are tool-driven. An MCP server provides a structured, predictable interface. pyghidra-lite compacts Ghidra's highly verbose output into a token-efficient form so that binary analysis workflows fit comfortably within model context limits.</p>
         </div>
       </section>
 
@@ -110,7 +111,7 @@
           <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">&#9733;236</span></h3>
           <div class="stack">Linux</div>
           <p><strong>What:</strong> Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.</p>
-          <p><strong>Why it matters:</strong> Makes Claude Desktop a first-class Linux artifact without sacrificing isolation. The host OS is the warding circle; bubblewrap seals the chamber. Most-summoned project in the portfolio.</p>
+          <p><strong>Why it matters:</strong> Makes Claude Desktop a first-class Linux application without sacrificing isolation. Avoids a virtual machine layer by sandboxing the application via bubblewrap directly on the host.</p>
           <p><em>Note: Unofficial community project; no proprietary Claude code is committed.</em></p>
         </div>
       </section>
@@ -121,12 +122,12 @@
           <h3><img src="assets/icons/image.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/iconics">Iconics</a></h3>
           <div class="stack">Python</div>
           <p><strong>What:</strong> Semantic icon library (8k+ icons) designed to replace emojis with consistent PNG icons and meaning-based search.</p>
-          <p><strong>Why it matters:</strong> Documentation is a product surface. Consistent heraldry beats emoji incantations every time &mdash; meaning-based search and deterministic exports keep the same query yielding the same sigil across docs and agent contexts alike.</p>
+          <p><strong>Why it matters:</strong> Documentation is a product surface. Consistent iconography is cleaner and more professional than informal emojis. Meaning-based search and deterministic exports ensure the same query always returns the same icon across docs and agent contexts alike.</p>
         </div>
       </section>
 
       <section>
-        <p><strong>Closing thought:</strong> My working model: start with algorithms and invariants; use model intelligence to choose among safe, explicit actions.</p>
+        <p><strong>Closing thought:</strong> Algorithms and invariants first. Model intelligence on top.</p>
       </section>
     </div>
   </main>
@@ -144,6 +145,7 @@
         </a>
       </div>
       <div class="footer-copy">John Zachary Fitch</div>
+      <div class="footer-tagline">Made with ❤️ for a human</div>
     </div>
   </footer>
 </body>
