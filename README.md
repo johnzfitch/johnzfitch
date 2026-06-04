@@ -190,7 +190,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secrets manager. Hybrid ML-KEM-768 + X25519 KEM, Argon2id KDF, SQLCipher storage, YubiKey auth. Terminal UI.</dd>
+  <dd>Post-quantum secrets manager. v7 TC-HKEM hybrid (ML-KEM-768 + X25519); Argon2id master key; AES-256-GCM encrypted JSON vault. Terminal UI.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
@@ -202,7 +202,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dd>A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Local-first codebase indexer. BM25 + neural embeddings (Snowflake Arctic) fused via Reciprocal Rank Fusion; deterministic chunking; runs in-browser via WebGPU/WASM. Live at llm.cat.</dd>
+  <dd>Local-first codebase indexer. BM25 + mdbr-leaf-ir neural embeddings (Burn) fused via Reciprocal Rank Fusion; deterministic chunking; runs in-browser via WebGPU/WASM. Live at llm.cat.</dd>
 
   <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices"><b>arch-dependency-matrices</b></a></dt>
   <dd>Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python.</dd>
@@ -308,7 +308,7 @@ The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) provides vim-styl
 
 **Live Demo:** [llm.cat](https://llm.cat) (WebAssembly — runs entirely in browser, no upload)
 
-Local-first codebase indexing with real neural embeddings (<b>Snowflake Arctic</b>) running via <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. No server, no API calls, no data leaving your machine. Hybrid search combines BM25 keyword ranking with vector similarity using <abbr title="Reciprocal Rank Fusion">RRF</abbr> for best-of-both-worlds retrieval.
+Local-first codebase indexing with real neural embeddings (<b>mdbr-leaf-ir</b>) running via <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. No server, no API calls, no data leaving your machine. Hybrid search combines BM25 keyword ranking with vector similarity using <abbr title="Reciprocal Rank Fusion">RRF</abbr> for best-of-both-worlds retrieval.
 
 ```bash
 llmx index ~/projects/myapp           # Build trigram + BM25 index
@@ -327,7 +327,7 @@ llmx serve --port 8080                # Local HTTP API for agents
   <tbody>
     <tr>
       <td><b>Neural Embeddings</b></td>
-      <td>Snowflake Arctic vectors with <abbr title="Web Graphics Processing Unit">WebGPU</abbr> acceleration — ~50ms inference, same quality as server-side</td>
+      <td>mdbr-leaf-ir vectors with <abbr title="Web Graphics Processing Unit">WebGPU</abbr> acceleration — ~50ms inference, same quality as server-side</td>
     </tr>
     <tr>
       <td><b>Hybrid Search</b></td>

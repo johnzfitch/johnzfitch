@@ -40,7 +40,7 @@ What this demonstrates:
 
 ## Selected Work
 
-- **[llmx](https://github.com/johnzfitch/llmx)** (Rust/WASM) — local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) via WebGPU/WASM, deterministic chunking, semantic exports for agent context.
+- **[llmx](https://github.com/johnzfitch/llmx)** (Rust/WASM) — local-first codebase indexer with BM25 + neural embeddings (mdbr-leaf-ir) via WebGPU/WASM, deterministic chunking, semantic exports for agent context.
 - **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
 - **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
 - **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1.

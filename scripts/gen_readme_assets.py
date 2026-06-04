@@ -44,6 +44,8 @@ class RepoStats:
 # Top of Recent Work, in order. Bypasses pushed_at sort.
 PINNED_RECENT_WORK: list[str] = [
     "johnzfitch/claude-cowork-linux",
+    "johnzfitch/llmx",
+    "johnzfitch/dota",
 ]
 
 # Hand-curated descriptions; bypass LLM regeneration in both rotation paths.
@@ -59,13 +61,14 @@ MANUAL_RECENT_WORK_DESCRIPTIONS: dict[str, str] = {
         "call to OTEL traces."
     ),
     "johnzfitch/llmx": (
-        "Local-first codebase indexer. BM25 + neural embeddings (Snowflake "
-        "Arctic) fused via Reciprocal Rank Fusion; deterministic chunking; "
+        "Local-first codebase indexer. BM25 + mdbr-leaf-ir neural embeddings "
+        "(Burn) fused via Reciprocal Rank Fusion; deterministic chunking; "
         "runs in-browser via WebGPU/WASM. Live at llm.cat."
     ),
     "johnzfitch/dota": (
-        "Post-quantum secrets manager. Hybrid ML-KEM-768 + X25519 KEM, "
-        "Argon2id KDF, SQLCipher storage, YubiKey auth. Terminal UI."
+        "Post-quantum secrets manager. v7 TC-HKEM hybrid (ML-KEM-768 + "
+        "X25519); Argon2id master key; AES-256-GCM encrypted JSON vault. "
+        "Terminal UI."
     ),
 }
 
