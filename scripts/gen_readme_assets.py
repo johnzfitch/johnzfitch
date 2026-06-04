@@ -49,14 +49,23 @@ PINNED_RECENT_WORK: list[str] = [
 # Hand-curated descriptions; bypass LLM regeneration in both rotation paths.
 MANUAL_RECENT_WORK_DESCRIPTIONS: dict[str, str] = {
     "johnzfitch/claude-cowork-linux": (
-        "Native Linux port of Claude Desktop's Cowork mode. Avoids a virtual "
-        "machine layer by using bubblewrap sandboxing directly on the host, "
-        "with secure extraction of the ASAR and native stubs."
+        "The Linux port of Claude Desktop's Cowork mode. Bubblewrap sandbox "
+        "in place of a VM; the ASAR is unpacked from the host before any "
+        "sandboxed code runs. Highest-adoption project in the portfolio."
     ),
     "johnzfitch/claude-warden": (
         "Security hooks for Claude Code: blocks SSRF probes, caps subagent "
         "spawn budgets, compresses MCP outputs, and exports every tool "
         "call to OTEL traces."
+    ),
+    "johnzfitch/llmx": (
+        "Local-first codebase indexer. BM25 + neural embeddings (Snowflake "
+        "Arctic) fused via Reciprocal Rank Fusion; deterministic chunking; "
+        "runs in-browser via WebGPU/WASM. Live at llm.cat."
+    ),
+    "johnzfitch/dota": (
+        "Post-quantum secrets manager. Hybrid ML-KEM-768 + X25519 KEM, "
+        "Argon2id KDF, SQLCipher storage, YubiKey auth. Terminal UI."
     ),
 }
 

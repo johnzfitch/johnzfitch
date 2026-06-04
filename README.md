@@ -184,13 +184,13 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐334</sub></dt>
-  <dd>Native Linux port of Claude Desktop's Cowork mode. Avoids a virtual machine layer by using bubblewrap sandboxing directly on the host, with secure extraction of the ASAR and native stubs.</dd>
+  <dd>The Linux port of Claude Desktop's Cowork mode. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs. Highest-adoption project in the portfolio.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐15</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+  <dd>Post-quantum secrets manager. Hybrid ML-KEM-768 + X25519 KEM, Argon2id KDF, SQLCipher storage, YubiKey auth. Terminal UI.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
@@ -202,7 +202,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dd>A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
+  <dd>Local-first codebase indexer. BM25 + neural embeddings (Snowflake Arctic) fused via Reciprocal Rank Fusion; deterministic chunking; runs in-browser via WebGPU/WASM. Live at llm.cat.</dd>
 
   <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices"><b>arch-dependency-matrices</b></a></dt>
   <dd>Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python.</dd>
@@ -217,7 +217,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐334</sub></dt>
-  <dd>Run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing — highest-adoption project in the portfolio</dd>
+  <dd>Run the official Claude Desktop app's Cowork mode natively on Linux. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
   <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em> — live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
