@@ -186,14 +186,17 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐334</sub></dt>
   <dd>Native Linux port of Claude Desktop's Cowork mode. Avoids a virtual machine layer by using bubblewrap sandboxing directly on the host, with secure extraction of the ASAR and native stubs.</dd>
 
+  <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
+  <dd>A Python CLI tool for querying PACER, downloading federal court dockets, and managing case documents with PCL and CM/ECF support.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
+  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
+
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐15</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
-  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐57</sub></dt>
   <dd>Security hooks for Claude Code: blocks SSRF probes, caps subagent spawn budgets, compresses MCP outputs, and exports every tool call to OTEL traces.</dd>
@@ -203,12 +206,6 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
   <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices"><b>arch-dependency-matrices</b></a></dt>
-  <dd>Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
-  <dd>Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal app integration.</dd>
 </dl>
 
 -----
