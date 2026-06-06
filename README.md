@@ -183,20 +183,17 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐335</sub></dt>
-  <dd>Native Linux port of Claude Desktop's Cowork mode. Avoids a virtual machine layer by using bubblewrap sandboxing directly on the host, with secure extraction of the ASAR and native stubs.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
-  <dd>A Python CLI tool for querying PACER, downloading federal court dockets, and managing case documents with PCL and CM/ECF support.</dd>
-
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
-  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐334</sub></dt>
+  <dd>The Linux port of Claude Desktop's Cowork mode. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs. Highest-adoption project in the portfolio.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐15</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secure secrets manager using hybrid ML-KEM-768 and X25519 encryption with a terminal UI for secure secret management.</dd>
+  <dd>Post-quantum secrets manager. v7 TC-HKEM hybrid (ML-KEM-768 + X25519); Argon2id master key; AES-256-GCM encrypted JSON vault. Terminal UI.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
+  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐57</sub></dt>
   <dd>Security hooks for Claude Code: blocks SSRF probes, caps subagent spawn budgets, compresses MCP outputs, and exports every tool call to OTEL traces.</dd>
@@ -205,7 +202,13 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dd>A semantic icon library leveraging SQLite for cataloging, offering intelligent search and markdown export for efficient project integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Local-first codebase indexer utilizing BM25 and neural embeddings for efficient semantic search and chunk exports in-browser via WebGPU.</dd>
+  <dd>Local-first codebase indexer. BM25 + mdbr-leaf-ir neural embeddings (Burn) fused via Reciprocal Rank Fusion; deterministic chunking; runs in-browser via WebGPU/WASM. Live at llm.cat.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/arch-dependency-matrices"><b>arch-dependency-matrices</b></a></dt>
+  <dd>Mathematical analysis of Arch Linux package dependencies using graph theory, spectral analysis, and linear algebra in Python.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
+  <dd>Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal app integration.</dd>
 </dl>
 
 -----
@@ -213,8 +216,8 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐335</sub></dt>
-  <dd>Run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing — highest-adoption project in the portfolio</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐334</sub></dt>
+  <dd>Run the official Claude Desktop app's Cowork mode natively on Linux. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
   <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em> — live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
@@ -305,7 +308,7 @@ The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) provides vim-styl
 
 **Live Demo:** [llm.cat](https://llm.cat) (WebAssembly — runs entirely in browser, no upload)
 
-Local-first codebase indexing with real neural embeddings (<b>Snowflake Arctic</b>) running via <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. No server, no API calls, no data leaving your machine. Hybrid search combines BM25 keyword ranking with vector similarity using <abbr title="Reciprocal Rank Fusion">RRF</abbr> for best-of-both-worlds retrieval.
+Local-first codebase indexing with real neural embeddings (<b>mdbr-leaf-ir</b>) running via <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. No server, no API calls, no data leaving your machine. Hybrid search combines BM25 keyword ranking with vector similarity using <abbr title="Reciprocal Rank Fusion">RRF</abbr> for best-of-both-worlds retrieval.
 
 ```bash
 llmx index ~/projects/myapp           # Build trigram + BM25 index
@@ -324,7 +327,7 @@ llmx serve --port 8080                # Local HTTP API for agents
   <tbody>
     <tr>
       <td><b>Neural Embeddings</b></td>
-      <td>Snowflake Arctic vectors with <abbr title="Web Graphics Processing Unit">WebGPU</abbr> acceleration — ~50ms inference, same quality as server-side</td>
+      <td>mdbr-leaf-ir vectors with <abbr title="Web Graphics Processing Unit">WebGPU</abbr> acceleration — ~50ms inference, same quality as server-side</td>
     </tr>
     <tr>
       <td><b>Hybrid Search</b></td>

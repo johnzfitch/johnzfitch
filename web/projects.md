@@ -15,7 +15,7 @@
 ### [llmx](https://github.com/johnzfitch/llmx)
 *Rust / WASM*
 
-- **What:** Local-first codebase indexer with BM25 + neural embeddings (Snowflake Arctic) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.
+- **What:** Local-first codebase indexer with BM25 + neural embeddings (mdbr-leaf-ir) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.
 - **Why it matters:** Surfaces only the chunks the agent actually needs. Hybrid keyword + semantic retrieval, channeled through the host machine — no remote embedding service, no telemetry, no code leaving the workstation. Agents fight blind in large repos without it.
 
 ### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars

@@ -14,7 +14,7 @@ What that means for the substrate:
 ### [llmx](https://github.com/johnzfitch/llmx)
 *Rust core, JS/WASM web; deterministic chunking; hybrid search (BM25 + neural embeddings) fused via RRF*
 
-- **What:** Local-first codebase indexer with hybrid retrieval — BM25 keyword ranking combined with neural embeddings (Snowflake Arctic) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.
+- **What:** Local-first codebase indexer with hybrid retrieval — BM25 keyword ranking combined with neural embeddings (mdbr-leaf-ir) running locally via WebGPU/WASM, fused via Reciprocal Rank Fusion. No embedding service required; embeddings run in-browser/on-device or can be skipped entirely for BM25-only mode. Deterministic chunking and content hashing make exports reproducible.
 - **Why it matters:** Most agent fights in large repos are lost on retrieval, not on intelligence. llmx hands the agent a working map: hybrid scoring, deterministic chunks, semantic quality without a remote oracle in the call chain.
 
 ## Verifiable Editing and Reproducible Builds (Codex Toolchain)
