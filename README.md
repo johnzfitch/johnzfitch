@@ -183,7 +183,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐334</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐335</sub></dt>
   <dd>Native Linux port of Claude Desktop's Cowork mode. Avoids a virtual machine layer by using bubblewrap sandboxing directly on the host, with secure extraction of the ASAR and native stubs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
@@ -213,7 +213,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐334</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐335</sub></dt>
   <dd>Run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing — highest-adoption project in the portfolio</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
