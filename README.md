@@ -183,7 +183,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐347</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐348</sub></dt>
   <dd>The Linux port of Claude Desktop's Cowork mode. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs. Highest-adoption project in the portfolio.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
@@ -192,14 +192,14 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secrets manager. v7 TC-HKEM hybrid (ML-KEM-768 + X25519); Argon2id master key; AES-256-GCM encrypted JSON vault. Terminal UI.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐15</sub></dt>
-  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
+  <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
+  <dd>A Python CLI tool for querying PACER, downloading federal court dockets and documents, and managing case data efficiently.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐33</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
-  <dd>A Python CLI tool for querying PACER, downloading federal court dockets and documents, and managing case data efficiently.</dd>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐16</sub></dt>
+  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐57</sub></dt>
   <dd>Security hooks for Claude Code: blocks SSRF probes, caps subagent spawn budgets, compresses MCP outputs, and exports every tool call to OTEL traces.</dd>
@@ -213,7 +213,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐347</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐348</sub></dt>
   <dd>Run the official Claude Desktop app's Cowork mode natively on Linux. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
@@ -406,7 +406,7 @@ $ claude "install dependencies"
 
 ## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐15 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
+- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐16 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
 - **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection with 4 ML models — live: [look.definitelynot.ai](https://look.definitelynot.ai)
 - **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection via phonetic/semantic analysis — live: [definitelynot.ai](https://definitelynot.ai)
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin for the Burn deep learning framework
