@@ -204,7 +204,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
   <dd>A Python CLI tool for querying PACER, downloading federal court dockets and documents, and managing case data efficiently.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐58</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐59</sub></dt>
   <dd>Security hooks for Claude Code: blocks SSRF probes, caps subagent spawn budgets, compresses MCP outputs, and exports every tool call to OTEL traces.</dd>
 </dl>
 
