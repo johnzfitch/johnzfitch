@@ -192,11 +192,11 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secrets manager. v7 TC-HKEM hybrid (ML-KEM-768 + X25519); Argon2id master key; AES-256-GCM encrypted JSON vault. Terminal UI.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐34</sub></dt>
-  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
-
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐20</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐34</sub></dt>
+  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
 
   <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
   <dd>Automated grocery shopping assistant leveraging web API for intelligent product selection, price tracking, and coupon clipping via CLI and MCP.</dd>
