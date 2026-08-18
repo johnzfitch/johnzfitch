@@ -195,7 +195,7 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐20</sub></dt>
   <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐34</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐35</sub></dt>
   <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
 
   <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
