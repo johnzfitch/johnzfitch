@@ -2,14 +2,14 @@ PAGE: Home (/)
 
 META
 Title: John Zachary Fitch - Agent Tooling, Systems Performance, Privacy-First Infrastructure
-Description: I build production-grade tools for AI agents and the systems they depend on: deterministic retrieval, safe patching, and self-hosted NixOS infrastructure. Recent: fixed a subtle pre-main regression in OpenAI Codex that caused CUDA/MKL fallbacks and major slowdowns for some users.
+Description: I build production-grade tools for AI agents and the systems they depend on: deterministic retrieval, safe patching, and self-hosted NixOS infrastructure. Recent: traced a subtle pre-main regression in OpenAI Codex that caused CUDA/MKL fallbacks and major slowdowns for some users.
 
 HERO
 John Zachary Fitch
 build, break, write
 
 Independent research on transformer internals and agent runtimes. Current work: a typed-embedding proposal grounded in algebraic structure, and a harmonic Maass form framework with structural predictions confirmed across Mistral, Qwen, and Pythia-70M. (See: research / What page.)
-Recent: an upstream fix in OpenAI's Codex CLI, credited in rust-v0.80.0. An invisible pre-main regression forced 11x-300x CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for weeks without finding root cause.
+Recent: my investigation of a pre-main regression in OpenAI's Codex CLI led to the fix in rust-v0.80.0, credited in the release notes. An invisible pre-main regression forced 11x-300x CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for a week without finding root cause.
 
 PRIMARY CTAs
 - Read the case study: Ghost in the Codex Machine
@@ -20,7 +20,7 @@ SECTION: Featured Impact (Jan 2026)
 Heading: Ghost in the Codex Machine - OpenAI Codex
 
 Copy
-A security-hardening routine ran before `main()` in release builds and stripped `LD_*` / `DYLD_*` environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and shipped the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and everything built on top of it, and it removed a hard-to-diagnose failure mode that was burning engineering time.
+A security-hardening routine ran before `main()` in release builds and stripped `LD_*` / `DYLD_*` environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and my investigation led to the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and everything built on top of it, and it removed a hard-to-diagnose failure mode that was burning engineering time.
 
 Proof links
 - Issue: https://github.com/openai/codex/issues/8945
@@ -48,10 +48,10 @@ SECTION: What I Build
 
 SECTION: Selected Work
 - llmx (Rust/WASM) - local-first codebase indexer with BM25 + neural embeddings (mdbr-leaf-ir) via WebGPU/WASM, deterministic chunking, semantic exports for agent context. https://github.com/johnzfitch/llmx
-- claude-warden (Shell/OTEL) - security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides. ⭐57. https://github.com/johnzfitch/claude-warden
-- claude-cowork-linux (Linux) - run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing. ⭐236. https://github.com/johnzfitch/claude-cowork-linux
+- claude-warden (Shell/OTEL) - security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides. ⭐60+. https://github.com/johnzfitch/claude-warden
+- claude-cowork-linux (Linux) - run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing. ⭐400+. https://github.com/johnzfitch/claude-cowork-linux
 - dota (Rust) - post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1. https://github.com/johnzfitch/dota
-- pyghidra-lite (Python/MCP) - token-efficient MCP server for Ghidra. Official MCP registry: io.github.johnzfitch/pyghidra-lite (v0.1.1, active). ⭐32. https://github.com/johnzfitch/pyghidra-lite
+- pyghidra-lite (Python/MCP) - token-efficient MCP server for Ghidra. Official MCP registry: io.github.johnzfitch/pyghidra-lite (v0.1.1, active). ⭐35+. https://github.com/johnzfitch/pyghidra-lite
 - SpecHO v2 - 161D linguistic fingerprinting for AI text detection (algorithm-first + tiered runtime). https://github.com/johnzfitch/specho-v2
 - definitelynot.ai - Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense). https://github.com/johnzfitch/definitelynot.ai
 
@@ -72,5 +72,5 @@ SECTION: Now
 - Operating style: evidence-first, performance-aware, pragmatic about tradeoffs.
 
 FOOTER
-Email: webmaster@internetuniverse.org
+Email: zack@internetuniverse.org
 GitHub: https://github.com/johnzfitch

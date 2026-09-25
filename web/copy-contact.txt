@@ -4,7 +4,7 @@ TITLE
 Contact
 
 PRIMARY
-Email: webmaster@internetuniverse.org
+Email: zack@internetuniverse.org
 GitHub: https://github.com/johnzfitch
 
 OPTIONAL

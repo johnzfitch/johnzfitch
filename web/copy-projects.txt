@@ -8,7 +8,7 @@ Recruiter-relevant projects across agent tooling, systems performance, ML/detect
 
 SECTION: Recent Upstream Impact
 OpenAI Codex - "Ghost in the Codex Machine" Fix
-- What: Root-caused and fixed a pre-main environment regression that stripped `LD_*` / `DYLD_*` env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.
+- What: Root-caused a pre-main environment regression that stripped `LD_*` / `DYLD_*` env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.
 - Proof: https://github.com/openai/codex/issues/8945 - https://github.com/openai/codex/pull/8951
 - Shipped: rust-v0.80.0 release notes call out the fix with attribution: https://github.com/openai/codex/releases/tag/rust-v0.80.0
 
@@ -18,7 +18,7 @@ llmx (Rust/WASM)
 - Why it matters: Surfaces only the chunks the agent actually needs. Hybrid keyword + semantic retrieval, channeled through the host machine - no remote embedding service, no telemetry, no code leaving the workstation. Agents fight blind in large repos without it.
 - Repo: https://github.com/johnzfitch/llmx
 
-claude-warden (Shell/OpenTelemetry, 57 stars)
+claude-warden (Shell/OpenTelemetry, 60+ stars)
 - What: Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.
 - Why it matters: Secures the agent's operating boundary. Imposes hard limits on network access, subagent nesting, and console output to prevent excessive token consumption and local network exposure. Outbound tracing ensures all model actions are fully auditable.
 - Repo: https://github.com/johnzfitch/claude-warden
@@ -38,7 +38,7 @@ cwork (private, available on request)
 - What: A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.
 - Why it matters: Dynamically constructs minimal, high-relevance prompt contexts for each task: base capabilities + domain primer + project context, distilled to the exact minimum needed. This transforms ad-hoc prompt engineering into a reliable, repeatable software step.
 
-claude-cowork-linux (236 stars)
+claude-cowork-linux (400+ stars)
 - What: Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
 - Why it matters: Makes Claude Desktop a first-class Linux application without sacrificing isolation. Avoids a virtual machine layer by sandboxing the application via bubblewrap directly on the host.
 - Note: Unofficial community project; no proprietary Claude code is committed.
@@ -50,7 +50,7 @@ Iconics
 - Repo: https://github.com/johnzfitch/iconics
 
 SECTION: MCP Servers (Tool Surfaces for Agents)
-pyghidra-lite (32 stars)
+pyghidra-lite (35+ stars)
 - What: Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).
 - Registry: Official MCP registry: io.github.johnzfitch/pyghidra-lite (v0.1.1, status: active, published 2026-01-29).
 - Why it matters: Compacts Ghidra's highly verbose output into a token-efficient form so that binary analysis workflows fit comfortably within model context limits. Listed in the official MCP registry for easy integration.

@@ -5,7 +5,7 @@
   <a href="https://definitelynot.ai"><img src=".github/assets/buttons/definitelynot@2x.png" alt="definitelynot.ai" width="176" height="62"></a>&nbsp;
   <a href="https://internetuniverse.org"><img src=".github/assets/buttons/internetuniverse@2x.png" alt="Internet Universe" width="176" height="62"></a>&nbsp;
   <a href="https://math.berkeley.edu"><img src=".github/assets/buttons/berkeley-math@2x.png" alt="UC Berkeley Mathematics" width="176" height="62"></a>&nbsp;
-  <a href="mailto:webmaster@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>
+  <a href="mailto:zack@internetuniverse.org"><img src=".github/assets/buttons/email@2x.png" alt="Email" width="176" height="62"></a>
 </p>
 <p align="center">
   <sub>SF Bay Area &ensp;&bull;&ensp; <a href="https://johnzfitch.github.io/johnzfitch">Git Page</a> &ensp;&bull;&ensp; All icons from <a href="https://github.com/johnzfitch/iconics">iconics</a></sub>
@@ -18,7 +18,7 @@
 ## OpenAI Codex — The Ghost in the Machine
 
 > [!IMPORTANT]
-> A <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> constructor was silently stripping <var>LD_*</var> / <var>DYLD_*</var> from Codex tool subprocesses, forcing <mark>11–300× slowdowns</mark> through CUDA/MKL fallbacks across every supported OS. OpenAI's specialized debugging team investigated for weeks and walked away without a root cause &mdash; the diagnostics couldn't see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and shipped the upstream fix in <samp>rust-v0.80.0</samp> with attribution. It was the main blocker to Codex spawning and controlling effective subagents.
+> A <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> constructor was silently stripping <var>LD_*</var> / <var>DYLD_*</var> from Codex tool subprocesses, forcing <mark>11–300× slowdowns</mark> through CUDA/MKL fallbacks across every supported OS. OpenAI's specialized debugging team investigated for a week and walked away without a root cause &mdash; the diagnostics couldn't see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and my investigation led to the upstream fix in <samp>rust-v0.80.0</samp>, credited in the release notes. It was the main blocker to Codex spawning and controlling effective subagents.
 
 Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951](https://github.com/openai/codex/pull/8951)  |  [Release notes (<samp>rust-v0.80.0</samp>)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
@@ -77,7 +77,7 @@ Identification is not proof. The next <b>2 months</b> were repro harnesses, benc
     </tr>
     <tr>
       <td><time datetime="2026-01-09">Jan 9, 2026</time></td>
-      <td><ins>My fix merged, credited in release notes</ins></td>
+      <td><ins>Fix merged from my investigation, credited in release notes</ins></td>
     </tr>
   </tbody>
 </table>

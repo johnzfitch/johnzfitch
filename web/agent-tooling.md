@@ -43,7 +43,7 @@ What that means for the substrate:
 
 ## Agent Hardening (Security Boundaries and Observability)
 
-### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 60+ stars
 *Shell / OpenTelemetry*
 
 - **What:** Defense-in-depth security hooks for Claude Code: SSRF protection (blocks RFC1918 / link-local / metadata endpoints), MCP output compression, OTEL tracing exported to Grafana/Loki, per-session subagent budgets, and quiet-overrides that cap verbose command output before it floods context.
@@ -51,7 +51,7 @@ What that means for the substrate:
 
 ## MCP Servers (Structured Tool APIs)
 
-### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 35+ stars
 *Python / MCP*
 
 - **What:** Token-efficient MCP server that exposes a structured "tool surface" for program analysis workflows (compact output by default, opt-in verbosity).
@@ -60,7 +60,7 @@ What that means for the substrate:
 
 ## LLM Desktop Workflow (Anthropic Ecosystem)
 
-### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 400+ stars
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.

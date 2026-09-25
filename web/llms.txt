@@ -1,6 +1,6 @@
 # John Zachary Fitch
 
-> Personal site of John Zachary Fitch (johnzfitch). Agent tooling — systems performance — privacy-first infrastructure. Berkeley Mathematics. Owner-operator background. Recent: traced and fixed a pre-main regression in OpenAI Codex (rust-v0.80.0, release-notes credit).
+> Personal site of John Zachary Fitch (johnzfitch). Agent tooling — systems performance — privacy-first infrastructure. Berkeley Mathematics. Owner-operator background. Recent: traced a pre-main regression in OpenAI Codex (rust-v0.80.0, release-notes credit).
 
 This is the LLM-friendly index of the site. Each page below has a Markdown mirror of the human-facing HTML. A single concatenated bundle is also available at `llms-full.txt`.
 

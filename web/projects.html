@@ -37,7 +37,7 @@
         <div class="panel">
           <div class="panel-header">OpenAI Codex</div>
           <h3>"Ghost in the Codex Machine" Fix</h3>
-          <p>Root-caused and fixed a pre-main environment regression that stripped <code>LD_*</code> / <code>DYLD_*</code> env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.</p>
+          <p>Root-caused a pre-main environment regression that stripped <code>LD_*</code> / <code>DYLD_*</code> env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.</p>
           <div class="proof-links">
             <h4>Proof</h4>
             <ul>
@@ -60,7 +60,7 @@
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">&#9733;57</span></h3>
+            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">&#9733;60+</span></h3>
             <div class="stack">Shell / OpenTelemetry</div>
             <p><strong>What:</strong> Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.</p>
             <p><strong>Why it matters:</strong> Secures the agent's operating boundary. Imposes hard limits on network access, subagent nesting, and console output to prevent excessive token consumption and local network exposure. Outbound tracing ensures all model actions are fully auditable.</p>
@@ -90,7 +90,7 @@
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">&#9733;236</span></h3>
+            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">&#9733;400+</span></h3>
             <div class="stack">Linux</div>
             <p><strong>What:</strong> Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.</p>
             <p><strong>Why it matters:</strong> Makes Claude Desktop a first-class Linux application without sacrificing isolation. Avoids a virtual machine layer by sandboxing the application via bubblewrap directly on the host.</p>
@@ -110,7 +110,7 @@
         <h2>MCP Servers (Tool Surfaces for Agents)</h2>
         <div class="project-list">
           <div class="project-card">
-            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">&#9733;32</span></h3>
+            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">&#9733;35+</span></h3>
             <div class="stack">Python / MCP</div>
             <p><strong>What:</strong> Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).</p>
             <p><strong>Registry:</strong> Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, status: active, published 2026-01-29).</p>
@@ -215,9 +215,9 @@
   <footer>
     <div class="container">
       <div class="footer-links">
-        <a href="mailto:webmaster@internetuniverse.org">
+        <a href="mailto:zack@internetuniverse.org">
           <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
-          webmaster@internetuniverse.org
+          zack@internetuniverse.org
         </a>
         <a href="https://github.com/johnzfitch">
           <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">

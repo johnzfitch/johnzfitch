@@ -4,7 +4,7 @@ Agent tooling | systems performance | privacy-first infrastructure
 
 SF Bay Area (open to remote)
 
-- Email: webmaster@internetuniverse.org
+- Email: zack@internetuniverse.org
 - GitHub: https://github.com/johnzfitch
 - Website: https://definitelynot.ai
 - Live demo: https://look.definitelynot.ai
@@ -21,9 +21,9 @@ I build production-grade tooling for agents and the substrate they depend on: de
 
 ### OpenAI Codex: Revealing the "Ghost in the Codex Machine" (Issue [#8945](https://github.com/openai/codex/issues/8945), PR [#8951](https://github.com/openai/codex/pull/8951))
 
-I investigated and helped fix an "invisible" regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For GPU workloads such as CUDA, Conda/MKL, HPC-style setups, this was a hard regression that made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback, infinite hangs, or silent failure. Every child process, including subagents, inherited this stripped environment. Those children (Python/Conda/NumPy/PyTorch, often glibc-linked) can genuinely depend on LD_LIBRARY_PATH for CUDA/MKL/non-RPATH setups. 
+I investigated an "invisible" regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For GPU workloads such as CUDA, Conda/MKL, HPC-style setups, this was a hard regression that made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback, infinite hangs, or silent failure. Every child process, including subagents, inherited this stripped environment. Those children (Python/Conda/NumPy/PyTorch, often glibc-linked) can genuinely depend on LD_LIBRARY_PATH for CUDA/MKL/non-RPATH setups. 
 
-The fix shipped upstream with the help of maintainers and was given a special credit within 0.80 release notes.
+An OpenAI maintainer wrote the fix (PR #8951) from the investigation, and it shipped in rust-v0.80.0 with special thanks to me in the release notes.
 
 Release notes excerpt:
 > "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
@@ -105,7 +105,9 @@ I operate production infrastructure on bare metal with a reliability-first and s
 
 ## Education
 
-UC Berkeley - Mathematics 
+UC Berkeley - B.A. in Mathematics, May 2022.
+
+Santa Rosa Junior College - A.S. in Mathematics and an associate degree in Economics, August 2020.
 
 ---
 

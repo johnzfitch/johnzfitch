@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>John Zachary Fitch - Agent Tooling, Systems Performance, Privacy-First Infrastructure</title>
-  <meta name="description" content="I build production-grade tools for AI agents and the systems they depend on: deterministic retrieval, safe patching, and self-hosted NixOS infrastructure. Recent: fixed a subtle pre-main regression in OpenAI Codex that caused CUDA/MKL fallbacks and major slowdowns for some users.">
+  <meta name="description" content="I build production-grade tools for AI agents and the systems they depend on: deterministic retrieval, safe patching, and self-hosted NixOS infrastructure. Recent: traced a subtle pre-main regression in OpenAI Codex that caused CUDA/MKL fallbacks and major slowdowns for some users.">
   <link rel="stylesheet" href="assets/css/site.css">
   <link rel="alternate" type="text/markdown" href="index.md" title="LLM-friendly Markdown version">
 </head>
@@ -31,7 +31,7 @@
         <h1>John Zachary Fitch</h1>
         <p class="tagline">build, break, write</p>
         <p class="intro">Independent research on transformer internals and agent runtimes. Current work: a typed-embedding proposal grounded in algebraic structure, and a harmonic Maass form framework with structural predictions confirmed across Mistral, Qwen, and Pythia-70M. <a href="research.html">Read the research &rarr;</a></p>
-        <p class="intro">Recent: an upstream fix in OpenAI's Codex CLI, credited in rust-v0.80.0. An invisible pre-main regression forced 11&ndash;300&times; CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for weeks without finding root cause.</p>
+        <p class="intro">Recent: my investigation of a pre-main regression in OpenAI's Codex CLI led to the fix in rust-v0.80.0, credited in the release notes. An invisible pre-main regression forced 11&ndash;300&times; CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for a week without finding root cause.</p>
 
         <div class="cta-group">
           <a href="ghost.html" class="cta cta-primary">
@@ -135,13 +135,13 @@
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">57 stars</span></h3>
+            <h3><img src="assets/icons/lock.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-warden">claude-warden</a> <span class="muted">60+ stars</span></h3>
             <div class="stack">Shell / OpenTelemetry</div>
             <p>Security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.</p>
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">236 stars</span></h3>
+            <h3><img src="assets/icons/desktop.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a> <span class="muted">400+ stars</span></h3>
             <div class="stack">Linux</div>
             <p>Run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.</p>
           </div>
@@ -153,7 +153,7 @@
           </div>
 
           <div class="project-card">
-            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">32 stars</span></h3>
+            <h3><img src="assets/icons/console.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a> <span class="muted">35+ stars</span></h3>
             <div class="stack">Python / MCP</div>
             <p>Token-efficient MCP server for Ghidra. Official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1, active).</p>
           </div>
@@ -202,9 +202,9 @@
   <footer>
     <div class="container">
       <div class="footer-links">
-        <a href="mailto:webmaster@internetuniverse.org">
+        <a href="mailto:zack@internetuniverse.org">
           <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
-          webmaster@internetuniverse.org
+          zack@internetuniverse.org
         </a>
         <a href="https://github.com/johnzfitch">
           <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">

@@ -4,7 +4,7 @@ If you're hiring for agent tooling, systems performance, or privacy/security fou
 
 ## Primary
 
-- Email: [webmaster@internetuniverse.org](mailto:webmaster@internetuniverse.org)
+- Email: [zack@internetuniverse.org](mailto:zack@internetuniverse.org)
 - GitHub: [github.com/johnzfitch](https://github.com/johnzfitch)
 - Website: [definitelynot.ai](https://definitelynot.ai)
 

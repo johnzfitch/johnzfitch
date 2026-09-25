@@ -36,7 +36,7 @@
 	        <h2>Executive Summary</h2>
 	        <p>The symptom wasn't a crash. It was worse: "Codex feels slow" in certain real developer environments.</p>
 	        <p>In release builds, a pre-main hardening routine executed before <code>main()</code> and stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables. For a subset of users (CUDA, Conda/MKL, HPC module stacks, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex tool subprocesses. The downstream effect was dramatic but quiet: BLAS fell back to slow implementations; GPU workflows fell back to CPU; and engineers lost time chasing the wrong layer because nothing obviously "failed."</p>
-	        <p>Affected users saw 11&ndash;300&times; slowdowns through CUDA/MKL fallbacks. OpenAI&rsquo;s specialized debugging team investigated for weeks and walked away without a root cause &mdash; the diagnostics couldn&rsquo;t see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and shipped the upstream fix in rust-v0.80.0 with attribution. It was the main blocker to Codex spawning and controlling effective subagents.</p>
+	        <p>Affected users saw 11&ndash;300&times; slowdowns through CUDA/MKL fallbacks. OpenAI&rsquo;s specialized debugging team investigated for a week and walked away without a root cause &mdash; the diagnostics couldn&rsquo;t see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and my investigation led to the upstream fix in rust-v0.80.0, credited in the release notes. It was the main blocker to Codex spawning and controlling effective subagents.</p>
 	
 	        <div class="panel">
 	          <div class="panel-header">If You Were Debugging This</div>
@@ -262,9 +262,9 @@ codex exec -- python -c "import os; print('LD_LIBRARY_PATH=', os.environ.get('LD
   <footer>
     <div class="container">
       <div class="footer-links">
-        <a href="mailto:webmaster@internetuniverse.org">
+        <a href="mailto:zack@internetuniverse.org">
           <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
-          webmaster@internetuniverse.org
+          zack@internetuniverse.org
         </a>
         <a href="https://github.com/johnzfitch">
           <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">

@@ -4,13 +4,13 @@
 
 Independent research on transformer internals and agent runtimes. Current work: a typed-embedding proposal grounded in algebraic structure, and a harmonic Maass form framework with structural predictions confirmed across Mistral, Qwen, and Pythia-70M. [Read the research →](research.md)
 
-Recent: an upstream fix in OpenAI's Codex CLI, credited in rust-v0.80.0. An invisible pre-main regression forced 11–300× CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for weeks without finding root cause.
+Recent: my investigation of a pre-main regression in OpenAI's Codex CLI led to the fix in rust-v0.80.0, credited in the release notes. An invisible pre-main regression forced 11–300× CUDA/MKL slowdowns; OpenAI's specialized debugging team had investigated for a week without finding root cause.
 
 ## Featured Impact (Jan 2026)
 
 ### Ghost in the Codex Machine — OpenAI Codex
 
-A security-hardening routine ran before `main()` in release builds and stripped `LD_*` / `DYLD_*` environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and shipped the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and removes a hard-to-diagnose failure mode.
+A security-hardening routine ran before `main()` in release builds and stripped `LD_*` / `DYLD_*` environment variables. That made CUDA/MKL libraries "disappear" inside Codex subprocesses, pushing affected workflows onto slow fallback paths. I connected the symptoms to the root cause, quantified the impact, and my investigation led to the upstream fix. Because this lives in the CLI substrate, the fix improves the baseline for every tool call and removes a hard-to-diagnose failure mode.
 
 **Proof:**
 - [Issue #8945](https://github.com/openai/codex/issues/8945)
@@ -41,10 +41,10 @@ What this demonstrates:
 ## Selected Work
 
 - **[llmx](https://github.com/johnzfitch/llmx)** (Rust/WASM) — local-first codebase indexer with BM25 + neural embeddings (mdbr-leaf-ir) via WebGPU/WASM, deterministic chunking, semantic exports for agent context.
-- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 57 stars) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
-- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 236 stars) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 60+ stars) — security hooks for Claude Code: SSRF protection, MCP compression, OTEL tracing, subagent budgets, quiet overrides.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 400+ stars) — run the official Claude Desktop app's Cowork mode natively on Linux with bubblewrap sandboxing.
 - **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, hardware auth via YubiKey/SoloKey HMAC-SHA1.
-- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 32 stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active).
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 35+ stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active).
 - **[SpecHO v2](https://github.com/johnzfitch/specho-v2)** (Python) — 161D linguistic fingerprinting for AI text detection.
 - **[definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)** (PHP/JS) — Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense).
 
@@ -64,5 +64,5 @@ I run production infrastructure on dedicated bare metal with declarative NixOS c
 
 ## Contact
 
-- Email: [webmaster@internetuniverse.org](mailto:webmaster@internetuniverse.org)
+- Email: [zack@internetuniverse.org](mailto:zack@internetuniverse.org)
 - GitHub: [github.com/johnzfitch](https://github.com/johnzfitch)

@@ -38,12 +38,12 @@
 	        <div class="panel">
 	          <div class="panel-header">OpenAI Codex</div>
 	          <h3>Ghost in the Codex Machine</h3>
-	          <p>Investigated and helped fix an "invisible" release-only regression where a pre-main constructor stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables, breaking CUDA/MKL library discovery inside tool subprocesses. Shipped upstream with release-notes credit.</p>
+	          <p>Investigated an "invisible" release-only regression where a pre-main constructor stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables, breaking CUDA/MKL library discovery inside tool subprocesses. My investigation led to the fix in rust-v0.80.0, and the release notes thank me by name.</p>
 	          <div class="proof-links">
 	            <h4>Proof</h4>
 	            <ul>
 	              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a> - <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
-	              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Shipped + credited in rust-v0.80.0</a></li>
+	              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Fixed in rust-v0.80.0, with release-notes credit</a></li>
 	            </ul>
 	          </div>
 		          <h4>Representative impact</h4>
@@ -57,6 +57,17 @@
 	          </blockquote>
 	        </div>
 	      </section>
+
+      <section>
+        <h2>Research</h2>
+        <p>Independent research on the internal geometry of transformers, and on model architectures built from the exceptional Jordan algebra (the 27-dimensional Albert algebra).</p>
+        <ul>
+          <li>Built the Albert Engine, a tested numerical runtime for the Albert algebra, used to prototype geometry-aware sequence models, memory mechanisms, and optimizers.</li>
+          <li>Run causal interventions on pretrained open models to test which geometric structure they actually depend on.</li>
+          <li>Register predictions before experiments, label each claim as proved, measured, or conjectured, and report negative results alongside positive ones.</li>
+        </ul>
+        <p><a href="research.html">Research page</a></p>
+      </section>
 
       <section>
         <h2>How I Work</h2>
@@ -99,10 +110,10 @@
         <h2>Selected Projects (Public)</h2>
         <ul>
           <li><strong><a href="https://github.com/johnzfitch/llmx">llmx</a></strong> (Rust core, JS/WASM web; live: <a href="https://llm.cat">llm.cat</a>) - local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing</li>
-          <li><strong><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a></strong> (Shell/OTEL, &#9733;57) - security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces</li>
-          <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> (Linux, &#9733;236) - native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat</li>
+          <li><strong><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a></strong> (Shell/OTEL, &#9733;60+) - security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces</li>
+          <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> (Linux, &#9733;400+) - native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat</li>
           <li><strong><a href="https://github.com/johnzfitch/dota">dota</a></strong> (Rust) - post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth</li>
-          <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> (Python/MCP, &#9733;32) - token-efficient MCP server for Ghidra (official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code>, v0.1.1)</li>
+          <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> (Python/MCP, &#9733;35+) - token-efficient MCP server for Ghidra (official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code>, v0.1.1)</li>
           <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust) - optimized, patched Codex builds (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</li>
           <li><strong><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></strong> - Claude Code plugin + skills for the Burn deep learning framework</li>
           <li><strong><a href="https://look.definitelynot.ai">Observatory</a></strong> (WebGPU) - client-side AI image detection (live)</li>
@@ -114,12 +125,12 @@
 
       <section>
         <h2>Operating Background</h2>
-        <p>Owner-operator of a regulated chemical-manufacturing business for 10 years; FDA and CPSC oversight, hazardous-substance handling. Sustained a multi-year PMTA process under non-committal regulatory guidance, including FOIA-driven information gathering. Mission: help adults worldwide quit smoking cigarettes. Declined paths that diverged from that mission even when commercially favorable; wound down on deliberate terms in the company's strongest revenue year.</p>
+        <p>Owner-operator of a regulated chemical-manufacturing business for nearly nine years; regulated as a tobacco product by FDA, with hazardous-substance handling. Started in 2014 selling hand-mixed e-liquid on Reddit's e-cigarette classifieds; built the brand ("The Best Damn Liquids," federally trademarked) on made-to-order mixing, a panel of about 50 outside flavor testers, and a $11.99-per-30ml price ceiling, serving roughly 40,000 customers by 2019 and more than 200,000 orders with a team of up to six. Filed a Premarket Tobacco Product Application before FDA's September 2020 deadline and worked through years of non-committal guidance, including FOIA requests; FDA refused to file the application. Mission: help adults worldwide quit smoking cigarettes. Declined paths that diverged from that mission even when commercially favorable; closed in July 2023, the company's strongest revenue year.</p>
         <p><strong>What this established:</strong></p>
         <ul>
           <li>Tolerance for prolonged regulatory ambiguity without losing direction.</li>
-          <li>Operating discipline at production scale: manufacturing, compliance, hiring, crisis response.</li>
-          <li>Over a decade under public scrutiny &mdash; grounded in the work, confident defending it on the record, practiced at navigating it responsibly.</li>
+          <li>Operating discipline at production scale: manufacturing, hiring, fulfillment, crisis response.</li>
+          <li>Nearly nine years under public scrutiny &mdash; grounded in the work, confident defending it on the record, practiced at navigating it responsibly.</li>
         </ul>
       </section>
 
@@ -135,12 +146,13 @@
 
       <section>
         <h2>Education</h2>
-        <p><strong>UC Berkeley</strong> - Mathematics. Withdrew during the 2020 lockdowns under a granted automatic readmission.</p>
+        <p><strong>UC Berkeley</strong> - B.A. in Mathematics, May 2022.</p>
+        <p><strong>Santa Rosa Junior College</strong> - A.S. in Mathematics and an associate degree in Economics, August 2020.</p>
       </section>
 
       <section>
         <h2>Origin</h2>
-        <p>A 2019 napkin sketch from a linear algebra course at SRJC, dated May 21, 2019, worked out modular transformations V &rarr; W &rarr; {H, I, J} &mdash; anticipating the mechanistic interpretability direction this research now operates within.</p>
+        <p>The research question started on two pages of notes from a linear algebra course at SRJC in 2019: if two brains carry out the same functions in different places, is there a map that sends each onto shared functional pieces where the difference becomes readable? This research asks the same question of transformers.</p>
       </section>
 
       <section>
@@ -164,9 +176,9 @@
   <footer>
     <div class="container">
       <div class="footer-links">
-        <a href="mailto:webmaster@internetuniverse.org">
+        <a href="mailto:zack@internetuniverse.org">
           <img src="assets/icons/email.png" class="icon" width="16" height="16" alt="">
-          webmaster@internetuniverse.org
+          zack@internetuniverse.org
         </a>
         <a href="https://github.com/johnzfitch">
           <img src="assets/icons/github.png" class="icon" width="16" height="16" alt="">

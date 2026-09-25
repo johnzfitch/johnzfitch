@@ -4,7 +4,7 @@
 
 ## Recent Upstream Impact
 
-**OpenAI Codex — "Ghost in the Codex Machine" Fix.** Root-caused and fixed a pre-main environment regression that stripped `LD_*` / `DYLD_*` env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.
+**OpenAI Codex — "Ghost in the Codex Machine" Fix.** Root-caused a pre-main environment regression that stripped `LD_*` / `DYLD_*` env vars, triggering CUDA/MKL fallbacks and large slowdowns for some users.
 
 - [Issue #8945](https://github.com/openai/codex/issues/8945)
 - [Fix PR #8951](https://github.com/openai/codex/pull/8951)
@@ -18,7 +18,7 @@
 - **What:** Local-first codebase indexer with BM25 + neural embeddings (mdbr-leaf-ir) running via WebGPU/WASM, deterministic chunking, and semantic exports for agent context.
 - **Why it matters:** Surfaces only the chunks the agent actually needs. Hybrid keyword + semantic retrieval, channeled through the host machine — no remote embedding service, no telemetry, no code leaving the workstation. Agents fight blind in large repos without it.
 
-### [claude-warden](https://github.com/johnzfitch/claude-warden) — 57 stars
+### [claude-warden](https://github.com/johnzfitch/claude-warden) — 60+ stars
 *Shell / OpenTelemetry*
 
 - **What:** Defense-in-depth security hooks for Claude Code: SSRF protection, MCP output compression, OTEL tracing, subagent budgets, and quiet-overrides for token-heavy commands.
@@ -42,7 +42,7 @@
 - **What:** A context compiler for Claude Code workflows that composes base capabilities + domain primers + project instructions into a minimal, task-specific context.
 - **Why it matters:** Dynamically constructs minimal, high-relevance prompt contexts for each task: base capabilities + domain primer + project context, distilled to the exact minimum needed. This transforms ad-hoc prompt engineering into a reliable, repeatable software step.
 
-### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 236 stars
+### [claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux) — 400+ stars
 *Linux*
 
 - **What:** Run the official Claude Desktop app's Cowork mode natively on Linux using compatibility stubs and a bubblewrap sandbox.
@@ -57,7 +57,7 @@
 
 ## MCP Servers (Tool Surfaces for Agents)
 
-### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 32 stars
+### [pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite) — 35+ stars
 *Python / MCP*
 
 - **What:** Token-efficient MCP server exposing a structured tool API for program analysis workflows (compact output by default, opt-in verbosity).

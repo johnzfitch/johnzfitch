@@ -8,7 +8,7 @@ This was a performance regression that didn't look like a performance regression
 
 In release builds, a pre-main hardening routine executed before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For a subset of users (CUDA, Conda/MKL, HPC, custom library layouts), that meant critical dynamic libraries could no longer be discovered inside Codex subprocesses. The downstream effect was dramatic: slow fallback BLAS, CPU fallback for GPU workflows, timeouts, and "Codex feels slow" reports that were difficult to attribute to a single root cause.
 
-Affected users saw 11–300× slowdowns through CUDA/MKL fallbacks. OpenAI's specialized debugging team investigated for weeks and walked away without a root cause — the diagnostics couldn't see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and shipped the upstream fix in rust-v0.80.0 with attribution. It was the main blocker to Codex spawning and controlling effective subagents.
+Affected users saw 11–300× slowdowns through CUDA/MKL fallbacks. OpenAI's specialized debugging team investigated for a week and walked away without a root cause — the diagnostics couldn't see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and my investigation led to the upstream fix in rust-v0.80.0, credited in the release notes. It was the main blocker to Codex spawning and controlling effective subagents.
 
 ## Primary Links (Proof)
 
