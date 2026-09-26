@@ -4,7 +4,7 @@
 	  <meta charset="UTF-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	  <title>Resume - John Zachary Fitch</title>
-	  <meta name="description" content="I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about.">
+	  <meta name="description" content="I'm a mathematician who builds things: research on geometry-aware sequence models, memory, optimization, and what's going on inside transformers, plus the tooling researchers and AI agents run on.">
 	  <link rel="stylesheet" href="assets/css/site.css">
 	  <link rel="alternate" type="text/markdown" href="resume.md" title="LLM-friendly Markdown version">
 	</head>
@@ -29,27 +29,51 @@
     <div class="container">
 		      <section class="hero">
 		        <h1>John Zachary Fitch</h1>
-		        <p class="tagline">Agent tooling | systems performance | privacy-first infrastructure</p>
-		        <p>I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.</p>
+		        <p class="tagline">Independent AI researcher and systems engineer</p>
+		        <p class="tagline"><a href="mailto:zack@internetuniverse.org">zack@internetuniverse.org</a> | <a href="https://github.com/johnzfitch">github.com/johnzfitch</a> | ORCID <a href="https://orcid.org/0009-0007-7953-1531">0009-0007-7953-1531</a></p>
+		        <p>I'm a mathematician who builds things. Half my work is research on geometry-aware sequence models, memory, optimization, and what's going on inside transformers. The other half is the tooling that researchers and AI agents run on, mostly in Rust and Python. When something is slow or broken, I measure it and get a reproduction before I try to fix it.</p>
 		      </section>
 
-	      <section>
-	        <h2>Recent Highlight (Jan 2026)</h2>
+      <section>
+        <h2>Research</h2>
+        <p>I run the Transporter program, where I study the geometry inside transformers and build model architectures from the exceptional Jordan algebra (the 27-dimensional Albert algebra). I take constructions from algebra and geometry, turn them into models I can actually run, and test them. The questions I keep coming back to: what does a model hold on to, how does it change as it learns, and can its structure show us better ways to learn?</p>
+        <ul>
+          <li>I built the Albert Engine (private repo), a tested numerical runtime for the Albert algebra. I use it to prototype sequence models, memory mechanisms, optimizers, and diagnostics that work with that geometry.</li>
+          <li>I study transformer representations and how optimizers behave numerically, and I run causal interventions on pretrained open models to see which geometric structure they actually depend on.</li>
+          <li>I test ideas with numerical checks and head-to-head comparisons under controlled conditions.</li>
+          <li>I write down my predictions before an experiment, mark each claim as proved, measured, or conjectured, and report the limits and the negative results next to the positive ones.</li>
+        </ul>
+        <p><strong>Papers and code (public):</strong></p>
+        <ul>
+          <li><strong>The Barnes&ndash;Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone.</strong> Paper source and exact-arithmetic verification code, archived on Zenodo: <a href="https://doi.org/10.5281/zenodo.21713316">DOI 10.5281/zenodo.21713316</a> / <a href="https://github.com/johnzfitch/gindikin-rank">gindikin-rank</a></li>
+          <li><strong>Reading the Residual.</strong> Uses the geometry of symmetric cones to give an exact, computable error certificate for the inverse square roots that Kronecker-factored optimizers like Shampoo, SOAP, and K-FAC compute in low precision. <a href="https://github.com/johnzfitch/kl-shampoo-gindikin-bridge">kl-shampoo-gindikin-bridge</a></li>
+          <li><strong>Communication transport experiments.</strong> Complete outputs, with null and control runs, from transport experiments on Pythia-70M, Pythia-160M, and GPT-2. <a href="https://github.com/johnzfitch/communication-transport">communication-transport</a></li>
+        </ul>
+        <p>More on the <a href="research.html">research page</a>.</p>
+      </section>
+
+      <section>
+        <h2>Origin</h2>
+        <p>The research question goes back to two pages of notes I wrote in a linear algebra class at SRJC in 2019. If two brains do the same things in different places, is there a map that sends each one onto shared functional pieces, where the difference becomes readable? Now I'm asking the same question about transformers.</p>
+      </section>
+
+      <section>
+	        <h2>Engineering highlight (Jan 2026)</h2>
 	        <div class="panel">
 	          <div class="panel-header">OpenAI Codex</div>
 	          <h3>Ghost in the Codex Machine</h3>
-	          <p>Investigated an "invisible" release-only regression where a pre-main constructor stripped <code>LD_*</code> / <code>DYLD_*</code> environment variables, breaking CUDA/MKL library discovery inside tool subprocesses. My investigation led to the fix in rust-v0.80.0, and the release notes thank me by name.</p>
+	          <p>Codex release builds ran a hardening routine before <code>main()</code> that stripped <code>LD_*</code> and <code>DYLD_*</code> from the environment. Every tool subprocess inherited that environment, so CUDA and MKL couldn't find their libraries and fell back to slow paths without any error. I found the commit that turned it on, built a reproduction, and wrote it up in issue #8945. An OpenAI maintainer wrote the fix from my write-up, it shipped in rust-v0.80.0, and the release notes thank me by name.</p>
 	          <div class="proof-links">
 	            <h4>Proof</h4>
 	            <ul>
 	              <li><img src="assets/icons/bug.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/issues/8945">Issue #8945</a> - <a href="https://github.com/openai/codex/pull/8951">Fix PR #8951</a></li>
-	              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">Fixed in rust-v0.80.0, with release-notes credit</a></li>
+	              <li><img src="assets/icons/rocket.png" class="icon" width="16" height="16" alt=""> <a href="https://github.com/openai/codex/releases/tag/rust-v0.80.0">rust-v0.80.0 release notes</a></li>
 	            </ul>
 	          </div>
-		          <h4>Representative impact</h4>
+		          <h4>From my repro harness (numbers vary by setup)</h4>
 	          <ul>
-	            <li>MKL/BLAS (repro harness): ~2.71s -&gt; ~0.239s (11.3x)</li>
-	            <li>CUDA workflows: restored expected library discovery to avoid CPU fallback in affected setups</li>
+	            <li>MKL/BLAS: ~2.71s -&gt; ~0.239s (11.3x)</li>
+	            <li>CUDA: the libraries load again, so affected setups stop falling back to the CPU</li>
 	          </ul>
 	          <p><strong>Release notes excerpt:</strong></p>
 	          <blockquote>
@@ -59,88 +83,88 @@
 	      </section>
 
       <section>
-        <h2>Research</h2>
-        <p>Independent research on the internal geometry of transformers, and on model architectures built from the exceptional Jordan algebra (the 27-dimensional Albert algebra).</p>
+        <h2>Selected projects (public)</h2>
         <ul>
-          <li>Built the Albert Engine, a tested numerical runtime for the Albert algebra, used to prototype geometry-aware sequence models, memory mechanisms, and optimizers.</li>
-          <li>Run causal interventions on pretrained open models to test which geometric structure they actually depend on.</li>
-          <li>Register predictions before experiments, label each claim as proved, measured, or conjectured, and report negative results alongside positive ones.</li>
-        </ul>
-        <p><a href="research.html">Research page</a></p>
-      </section>
-
-      <section>
-        <h2>How I Work</h2>
-        <ul>
-          <li>Construct from first principles rather than refine existing forms.</li>
-          <li>Recover overlooked work &mdash; revisit ideas and approaches that didn't take the first time, with current tools.</li>
-          <li>Probe working systems for hidden assumptions; rebuild the parts that don't hold up.</li>
-          <li>Operate well in complex, debated, high-ambiguity spaces.</li>
-          <li>Find a useful subspace inside a team early; manage well under crisis and time pressure.</li>
+          <li><strong><a href="https://github.com/johnzfitch/llmx">llmx</a></strong> (Rust core, JS/WASM web; live at <a href="https://llm.cat">llm.cat</a>): a codebase indexer that runs only on your machine. BM25 and neural embeddings (mdbr-leaf-ir on Burn) are merged with reciprocal rank fusion, and chunking is deterministic and content-hashed.</li>
+          <li><strong><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a></strong> (Shell/OTEL, &#9733;60+): security hooks and subagent budgets for Claude Code, with a built-in web viewer for the OTEL traces it records.</li>
+          <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> (Linux, &#9733;400+): runs Claude Desktop natively on Linux. The host OS stands in for the Mac VM, the app runs inside bubblewrap, and the ASAR is handled from outside the sandbox instead of hooked from inside it. Cowork, Code, and Chat work; dispatch and channels are stripped out.</li>
+          <li><strong><a href="https://github.com/johnzfitch/dota">dota</a></strong> (Rust): a post-quantum secrets manager. Hybrid ML-KEM-768 + X25519, Argon2id key derivation, SQLCipher at rest, and a YubiKey or SoloKey (HMAC-SHA1) to unlock it.</li>
+          <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> (Python/MCP, &#9733;35+): an MCP server for Ghidra that keeps token use low. It's in the official MCP registry as <code>io.github.johnzfitch/pyghidra-lite</code> (v0.1.1).</li>
+          <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust): builds optimized, patched Codex binaries (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>).</li>
+          <li><strong><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></strong>: a Claude Code plugin and skills for the Burn deep learning framework.</li>
+          <li><strong><a href="https://look.definitelynot.ai">Observatory</a></strong> (WebGPU): spots AI-generated images right in the browser (live).</li>
+          <li><strong><a href="https://github.com/johnzfitch/specho-v2">SpecHO v2</a></strong> (Python): a 161-dimensional linguistic fingerprint for detecting AI-written text.</li>
+          <li><strong><a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></strong> (PHP/JS): a text sanitizer and API that catches Unicode tricks.</li>
+          <li><strong><a href="https://github.com/johnzfitch/iconics">Iconics</a></strong> (Python): an icon library for docs, 8k+ icons, searchable by meaning.</li>
         </ul>
       </section>
 
       <section>
-        <h2>Core Skills</h2>
+        <h2>How I work</h2>
+        <ul>
+          <li>I'd rather build from first principles than polish an existing design.</li>
+          <li>I go back to ideas that got dropped or didn't work the first time and try them again with today's tools.</li>
+          <li>I take working systems apart to find the assumptions nobody checked, then rebuild the parts that don't hold up.</li>
+          <li>I'm most useful on hard problems where people still argue about the answer.</li>
+          <li>On a new team I find my useful subspace early. I stay steady in a crisis and under a deadline.</li>
+          <li>My workflow mixes math, AI-assisted coding, and experiments.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Core skills</h2>
         <div class="skills-grid">
           <div class="skill-category">
+            <h4><img src="assets/icons/chart.png" class="icon" width="16" height="16" alt=""> Research</h4>
+            <p>PyTorch, NumPy, transformer analysis, experiment design, numerical linear algebra, LaTeX</p>
+          </div>
+          <div class="skill-category">
             <h4><img src="assets/icons/rust.png" class="icon" width="16" height="16" alt=""> Rust</h4>
-            <p>Performance-critical systems, CLI tools, data structures, correctness-oriented engineering</p>
+            <p>Systems where speed matters, CLI tools, data structures, code that has to be correct</p>
           </div>
           <div class="skill-category">
             <h4><img src="assets/icons/python.png" class="icon" width="16" height="16" alt=""> Python</h4>
-            <p>Tooling, analysis pipelines, automation, reproducible experiments</p>
+            <p>Tooling, analysis pipelines, automation, experiments I can rerun</p>
           </div>
           <div class="skill-category">
             <h4><img src="assets/icons/globe.png" class="icon" width="16" height="16" alt=""> Web</h4>
-            <p>WebGPU/WASM applications, client-side ML inference, offline-first UX</p>
+            <p>WebGPU and WASM apps, ML inference in the browser, apps that work offline</p>
           </div>
           <div class="skill-category">
             <h4><img src="assets/icons/server.png" class="icon" width="16" height="16" alt=""> Systems</h4>
-            <p>Linux, NixOS, DNS, TLS automation, containerized services, security hardening</p>
+            <p>Linux, NixOS, DNS, automated TLS, containers, security hardening</p>
           </div>
           <div class="skill-category">
-            <h4><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> Agent Integration</h4>
-            <p>MCP servers, skill/plugin packaging, tool-driven workflows</p>
+            <h4><img src="assets/icons/plugin.png" class="icon" width="16" height="16" alt=""> Agent integration</h4>
+            <p>MCP servers, skills and plugins, tool-driven workflows</p>
           </div>
         </div>
       </section>
 
       <section>
-        <h2>Selected Projects (Public)</h2>
+        <h2>Before this: TBD Liquids (2014&ndash;2023)</h2>
+        <p>I started TBD Liquids in 2014 selling e-liquid I mixed by hand on Reddit's e-cigarette classifieds, and I ran it for nearly nine years. The mission was to help adults quit smoking cigarettes. The FDA regulated what we made as a tobacco product, and the work meant handling hazardous substances.</p>
         <ul>
-          <li><strong><a href="https://github.com/johnzfitch/llmx">llmx</a></strong> (Rust core, JS/WASM web; live: <a href="https://llm.cat">llm.cat</a>) - local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing</li>
-          <li><strong><a href="https://github.com/johnzfitch/claude-warden">claude-warden</a></strong> (Shell/OTEL, &#9733;60+) - security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces</li>
-          <li><strong><a href="https://github.com/johnzfitch/claude-cowork-linux">claude-cowork-linux</a></strong> (Linux, &#9733;400+) - native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat</li>
-          <li><strong><a href="https://github.com/johnzfitch/dota">dota</a></strong> (Rust) - post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth</li>
-          <li><strong><a href="https://github.com/johnzfitch/pyghidra-lite">pyghidra-lite</a></strong> (Python/MCP, &#9733;35+) - token-efficient MCP server for Ghidra (official MCP registry: <code>io.github.johnzfitch/pyghidra-lite</code>, v0.1.1)</li>
-          <li><strong><a href="https://github.com/johnzfitch/codex-xtreme">codex-xtreme</a></strong> (Rust) - optimized, patched Codex builds (includes <a href="https://github.com/johnzfitch/codex-patcher">codex-patcher</a>)</li>
-          <li><strong><a href="https://github.com/johnzfitch/burn-plugin">burn-plugin</a></strong> - Claude Code plugin + skills for the Burn deep learning framework</li>
-          <li><strong><a href="https://look.definitelynot.ai">Observatory</a></strong> (WebGPU) - client-side AI image detection (live)</li>
-          <li><strong><a href="https://github.com/johnzfitch/specho-v2">SpecHO v2</a></strong> (Python) - 161D linguistic fingerprinting for AI text detection</li>
-          <li><strong><a href="https://github.com/johnzfitch/definitelynot.ai">definitelynot.ai</a></strong> (PHP/JS) - Unicode-security-aware sanitizer + API</li>
-          <li><strong><a href="https://github.com/johnzfitch/iconics">Iconics</a></strong> (Python) - semantic icon library for professional docs (8k+ icons)</li>
+          <li>Built the brand, The Best Damn Liquids (federally trademarked), on made-to-order mixing, a panel of about 50 outside flavor testers, and a price ceiling of $11.99 per 30ml.</li>
+          <li>Served roughly 40,000 customers by 2019 and filled more than 200,000 orders, with a team of up to six.</li>
+          <li>Filed a Premarket Tobacco Product Application before FDA's September 2020 deadline, then spent years working through guidance that never committed to anything, FOIA requests included. FDA refused to file the application.</li>
+          <li>Said no to opportunities that pulled us away from the mission, even profitable ones. We closed in July 2023, in our strongest revenue year.</li>
+        </ul>
+        <p><strong>What it taught me:</strong></p>
+        <ul>
+          <li>How to keep going for years when a regulator won't give you a straight answer.</li>
+          <li>How to run manufacturing, hiring, and fulfillment day to day, and how to handle a crisis.</li>
+          <li>How to work under public scrutiny, for nearly nine years of it. I stand behind the work and I'm comfortable defending it on the record.</li>
         </ul>
       </section>
 
       <section>
-        <h2>Operating Background</h2>
-        <p>Owner-operator of a regulated chemical-manufacturing business for nearly nine years; regulated as a tobacco product by FDA, with hazardous-substance handling. Started in 2014 selling hand-mixed e-liquid on Reddit's e-cigarette classifieds; built the brand ("The Best Damn Liquids," federally trademarked) on made-to-order mixing, a panel of about 50 outside flavor testers, and a $11.99-per-30ml price ceiling, serving roughly 40,000 customers by 2019 and more than 200,000 orders with a team of up to six. Filed a Premarket Tobacco Product Application before FDA's September 2020 deadline and worked through years of non-committal guidance, including FOIA requests; FDA refused to file the application. Mission: help adults worldwide quit smoking cigarettes. Declined paths that diverged from that mission even when commercially favorable; closed in July 2023, the company's strongest revenue year.</p>
-        <p><strong>What this established:</strong></p>
+        <h2>Infrastructure (self-hosted)</h2>
+        <p>I run production services on my own bare-metal servers:</p>
         <ul>
-          <li>Tolerance for prolonged regulatory ambiguity without losing direction.</li>
-          <li>Operating discipline at production scale: manufacturing, hiring, fulfillment, crisis response.</li>
-          <li>Nearly nine years under public scrutiny &mdash; grounded in the work, confident defending it on the record, practiced at navigating it responsibly.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Infrastructure (Self-Hosted)</h2>
-        <p>I operate production infrastructure on bare metal with:</p>
-        <ul>
-          <li>Declarative NixOS configuration (reproducible, atomic upgrades, rollbacks)</li>
-          <li>Authoritative DNS and automated wildcard certificates (DNS-01 / RFC2136)</li>
-          <li>Post-quantum security layers (hybrid SSH KEX, WireGuard + Rosenpass)</li>
+          <li>NixOS, configured declaratively, so builds are reproducible and upgrades are atomic and easy to roll back.</li>
+          <li>My own authoritative DNS, with wildcard certificates issued automatically over DNS-01 (RFC 2136).</li>
+          <li>Post-quantum layers: hybrid SSH key exchange, and WireGuard with Rosenpass.</li>
         </ul>
       </section>
 
@@ -151,13 +175,8 @@
       </section>
 
       <section>
-        <h2>Origin</h2>
-        <p>The research question started on two pages of notes from a linear algebra course at SRJC in 2019: if two brains carry out the same functions in different places, is there a map that sends each onto shared functional pieces where the difference becomes readable? This research asks the same question of transformers.</p>
-      </section>
-
-      <section>
-        <h2>What I'm Looking For</h2>
-        <p>Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.</p>
+        <h2>What I'm looking for</h2>
+        <p>I'm looking for researchers, labs, and engineering teams to work with on model architecture, learning algorithms, interpretability, and agent infrastructure, especially where a hard research question needs a working implementation and a clean experiment. I work best with people who measure their results, are clear about who owns what, and keep the bar high.</p>
       </section>
 
       <div class="cta-group" style="margin-top: 2rem;">

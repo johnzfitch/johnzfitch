@@ -88,23 +88,46 @@ I run production infrastructure on dedicated bare metal with declarative NixOS c
 
 *by John Zachary Fitch*
 
-## Typed Embeddings
+## The Transporter program
 
-Tokens don't just relate pairwise. Language has clauses with structure of their own, and the embedding space should know it — that's an algebra question, not a feature-engineering one. Active work.
+I run the Transporter program, where I study the geometry inside transformers and build model architectures from the exceptional Jordan algebra (the 27-dimensional Albert algebra). I take constructions from algebra and geometry, turn them into models I can actually run, and test them. The questions I keep coming back to: what does a model hold on to, how does it change as it learns, and can its structure show us better ways to learn?
 
-## The Harmonic Maass Form Framework
+- I built the Albert Engine (private repo), a tested numerical runtime for the Albert algebra. I use it to prototype sequence models, memory mechanisms, optimizers, and diagnostics that work with that geometry.
+- I study transformer representations and how optimizers behave numerically, and I run causal interventions on pretrained open models to see which geometric structure they actually depend on.
+- I test ideas with numerical checks and head-to-head comparisons under controlled conditions.
+- I write down my predictions before an experiment, mark each claim as proved, measured, or conjectured, and report the limits and the negative results next to the positive ones.
 
-Different teams build different transformers — Mistral, Qwen, Pythia — and they converge on the same internal shape. The framework is one way of saying *why*: what they're all approximating belongs to a specific kind of mathematical object. Structural predictions hold cross-model.
+## Typed embeddings
+
+Tokens don't just relate in pairs. Language has clauses with structure of their own, and the embedding space should know about it. That's an algebra question, not a feature-engineering one. Active work.
+
+## The harmonic Maass form framework
+
+Different teams build different transformers (Mistral, Qwen, Pythia), and they converge on the same internal shape. The framework is one way of saying *why*: what they're all approximating belongs to a specific kind of mathematical object. Its structural predictions hold across models.
 
 ## Shadow-Line Helical Transformer (Transformer²)
 
-Softmax is *soft* — it never actually chooses, it just biases the average. The architecture replaces it with hard structure that still moves: two interlinked helices in a curved space, where the geometry says where you are without forcing a choice.
+Softmax is *soft*. It never actually chooses; it just biases the average. This architecture replaces it with hard structure that still moves: two interlinked helices in a curved space, where the geometry says where you are without forcing a choice.
 
-## Published
+## Papers, code, and write-ups
 
-**Inherit All of Nothing — Parts 1 and 2.** Eight months of Codex security analysis.
+- **The Barnes–Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone.** Paper source and exact-arithmetic verification code, archived on Zenodo. [DOI 10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316) / [gindikin-rank](https://github.com/johnzfitch/gindikin-rank)
+- **Reading the Residual.** Uses the geometry of symmetric cones to give an exact, computable error certificate for the inverse square roots that Kronecker-factored optimizers like Shampoo, SOAP, and K-FAC compute in low precision. [kl-shampoo-gindikin-bridge](https://github.com/johnzfitch/kl-shampoo-gindikin-bridge)
+- **Communication transport experiments.** Complete outputs, with null and control runs, from transport experiments on Pythia-70M, Pythia-160M, and GPT-2. [communication-transport](https://github.com/johnzfitch/communication-transport)
+- **Who Steers the User? Analyzing Claude Code and Codex Runtimes.** A 24-hour research project, presented at Dev Day office hours. [PDF](https://github.com/johnzfitch/johnzfitch/blob/main/data/who-steers-the-user.pdf)
+- **Inherit All of Nothing, Parts 1 and 2.** Eight months of Codex security analysis.
 
-**Who Steers the User.** A 24-hour research project; presented at Dev Day office hours.
+## Where the question came from
+
+The research question goes back to two pages of notes I wrote in a linear algebra class at SRJC in 2019. If two brains do the same things in different places, is there a map that sends each one onto shared functional pieces, where the difference becomes readable? Now I'm asking the same question about transformers.
+
+## Working together
+
+I'm looking for researchers, labs, and engineering teams to work with on model architecture, learning algorithms, interpretability, and agent infrastructure, especially where a hard research question needs a working implementation and a clean experiment.
+
+- Email: [zack@internetuniverse.org](mailto:zack@internetuniverse.org)
+- ORCID: [0009-0007-7953-1531](https://orcid.org/0009-0007-7953-1531)
+- Resume: [resume.md](resume.md)
 
 <!-- END: research.md -->
 
@@ -114,80 +137,99 @@ Softmax is *soft* — it never actually chooses, it just biases the average. The
 
 # Resume — John Zachary Fitch
 
-> Agent tooling | systems performance | privacy-first infrastructure
+> Independent AI researcher and systems engineer
 
-I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.
+[zack@internetuniverse.org](mailto:zack@internetuniverse.org) | [github.com/johnzfitch](https://github.com/johnzfitch) | ORCID [0009-0007-7953-1531](https://orcid.org/0009-0007-7953-1531)
 
-## Recent Highlight (Jan 2026)
-
-**OpenAI Codex — Ghost in the Codex Machine**
-
-Investigated an "invisible" release-only regression where a pre-main constructor stripped `LD_*` / `DYLD_*` environment variables, breaking CUDA/MKL library discovery inside tool subprocesses. My investigation led to the fix in rust-v0.80.0, and the release notes thank me by name.
-
-- [Issue #8945](https://github.com/openai/codex/issues/8945) / [Fix PR #8951](https://github.com/openai/codex/pull/8951)
-- [Fixed in rust-v0.80.0, with release-notes credit](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
-
-Representative impact:
-- MKL/BLAS (repro harness): ~2.71s → ~0.239s (11.3×)
-- CUDA workflows: restored expected library discovery to avoid CPU fallback in affected setups.
-
-> "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
+I'm a mathematician who builds things. Half my work is research on geometry-aware sequence models, memory, optimization, and what's going on inside transformers. The other half is the tooling that researchers and AI agents run on, mostly in Rust and Python. When something is slow or broken, I measure it and get a reproduction before I try to fix it.
 
 ## Research
 
-Independent research on the internal geometry of transformers, and on model architectures built from the exceptional Jordan algebra (the 27-dimensional Albert algebra).
+I run the Transporter program, where I study the geometry inside transformers and build model architectures from the exceptional Jordan algebra (the 27-dimensional Albert algebra). I take constructions from algebra and geometry, turn them into models I can actually run, and test them. The questions I keep coming back to: what does a model hold on to, how does it change as it learns, and can its structure show us better ways to learn?
 
-- Built the Albert Engine, a tested numerical runtime for the Albert algebra, used to prototype geometry-aware sequence models, memory mechanisms, and optimizers.
-- Run causal interventions on pretrained open models to test which geometric structure they actually depend on.
-- Register predictions before experiments, label each claim as proved, measured, or conjectured, and report negative results alongside positive ones.
+- I built the Albert Engine (private repo), a tested numerical runtime for the Albert algebra. I use it to prototype sequence models, memory mechanisms, optimizers, and diagnostics that work with that geometry.
+- I study transformer representations and how optimizers behave numerically, and I run causal interventions on pretrained open models to see which geometric structure they actually depend on.
+- I test ideas with numerical checks and head-to-head comparisons under controlled conditions.
+- I write down my predictions before an experiment, mark each claim as proved, measured, or conjectured, and report the limits and the negative results next to the positive ones.
 
-More: [Research page](research.html)
+Papers and code (public):
+- **The Barnes–Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone.** Paper source and exact-arithmetic verification code, archived on Zenodo: [DOI 10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316) / [gindikin-rank](https://github.com/johnzfitch/gindikin-rank)
+- **Reading the Residual.** Uses the geometry of symmetric cones to give an exact, computable error certificate for the inverse square roots that Kronecker-factored optimizers like Shampoo, SOAP, and K-FAC compute in low precision. [kl-shampoo-gindikin-bridge](https://github.com/johnzfitch/kl-shampoo-gindikin-bridge)
+- **Communication transport experiments.** Complete outputs, with null and control runs, from transport experiments on Pythia-70M, Pythia-160M, and GPT-2. [communication-transport](https://github.com/johnzfitch/communication-transport)
 
-## How I Work
+More on the [research page](research.html).
 
-- Construct from first principles rather than refine existing forms.
-- Recover overlooked work — revisit ideas and approaches that didn't take the first time, with current tools.
-- Probe working systems for hidden assumptions; rebuild the parts that don't hold up.
-- Operate well in complex, debated, high-ambiguity spaces.
-- Find a useful subspace inside a team early; manage well under crisis and time pressure.
+## Origin
 
-## Core Skills
+The research question goes back to two pages of notes I wrote in a linear algebra class at SRJC in 2019. If two brains do the same things in different places, is there a map that sends each one onto shared functional pieces, where the difference becomes readable? Now I'm asking the same question about transformers.
 
-- **Rust** — performance-critical systems, CLI tools, data structures, correctness-oriented engineering.
-- **Python** — tooling, analysis pipelines, automation, reproducible experiments.
-- **Web** — WebGPU/WASM applications, client-side ML inference, offline-first UX.
-- **Systems** — Linux, NixOS, DNS, TLS automation, containerized services, security hardening.
-- **Agent integration** — MCP servers, skill/plugin packaging, tool-driven workflows.
+## Engineering highlight (Jan 2026)
 
-## Selected Projects (Public)
+**OpenAI Codex: Ghost in the Codex Machine**
 
-- **[llmx](https://github.com/johnzfitch/llmx)** (Rust core, JS/WASM web; live: [llm.cat](https://llm.cat)) — local-only codebase indexer built on Burn-ml and mdbr-leaf-ir; hybrid search (BM25 + neural embeddings) fused via RRF; deterministic chunking with content hashing.
-- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 60+ stars) — security hooks and budget system for Claude Code, with a built-in web viewer for extensive OTEL traces.
-- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 400+ stars) — native Linux port of Claude Desktop, security-first: treat the host OS as the VM (no Mac VM layer), wrap in bubblewrap, and handle the ASAR from outside the sandbox rather than hooking in; strips dispatch/channels, preserves Cowork/Code/Chat.
-- **[dota](https://github.com/johnzfitch/dota)** (Rust) — post-quantum secrets manager: hybrid ML-KEM-768 + X25519, Argon2id KDF, SQLCipher at rest, YubiKey/SoloKey HMAC-SHA1 hardware auth.
-- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 35+ stars) — token-efficient MCP server for Ghidra. Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1).
-- **[codex-xtreme](https://github.com/johnzfitch/codex-xtreme)** (Rust) — optimized, patched Codex builds (includes [codex-patcher](https://github.com/johnzfitch/codex-patcher)).
-- **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin + skills for the Burn deep learning framework.
-- **[Observatory](https://look.definitelynot.ai)** (WebGPU) — client-side AI image detection (live).
-- **[SpecHO v2](https://github.com/johnzfitch/specho-v2)** (Python) — 161D linguistic fingerprinting for AI text detection.
-- **[definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)** (PHP/JS) — Unicode-security-aware sanitizer + API.
-- **[Iconics](https://github.com/johnzfitch/iconics)** (Python) — semantic icon library for professional docs (8k+ icons).
+Codex release builds ran a hardening routine before `main()` that stripped `LD_*` and `DYLD_*` from the environment. Every tool subprocess inherited that environment, so CUDA and MKL couldn't find their libraries and fell back to slow paths without any error. I found the commit that turned it on, built a reproduction, and wrote it up in issue #8945. An OpenAI maintainer wrote the fix from my write-up, it shipped in rust-v0.80.0, and the release notes thank me by name.
 
-## Operating Background
+- [Issue #8945](https://github.com/openai/codex/issues/8945) / [Fix PR #8951](https://github.com/openai/codex/pull/8951)
+- [rust-v0.80.0 release notes](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
-Owner-operator of a regulated chemical-manufacturing business for nearly nine years; regulated as a tobacco product by FDA, with hazardous-substance handling. Started in 2014 selling hand-mixed e-liquid on Reddit's e-cigarette classifieds; built the brand ("The Best Damn Liquids," federally trademarked) on made-to-order mixing, a panel of about 50 outside flavor testers, and a $11.99-per-30ml price ceiling, serving roughly 40,000 customers by 2019 and more than 200,000 orders with a team of up to six. Filed a Premarket Tobacco Product Application before FDA's September 2020 deadline and worked through years of non-committal guidance, including FOIA requests; FDA refused to file the application. Mission: help adults worldwide quit smoking cigarettes. Declined paths that diverged from that mission even when commercially favorable; closed in July 2023, the company's strongest revenue year.
+From my repro harness (numbers vary by setup):
+- MKL/BLAS: ~2.71s → ~0.239s (11.3×)
+- CUDA: the libraries load again, so affected setups stop falling back to the CPU.
 
-What this established:
-- Tolerance for prolonged regulatory ambiguity without losing direction.
-- Operating discipline at production scale: manufacturing, hiring, fulfillment, crisis response.
-- Nearly nine years under public scrutiny — grounded in the work, confident defending it on the record, practiced at navigating it responsibly.
+> "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
 
-## Infrastructure (Self-Hosted)
+## Selected projects (public)
 
-I operate production infrastructure on bare metal with:
-- Declarative NixOS configuration (reproducible, atomic upgrades, rollbacks).
-- Authoritative DNS and automated wildcard certificates (DNS-01 / RFC2136).
-- Post-quantum security layers (hybrid SSH KEX, WireGuard + Rosenpass).
+- **[llmx](https://github.com/johnzfitch/llmx)** (Rust core, JS/WASM web; live at [llm.cat](https://llm.cat)): a codebase indexer that runs only on your machine. BM25 and neural embeddings (mdbr-leaf-ir on Burn) are merged with reciprocal rank fusion, and chunking is deterministic and content-hashed.
+- **[claude-warden](https://github.com/johnzfitch/claude-warden)** (Shell/OTEL, 60+ stars): security hooks and subagent budgets for Claude Code, with a built-in web viewer for the OTEL traces it records.
+- **[claude-cowork-linux](https://github.com/johnzfitch/claude-cowork-linux)** (Linux, 400+ stars): runs Claude Desktop natively on Linux. The host OS stands in for the Mac VM, the app runs inside bubblewrap, and the ASAR is handled from outside the sandbox instead of hooked from inside it. Cowork, Code, and Chat work; dispatch and channels are stripped out.
+- **[dota](https://github.com/johnzfitch/dota)** (Rust): a post-quantum secrets manager. Hybrid ML-KEM-768 + X25519, Argon2id key derivation, SQLCipher at rest, and a YubiKey or SoloKey (HMAC-SHA1) to unlock it.
+- **[pyghidra-lite](https://github.com/johnzfitch/pyghidra-lite)** (Python/MCP, 35+ stars): an MCP server for Ghidra that keeps token use low. It's in the official MCP registry as `io.github.johnzfitch/pyghidra-lite` (v0.1.1).
+- **[codex-xtreme](https://github.com/johnzfitch/codex-xtreme)** (Rust): builds optimized, patched Codex binaries (includes [codex-patcher](https://github.com/johnzfitch/codex-patcher)).
+- **[burn-plugin](https://github.com/johnzfitch/burn-plugin)**: a Claude Code plugin and skills for the Burn deep learning framework.
+- **[Observatory](https://look.definitelynot.ai)** (WebGPU): spots AI-generated images right in the browser (live).
+- **[SpecHO v2](https://github.com/johnzfitch/specho-v2)** (Python): a 161-dimensional linguistic fingerprint for detecting AI-written text.
+- **[definitelynot.ai](https://github.com/johnzfitch/definitelynot.ai)** (PHP/JS): a text sanitizer and API that catches Unicode tricks.
+- **[Iconics](https://github.com/johnzfitch/iconics)** (Python): an icon library for docs, 8k+ icons, searchable by meaning.
+
+## How I work
+
+- I'd rather build from first principles than polish an existing design.
+- I go back to ideas that got dropped or didn't work the first time and try them again with today's tools.
+- I take working systems apart to find the assumptions nobody checked, then rebuild the parts that don't hold up.
+- I'm most useful on hard problems where people still argue about the answer.
+- On a new team I find my useful subspace early. I stay steady in a crisis and under a deadline.
+- My workflow mixes math, AI-assisted coding, and experiments.
+
+## Core skills
+
+- **Research**: PyTorch, NumPy, transformer analysis, experiment design, numerical linear algebra, LaTeX.
+- **Rust**: systems where speed matters, CLI tools, data structures, code that has to be correct.
+- **Python**: tooling, analysis pipelines, automation, experiments I can rerun.
+- **Web**: WebGPU and WASM apps, ML inference in the browser, apps that work offline.
+- **Systems**: Linux, NixOS, DNS, automated TLS, containers, security hardening.
+- **Agent integration**: MCP servers, skills and plugins, tool-driven workflows.
+
+## Before this: TBD Liquids (2014–2023)
+
+I started TBD Liquids in 2014 selling e-liquid I mixed by hand on Reddit's e-cigarette classifieds, and I ran it for nearly nine years. The mission was to help adults quit smoking cigarettes. The FDA regulated what we made as a tobacco product, and the work meant handling hazardous substances.
+
+- Built the brand, The Best Damn Liquids (federally trademarked), on made-to-order mixing, a panel of about 50 outside flavor testers, and a price ceiling of $11.99 per 30ml.
+- Served roughly 40,000 customers by 2019 and filled more than 200,000 orders, with a team of up to six.
+- Filed a Premarket Tobacco Product Application before FDA's September 2020 deadline, then spent years working through guidance that never committed to anything, FOIA requests included. FDA refused to file the application.
+- Said no to opportunities that pulled us away from the mission, even profitable ones. We closed in July 2023, in our strongest revenue year.
+
+What it taught me:
+- How to keep going for years when a regulator won't give you a straight answer.
+- How to run manufacturing, hiring, and fulfillment day to day, and how to handle a crisis.
+- How to work under public scrutiny, for nearly nine years of it. I stand behind the work and I'm comfortable defending it on the record.
+
+## Infrastructure (self-hosted)
+
+I run production services on my own bare-metal servers:
+- NixOS, configured declaratively, so builds are reproducible and upgrades are atomic and easy to roll back.
+- My own authoritative DNS, with wildcard certificates issued automatically over DNS-01 (RFC 2136).
+- Post-quantum layers: hybrid SSH key exchange, and WireGuard with Rosenpass.
 
 ## Education
 
@@ -195,18 +237,15 @@ UC Berkeley — B.A. in Mathematics, May 2022.
 
 Santa Rosa Junior College — A.S. in Mathematics and an associate degree in Economics, August 2020.
 
-## Origin
+## What I'm looking for
 
-The research question started on two pages of notes from a linear algebra course at SRJC in 2019: if two brains carry out the same functions in different places, is there a map that sends each onto shared functional pieces where the difference becomes readable? This research asks the same question of transformers.
-
-## What I'm Looking For
-
-Roles building agent runtimes and developer tools, retrieval systems, and security/privacy foundations. I work best on teams that value measurable results, clear ownership, and high engineering standards.
+I'm looking for researchers, labs, and engineering teams to work with on model architecture, learning algorithms, interpretability, and agent infrastructure, especially where a hard research question needs a working implementation and a clean experiment. I work best with people who measure their results, are clear about who owns what, and keep the bar high.
 
 ## Contact
 
 - Email: [zack@internetuniverse.org](mailto:zack@internetuniverse.org)
 - GitHub: [github.com/johnzfitch](https://github.com/johnzfitch)
+- ORCID: [0009-0007-7953-1531](https://orcid.org/0009-0007-7953-1531)
 - PDF: [resume.pdf](resume.pdf)
 
 <!-- END: resume.md -->

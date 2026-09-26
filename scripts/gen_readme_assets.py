@@ -51,24 +51,59 @@ PINNED_RECENT_WORK: list[str] = [
 # Hand-curated descriptions; bypass LLM regeneration in both rotation paths.
 MANUAL_RECENT_WORK_DESCRIPTIONS: dict[str, str] = {
     "johnzfitch/claude-cowork-linux": (
-        "The Linux port of Claude Desktop's Cowork mode. Bubblewrap sandbox "
-        "in place of a VM; the ASAR is unpacked from the host before any "
-        "sandboxed code runs. Highest-adoption project in the portfolio."
+        "Runs Claude Desktop's Cowork mode natively on Linux. Bubblewrap "
+        "stands in for the VM, and the ASAR is unpacked on the host before "
+        "any sandboxed code runs. My most-starred project."
     ),
     "johnzfitch/claude-warden": (
-        "Security hooks for Claude Code: blocks SSRF probes, caps subagent "
-        "spawn budgets, compresses MCP outputs, and exports every tool "
+        "Security hooks for Claude Code. Blocks SSRF probes, caps how many "
+        "subagents can spawn, compresses MCP output, and sends every tool "
         "call to OTEL traces."
     ),
     "johnzfitch/llmx": (
-        "Local-first codebase indexer. BM25 + mdbr-leaf-ir neural embeddings "
-        "(Burn) fused via Reciprocal Rank Fusion; deterministic chunking; "
-        "runs in-browser via WebGPU/WASM. Live at llm.cat."
+        "Codebase indexer that runs on your own machine. BM25 plus "
+        "mdbr-leaf-ir embeddings (Burn), merged with reciprocal rank fusion, "
+        "and deterministic chunking. Also runs in the browser on WebGPU/WASM "
+        "at llm.cat."
     ),
     "johnzfitch/dota": (
-        "Post-quantum secrets manager. v7 TC-HKEM hybrid (ML-KEM-768 + "
-        "X25519); Argon2id master key; AES-256-GCM encrypted JSON vault. "
-        "Terminal UI."
+        "Post-quantum secrets manager with a terminal UI. v7 TC-HKEM hybrid "
+        "(ML-KEM-768 + X25519), an Argon2id master key, and an AES-256-GCM "
+        "encrypted JSON vault."
+    ),
+    "johnzfitch/claude-wiki": (
+        "Anthropic's Claude docs as 2000+ Markdown files in 24 categories, "
+        "pulled from first-party sources and refreshed daily."
+    ),
+    "johnzfitch/pyghidra-lite": (
+        "MCP server for Ghidra that keeps token use low. Reads ELF, Mach-O, "
+        "and PE binaries, with Swift, Objective-C, and Hermes support."
+    ),
+    "johnzfitch/raley-bot": (
+        "Grocery shopping assistant built on a store's web API. It picks "
+        "products, tracks prices, and clips coupons, from a CLI or as an MCP "
+        "server."
+    ),
+    "johnzfitch/indepacer": (
+        "Python CLI for PACER. Searches federal cases and downloads dockets "
+        "and documents through PCL and CM/ECF, with MFA and cost protection."
+    ),
+    "johnzfitch/filearchy": (
+        "Fork of COSMIC Files for Wayland, with trigram search built in, "
+        "custom MIME icons, more archive formats, and terminal integration."
+    ),
+    "johnzfitch/privacy-toggles": (
+        "Controls outbound telemetry on macOS: 61 toggles in a web dashboard "
+        "and menu bar app, privilege separation, and DNS sinkhole blocking."
+    ),
+    "johnzfitch/iconics": (
+        "PNG icon library cataloged in SQLite. Search icons by meaning from "
+        "the CLI and export them to Markdown. Every icon on this page comes "
+        "from it."
+    ),
+    "johnzfitch/arch-dependency-matrices": (
+        "Graph theory, spectral analysis, and linear algebra on the "
+        "dependencies of 1,553 Arch Linux packages, in Python."
     ),
 }
 
@@ -690,6 +725,7 @@ def _generate_description_llm(ctx: RepoContext, token: str) -> str | None:
     structure_str = ", ".join(ctx.structure[:15])
 
     prompt = f"""Write a 1-line description (max 140 chars) for this GitHub repo. Be specific about what it does, not generic. No quotes around output. Use technical terms. Mention key tech if relevant.
+Write it the way the author would describe the repo to another engineer: plain words, start with what it is or does, and keep the facts. Do not use these words: leverage, leveraging, utilize, utilizing, enable, enabling, enhance, enhancing, comprehensive, featuring, intelligent, efficient, efficiently, seamless, robust, powerful, cutting-edge, curated. No em dashes. No marketing claims.
 
 Repo: {ctx.repo}
 Existing description: {ctx.description or 'none'}

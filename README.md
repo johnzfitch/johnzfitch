@@ -15,31 +15,31 @@
 
 -----
 
-## OpenAI Codex — The Ghost in the Machine
+## OpenAI Codex: the ghost in the machine
 
 > [!IMPORTANT]
-> A <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> constructor was silently stripping <var>LD_*</var> / <var>DYLD_*</var> from Codex tool subprocesses, forcing <mark>11–300× slowdowns</mark> through CUDA/MKL fallbacks across every supported OS. OpenAI's specialized debugging team investigated for a week and walked away without a root cause &mdash; the diagnostics couldn't see code that ran before they loaded. I traced the regression to a single commit, built the reproduction harness, and my investigation led to the upstream fix in <samp>rust-v0.80.0</samp>, credited in the release notes. It was the main blocker to Codex spawning and controlling effective subagents.
+> A <ruby>pre-`main()`<rp>(</rp><rt>⁠#[ctor::ctor]</rt><rp>)</rp></ruby> constructor in Codex was stripping <var>LD_*</var> and <var>DYLD_*</var> from the environment, and every tool subprocess inherited the stripped copy. CUDA and MKL couldn't find their libraries, so work fell back to slow paths, <mark>11 to 300 times slower</mark>, on every supported OS, and nothing reported an error. OpenAI put a team on it for a week and didn't find a root cause, because their tools couldn't see code that ran before they loaded. I traced it to one commit, built a reproduction harness, and wrote it up. An OpenAI maintainer wrote the fix from my investigation, it shipped in <samp>rust-v0.80.0</samp>, and the release notes thank me by name. It had also been the main thing keeping Codex from spawning and controlling subagents that worked.
 
 Proof: [Issue #8945](https://github.com/openai/codex/issues/8945)  |  [PR #8951](https://github.com/openai/codex/pull/8951)  |  [Release notes (<samp>rust-v0.80.0</samp>)](https://github.com/openai/codex/releases/tag/rust-v0.80.0)
 
 <details>
-<summary><b>Full Investigation Details</b></summary>
+<summary><b>The full investigation</b></summary>
 
 <br>
 
-### The Ghost
+### The ghost
 
-In <time datetime="2025-10">October 2025</time>, OpenAI assembled a specialized debugging team to investigate mysterious slowdowns affecting <b>Codex</b>. After a week of intensive investigation: <b>nothing</b>.
+In <time datetime="2025-10">October 2025</time>, OpenAI put together a team to look into slowdowns in <b>Codex</b> that nobody could explain. They spent a week on it and came up empty.
 
-The name fits. `pre_main_hardening()` executed before `main()` &mdash; before profilers attached, before logging initialized, before any instrumentation could see it run. It stripped <var>LD_LIBRARY_PATH</var> and <var>DYLD_LIBRARY_PATH</var> from the process environment, then control returned to `main()` and the constructor was gone. Users could see the variables set in their shell. Inside <samp>codex exec</samp>, they were empty.
+I called it a ghost because that's how it acted. `pre_main_hardening()` ran before `main()`, which meant it ran before any profiler attached and before logging started. It removed <var>LD_LIBRARY_PATH</var> and <var>DYLD_LIBRARY_PATH</var> from the process environment, handed control to `main()`, and left no trace. Users could see the variables set in their shell. Inside <samp>codex exec</samp>, they were empty.
 
 -----
 
-### The Hunt
+### Finding it
 
-Within <b>3 days</b> of their announcement, I had the introducing commit ([PR #4521](https://github.com/openai/codex/pull/4521)) and a working hypothesis. I sent both to <kbd>@tibo_openai</kbd>.
+<b>Three days</b> after their announcement, I had the commit that introduced it ([PR #4521](https://github.com/openai/codex/pull/4521)) and a working theory. I sent both to <kbd>@tibo_openai</kbd>.
 
-Identification is not proof. The next <b>2 months</b> were repro harnesses, benchmarks across CUDA / Conda / MKL / HPC stacks, and cross-referencing 15+ scattered user reports until the pattern was undeniable.
+Knowing the commit didn't prove anything yet. I spent the next <b>2 months</b> building repro harnesses, benchmarking CUDA, Conda, MKL, and HPC setups, and lining up 15+ scattered user reports until the pattern was clear.
 
 #### Timeline
 
@@ -69,11 +69,11 @@ Identification is not proof. The next <b>2 months</b> were repro harnesses, benc
     </tr>
     <tr>
       <td><time datetime="2025-10-29">Oct 29, 2025</time></td>
-      <td>Emergency <var>PATH</var> fix lands <em>(did not catch root cause)</em></td>
+      <td>Emergency <var>PATH</var> fix lands <em>(didn't catch the root cause)</em></td>
     </tr>
     <tr>
       <td>Late Oct 2025</td>
-      <td>OpenAI&rsquo;s specialized team investigates, declares there is no root cause, identifies issue as user behavior change</td>
+      <td>OpenAI&rsquo;s team investigates, finds no root cause, and puts it down to a change in user behavior</td>
     </tr>
     <tr>
       <td><time datetime="2026-01-09">Jan 9, 2026</time></td>
@@ -82,7 +82,7 @@ Identification is not proof. The next <b>2 months</b> were repro harnesses, benc
   </tbody>
 </table>
 
-#### Evidence Collected
+#### Evidence
 
 <table>
   <thead>
@@ -106,50 +106,50 @@ Identification is not proof. The next <b>2 months</b> were repro harnesses, benc
   </tbody>
 </table>
 
-**Compiled evidence packages:**
+**What I put together:**
 
 <dl>
-  <dt><img src=".github/assets/icons/script.png" width="20" height="20" alt="">&ensp;Platform-specific failure modes</dt>
-  <dd>Reproduction steps with quantifiable performance regressions (11&ndash;300&times;) and benchmarks</dd>
-  <dt><img src=".github/assets/icons/lightbulb.png" width="20" height="20" alt="">&ensp;Pattern analysis</dt>
-  <dd>Cross-referenced 15+ scattered user reports over 3 months, traced process environment inheritance through <code>fork</code>/<code>exec</code> boundaries</dd>
+  <dt><img src=".github/assets/icons/script.png" width="20" height="20" alt="">&ensp;Failure modes on each platform</dt>
+  <dd>Reproduction steps and benchmarks that show the 11&ndash;300&times; slowdowns</dd>
+  <dt><img src=".github/assets/icons/lightbulb.png" width="20" height="20" alt="">&ensp;Matching up the reports</dt>
+  <dd>Matched 15+ scattered user reports over 3 months and followed the environment through <code>fork</code>/<code>exec</code></dd>
 </dl>
 
-  <img src=".github/assets/icons/script.png" width="20" height="20" alt=""> [Comprehensive Technical Analysis](https://github.com/user-attachments/files/24510983/GITHUB_ISSUE_DETAILED.md)<br>
-  <img src=".github/assets/icons/lightbulb.png" width="20" height="20" alt=""> [Investigation Methodology](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit)
+  <img src=".github/assets/icons/script.png" width="20" height="20" alt=""> [Full technical write-up](https://github.com/user-attachments/files/24510983/GITHUB_ISSUE_DETAILED.md)<br>
+  <img src=".github/assets/icons/lightbulb.png" width="20" height="20" alt=""> [How I investigated it](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit)
 
 -----
 
-### Why Conventional Debugging Failed
+### Why normal debugging missed it
 
-The bug was designed to be invisible:
+Everything about it made it hard to see:
 
 <dl>
-  <dt>Pre-main execution</dt>
-  <dd>Used <code>#[ctor::ctor]</code> to run before <code>main()</code>, before any logging or instrumentation</dd>
-  <dt>Silent stripping</dt>
-  <dd>No warnings, no errors&thinsp;&mdash;&thinsp;just missing environment variables</dd>
-  <dt>Distributed symptoms</dt>
-  <dd>Appeared as unrelated issues across different platforms and configurations</dd>
-  <dt>User attribution</dt>
-  <dd>Everyone assumed they misconfigured something (shell looked fine)</dd>
-  <dt>Wrong search space</dt>
-  <dd>Team was debugging post-<code>main</code> application code</dd>
+  <dt>Ran before <code>main()</code></dt>
+  <dd><code>#[ctor::ctor]</code> ran it before any logging or instrumentation was set up</dd>
+  <dt>No noise</dt>
+  <dd>No warning and no error. The variables were just gone</dd>
+  <dt>Scattered symptoms</dt>
+  <dd>It showed up as unrelated issues on different platforms and setups</dd>
+  <dt>Blamed on users</dt>
+  <dd>Everyone assumed they'd misconfigured something, since their shell looked fine</dd>
+  <dt>Wrong place to look</dt>
+  <dd>The team was debugging application code that runs after <code>main()</code></dd>
 </dl>
 
 
 > [!NOTE]
-> Standard debugging tools cannot see pre-main execution. Profilers start at `main()`. Log hooks are not initialized yet. The code executes, modifies the environment, and vanishes.
+> Standard debugging tools don't see code that runs before `main()`. Profilers start at `main()`, and logging isn't set up yet. The constructor runs, changes the environment, and is gone.
 
 -----
 
-### The Impact
+### What happened next
 
-OpenAI confirmed and merged the fix within 24 hours, explicitly crediting the investigation in <samp>v0.80.0</samp> release notes:
+OpenAI confirmed it and merged a fix within 24 hours. The <samp>v0.80.0</samp> release notes credit the investigation:
 
 > "Codex <abbr title="Command Line Interface">CLI</abbr> subprocesses again inherit env vars like <var>LD_LIBRARY_PATH</var>/<var>DYLD_LIBRARY_PATH</var> to avoid runtime issues. As explained in #8945, failure to pass along these environment variables to subprocesses that expect them (notably <abbr title="Graphics Processing Unit">GPU</abbr>-related ones), was causing 10×+ performance regressions! Special thanks to <kbd>@johnzfitch</kbd> for the detailed investigation and write-up in #8945."
 
-**Restored:**
+**What works again:**
 
 <table>
   <tbody>
@@ -176,7 +176,7 @@ OpenAI confirmed and merged the fix within 24 hours, explicitly crediting the in
   </tbody>
 </table>
 
-When the tools are blind, the system lies. Everyone else has stopped looking.</details>
+TL;DR: it was literally a ghost. It ran before <code>main()</code>, stripped the environment, and disappeared, leaving nothing behind but confused users reporting slowness.</details>
 
 -----
 
@@ -184,28 +184,28 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐419</sub></dt>
-  <dd>The Linux port of Claude Desktop's Cowork mode. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs. Highest-adoption project in the portfolio.</dd>
+  <dd>Runs Claude Desktop's Cowork mode natively on Linux. Bubblewrap stands in for the VM, and the ASAR is unpacked on the host before any sandboxed code runs. My most-starred project.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
-  <dd>Local-first codebase indexer. BM25 + mdbr-leaf-ir neural embeddings (Burn) fused via Reciprocal Rank Fusion; deterministic chunking; runs in-browser via WebGPU/WASM. Live at llm.cat.</dd>
+  <dd>Codebase indexer that runs on your own machine. BM25 plus mdbr-leaf-ir embeddings (Burn), merged with reciprocal rank fusion, and deterministic chunking. Also runs in the browser on WebGPU/WASM at llm.cat.</dd>
 
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
-  <dd>Post-quantum secrets manager. v7 TC-HKEM hybrid (ML-KEM-768 + X25519); Argon2id master key; AES-256-GCM encrypted JSON vault. Terminal UI.</dd>
+  <dd>Post-quantum secrets manager with a terminal UI. v7 TC-HKEM hybrid (ML-KEM-768 + X25519), an Argon2id master key, and an AES-256-GCM encrypted JSON vault.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐23</sub></dt>
-  <dd>Comprehensive Markdown documentation mirror for Anthropic's Claude, featuring 2000+ articles on APIs, SDKs, agents, and integrations.</dd>
+  <dd>Anthropic's Claude docs as 2000+ Markdown files in 24 categories, pulled from first-party sources and refreshed daily.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐36</sub></dt>
-  <dd>Token-efficient MCP server for Ghidra, enabling analysis of ELF, Mach-O, and PE binaries with Swift, Objective-C, and Hermes support.</dd>
+  <dd>MCP server for Ghidra that keeps token use low. Reads ELF, Mach-O, and PE binaries, with Swift, Objective-C, and Hermes support.</dd>
 
   <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
-  <dd>Automated grocery shopping assistant leveraging web API for intelligent product selection, price tracking, and coupon clipping via CLI and MCP.</dd>
+  <dd>Grocery shopping assistant built on a store's web API. It picks products, tracks prices, and clips coupons, from a CLI or as an MCP server.</dd>
 
   <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
-  <dd>A Python CLI tool for querying PACER, downloading federal court dockets and documents, and managing case data efficiently.</dd>
+  <dd>Python CLI for PACER. Searches federal cases and downloads dockets and documents through PCL and CM/ECF, with MFA and cost protection.</dd>
 
   <dt><a href="https://github.com/johnzfitch/claude-warden"><b>claude-warden</b></a> <sub>⭐60</sub></dt>
-  <dd>Security hooks for Claude Code: blocks SSRF probes, caps subagent spawn budgets, compresses MCP outputs, and exports every tool call to OTEL traces.</dd>
+  <dd>Security hooks for Claude Code. Blocks SSRF probes, caps how many subagents can spawn, compresses MCP output, and sends every tool call to OTEL traces.</dd>
 </dl>
 
 -----
@@ -214,28 +214,28 @@ When the tools are blind, the system lies. Everyone else has stopped looking.</d
 
 <dl>
   <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐419</sub></dt>
-  <dd>Run the official Claude Desktop app's Cowork mode natively on Linux. Bubblewrap sandbox in place of a VM; the ASAR is unpacked from the host before any sandboxed code runs.</dd>
+  <dd>Runs the official Claude Desktop app's Cowork mode natively on Linux. Bubblewrap stands in for the VM, and the ASAR is unpacked on the host before any sandboxed code runs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
-  <dd><abbr title="Large Language Model">LLM</abbr> watermark detection via phonetic/semantic analysis <em>(The Echo Rule)</em> — live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
+  <dd>Detects <abbr title="Large Language Model">LLM</abbr> watermarks with phonetic and semantic analysis <em>(The Echo Rule)</em>. Live demo at <a href="https://definitelynot.ai">definitelynot.ai</a></dd>
 
   <dt><a href="https://github.com/johnzfitch/codex-patcher"><b>codex-patcher</b></a></dt>
-  <dd>Automated Rust code patching tool leveraging tree-sitter for syntax-aware modifications and reliable LLM-generated updates.</dd>
+  <dd>Patches Rust code automatically with byte-span replacement and tree-sitter, so LLM-written edits land where they're supposed to.</dd>
 
   <dt><a href="https://github.com/johnzfitch/htmx-docs"><b>htmx-docs</b></a></dt>
-  <dd>Curated HTMX documentation in Markdown, including API references, Big Sky repos, and relevant RFCs, organized for easy access.</dd>
+  <dd>HTMX docs in Markdown: the API reference, the Big Sky repos, and the relevant RFCs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/filearchy"><b>filearchy</b></a></dt>
-  <dd>Filearchy is a Wayland file manager forked from cosmic-files, enhancing workflows with custom MIME icons, extended archive support, and terminal integration.</dd>
+  <dd>Wayland file manager forked from COSMIC Files, with custom MIME icons, more archive formats, and terminal integration.</dd>
 
   <dt><a href="https://github.com/johnzfitch/nautilus-plus"><b>nautilus-plus</b></a></dt>
-  <dd>Enhanced Nautilus file manager with sub-millisecond search, large animated thumbnail support, and crash prevention features.</dd>
+  <dd>Nautilus fork with sub-millisecond search, thumbnails for large animated files, and fixes that keep it from crashing.</dd>
 
   <dt><a href="https://github.com/johnzfitch/indepacer"><b>indepacer</b></a></dt>
-  <dd>CLI tool for querying PACER, enabling case searches, docket downloads, and document retrieval from federal court records.</dd>
+  <dd>CLI for PACER: search federal cases and pull dockets and documents from federal court records.</dd>
 </dl>
 
-Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, authoritative <abbr title="Domain Name System">DNS</abbr>, and containerized services.
+I self-host on bare metal (NixOS), with post-quantum crypto, my own authoritative <abbr title="Domain Name System">DNS</abbr>, and containers.
 
 -----
 
@@ -243,39 +243,39 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
 
 <dl>
   <dt><a href="https://definitelynot.ai"><b>Cosmic Code Cleaner</b></a> @ definitelynot.ai</dt>
-  <dd>LLM paste sanitizer with vectorhit algorithm — fix curly quotes, invisible Unicode, confusable punctuation, dedent blocks</dd>
+  <dd>Cleans up text you paste out of an LLM, using the vectorhit algorithm: curly quotes, invisible Unicode, look-alike punctuation, and indented blocks.</dd>
 
   <dt><a href="https://llm.cat"><b>LLMX Ingestor</b></a> @ llm.cat</dt>
-  <dd>WebAssembly codebase indexer — private, deterministic chunking and BM25 search for large folders</dd>
+  <dd>WebAssembly codebase indexer. Deterministic chunking and BM25 search for large folders, and your files never leave your machine.</dd>
 
   <dt><a href="https://internetuniverse.org"><b>LINTENIUM FIELD</b></a> @ internetuniverse.org</dt>
-  <dd>Terminal-based <abbr title="Alternate Reality Game">ARG</abbr> experience — interactive mystery with audio visualizations</dd>
+  <dd>A puzzle <abbr title="Alternate Reality Game">ARG</abbr> in a terminal: an interactive mystery with audio visualizations.</dd>
 
   <dt><a href="https://look.definitelynot.ai"><b>Observatory</b></a> @ look.definitelynot.ai</dt>
-  <dd><abbr title="Web Graphics Processing Unit">WebGPU</abbr> deepfake detection running 4 ML models in browser</dd>
+  <dd>Deepfake detection that runs 4 ML models in your browser on <abbr title="Web Graphics Processing Unit">WebGPU</abbr>.</dd>
 </dl>
 
 -----
 
 ## Featured
 
-### <img src=".github/assets/icons/shield.png" width="20" height="20" alt=""> [dota](https://github.com/johnzfitch/dota) — Post-Quantum Secrets Manager
+### <img src=".github/assets/icons/shield.png" width="20" height="20" alt=""> [dota](https://github.com/johnzfitch/dota): post-quantum secrets manager
 
-**Defense of the Artifacts**: A secrets manager engineered for cryptographic longevity. While current encryption remains secure, "harvest now, decrypt later" attacks mean secrets stored today may be vulnerable to quantum computers within their lifetime. dota addresses this with hybrid post-quantum encryption that provides security against both classical and quantum adversaries.
+**Defense of the Artifacts.** A secrets manager for secrets that have to stay secret for a long time. Today's encryption holds up fine, but someone can record encrypted data now and decrypt it later, once quantum computers can break it ("harvest now, decrypt later"). dota uses hybrid post-quantum encryption, so an attacker would have to break both the classical layer and the post-quantum one.
 
 <table>
   <thead>
     <tr>
       <th width="140">Layer</th>
       <th>Implementation</th>
-      <th>Why It Matters</th>
+      <th>Why</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><b>Key Encapsulation</b></td>
       <td>ML-KEM-768 + X25519 hybrid</td>
-      <td><abbr title="National Institute of Standards and Technology">NIST</abbr>-standardized lattice crypto with classical fallback — if either is broken, the other protects</td>
+      <td><abbr title="National Institute of Standards and Technology">NIST</abbr>-standardized lattice crypto plus a classical fallback. If one is broken, the other still protects you</td>
     </tr>
     <tr>
       <td><b>Key Derivation</b></td>
@@ -290,22 +290,22 @@ Self-hosting bare metal infrastructure (NixOS) with post-quantum cryptography, a
     <tr>
       <td><b>Hardware Auth</b></td>
       <td>HMAC-SHA1 challenge-response</td>
-      <td>YubiKey/SoloKey required for unlock — no master password alone can decrypt</td>
+      <td>Unlocking needs the YubiKey or SoloKey. The master password alone can't decrypt anything</td>
     </tr>
   </tbody>
 </table>
 
-The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) provides vim-style navigation, fuzzy search across entries, secure clipboard integration with auto-clear, and <abbr title="Time-based One-Time Password">TOTP</abbr> generation for 2FA codes.
+The <abbr title="Terminal User Interface">TUI</abbr> (Ratatui) has vim-style navigation, fuzzy search, a clipboard that clears itself, and <abbr title="Time-based One-Time Password">TOTP</abbr> codes for 2FA.
 
 **Stack:** Rust &ensp;&bull;&ensp; pqcrypto (ML-KEM) &ensp;&bull;&ensp; x25519-dalek &ensp;&bull;&ensp; argon2 &ensp;&bull;&ensp; SQLCipher &ensp;&bull;&ensp; Ratatui
 
 -----
 
-### <img src=".github/assets/icons/search.png" width="20" height="20" alt=""> [llmx](https://github.com/johnzfitch/llmx) — Codebase Indexer for Local Agents
+### <img src=".github/assets/icons/search.png" width="20" height="20" alt=""> [llmx](https://github.com/johnzfitch/llmx): codebase indexer for local agents
 
-**Live Demo:** [llm.cat](https://llm.cat) (WebAssembly — runs entirely in browser, no upload)
+**Live demo:** [llm.cat](https://llm.cat) (WebAssembly; it runs entirely in your browser and uploads nothing)
 
-Local-first codebase indexing with real neural embeddings (<b>mdbr-leaf-ir</b>) running via <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. No server, no API calls, no data leaving your machine. Hybrid search combines BM25 keyword ranking with vector similarity using <abbr title="Reciprocal Rank Fusion">RRF</abbr> for best-of-both-worlds retrieval.
+Indexes a codebase on your own machine, with real neural embeddings (<b>mdbr-leaf-ir</b>) running on <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. There's no server and no API call, so your code stays put. Search combines BM25 keyword ranking with vector similarity through <abbr title="Reciprocal Rank Fusion">RRF</abbr>, so it finds exact matches and things that mean the same.
 
 ```bash
 llmx index ~/projects/myapp           # Build trigram + BM25 index
@@ -323,20 +323,20 @@ llmx serve --port 8080                # Local HTTP API for agents
   </thead>
   <tbody>
     <tr>
-      <td><b>Neural Embeddings</b></td>
-      <td>mdbr-leaf-ir vectors with <abbr title="Web Graphics Processing Unit">WebGPU</abbr> acceleration — ~50ms inference, same quality as server-side</td>
+      <td><b>Embeddings</b></td>
+      <td>mdbr-leaf-ir vectors on <abbr title="Web Graphics Processing Unit">WebGPU</abbr>. About 50ms per inference, same quality as running it on a server</td>
     </tr>
     <tr>
-      <td><b>Hybrid Search</b></td>
-      <td>BM25 + vector similarity fused via <abbr title="Reciprocal Rank Fusion">RRF</abbr> — handles exact matches and semantic similarity</td>
+      <td><b>Hybrid search</b></td>
+      <td>BM25 and vector similarity merged with <abbr title="Reciprocal Rank Fusion">RRF</abbr>, so exact matches and similar meaning both count</td>
     </tr>
     <tr>
-      <td><b>Smart Chunking</b></td>
-      <td>Deterministic by file type: functions, headings, JSON keys — same input always yields identical chunks</td>
+      <td><b>Chunking</b></td>
+      <td>Split by file type (functions, headings, JSON keys). The same input always gives the same chunks</td>
     </tr>
     <tr>
-      <td><b>Semantic Exports</b></td>
-      <td>Hierarchical outline format (<samp>llm.md</samp>) with function names and heading breadcrumbs for selective retrieval</td>
+      <td><b>Exports</b></td>
+      <td>An outline file (<samp>llm.md</samp>) with function names and heading breadcrumbs, so an agent can pull only the part it needs</td>
     </tr>
   </tbody>
 </table>
@@ -350,11 +350,11 @@ llmx serve --port 8080                # Local HTTP API for agents
 
 -----
 
-### <img src=".github/assets/icons/lock.png" width="20" height="20" alt=""> [claude-warden](https://github.com/johnzfitch/claude-warden) — Security Hooks for Claude Code
+### <img src=".github/assets/icons/lock.png" width="20" height="20" alt=""> [claude-warden](https://github.com/johnzfitch/claude-warden): security hooks for Claude Code
 
-A defense-in-depth hook system for Claude Code that addresses token efficiency, security boundaries, and observability. Born from months of production use identifying failure modes in <abbr title="Large Language Model">LLM</abbr> coding agents.
+Hooks for Claude Code that cut wasted tokens, hold security boundaries, and record what the agent did. I wrote them after months of using <abbr title="Large Language Model">LLM</abbr> coding agents every day and writing down how they failed.
 
-**The Problem:** Claude Code's default behavior can burn tokens on verbose command output, leak internal network topology via <abbr title="Server-Side Request Forgery">SSRF</abbr>, spawn unbounded subagents, and produce unobservable execution traces.
+**The problem:** out of the box, Claude Code can burn tokens on noisy command output, expose your internal network through <abbr title="Server-Side Request Forgery">SSRF</abbr>, spawn subagents without limit, and leave no record you can inspect.
 
 <table>
   <thead>
@@ -406,11 +406,11 @@ $ claude "install dependencies"
 
 ## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐23 — Comprehensive Anthropic documentation wiki — 749+ docs across 24 categories
-- **[observatory](https://github.com/johnzfitch/observatory)** — WebGPU deepfake detection with 4 ML models — live: [look.definitelynot.ai](https://look.definitelynot.ai)
-- **[specHO](https://github.com/johnzfitch/specho-v2)** — LLM watermark detection via phonetic/semantic analysis — live: [definitelynot.ai](https://definitelynot.ai)
-- **[burn-plugin](https://github.com/johnzfitch/burn-plugin)** — Claude Code plugin for the Burn deep learning framework
-- **[raley-bot](https://github.com/johnzfitch/raley-bot)** — Automated grocery assistant with F5 bot detection evasion, unit pricing across bizarre measurements, automatic coupon clipping, and MCP server for Claude Desktop
+- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐23: Anthropic's docs as a Markdown wiki, 2000+ files across 24 categories
+- **[observatory](https://github.com/johnzfitch/observatory)**: deepfake detection with 4 ML models on WebGPU. Live at [look.definitelynot.ai](https://look.definitelynot.ai)
+- **[specHO](https://github.com/johnzfitch/specho-v2)**: LLM watermark detection with phonetic and semantic analysis. Live at [definitelynot.ai](https://definitelynot.ai)
+- **[burn-plugin](https://github.com/johnzfitch/burn-plugin)**: Claude Code plugin for the Burn deep learning framework
+- **[raley-bot](https://github.com/johnzfitch/raley-bot)**: grocery assistant that gets past F5 bot detection, works out unit prices across bizarre measurements, clips coupons automatically, and runs as an MCP server for Claude Desktop
 
 -----
 

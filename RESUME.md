@@ -1,11 +1,12 @@
 # John Zachary Fitch
 
-Agent tooling | systems performance | privacy-first infrastructure
+Independent AI researcher and systems engineer
 
 SF Bay Area (open to remote)
 
 - Email: zack@internetuniverse.org
 - GitHub: https://github.com/johnzfitch
+- ORCID: https://orcid.org/0009-0007-7953-1531
 - Website: https://definitelynot.ai
 - Live demo: https://look.definitelynot.ai
 
@@ -13,22 +14,36 @@ SF Bay Area (open to remote)
 
 ## Summary
 
-I build production-grade tooling for agents and the substrate they depend on: deterministic retrieval, verifiable edits, structured tool APIs, and execution environments you can reason about. I work across Rust, Python, and web platforms with an evidence-first style: measure, reproduce, fix, and ship.
+I'm a mathematician who builds things. Half my work is research on geometry-aware sequence models, memory, optimization, and what's going on inside transformers. The other half is the tooling that researchers and AI agents run on, mostly in Rust and Python. When something is slow or broken, I measure it and get a reproduction before I try to fix it.
 
 ---
 
-## Highlights (Jan 2026)
+## Research
 
-### OpenAI Codex: Revealing the "Ghost in the Codex Machine" (Issue [#8945](https://github.com/openai/codex/issues/8945), PR [#8951](https://github.com/openai/codex/pull/8951))
+I run the Transporter program, where I study the geometry inside transformers and build model architectures from the exceptional Jordan algebra (the 27-dimensional Albert algebra). I take constructions from algebra and geometry, turn them into models I can actually run, and test them. The questions I keep coming back to: what does a model hold on to, how does it change as it learns, and can its structure show us better ways to learn?
 
-I investigated an "invisible" regression in OpenAI Codex where a pre-main constructor ran before `main()` and stripped `LD_*` / `DYLD_*` environment variables. For GPU workloads such as CUDA, Conda/MKL, HPC-style setups, this was a hard regression that made critical dynamic libraries disappear inside tool subprocesses and forced slow fallback, infinite hangs, or silent failure. Every child process, including subagents, inherited this stripped environment. Those children (Python/Conda/NumPy/PyTorch, often glibc-linked) can genuinely depend on LD_LIBRARY_PATH for CUDA/MKL/non-RPATH setups. 
+- I built the Albert Engine (private repo), a tested numerical runtime for the Albert algebra. I use it to prototype sequence models, memory mechanisms, optimizers, and diagnostics that work with that geometry.
+- I study transformer representations and how optimizers behave numerically, and I run causal interventions on pretrained open models to see which geometric structure they actually depend on.
+- I test ideas with numerical checks and head-to-head comparisons under controlled conditions.
+- I write down my predictions before an experiment, mark each claim as proved, measured, or conjectured, and report the limits and the negative results next to the positive ones.
 
-An OpenAI maintainer wrote the fix (PR #8951) from the investigation, and it shipped in rust-v0.80.0 with special thanks to me in the release notes.
+Papers and code (public):
+- The Barnes-Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone. Paper source and exact-arithmetic verification code, archived on Zenodo. DOI: [10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316). Repo: https://github.com/johnzfitch/gindikin-rank
+- Reading the Residual. Uses the geometry of symmetric cones to give an exact, computable error certificate for the inverse square roots that Kronecker-factored optimizers like Shampoo, SOAP, and K-FAC compute in low precision. https://github.com/johnzfitch/kl-shampoo-gindikin-bridge
+- Communication transport experiments. Complete outputs, with null and control runs, from transport experiments on Pythia-70M, Pythia-160M, and GPT-2. https://github.com/johnzfitch/communication-transport
 
-Release notes excerpt:
+The research question goes back to two pages of notes I wrote in a linear algebra class at SRJC in 2019. If two brains do the same things in different places, is there a map that sends each one onto shared functional pieces, where the difference becomes readable? Now I'm asking the same question about transformers.
+
+---
+
+## Engineering highlight (Jan 2026)
+
+### OpenAI Codex: the "Ghost in the Codex Machine" (issue [#8945](https://github.com/openai/codex/issues/8945), PR [#8951](https://github.com/openai/codex/pull/8951))
+
+Codex release builds ran a constructor before `main()` that stripped `LD_*` and `DYLD_*` from the environment. Every child process inherited that stripped environment, subagents included, and a lot of those children (Python, Conda, NumPy, PyTorch, often glibc-linked) really do need `LD_LIBRARY_PATH` to find CUDA and MKL on setups without RPATH. On GPU, Conda/MKL, and HPC-style setups, critical libraries vanished inside tool subprocesses. Work fell back to slow paths, hung forever, or failed without saying anything.
+
+I tested it on macOS, Windows, and Linux to see how far it reached, then boiled it down to a minimal reproduction with benchmarks. An OpenAI maintainer wrote the fix (PR #8951) from my investigation. It shipped in rust-v0.80.0, and the release notes thank me by name:
 > "Special thanks to @johnzfitch for the detailed investigation and write-up in #8945."
-
-To map the true scope, I validated behavior across macOS, Windows, and Linux and reduced it to a minimal reproduction + benchmark-backed report.
 
 Proof:
 - Issue: https://github.com/openai/codex/issues/8945
@@ -38,11 +53,11 @@ Proof:
 
 Timeline:
 - 2025-09-30: regression introduced (PR #4521)
-- 2025-10-31: OpenAI concludes [internal investigation](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit?usp=sharing)
-- 2026-01-08: I opened issue #8945 with root cause + reproduction + benchmarks
+- 2025-10-31: OpenAI wraps up its [internal investigation](https://docs.google.com/document/d/1fDJc1e0itJdh0MXMFJtkRiBcxGEFtye6Xc6Ui7eMX4o/edit?usp=sharing)
+- 2026-01-08: I opened issue #8945 with the root cause, a reproduction, and benchmarks
 - 2026-01-09: fix merged (PR #8951) and shipped in the rust-v0.80.0 release series
 
-Representative measurements (vary by environment):
+Measurements (they vary by environment):
 | Workload | Before | After | Speedup |
 |---|---:|---:|---:|
 | MKL/BLAS (repro harness) | ~2.71s | ~0.239s | 11.3x |
@@ -52,54 +67,56 @@ Representative measurements (vary by environment):
 
 ## Selected Work (Public)
 
-Agent build and edit loop:
-- codex-xtreme (includes codex-patcher): reproducible build + patch workflow for Codex binaries. https://github.com/johnzfitch/codex-xtreme
+Building and patching Codex:
+- codex-xtreme (includes codex-patcher): a repeatable way to build and patch Codex binaries. https://github.com/johnzfitch/codex-xtreme
 
-Local-first retrieval:
-- llmx: codebase indexing with deterministic chunking + BM25 search + exports for agent context. https://github.com/johnzfitch/llmx
+Code search that stays on your machine:
+- llmx: indexes a codebase with deterministic chunking and BM25 search, and exports context for agents. https://github.com/johnzfitch/llmx
 
-Tool surfaces (MCP):
-- pyghidra-lite: token-efficient MCP server for tool-driven program analysis (compact by default, opt-in verbosity). Official MCP registry: `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active, published 2026-01-29). Repo: https://github.com/johnzfitch/pyghidra-lite
+MCP servers:
+- pyghidra-lite: an MCP server for program analysis with Ghidra that keeps token use low. Output is compact by default, with more detail when you ask for it. It's in the official MCP registry as `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active, published 2026-01-29). Repo: https://github.com/johnzfitch/pyghidra-lite
 
-Agent skills and plugins (Anthropic ecosystem):
-- burn-plugin: Claude Code plugin + reusable skills for the Burn deep learning framework (evidence-backed workflows). https://github.com/johnzfitch/burn-plugin
-- claude-cowork-linux: run the official Claude Desktop app on Linux with bubblewrap sandboxing. https://github.com/johnzfitch/claude-cowork-linux
+Claude Code and Claude Desktop:
+- burn-plugin: a Claude Code plugin and reusable skills for the Burn deep learning framework. https://github.com/johnzfitch/burn-plugin
+- claude-cowork-linux: runs the official Claude Desktop app on Linux inside a bubblewrap sandbox. https://github.com/johnzfitch/claude-cowork-linux
 
-ML/detection and safety:
-- Observatory: client-side AI image detection (WebGPU/WASM). Live: https://look.definitelynot.ai Repo: https://github.com/johnzfitch/observatory
-- SpecHO v2: 161D linguistic fingerprinting for AI text detection and model identification (tiered runtime). https://github.com/johnzfitch/specho-v2
-- definitelynot.ai: Unicode-security-aware sanitizer (Trojan Source, BiDi, homoglyph defense). https://github.com/johnzfitch/definitelynot.ai
+Detection and safety:
+- Observatory: spots AI-generated images in the browser (WebGPU/WASM). Live: https://look.definitelynot.ai Repo: https://github.com/johnzfitch/observatory
+- SpecHO v2: a 161-dimensional linguistic fingerprint that detects AI-written text and identifies which model wrote it (tiered runtime). https://github.com/johnzfitch/specho-v2
+- definitelynot.ai: a sanitizer that catches Unicode attacks (Trojan Source, BiDi, homoglyphs). https://github.com/johnzfitch/definitelynot.ai
 
-Documentation UX:
-- Iconics: semantic icon library (8k+ icons) for professional docs (no emojis). https://github.com/johnzfitch/iconics
+Docs:
+- Iconics: an icon library for docs, 8k+ icons and no emoji, searchable by meaning. https://github.com/johnzfitch/iconics
 
 ---
 
 ## Core Skills
 
 Languages:
-- Rust (systems, CLIs, correctness-oriented tooling)
-- Python (tooling, automation, reproducible experiments)
+- Rust (systems, CLIs, tools that have to be correct)
+- Python (tooling, automation, experiments I can rerun)
 - JavaScript/TypeScript (web tooling, WASM/WebGPU integration)
 - Nix (reproducible systems, deployment as code)
+- LaTeX (papers)
 
 Domains:
-- Agent tooling: retrieval, deterministic chunking, verifiable patching, structured tool APIs (MCP)
+- Research: PyTorch, NumPy, transformer analysis, experiment design, numerical linear algebra
+- Agent tooling: retrieval, deterministic chunking, patches you can verify, MCP tool APIs
 - Systems performance: mmap, indexing, predictable latency, subprocess correctness
-- Security and privacy: defensive design, minimized surface area, explicit threat models
-- Infrastructure: NixOS, DNS, TLS automation, containerized services, operational reliability
+- Security and privacy: defensive design, a small attack surface, threat models written down
+- Infrastructure: NixOS, DNS, TLS automation, containers, keeping things running
 
 ---
 
 ## Infrastructure (Self-Hosted, Sanitized)
 
-I operate production infrastructure on bare metal with a reliability-first and security-first posture:
-- Hardware: dedicated bare-metal host (details available on request)
-- Network design: multi-IP, multi-subnet redundancy for failure isolation (details available on request)
-- DNS: authoritative BIND9 (recursion disabled), rate limiting, constrained zone transfers
-- TLS: automated wildcard certificates via DNS-01 using RFC2136 dynamic updates (TSIG)
-- Post-quantum layers: hybrid SSH key exchange + WireGuard VPN with Rosenpass PQ key exchange overlay
-- Deployments: declarative configuration, atomic upgrades, rollbacks, encrypted secrets and backups
+I run production services on my own bare-metal servers, set up to stay up and stay locked down:
+- Hardware: a dedicated bare-metal host (details on request)
+- Network: multiple IPs and subnets, so one failure stays contained (details on request)
+- DNS: authoritative BIND9 with recursion off, rate limiting, and restricted zone transfers
+- TLS: wildcard certificates issued automatically over DNS-01, using RFC 2136 dynamic updates (TSIG)
+- Post-quantum: hybrid SSH key exchange, and WireGuard with Rosenpass on top for post-quantum key exchange
+- Deployments: declarative config, atomic upgrades, rollbacks, encrypted secrets and backups
 
 ---
 
@@ -118,3 +135,9 @@ Santa Rosa Junior College - A.S. in Mathematics and an associate degree in Econo
 - eero (sanitized)
 - alienware-monitor (sanitized)
 - proxyforge (sanitized)
+
+---
+
+## What I'm Looking For
+
+I'm looking for researchers, labs, and engineering teams to work with on model architecture, learning algorithms, interpretability, and agent infrastructure, especially where a hard research question needs a working implementation and a clean experiment. I work best with people who measure their results, are clear about who owns what, and keep the bar high.
