@@ -16,7 +16,10 @@ I run the Transporter program, where I study the geometry inside transformers an
 - I write down my predictions before an experiment, mark each claim as proved, measured, or conjectured, and report the limits and the negative results next to the positive ones.
 
 Papers and code (public):
-- **The Barnes–Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone.** Paper source and exact-arithmetic verification code, archived on Zenodo: [DOI 10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316) / [gindikin-rank](https://github.com/johnzfitch/gindikin-rank)
+- **The Barnes–Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone.** [PDF](papers/gindikin-rank.pdf). Verification code on Zenodo: [DOI 10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316) / [gindikin-rank](https://github.com/johnzfitch/gindikin-rank)
+- **Softmax Beyond the Simplex: Gibbs Charts and Polar Transport on Euclidean Jordan Algebras.** Softmax built on every Euclidean Jordan algebra, and what the extra frame directions carry. [PDF](papers/gibbs-chart.pdf). Verification code: [gibbs-chart](https://github.com/johnzfitch/gibbs-chart)
+- **Who Steers the User? Analyzing Claude Code and Codex Runtimes.** In two coding agents the user role carries text no user typed, and the model isn't told which. [PDF](papers/who-steers-the-user.pdf)
+- **Inherit All of Nothing.** The environment bug in the Codex CLI that I reported in #8945, the runtime code around it, and a recheck of what I later claimed about it against the code and my own probe data. [PDF](papers/inherit-all-of-nothing.pdf)
 - **Reading the Residual.** Uses the geometry of symmetric cones to give an exact, computable error certificate for the inverse square roots that Kronecker-factored optimizers like Shampoo, SOAP, and K-FAC compute in low precision. [kl-shampoo-gindikin-bridge](https://github.com/johnzfitch/kl-shampoo-gindikin-bridge)
 - **Communication transport experiments.** Complete outputs, with null and control runs, from transport experiments on Pythia-70M, Pythia-160M, and GPT-2. [communication-transport](https://github.com/johnzfitch/communication-transport)
 

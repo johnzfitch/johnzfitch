@@ -63,8 +63,13 @@
         <h2>Papers, code, and write-ups</h2>
         <div class="project-card">
           <h3>The Barnes&ndash;Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone</h3>
-          <p>Paper source and exact-arithmetic verification code, archived on Zenodo.</p>
-          <p><a href="https://doi.org/10.5281/zenodo.21713316">DOI 10.5281/zenodo.21713316</a> / <a href="https://github.com/johnzfitch/gindikin-rank">gindikin-rank</a></p>
+          <p>Its exact-arithmetic verification code is archived on Zenodo, along with the earlier revision.</p>
+          <p><a href="papers/gindikin-rank.pdf">PDF</a> / <a href="https://doi.org/10.5281/zenodo.21713316">DOI 10.5281/zenodo.21713316</a> / <a href="https://github.com/johnzfitch/gindikin-rank">gindikin-rank</a></p>
+        </div>
+        <div class="project-card">
+          <h3>Softmax Beyond the Simplex: Gibbs Charts and Polar Transport on Euclidean Jordan Algebras</h3>
+          <p>Softmax is the normalized exponential of the simplest Euclidean Jordan algebra. This paper builds the same map on every one of them and works out what the extra frame directions carry. The numerical verification scripts, and transcripts of their runs, are on GitHub.</p>
+          <p><a href="papers/gibbs-chart.pdf">PDF</a> / <a href="https://github.com/johnzfitch/gibbs-chart">gibbs-chart</a></p>
         </div>
         <div class="project-card">
           <h3>Reading the Residual</h3>
@@ -78,12 +83,13 @@
         </div>
         <div class="project-card">
           <h3>Who Steers the User? Analyzing Claude Code and Codex Runtimes</h3>
-          <p>A 24-hour research project, presented at Dev Day office hours.</p>
-          <p><a href="https://github.com/johnzfitch/johnzfitch/blob/main/data/who-steers-the-user.pdf">PDF</a></p>
+          <p>In two coding agents the user role carries text that no user typed, and the model isn&rsquo;t told which text that is. Evidence from Codex rollout logs and Claude Code&rsquo;s prompt history, and a proposed fix. A 24-hour research project, presented at Dev Day office hours, revised in September 2026.</p>
+          <p><a href="papers/who-steers-the-user.pdf">PDF</a></p>
         </div>
         <div class="project-card">
-          <h3>Inherit All of Nothing, Parts 1 and 2</h3>
-          <p>Eight months of Codex security analysis.</p>
+          <h3>Inherit All of Nothing</h3>
+          <p>From September 2025 to January 2026, release builds of the OpenAI Codex CLI stripped the dynamic-linker variables from every command the agent ran. I traced it and reported it in #8945, and the fix shipped with credit. This paper covers the bug and the runtime code around it, then rechecks everything I claimed about it between March and May 2026 against the upstream history, the code and my probe data, and says what holds, what I withdraw, and what cannot be known from outside. It replaces the earlier Parts I to III.</p>
+          <p><a href="papers/inherit-all-of-nothing.pdf">PDF</a></p>
         </div>
       </section>
 

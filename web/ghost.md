@@ -19,6 +19,8 @@ Affected users saw 11–300× slowdowns through CUDA/MKL fallbacks. OpenAI's spe
 
 **Related context:** the PR that introduced always-on pre-main hardening — [PR #4521](https://github.com/openai/codex/pull/4521).
 
+The full paper, [Inherit All of Nothing](papers/inherit-all-of-nothing.pdf) (PDF), covers the bug, the runtime code around it, and a recheck of my later claims against the code and my probe data.
+
 ## Timeline (Key Dates)
 
 | Date | Event |

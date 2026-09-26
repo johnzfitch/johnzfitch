@@ -21,6 +21,7 @@ PRIMARY LINKS (Proof)
 
 RELATED CONTEXT
 - PR that introduced always-on pre-main hardening: https://github.com/openai/codex/pull/4521
+- Full paper, Inherit All of Nothing (PDF): https://johnzfitch.github.io/johnzfitch/papers/inherit-all-of-nothing.pdf
 
 SECTION: Timeline (Key Dates)
 - 2025-09-30: PR #4521 merges (process hardening executes pre-main in CLI release builds)
