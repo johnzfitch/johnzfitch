@@ -157,7 +157,7 @@ Papers and code (public):
 - **The Barnes–Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone.** [PDF](papers/gindikin-rank.pdf). Verification code on Zenodo: [DOI 10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316) / [gindikin-rank](https://github.com/johnzfitch/gindikin-rank)
 - **Softmax Beyond the Simplex: Gibbs Charts and Polar Transport on Euclidean Jordan Algebras.** Softmax built on every Euclidean Jordan algebra, and what the extra frame directions carry. [PDF](papers/gibbs-chart.pdf). Verification code: [gibbs-chart](https://github.com/johnzfitch/gibbs-chart)
 - **Who Steers the User? Analyzing Claude Code and Codex Runtimes.** In two coding agents the user role carries text no user typed, and the model isn't told which. [PDF](papers/who-steers-the-user.pdf)
-- **Inherit All of Nothing.** The environment bug in the Codex CLI that I reported in #8945, the runtime code around it, and a recheck of what I later claimed about it against the code and my own probe data. [PDF](papers/inherit-all-of-nothing.pdf)
+- **Inherit All of Nothing.** The environment bug in the Codex CLI that I reported in issue #8945, the runtime code around it, and a recheck of what I later claimed about it against the code and my own probe data. [PDF](papers/inherit-all-of-nothing.pdf)
 - **Reading the Residual.** Uses the geometry of symmetric cones to give an exact, computable error certificate for the inverse square roots that Kronecker-factored optimizers like Shampoo, SOAP, and K-FAC compute in low precision. [kl-shampoo-gindikin-bridge](https://github.com/johnzfitch/kl-shampoo-gindikin-bridge)
 - **Communication transport experiments.** Complete outputs, with null and control runs, from transport experiments on Pythia-70M, Pythia-160M, and GPT-2. [communication-transport](https://github.com/johnzfitch/communication-transport)
 
@@ -216,17 +216,17 @@ From my repro harness (numbers vary by setup):
 
 ## Before this: TBD Liquids (2014–2023)
 
-I started TBD Liquids in 2014 selling e-liquid I mixed by hand on Reddit's e-cigarette classifieds, and I ran it for nearly nine years. The mission was to help adults quit smoking cigarettes. The FDA regulated what we made as a tobacco product, and the work meant handling hazardous substances.
+In 2014 I started TBD Liquids on Reddit's e-cigarette classifieds, selling e-liquid I mixed by hand, and I ran it for nearly nine years. The mission was to help adults quit smoking cigarettes. The FDA regulated what we made as a tobacco product, and the work meant handling hazardous substances.
 
 - Built the brand, The Best Damn Liquids (federally trademarked), on made-to-order mixing, a panel of about 50 outside flavor testers, and a price ceiling of $11.99 per 30ml.
 - Served roughly 40,000 customers by 2019 and filled more than 200,000 orders, with a team of up to six.
-- Filed a Premarket Tobacco Product Application before FDA's September 2020 deadline, then spent years working through guidance that never committed to anything, FOIA requests included. FDA refused to file the application.
+- Filed a Premarket Tobacco Product Application before FDA's September 2020 deadline, then spent years, FOIA requests included, working through guidance that never committed to anything. FDA refused to file the application.
 - Said no to opportunities that pulled us away from the mission, even profitable ones. We closed in July 2023, in our strongest revenue year.
 
 What it taught me:
 - How to keep going for years when a regulator won't give you a straight answer.
 - How to run manufacturing, hiring, and fulfillment day to day, and how to handle a crisis.
-- How to work under public scrutiny, for nearly nine years of it. I stand behind the work and I'm comfortable defending it on the record.
+- How to work under public scrutiny, year after year. I stand behind the work and I'm comfortable defending it on the record.
 
 ## Infrastructure (self-hosted)
 
