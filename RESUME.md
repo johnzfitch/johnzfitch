@@ -28,7 +28,7 @@ I run the Transporter program, where I study the geometry inside transformers an
 - I write down my predictions before an experiment, mark each claim as proved, measured, or conjectured, and report the limits and the negative results next to the positive ones.
 
 Papers and code (public):
-- The Barnes-Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone. [PDF](https://johnzfitch.github.io/johnzfitch/papers/gindikin-rank.pdf). Verification code on Zenodo. DOI: [10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316). Repo: https://github.com/johnzfitch/gindikin-rank
+- The Barnes-Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone. Continues the Gindikin gamma product to fractional rank through the Barnes double zeta, and works out where positivity survives once the rank is no longer an integer. [PDF](https://johnzfitch.github.io/johnzfitch/papers/gindikin-rank.pdf). Verification code on Zenodo. DOI: [10.5281/zenodo.21713316](https://doi.org/10.5281/zenodo.21713316). Repo: https://github.com/johnzfitch/gindikin-rank
 - Softmax Beyond the Simplex: Gibbs Charts and Polar Transport on Euclidean Jordan Algebras. Softmax built on every Euclidean Jordan algebra, and what the extra frame directions carry. [PDF](https://johnzfitch.github.io/johnzfitch/papers/gibbs-chart.pdf). Repo: https://github.com/johnzfitch/gibbs-chart
 - Who Steers the User? Analyzing Claude Code and Codex Runtimes. In two coding agents the user role carries text no user typed, and the model isn't told which. [PDF](https://johnzfitch.github.io/johnzfitch/papers/who-steers-the-user.pdf)
 - Inherit All of Nothing. The environment bug in the Codex CLI that I reported in issue #8945, the runtime code around it, and a recheck of what I later claimed about it against the code and my own probe data. [PDF](https://johnzfitch.github.io/johnzfitch/papers/inherit-all-of-nothing.pdf)
@@ -64,7 +64,8 @@ Measurements (they vary by environment):
 | Workload | Before | After | Speedup |
 |---|---:|---:|---:|
 | MKL/BLAS (repro harness) | ~2.71s | ~0.239s | 11.3x |
-| CUDA workflows (library discovery / GPU fallback) | 100x-300x slower | restored | varies |
+| Ten 2000x2000 multiplies through the fixed Codex build (CBLAS fallback vs MKL) | ~16.3s | ~0.31s | 53x |
+| CUDA libraries (libcudart, libcublas, libcufft) | not found | loaded | - |
 
 ---
 
@@ -74,7 +75,7 @@ Building and patching Codex:
 - codex-xtreme (includes codex-patcher): a repeatable way to build and patch Codex binaries. https://github.com/johnzfitch/codex-xtreme
 
 Code search that stays on your machine:
-- llmx: indexes a codebase with deterministic chunking and BM25 search, and exports context for agents. https://github.com/johnzfitch/llmx
+- llmx: a codebase indexer that runs only on your machine (Rust core, JS/WASM web; live at https://llm.cat). BM25 and neural embeddings (mdbr-leaf-ir on Burn) are merged with reciprocal rank fusion, and chunking is deterministic and content-hashed. https://github.com/johnzfitch/llmx
 
 MCP servers:
 - pyghidra-lite: an MCP server for program analysis with Ghidra that keeps token use low. Output is compact by default, with more detail when you ask for it. It's in the official MCP registry as `io.github.johnzfitch/pyghidra-lite` (v0.1.1, active, published 2026-01-29). Repo: https://github.com/johnzfitch/pyghidra-lite

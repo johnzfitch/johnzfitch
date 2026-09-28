@@ -20,7 +20,7 @@ I run the Transporter program, where I study the geometry inside transformers an
 - I write down my predictions before an experiment, mark each claim as proved, measured, or conjectured, and report the limits and the negative results next to the positive ones.
 
 Papers and code (public):
-- The Barnes-Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone. PDF: https://johnzfitch.github.io/johnzfitch/papers/gindikin-rank.pdf Verification code on Zenodo. DOI: https://doi.org/10.5281/zenodo.21713316 Repo: https://github.com/johnzfitch/gindikin-rank
+- The Barnes-Gindikin Symbol at Fractional Rank: Continuation Without a Determinant Carrier, Positivity Without a Cone. Continues the Gindikin gamma product to fractional rank through the Barnes double zeta, and works out where positivity survives once the rank is no longer an integer. PDF: https://johnzfitch.github.io/johnzfitch/papers/gindikin-rank.pdf Verification code on Zenodo. DOI: https://doi.org/10.5281/zenodo.21713316 Repo: https://github.com/johnzfitch/gindikin-rank
 - Softmax Beyond the Simplex: Gibbs Charts and Polar Transport on Euclidean Jordan Algebras. Softmax built on every Euclidean Jordan algebra, and what the extra frame directions carry. PDF: https://johnzfitch.github.io/johnzfitch/papers/gibbs-chart.pdf Repo: https://github.com/johnzfitch/gibbs-chart
 - Who Steers the User? Analyzing Claude Code and Codex Runtimes. In two coding agents the user role carries text no user typed, and the model isn't told which. PDF: https://johnzfitch.github.io/johnzfitch/papers/who-steers-the-user.pdf
 - Inherit All of Nothing. The environment bug in the Codex CLI that I reported in issue #8945, the runtime code around it, and a recheck of what I later claimed about it against the code and my own probe data. PDF: https://johnzfitch.github.io/johnzfitch/papers/inherit-all-of-nothing.pdf
@@ -37,7 +37,7 @@ OpenAI Codex - Ghost in the Codex Machine
 - I found the commit that turned it on, built a reproduction, and wrote it up in issue #8945. An OpenAI maintainer wrote the fix from my write-up, it shipped in rust-v0.80.0, and the release notes thank me by name.
 - Proof: https://github.com/openai/codex/issues/8945 and https://github.com/openai/codex/pull/8951
 - Release notes: https://github.com/openai/codex/releases/tag/rust-v0.80.0
-- From my repro harness (numbers vary by setup): MKL/BLAS ran about 11.3x faster after the fix, and affected CUDA setups stopped falling back to the CPU, which had made them 100x-300x slower.
+- From my repro harness (numbers vary by setup): MKL/BLAS ran about 11.3x faster after the fix (53x through the fixed Codex build), and the CUDA libraries that had gone missing loaded again.
 
 SELECTED PROJECTS (public)
 - llmx (Rust core, JS/WASM web; live at https://llm.cat): a codebase indexer that runs only on your machine. BM25 and neural embeddings (mdbr-leaf-ir on Burn) are merged with reciprocal rank fusion, and chunking is deterministic and content-hashed. https://github.com/johnzfitch/llmx
