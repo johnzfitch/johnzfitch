@@ -183,7 +183,7 @@ TL;DR: it was literally a ghost. It ran before <code>main()</code>, stripped the
 ## <img src=".github/assets/icons/toolbox.png" width="20" height="20" alt=""> Recent Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐422</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐423</sub></dt>
   <dd>Runs Claude Desktop's Cowork mode natively on Linux. Bubblewrap stands in for the VM, and the ASAR is unpacked on the host before any sandboxed code runs. My most-starred project.</dd>
 
   <dt><a href="https://github.com/johnzfitch/llmx"><b>llmx</b></a></dt>
@@ -213,7 +213,7 @@ TL;DR: it was literally a ghost. It ran before <code>main()</code>, stripped the
 ## <img src=".github/assets/icons/star.png" width="20" height="20" alt=""> Selected Work
 
 <dl>
-  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐422</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-cowork-linux"><b>claude-cowork-linux</b></a> <sub>⭐423</sub></dt>
   <dd>Runs the official Claude Desktop app's Cowork mode natively on Linux. Bubblewrap stands in for the VM, and the ASAR is unpacked on the host before any sandboxed code runs.</dd>
 
   <dt><a href="https://github.com/johnzfitch/specho-v2"><b>specHO</b></a></dt>
