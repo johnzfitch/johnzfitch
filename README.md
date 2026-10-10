@@ -192,11 +192,11 @@ TL;DR: it was literally a ghost. It ran before <code>main()</code>, stripped the
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secrets manager with a terminal UI. v7 TC-HKEM hybrid (ML-KEM-768 + X25519), an Argon2id master key, and an AES-256-GCM encrypted JSON vault.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐23</sub></dt>
-  <dd>Anthropic's Claude docs as 2000+ Markdown files in 24 categories, pulled from first-party sources and refreshed daily.</dd>
-
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐36</sub></dt>
   <dd>MCP server for Ghidra that keeps token use low. Reads ELF, Mach-O, and PE binaries, with Swift, Objective-C, and Hermes support.</dd>
+
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐23</sub></dt>
+  <dd>Anthropic's Claude docs as 2000+ Markdown files in 24 categories, pulled from first-party sources and refreshed daily.</dd>
 
   <dt><a href="https://github.com/johnzfitch/raley-bot"><b>raley-bot</b></a></dt>
   <dd>Grocery shopping assistant built on a store's web API. It picks products, tracks prices, and clips coupons, from a CLI or as an MCP server.</dd>
