@@ -192,7 +192,7 @@ TL;DR: it was literally a ghost. It ran before <code>main()</code>, stripped the
   <dt><a href="https://github.com/johnzfitch/dota"><b>dota</b></a></dt>
   <dd>Post-quantum secrets manager with a terminal UI. v7 TC-HKEM hybrid (ML-KEM-768 + X25519), an Argon2id master key, and an AES-256-GCM encrypted JSON vault.</dd>
 
-  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐23</sub></dt>
+  <dt><a href="https://github.com/johnzfitch/claude-wiki"><b>claude-wiki</b></a> <sub>⭐24</sub></dt>
   <dd>Anthropic's Claude docs as 2000+ Markdown files in 24 categories, pulled from first-party sources and refreshed daily.</dd>
 
   <dt><a href="https://github.com/johnzfitch/pyghidra-lite"><b>pyghidra-lite</b></a> <sub>⭐36</sub></dt>
@@ -406,7 +406,7 @@ $ claude "install dependencies"
 
 ## <img src=".github/assets/icons/ai-brain.png" width="20" height="20" alt=""> AI / ML / Agent Tooling
 
-- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐23: Anthropic's docs as a Markdown wiki, 2000+ files across 24 categories
+- **[claude-wiki](https://github.com/johnzfitch/claude-wiki)** ⭐24: Anthropic's docs as a Markdown wiki, 2000+ files across 24 categories
 - **[observatory](https://github.com/johnzfitch/observatory)**: deepfake detection with 4 ML models on WebGPU. Live at [look.definitelynot.ai](https://look.definitelynot.ai)
 - **[specHO](https://github.com/johnzfitch/specho-v2)**: LLM watermark detection with phonetic and semantic analysis. Live at [definitelynot.ai](https://definitelynot.ai)
 - **[burn-plugin](https://github.com/johnzfitch/burn-plugin)**: Claude Code plugin for the Burn deep learning framework
